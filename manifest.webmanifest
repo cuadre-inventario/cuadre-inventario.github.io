@@ -5,7 +5,7 @@
   "lang": "es",
   "start_url": "./",
   "scope": "./",
-  "id": "/cuadre/",
+  "id": "/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#0b2a6b",
