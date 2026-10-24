@@ -3820,7 +3820,7 @@ function fieldOf(L,grp){
   if(/cantidad|^cant\b|^qty$|^quantity$|^cantid/.test(L))return ['cant',8];
   if(/^(entradas?|ingresos?|compras?|entra|recibido|recepcion|ent)$|^(total |cant |cantidad )?entradas?$/.test(L))return ['qin',6];
   if(/^(salidas?|egresos?|ventas?|sale|despachos?|sal)$|^(total |cant |cantidad )?salidas?$/.test(L))return ['qout',6];
-  if(/^(categoria|rubro|familia|grupo|linea|clasificacion|departamento|seccion|category|subcategoria|sub categoria|division|segmento|subgrupo|sub grupo)\b/.test(L))return ['cat',9];
+  if(/^(cat|categ|categoria|rubro|familia|grupo|linea|clasificacion|departamento|seccion|category|subcategoria|sub categoria|division|segmento|subgrupo|sub grupo)\b/.test(L))return ['cat',9];
   if(/marca|fabricante|brand|laboratorio|procedencia/.test(L))return ['marca',9];
   if(/nota|observac|comentario|motivo|glosa|^obs\b|concepto|referencia mov/.test(L))return [/concepto/.test(L)?'concepto':'nota',7];
   if(/^(codigo|cod|sku|referencia|ref|clave|id|parte|n parte|no parte|part number|numero de parte|codigo (de )?parte)$|^(codigo|cod) (de |del )?(interno|producto|articulo|item|sku|material|repuesto|prod|art)\b|^(codigo|cod)\b/.test(L))return ['cod',9];
@@ -3972,6 +3972,19 @@ function tipoDefDe(sh){
   if(has('cliente'))return 'venta';
   if(has('prov')||(has('costo')&&!has('precio')))return 'ingreso';
   return 'venta'}
+/* hoja sin títulos reconocidos: ¿de verdad es una lista de productos? (no una hoja de apoyo como «Resumen mensual») */
+function sinEncDudoso(sh){
+  const rs=(sh.rows||[]).filter(r=>(r||[]).some(v=>tx(v)!==''));
+  if(!rs.length)return true;
+  /* a) debajo de un título suelto, un renglón de solo textos (≥3) y luego filas con números = títulos que no conozco → no adivino */
+  for(let k=1;k<Math.min(rs.length-1,6);k++){
+    if(rs[k-1].filter(v=>tx(v)!=='').length>=3)continue;
+    const ne=rs[k].filter(v=>tx(v)!=='');
+    if(ne.length>=3&&ne.every(v=>typeof v==='string'&&!numLike(v))&&rs[k+1].some(v=>typeof v==='number'))return true}
+  /* b) la columna de nombres tiene que estar llena en casi todas las filas */
+  const nc=sh.cols.find(c=>c.raw==='nom');
+  if(nc&&nc.n/rs.length<0.6)return true;
+  return false}
 function classify(sh){
   const has=k=>sh.cols.some(c=>c.raw===k),nm=nz(sh.name);
   if(sh.hidden)return 'omitir';
@@ -3979,6 +3992,7 @@ function classify(sh){
   if(/cotiz|presupuest|proforma|propuest/.test(nm)||has('docq'))return (ident||has('total'))?'cotizaciones':'omitir';
   if(!ident)return 'omitir';
   if(sh.sinEnc&&!(has('nom')&&(has('cant')||has('precio')||has('stock'))))return 'omitir';
+  if(sh.sinEnc&&!/producto|inventario|articulo|material|stock|bodega|existencia|catalogo|lista|precio/.test(nm)&&sinEncDudoso(sh))return 'omitir';
   const mov=has('fecha')&&(has('tipo')||has('qin')||has('qout')||has('doc')||has('cliente')||(has('cant')&&!has('stock')&&!has('saldo')));
   if(mov)return 'movimientos';
   if(/movim|kardex|historial|^ventas?\b|^compras?\b|entradas|salidas|ingresos|egresos|facturas/.test(nm)&&(has('cant')||has('qin')||has('qout')))return 'movimientos';
@@ -4160,7 +4174,7 @@ function plan(M){
       let L=look(rec),E=null;
       if(L&&L.ex){existSet.add(L.ex.id);wr('movExist',1,'movimientos de productos que ya estaban en tu bodega no se cargaron (para no duplicar).','info');continue}
       if(L&&L.fe)E=L.fe;
-      else{E=mkEnt(rec,'mov')}
+      else{E=mkEnt(rec,'mov');wr('soloMov',1,'productos aparecen en tus movimientos pero no están en tu lista de productos; se agregaron para no perder esos movimientos (revisa su nombre, precio y categoría).','info')}
       if(!E.u&&rec.u)E.u=rec.u;
       /* precios */
       let costo=num(row,'costo'),pv=pr;
