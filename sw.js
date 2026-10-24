@@ -1,6 +1,6 @@
 /* Cuadre · service worker: la app funciona sin internet.
    Guarda todos los archivos en el teléfono y los sirve desde ahí; si hay internet, los renueva por detrás. */
-const V='cuadre-ef4d5a90c5';
+const V='cuadre-aa81e06a95';
 const FILES=['./','index.html','manifest.webmanifest','jspdf.min.js','zxing.min.js','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','favicon-48.png'];
 /* Al instalar se baja todo directo del servidor (sin la copia temporal de GitHub, que dura 10 min), para que una actualización llegue completa y al instante. */
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(FILES.map(f=>fetch(new Request(f,{cache:'reload'})).then(r=>{if(!r.ok)throw new Error(f);return c.put(f,r)})))).then(()=>self.skipWaiting()))});

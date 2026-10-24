@@ -1323,33 +1323,6 @@ body{margin:0;background:#d5dce6}
 }
 
 /* ---------- Más: plan Gratis vs Pro + lista de ajustes que abren su hoja ---------- */
-.d1 .plc .plt2 h3{font-size:17px;letter-spacing:-.02em}
-.d1 .plc .plt2 p{margin-top:3px;font-size:12.5px;font-weight:500;line-height:1.4;color:var(--mut)}
-.d1 .pcol{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.d1 .pcc{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;padding:12px 8px 10px;border-radius:14px;background:var(--fill);text-align:center}
-.d1 .pcc b{font-size:13px;font-weight:800;color:var(--ink2)}
-.d1 .pcc .pcp{font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:1.15}
-.d1 .pcc i{font-style:normal;font-size:11.5px;font-weight:600;color:var(--mut)}
-.d1 .pcc .cur2{margin-top:6px;padding:2px 9px;border-radius:999px;background:var(--fill2);font-style:normal;font-size:10.5px;font-weight:800;color:var(--ink2)}
-.d1 .pcc.pro{background:var(--acs);box-shadow:inset 0 0 0 2px var(--ac);padding-top:16px}
-.d1 .pcc.pro b{color:var(--act)}
-.d1 .pcc .pcpop{position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:2px 10px;border-radius:999px;background:var(--acb);color:var(--onb);font-size:10px;font-weight:800;letter-spacing:.03em;white-space:nowrap}
-.d1 .cmt{margin-top:6px}
-.d1 .cmr{padding:9px 0;border-top:1px solid var(--line)}
-.d1 .cmr:first-child{border-top:0}
-.d1 .cml{display:block;font-size:13px;font-weight:700;line-height:1.3;color:var(--ink)}
-.d1 .cmv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:5px}
-.d1 .cmf,.d1 .cmp{display:flex;align-items:center;justify-content:center;min-height:26px;padding:3px 6px;border-radius:9px;background:var(--fill);text-align:center}
-.d1 .cmp{background:var(--acs)}
-.d1 .cy{display:grid;place-items:center;color:var(--grn)}
-.d1 .cn{display:grid;place-items:center;color:var(--mut);opacity:.7}
-.d1 .ct{font-size:11.5px;font-weight:700;line-height:1.25;color:var(--ink2)}
-.d1 .cmp .ct{color:var(--act)}
-.d1 .btn.cmm{width:100%;margin-top:4px;color:var(--act)}
-.d1 .btn.cmm .ci.dn{transform:rotate(90deg)}.d1 .btn.cmm .ci.up{transform:rotate(-90deg)}
-.d1 .plc .plb{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.d1 .trust{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;margin:12px 0 0;padding:0;font-size:11.5px;font-weight:700;color:var(--mut)}
-.d1 .trust li{display:inline-flex;align-items:center;gap:4px}.d1 .trust .ci{color:var(--grn)}
 .d1 .pban{display:flex;align-items:center;gap:11px;margin-top:14px;padding:11px 12px;border-radius:14px;background:var(--acs);color:var(--act)}
 .d1 .pban span{display:flex;flex-direction:column;gap:1px}.d1 .pban b{font-size:13.5px;font-weight:800}.d1 .pban i{font-style:normal;font-size:12px;font-weight:600;color:var(--ink2)}
 .d1 .faq{margin-top:12px;border-top:1px solid var(--line)}
@@ -1359,7 +1332,6 @@ body{margin:0;background:#d5dce6}
 .d1 .faq summary::after{content:'+';flex:none;font-size:18px;font-weight:600;color:var(--mut)}
 .d1 .faq details[open] summary::after{content:'–'}
 .d1 .faq p{margin:0 0 12px;font-size:12.5px;font-weight:500;line-height:1.45;color:var(--mut)}
-.d1 .plc.act .btn{margin-top:4px}
 .d1 .mg{margin-top:18px}
 .d1 .mgh{margin:0 4px 7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .d1 .mgc{overflow:hidden;border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line)}
@@ -1404,7 +1376,7 @@ body{margin:0;background:#d5dce6}
 .d1 .lerr{margin:6px 0 0;padding:8px 10px;border-radius:10px;background:var(--reds);color:var(--red);font-size:12.5px;font-weight:600;line-height:1.4}
 @media (min-width:700px){
   .d1 .pg[data-sk="m-mas"]{display:block;columns:auto;max-width:720px;margin:0 auto}
-  .d1 .pg[data-sk="m-mas"]>.plc{margin-top:0}
+  .d1 .pg[data-sk="m-mas"]>.plx{margin-top:0}
 }
 
 /* Hazte Pro: dos planes */
@@ -1553,6 +1525,123 @@ body{margin:0;background:#d5dce6}
 .d1 .ppm .pc span:not(:first-child){display:block}
 
 .d1 .chips.qdq+.fl{margin-top:16px}
+/* editor: Vista previa · Guardar · Enviar (tres botones) y hoja «Enviar cotización» */
+.d1 .qfoot{gap:8px}
+.d1 .qfoot .btn.big{gap:6px;padding-inline:6px;font-size:14.5px;white-space:nowrap}
+.d1 .qfoot .btn.big svg{flex:none}
+@media (max-width:379px){.d1 .qfoot .btn.big{font-size:13.5px;padding-inline:4px}.d1 .qfoot .btn.big svg{width:16px;height:16px}}
+.d1 .snl{display:flex;flex-direction:column;gap:10px;margin:14px 0 6px}
+.d1 .snr{display:flex;align-items:center;gap:12px;width:100%;padding:12px;border:1px solid var(--line);border-radius:16px;text-align:left;background:var(--card,#fff)}
+.d1 .snr:active:not(:disabled){background:var(--fill)}
+.d1 .snr.off{opacity:.55}
+.d1 .snr .snt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.d1 .snr .snt b{font-size:15.5px;font-weight:800}
+.d1 .snr .snt i{font-style:normal;font-size:13px;font-weight:600;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d1 .snr .snok{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:12.5px;font-weight:800;color:var(--ok,#0f8a4f)}
+
+/* ===== Inicio compacto: fecha con flechas, botones arriba, tarjetas más bajas ===== */
+.d1 .hd2 h1{font-size:21px}
+.d1 .dnv{display:flex;align-items:center;gap:5px;margin-top:5px;min-width:0}
+.d1 .dnb{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--card);box-shadow:0 0 0 1px var(--line);color:var(--ink2);-webkit-tap-highlight-color:transparent}
+.d1 .dnb:active:not(:disabled){background:var(--fill2)}
+.d1 .dnb:disabled{opacity:.32;cursor:default}
+.d1 .dnl{position:relative;display:inline-flex;align-items:center;min-width:0;height:32px;padding:0 11px;border-radius:10px;background:var(--card);box-shadow:0 0 0 1px var(--line);font-size:13px;font-weight:700;color:var(--ink2);overflow:hidden}
+.d1 .dnl span{display:inline-flex;align-items:center;gap:6px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d1 .dnl span .ci{flex:none;color:var(--act)}
+.d1 .dni{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;border:0;padding:0}
+.d1 .dnh{flex:none;height:32px;padding:0 12px;border-radius:10px;background:var(--acs);color:var(--act);font-size:12.5px;font-weight:800;box-shadow:inset 0 0 0 1px var(--acm)}
+.d1 .tt.hv{padding:11px 13px 9px;margin-bottom:8px}
+.d1 .hv .ttn{margin-top:0;font-size:30px}
+.d1 .hv .ttn.sm{font-size:25px}
+.d1 .hvc{padding-bottom:3px}
+.d1 .hrs{height:34px;margin-top:6px}
+.d1 .hax{margin-top:3px}
+.d1 .hvf{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:5px}
+.d1 .hvf .ttg{margin:0;font-size:12.5px}
+.d1 .tt.mini{padding:8px 9px 8px}
+.d1 .tt.mini .ttn{margin-top:2px}
+.d1 .tt.mini .ttf{padding-top:4px}
+.d1 .tt.mini .ttl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d1 .inv{margin-top:8px;padding:11px 12px}
+.d1 .invi{width:34px;height:34px}
+.d1 .invs{margin-top:9px;gap:7px}
+.d1 button.ivs{width:100%;border:0;cursor:pointer;text-align:left;transition:transform .12s;-webkit-tap-highlight-color:transparent}
+.d1 button.ivs:active{transform:scale(.96)}
+.d1 .ivs{padding:7px 9px}
+.d1 .invn{margin-top:7px}
+.d1 .rpc{display:flex;align-items:center;gap:5px;margin:8px 0 0;font-size:12px;font-weight:800;color:var(--act)}
+@media (max-width:899px){
+  .d1 .pg[data-sk="m-inicio"] .hd2{margin-bottom:8px}
+  .d1 .pg[data-sk="m-inicio"]>.qa{margin:0 0 8px;gap:8px}
+  .d1 .pg[data-sk="m-inicio"] .qb{height:60px;gap:3px;font-size:12px}
+  .d1 .pg[data-sk="m-inicio"] .qb span{width:30px;height:30px;border-radius:10px}
+}
+@media (min-width:700px){.d1 .hv .ttn{font-size:40px}.d1 .hv .ttn.sm{font-size:32px}.d1 .hrs{height:60px}}
+/* resumen de un período con ‹ › y detalle del valor del inventario */
+.d1 .rsnav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}
+.d1 .rsnav b{flex:1;min-width:0;text-align:center;font-size:15px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d1 .vlh{margin:16px 0 8px;font-size:13px;font-weight:800;color:var(--ink2)}
+.d1 .vlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.d1 .vlist li{display:grid;grid-template-columns:minmax(0,1fr) 78px auto;gap:10px;align-items:center;font-size:13px;font-weight:600}
+.d1 .vlist li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d1 .vlist li i{display:block;height:7px;border-radius:9px;background:var(--fill2);overflow:hidden}
+.d1 .vlist li u{display:block;height:100%;border-radius:9px;background:var(--ac);text-decoration:none}
+.d1 .vlist li b{font-weight:800}
+
+/* ===== Más: planes lado a lado (Gratis | Pro) ===== */
+.d1 .pg[data-sk="m-mas"]>.mhd p{margin-top:3px;font-size:13px;font-weight:500;line-height:1.4;color:var(--mut)}
+.d1 .pg[data-sk="m-mas"]>.mhd{align-items:flex-start}
+.d1 .plx{margin-top:14px}
+.d1 .pg[data-sk="m-mas"]>.plx{column-span:all}
+.d1 .plxnote{margin:0 0 12px;padding:9px 12px;border-radius:12px;background:var(--ambs);color:var(--amb);font-size:12.5px;font-weight:600;line-height:1.4}
+.d1 .plxg{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:8px;align-items:stretch}
+.d1 .plxc{position:relative;display:flex;flex-direction:column;min-width:0;border-radius:18px}
+.d1 .plxc.free{padding:12px 10px 10px;background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.d1 .plxc.pro{margin-top:9px;padding:14px 4px 4px;background:linear-gradient(180deg,var(--acb),var(--act));box-shadow:0 0 0 2px var(--acb)}
+.d1 .plxh{display:flex;align-items:center;gap:8px;min-width:0}
+.d1 .plxh b{display:block;font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.d1 .plxh i{display:block;font-style:normal;font-size:10.5px;font-weight:600;line-height:1.25;color:var(--mut)}
+.d1 .plxc.pro .plxh{padding:0 7px 10px;color:var(--onb)}
+.d1 .plxc.pro .plxh i{color:rgba(255,255,255,.88)}
+.d1 .plxic{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--fill);color:var(--ink2);box-shadow:inset 0 0 0 1px var(--line)}
+.d1 .plxic.g{background:linear-gradient(145deg,#f7c04a,#d98a12);color:#fff;box-shadow:none}
+.d1 .plxpop{position:absolute;top:-10px;right:10px;padding:3px 9px;border-radius:999px;background:linear-gradient(#f8cb5a,#eaa721);color:#4a2f00;font-size:10px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.22)}
+.d1 .plxin{display:flex;flex-direction:column;flex:1;padding:10px 9px;border-radius:15px;background:var(--card)}
+.d1 .plxpr{display:flex;flex-direction:column;margin:12px 0 2px}
+.d1 .plxin .plxpr{margin-top:0}
+.d1 .plxpr b{font-size:27px;font-weight:800;letter-spacing:-.045em;line-height:1.05}
+.d1 .plxpr span{font-size:11.5px;font-weight:600;color:var(--mut)}
+.d1 .plxmes{margin:3px 0 0;font-size:11px;font-weight:700;line-height:1.3;color:var(--act)}
+.d1 .plxsv{margin:1px 0 0;font-size:10.5px;font-weight:700;line-height:1.3;color:var(--grn)}
+.d1 .plxl{list-style:none;margin:11px 0 11px;padding:0;display:flex;flex-direction:column;gap:6px;flex:1}
+.d1 .plxl li{display:flex;align-items:flex-start;gap:6px;font-size:11.5px;font-weight:600;line-height:1.3;color:var(--ink2)}
+.d1 .plxl li .ci{flex:none;margin-top:1px;color:var(--grn)}
+.d1 .plxcur{display:flex;align-items:center;justify-content:center;gap:5px;min-height:38px;padding:0 8px;border-radius:12px;background:var(--fill);font-size:12px;font-weight:800;line-height:1.2;color:var(--mut);text-align:center}
+.d1 .plxcur.on{color:var(--ink)}
+.d1 .plxcur.on.pro{background:var(--acs);color:var(--act)}
+.d1 .plxcta{display:flex;flex-direction:column;align-items:stretch;border-radius:13px;background:var(--acb);color:var(--onb);overflow:hidden}
+.d1 .plxb{display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:0 8px;font-size:14px;font-weight:800;color:var(--onb);-webkit-tap-highlight-color:transparent}
+.d1 .plxb:active{background:rgba(0,0,0,.15)}
+.d1 .plxo{margin-top:-5px;padding:0 8px 10px;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.92);text-align:center;text-decoration:underline;text-underline-offset:2px}
+.d1 .plxst{display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:8px;padding:5px 8px;border-radius:999px;background:var(--acs);color:var(--act);font-size:11.5px;font-weight:800;line-height:1.2;text-align:center}
+.d1 .plxfine{margin:7px 0 0;font-size:10.5px;font-weight:600;line-height:1.35;color:var(--mut);text-align:center}
+.d1 .plxmg{margin-top:7px;font-size:11.5px;font-weight:800;line-height:1.3;color:var(--act);text-align:center;text-decoration:underline;text-underline-offset:2px}
+.d1 .plxt{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin:10px 0 0;padding:11px 4px;border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.d1 .plxt li{display:flex;flex-direction:column;align-items:center;gap:1px;padding:0 4px;text-align:center}
+.d1 .plxt li+li{border-left:1px solid var(--line)}
+.d1 .plxti{color:var(--act);margin-bottom:3px}
+.d1 .plxt b{font-size:11.5px;font-weight:800;line-height:1.2}
+.d1 .plxt i{font-style:normal;font-size:10.5px;font-weight:600;line-height:1.25;color:var(--mut)}
+.d1 .pban{width:100%;text-align:left}
+.d1 .pban>span{flex:1;min-width:0}
+.d1 .plx .faq{margin-top:10px;padding:4px 14px 2px;border:0;border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.d1 .plx .faq h4{padding:10px 0 4px;font-size:14px;font-weight:800}
+.d1 .plx .faq details:last-child{border-bottom:0}
+@media (max-width:339px){.d1 .plxg{grid-template-columns:1fr}}
+@media (min-width:700px){.d1 .plx{max-width:780px;margin-inline:auto}}
+/* Hazte Pro: explicaciones cortas */
+.d1 .bpn{margin:12px 0 4px;font-size:13px;font-weight:600;line-height:1.45;color:var(--ink2)}
+.d1 .bph{margin:16px 0 2px;font-size:13px;font-weight:800;color:var(--ink2)}
 
 .d1 .mi{background:url(data:image/png;base64,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) center/cover no-repeat;box-shadow:0 8px 16px -8px rgba(10,40,120,.6)}
 
@@ -2055,7 +2144,7 @@ const PLAN={
      precio = texto que se muestra cuando todavía no se pueden leer los precios de Play (en la app de Play salen los de Play, en tu moneda). */
   simbolo:'$',
   planes:{
-    mes:{id:'cuadre_pro_mensual',nom:'Mensual',n:2,precio:'$2,00',per:'al mes'},
+    mes:{id:'cuadre_pro_mensual',nom:'Mensual',n:1.99,precio:'$1,99',per:'al mes'},
     anio:{id:'cuadre_pro_anual',nom:'Anual',n:9.99,precio:'$9,99',per:'al año'}
   },
   playPaquete:'io.github.cuadre_inventario.twa',         // nombre de paquete de la app en Google Play (ej. 'io.github.cuadre_inventario.twa'); lo define PWABuilder/Bubblewrap
@@ -2083,28 +2172,33 @@ const PLAN={
     logo:{t:'Logo en tus documentos',d:'Tu logo y tus datos arriba de cada cotización y reporte, con marca de agua.'},
     plantillas:{t:'Plantillas de cotización',d:'Guarda una cotización como plantilla y empieza las siguientes con un toque: mismos productos, notas y condiciones.'},
     cierre:{t:'Cierre de caja del día',d:'Un resumen imprimible del día: lo vendido, lo que costó, la ganancia, lo que salió sin cobrar y el detalle por producto.'},
+    envio:{t:'Enviar al cliente con un toque',d:'Desde la cotización, «Enviar» abre el WhatsApp y el correo de tu cliente con el mensaje ya escrito (detalle y total), sin copiar números ni correos, y la marca como enviada.'},
     fotosdoc:{t:'Fotos en tus cotizaciones',d:'La foto de cada producto sale junto al ítem en el PDF de la cotización.'},
     gprod:{t:'Ganancia por producto',d:'Qué producto y qué categoría te dejan más ganancia en la semana, el mes o el año.'}
   },
-  /* tabla «Gratis vs Pro»: [texto, lo que da Gratis, lo que da Pro]. true = incluido, false = no incluido, texto = el detalle */
-  comparar(){return [
-    ['Productos',PLAN.maxProductos+' productos','Sin límite'],
-    ['Productos por venta, ingreso o salida',PLAN.itemsPorRegistro+' a la vez','Sin límite'],
-    ['Ventas, ingresos, salidas y kardex',true,true],
-    ['Escáner con la cámara y lector USB',true,true],
-    ['Copia en Excel y en tu Google Drive',true,true],
-    ['Clave y huella para entrar',true,true],
-    ['Ganancia','Solo la de '+perTxt(PLAN.gananciaGratis),'Hoy, semana, mes y año'],
-    ['Ranking de más y menos vendidos',cap(perTxt(PLAN.rankingGratis)),'Con mes y año'],
-    ['Cotizaciones en PDF',PLAN.docsPerDay+' al día, sencillas','Sin límite, con tu membrete, logo y marca de agua'],
-    ['Firma o sello en el PDF',false,true],
-    ['Plantillas de cotización',false,true],
-    ['Fotos de productos en el PDF',false,true],
-    ['Cierre de caja del día',false,true],
-    ['Ganancia por producto y categoría',false,true],
-    ['Escaneo continuo y etiquetas con código',false,true],
-    ['Descargar a Excel',false,true],
-    ['Entrega con firma y Préstamos',false,true]]}
+  /* lo que dice cada tarjeta de plan (Más y Hazte Pro). Es el ÚNICO lugar donde se escribe lo que incluye cada plan:
+     los números salen de las perillas de arriba, así que si las cambias el texto cambia solo */
+  listaGratis(){return [
+    PLAN.maxProductos+' productos',
+    'Hasta '+PLAN.itemsPorRegistro+' productos por venta',
+    'Ventas, ingresos y salidas',
+    'Escáner de códigos',
+    'Copia de seguridad',
+    'Clave y huella para entrar',
+    'Ganancia de '+perTxt(PLAN.gananciaGratis),
+    'Cotizaciones en PDF ('+PLAN.docsPerDay+' al día)']},
+  listaPro(){return [
+    'Todo lo del plan Gratis',
+    'Productos y registros sin límite',
+    'PDF sin límite, con tu membrete y logo',
+    'Enviar cotizaciones por WhatsApp y correo',
+    'Fotos, plantillas y firma en tus cotizaciones',
+    'Ranking del mes y del año',
+    'Cuánto ganaste, por producto y categoría',
+    'Cierre de caja del día',
+    'Escaneo continuo y etiquetas con código',
+    'Descargar a Excel',
+    'Entrega con firma y Préstamos']}
 };
 C.PLAN=PLAN;C.PRO=PLAN.pro;
 /* cuánto se ahorra con el plan anual frente a pagar 12 meses (en %: sirve en cualquier moneda) */
@@ -2535,6 +2629,7 @@ C.precioEstado=(costo,pv)=>{
 C.enRiesgo=()=>C.prods().map(p=>({p,e:C.precioEstado(p.costo,p.pv)})).filter(x=>x.e);
 C.bloqueaPerdida=()=>!!C.state.noPerdida;
 C.valorBodega=()=>C.prods().reduce((a,p)=>a+Math.max(0,p.stock)*p.costo,0);
+C.valorVenta=()=>C.prods().reduce((a,p)=>a+Math.max(0,p.stock)*(p.pv||0),0);
 C.codePrefix=()=>{const id=(C.state.rubro||'otro');return (norm(id).replace(/[^a-z]/g,'')+'ITM').slice(0,3).toUpperCase()};
 C.dupBarras=(barras,exceptId)=>{const b=String(barras||'').trim().toLowerCase();if(!b)return null;return D.prods.find(p=>p.id!==exceptId&&p.activo!==false&&p.barras&&p.barras.toLowerCase()===b)||null};
 C.addProd=o=>{
@@ -2617,24 +2712,49 @@ C.flujo=()=>{const F=new Map();if(!D)return F;
 C.tipoNom=t=>({venta:'Venta',ingreso:'Ingreso',salida:'Salida sin cobrar',ajuste:'Ajuste'})[t]||t;
 
 /* ---- estadísticas: salen de los movimientos ---- */
-function periodRange(k){
-  const now=Date.now(),d0=startDay(now),d=new Date(now);
-  if(k==='hoy')return {a:d0,b:now,pa:addDays(d0,-1),pb:addDays(now,-1)};
-  if(k==='semana'){const a=addDays(d0,-((d.getDay()+6)%7));return {a,b:now,pa:addDays(a,-7),pb:addDays(now,-7)}}
-  if(k==='mes'){const a=new Date(d.getFullYear(),d.getMonth(),1).getTime(),pa=new Date(d.getFullYear(),d.getMonth()-1,1).getTime();return {a,b:now,pa,pb:Math.min(pa+(now-a),a-1)}}
-  return {a:new Date(d.getFullYear(),0,1).getTime(),b:now,pa:null,pb:null};
+/* periodRange(k, ref): el período «hoy | semana | mes | anio» que contiene la fecha ref (sin ref = ahora).
+   a..b = lo que ya pasó del período (si es el actual llega hasta ahora), e = su fin natural, cur = ¿es el período en curso?
+   pa..pb = el período anterior para comparar (si el actual sigue abierto, solo el mismo tramo del anterior). */
+function periodRange(k,ref){
+  const now=Date.now(),R=ref==null?now:Math.min(+ref,now),d0=startDay(R),d=new Date(R),y=d.getFullYear(),mo=d.getMonth();
+  let a,e,pa,pe;
+  if(k==='hoy'){a=d0;e=addDays(d0,1)-1;pa=addDays(d0,-1);pe=a-1}
+  else if(k==='semana'){a=addDays(d0,-((d.getDay()+6)%7));e=addDays(a,7)-1;pa=addDays(a,-7);pe=a-1}
+  else if(k==='mes'){a=new Date(y,mo,1).getTime();e=new Date(y,mo+1,1).getTime()-1;pa=new Date(y,mo-1,1).getTime();pe=a-1}
+  else{a=new Date(y,0,1).getTime();e=new Date(y+1,0,1).getTime()-1;pa=null;pe=null}
+  const b=Math.min(e,now),cur=now<=e;
+  return {a,b,e,cur,pa,pb:pa==null?null:cur?Math.min(pa+(b-a),pe):pe};
 }
 C.rango=periodRange;
+const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+/* hasta dónde se puede retroceder: el 1 de enero del año del primer movimiento */
+let refMinC={n:-1,t:0};
+C.refMin=()=>{const n=D?D.movs.length:0;if(refMinC.n!==n){let f=Date.now();if(D)for(const m of D.movs)if(m.t<f)f=m.t;refMinC={n,t:new Date(new Date(f).getFullYear(),0,1).getTime()}}return refMinC.t};
+/* mueve la fecha de referencia un día / semana / mes / año; devuelve null cuando vuelve a «hoy» */
+C.refShift=(k,ref,dir)=>{const now=Date.now(),R=ref==null?now:Math.min(+ref,now),d=new Date(R),Y=d.getFullYear(),M=d.getMonth(),D0=d.getDate();let t;
+  if(k==='hoy')t=new Date(Y,M,D0+dir).getTime();
+  else if(k==='semana')t=new Date(Y,M,D0+7*dir).getTime();
+  else if(k==='mes')t=new Date(Y,M+dir,Math.min(D0,new Date(Y,M+dir+1,0).getDate())).getTime();
+  else t=new Date(Y+dir,M,Math.min(D0,new Date(Y+dir,M+1,0).getDate())).getTime();
+  return t>=startDay(now)?null:Math.max(t,C.refMin())};
+/* ¿se puede ir al período anterior (dir -1) o al siguiente (dir 1)? */
+C.refCan=(k,ref,dir)=>{const r=periodRange(k,ref);return dir<0?r.a>C.refMin():!r.cur};
+/* nombre corto de un período que ya pasó («Vie 23 oct», «14–20 sep», «Septiembre», «2025»); null si es el actual */
+C.perEtq=(k,ref)=>{const r=periodRange(k,ref);if(r.cur)return null;const a=new Date(r.a),e=new Date(r.e),y=new Date().getFullYear();
+  if(k==='hoy')return cap(C.fechaLarga(r.a))+(a.getFullYear()!==y?' '+a.getFullYear():'');
+  if(k==='semana')return (a.getMonth()===e.getMonth()?a.getDate()+'–'+e.getDate()+' '+MON[e.getMonth()]:a.getDate()+' '+MON[a.getMonth()]+' – '+e.getDate()+' '+MON[e.getMonth()])+(e.getFullYear()!==y?' '+e.getFullYear():'');
+  if(k==='mes')return cap(MESES[a.getMonth()])+(a.getFullYear()!==y?' '+a.getFullYear():'');
+  return String(a.getFullYear())};
 function sumVentas(a,b){let total=0,uds=0,costo=0;const bs=new Set();
   if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<a)break;if(m.tipo!=='venta'||m.t>b)continue;total+=m.q*m.pv;uds+=m.q;costo+=m.q*(m.costo||0);bs.add(m.b)}
   return {total,uds,costo,n:bs.size}}
-C.sales=k=>{const r=periodRange(k),cur=sumVentas(r.a,r.b),prev=r.pa!=null?sumVentas(r.pa,r.pb):null;
+C.sales=(k,ref)=>{const r=periodRange(k,ref),cur=sumVentas(r.a,r.b),prev=r.pa!=null?sumVentas(r.pa,r.pb):null;
   return {total:cur.total,uds:cur.uds,costo:cur.costo,ganancia:cur.total-cur.costo,n:cur.n,ticket:cur.n?cur.total/cur.n:0,prev:prev?prev.total:null,
     delta:prev&&prev.total>0?(cur.total-prev.total)/prev.total*100:null}};
 /* Resumen de un período (lo que abre al tocar Hoy / Semana / Mes / Año):
    ventas, costo de lo vendido, ganancia de las ventas, lo que salió sin cobrar (a costo) y la ganancia neta real. */
-C.resumen=k=>{
-  const r=periodRange(k);let ventas=0,costo=0,uds=0,sinCosto=0,sc=0,scUds=0;const bs=new Set(),por={};
+C.resumen=(k,ref)=>{
+  const r=periodRange(k,ref);let ventas=0,costo=0,uds=0,sinCosto=0,sc=0,scUds=0;const bs=new Set(),por={};
   if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.t>r.b)continue;
     if(m.tipo==='venta'){const imp=m.q*m.pv,c=m.q*(m.costo||0);ventas+=imp;costo+=c;uds+=m.q;bs.add(m.b);if(!(m.costo>0))sinCosto++;
       const x=por[m.pid]||(por[m.pid]={nom:m.nom,q:0,imp:0,gan:0,u:m.u});x.q+=m.q;x.imp+=imp;x.gan+=imp-c}
@@ -2645,29 +2765,30 @@ C.resumen=k=>{
     margen:ventas>0?bruta/ventas*100:null,sinCosto,top,prevVentas:prev?prev.total:null,delta:prev&&prev.total>0?(ventas-prev.total)/prev.total*100:null}};
 C.verRanking=k=>C.isPro()||PLAN.rankingGratis.includes(k);
 C.verGanancia=k=>C.isPro()||PLAN.gananciaGratis.includes(k);
-C.top=(k,dir,n)=>{const r=periodRange(k),q={};
-  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.tipo==='venta')q[m.pid]=(q[m.pid]||0)+m.q}
+C.top=(k,dir,n,ref)=>{const r=periodRange(k,ref),q={};
+  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.tipo==='venta'&&m.t<=r.b)q[m.pid]=(q[m.pid]||0)+m.q}
   let rows=C.prods().map(p=>({p,q:q[p.id]||0,imp:0,gan:0}));
-  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.tipo!=='venta')continue;const x=rows.find(y=>y.p.id===m.pid);if(x){x.imp+=m.q*m.pv;x.gan+=m.q*(m.pv-(m.costo||0))}}
+  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.tipo!=='venta'||m.t>r.b)continue;const x=rows.find(y=>y.p.id===m.pid);if(x){x.imp+=m.q*m.pv;x.gan+=m.q*(m.pv-(m.costo||0))}}
   if(dir==='mas')rows=rows.filter(x=>x.q>0).sort((a,b)=>b.q-a.q||b.imp-a.imp);
   else rows=rows.filter(x=>x.p.stock>0&&C.diasSin(x.p)>=1||x.q>0).sort((a,b)=>a.q-b.q||(a.p.last||0)-(b.p.last||0));
   return rows.slice(0,n||5)};
-C.serie=k=>{
-  const now=Date.now(),d0=startDay(now),out=[];
-  const add=(arr,a,b,fn)=>{if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<a)break;if(m.tipo==='venta')fn(m)}};
-  if(k==='anio'){const y=new Date(now).getFullYear(),cm=new Date(now).getMonth();for(let m=0;m<12;m++)out.push({lab:'EFMAMJJASOND'[m],v:0,now:m===cm,fut:m>cm});
-    add(out,new Date(y,0,1).getTime(),now,m=>{out[new Date(m.t).getMonth()].v+=m.q*m.pv});return out}
+C.serie=(k,ref)=>{
+  const now=Date.now(),t0=startDay(now),R=ref==null?now:Math.min(+ref,now),d0=startDay(R),out=[];
+  const add=(a,b,fn)=>{if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<a)break;if(m.tipo==='venta'&&m.t<=b)fn(m)}};
+  if(k==='anio'){const y=new Date(R).getFullYear(),cm=new Date(R).getMonth(),cy=new Date(now).getFullYear(),nm=new Date(now).getMonth();
+    for(let m=0;m<12;m++)out.push({lab:'EFMAMJJASOND'[m],v:0,now:m===cm,fut:y>cy||(y===cy&&m>nm)});
+    add(new Date(y,0,1).getTime(),new Date(y+1,0,1).getTime()-1,m=>{out[new Date(m.t).getMonth()].v+=m.q*m.pv});return out}
   let a,n;
-  if(k==='semana'){a=addDays(d0,-((new Date(now).getDay()+6)%7));n=7}
-  else if(k==='mes'){const d=new Date(now);a=new Date(d.getFullYear(),d.getMonth(),1).getTime();n=d.getDate()}
+  if(k==='semana'){a=addDays(d0,-((new Date(R).getDay()+6)%7));n=7}
+  else if(k==='mes'){const d=new Date(R);a=new Date(d.getFullYear(),d.getMonth(),1).getTime();const dn=new Date(now);n=d.getFullYear()===dn.getFullYear()&&d.getMonth()===dn.getMonth()?dn.getDate():new Date(d.getFullYear(),d.getMonth()+1,0).getDate()}
   else{a=addDays(d0,-6);n=7}
-  for(let i=0;i<n;i++){const t=addDays(a,i),dt=new Date(t);out.push({lab:(k==='mes')?String(dt.getDate()):['D','L','M','X','J','V','S'][dt.getDay()],v:0,now:t===d0,fut:t>d0})}
-  add(out,a,now,m=>{const i=Math.floor((startDay(m.t)-a)/DAY+0.5);if(out[i])out[i].v+=m.q*m.pv});return out;
+  for(let i=0;i<n;i++){const t=addDays(a,i),dt=new Date(t);out.push({lab:(k==='mes')?String(dt.getDate()):['D','L','M','X','J','V','S'][dt.getDay()],v:0,now:t===d0,fut:t>t0})}
+  add(a,addDays(a,n)-1,m=>{const i=Math.floor((startDay(m.t)-a)/DAY+0.5);if(out[i])out[i].v+=m.q*m.pv});return out;
 };
 /* ventas de hoy hora por hora (0 a 23): alimenta el gráfico grande de Inicio */
-C.horas=()=>{const now=Date.now(),d0=startDay(now),hn=new Date(now).getHours(),out=[];
-  for(let h=0;h<24;h++)out.push({h,v:0,n:0,now:h===hn,fut:h>hn});
-  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<d0)break;if(m.tipo==='venta'){const o=out[new Date(m.t).getHours()];if(o){o.v+=m.q*m.pv;o.n++}}}
+C.horas=ref=>{const now=Date.now(),r=periodRange('hoy',ref),d0=r.a,hn=r.cur?new Date(now).getHours():-1,out=[];
+  for(let h=0;h<24;h++)out.push({h,v:0,n:0,now:h===hn,fut:r.cur&&h>hn});
+  if(D)for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<d0)break;if(m.tipo==='venta'&&m.t<=r.e){const o=out[new Date(m.t).getHours()];if(o){o.v+=m.q*m.pv;o.n++}}}
   return out};
 
 /* =====================================================================
@@ -2719,6 +2840,10 @@ C.quoteSave=q=>{
   if(q.id==null){if(D.quotes.some(x=>x.num===q.num))q.num=freeQNum();q.id=D.seqs.q++;D.quotes.push(clone(q))}else{const i=D.quotes.findIndex(x=>x.id===q.id);if(i>=0)D.quotes[i]=clone(q);else D.quotes.push(clone(q))}
   C.emit();return {ok:true,q}};
 C.quoteDel=id=>{const i=D.quotes.findIndex(x=>x.id===id);if(i>=0){D.quotes.splice(i,1);C.emit();return true}return false};
+/* mensaje listo para el cliente (WhatsApp y correo): saludo + la cotización completa */
+C.quoteMsg=q=>{const s=C.state,first=String(q.cliente||'').trim().split(/\s+/)[0];
+  return {asunto:'Cotización '+q.num+' · '+s.nombre,
+    texto:'Hola'+(first?' '+first:'')+', te envío la cotización '+q.num+' de '+s.nombre+'.\n\n'+C.quoteText(q)+'\n\nQuedo atento a cualquier duda.'}};
 C.quoteText=q=>{const T=C.quoteTotals(q),s=C.state,I=s.info,L=['*'+s.nombre+'*'];
   if(I.telefono)L.push('Tel. '+I.telefono);if(I.email)L.push(I.email);
   L.push('Cotización '+q.num+' · '+C.fechaCorta(q.t));if(q.cliente)L.push('Para: '+q.cliente);L.push('');
@@ -2742,6 +2867,11 @@ C.ctx=()=>{const s=C.state,R=C.rubro(s.rubro);
     pro:C.isPro(),page:s.page||'a4',taxName:s.taxName||'IVA',appName:'Cuadre',acento:R.color}};
 const hash32=s=>{let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(36)};
 const slug=s=>norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'doc';
+/* marca de agua de la vista previa: el mismo logo ya limpio de su fondo liso que usa el PDF (se prepara una vez y se recuerda) */
+const wmKey=src=>String(src||'').length+':'+String(src||'').slice(-32);
+C.wmPrepared=src=>{const c=C._wm;return c&&c.k===wmKey(src)&&c.src?c.src:src};
+C.wmWarm=done=>{const L=C.state.logo;if(!L||!window.CuadrePDF||!CuadrePDF.wmClean)return;const k=wmKey(L.src);if(C._wm&&C._wm.k===k)return;
+  CuadrePDF.wmClean(L.src).then(r=>{C._wm={k,src:r?r.src:null};if(done)done()}).catch(()=>{})};
 C.prefetchPDF=()=>{try{if(window.CuadrePDF&&CuadrePDF.ready)CuadrePDF.ready().catch(()=>{})}catch(e){}};
 C.hasPDF=()=>!!window.CuadrePDF;
 async function pdfCall(fn,key,name){
@@ -3525,7 +3655,7 @@ C.quoteFromTpl=id=>{const t=(D.qtpl||[]).find(x=>x.id===id);if(!t)return null;
 /* =====================================================================
    Ganancia por producto y por categoría (Pro) · cierre de caja del día (Pro)
    ===================================================================== */
-C.gananciaPor=(k,modo)=>{const r=C.rango(k),M=new Map();let tot={imp:0,costo:0,gan:0,q:0};
+C.gananciaPor=(k,modo,ref)=>{const r=C.rango(k,ref),M=new Map();let tot={imp:0,costo:0,gan:0,q:0};
   for(let i=D.movs.length-1;i>=0;i--){const m=D.movs[i];if(m.t<r.a)break;if(m.tipo!=='venta'||m.t>r.b)continue;
     const p=C.prod(m.pid),key=modo==='cat'?((p&&p.cat)||''):String(m.pid),nom=modo==='cat'?(key||'Sin categoría'):(m.nom||(p&&p.nom)||'—');
     let x=M.get(key);if(!x){x={key,nom,q:0,imp:0,costo:0,gan:0,u:modo==='cat'?'':m.u,pid:modo==='cat'?null:m.pid,sinCosto:false};M.set(key,x)}
@@ -7545,7 +7675,7 @@ async function labels(items,ctx,opts){
   });
   return d.output('blob');
 }
-window.CuadrePDF={ready,quote,entrega,tabla,labels};
+window.CuadrePDF={ready,quote,entrega,tabla,labels,wmClean:wmPrep};
 })();
 
 /* ===== Cuadre · interfaz «Tablero» (versión real) =====
@@ -7622,7 +7752,7 @@ const HID='<span class="msk" aria-label="Monto oculto">****</span>';
 const mk=h=>hidden()?HID:h;
 
 /* ---------- estado de vista ---------- */
-let tab='inicio',fil='todos',qv='',rk='mas',rp='semana',barSel=-1,qfil='',qsr='';
+let tab='inicio',fil='todos',qv='',rk='mas',rp='semana',barSel=-1,qfil='',qsr='',homeRef=null;
 let page=null,sheets=[],closing=false;
 let su=null;
 let qd=null,reg=null,ap=null,hist={tipo:'',q:'',n:60};
@@ -7637,7 +7767,7 @@ function initSu(){const d=C.detect(),s=C.state;
   su={paso:1,nombre:s.nombre||'',rubro:null,rq:'',txt:'',busy:false,pais:s.pais,moneda:s.moneda,monedaSym:s.monedaSym||'',numStyle:s.numStyle,ivaPct:s.ivaPct,taxName:s.taxName,page:s.page,logo:null,region:d.region}}
 function onStep(s){
   lastStep=s;anim=true;
-  if(s==='welcome'||s==='setup'){tab='inicio';fil='todos';qv='';page=null;sheets=[];reg=null;ap=null;qd=null;confirmReset=false;rk='mas';rp='semana';barSel=-1;qfil='';qsr='';closeScan(true)}
+  if(s==='welcome'||s==='setup'){tab='inicio';fil='todos';qv='';page=null;sheets=[];reg=null;ap=null;qd=null;confirmReset=false;rk='mas';rp='semana';barSel=-1;qfil='';qsr='';homeRef=null;closeScan(true)}
   if(s==='welcome')su=null;
   if(s==='setup'&&!su)initSu();
   if(s==='app'){sheets=[];page=null;tab='inicio'}
@@ -7776,37 +7906,54 @@ function startCardHTML(){
 function dlChip(d,k){
   if(k==='anio')return `<span class="dl nu">Acumulado</span>`;
   return `<span class="dl ${d>=0?'up':'dn'}">${ic(d>=0?'trendup':'trenddown',13,'',2.3)}${esc(C.pct(d))}</span>`}
-/* tarjeta grande «Ventas de hoy»: monto, ganancia de hoy y gráfico hora por hora (datos reales) */
+/* fecha que mira todo Inicio: null = hoy; si no, el día elegido (el resto —semana, mes, año— sale de ese día) */
+/* nombre del día que se mira: «Hoy», «Ayer», «Vie 23 oct» */
+function diaNom(){
+  if(homeRef==null)return 'Hoy';
+  const r=C.rango('hoy',null),ay=r.pa;
+  return C.rango('hoy',homeRef).a===ay?'Ayer':C.perEtq('hoy',homeRef);
+}
+/* fila de fecha bajo el título: ‹ día › y «Hoy» para volver; tocar la fecha abre el calendario del teléfono */
+function fechaNavHTML(){
+  const now=Date.now(),R=homeRef==null?now:homeRef,lo=C.refMin(),can=C.refCan('hoy',homeRef,-1);
+  const lab=homeRef==null?'Hoy · '+cap1(C.fechaLarga()):(diaNom()==='Ayer'?'Ayer · ':'')+C.perEtq('hoy',homeRef);
+  return `<div class="dnv"><button type="button" class="dnb" data-a="hd-prev" aria-label="Día anterior" ${can?'':'disabled'}>${ic('back',17,'',2.4)}</button>
+    <label class="dnl"><span>${ic('clock2',15,'',2.2)}${esc(lab)}</span><input type="date" class="dni" data-f="hdate" data-a="hd-pick" min="${ymdOf(lo)}" max="${ymdOf(now)}" value="${ymdOf(R)}" aria-label="Elegir otra fecha"></label>
+    <button type="button" class="dnb" data-a="hd-next" aria-label="Día siguiente" ${homeRef==null?'disabled':''}>${ic('chev',17,'',2.4)}</button>
+    ${homeRef==null?'':`<button type="button" class="dnh" data-a="hd-today">Hoy</button>`}</div>`;
+}
+/* tarjeta «Ventas de hoy» (o del día elegido): monto, gráfico por hora y, abajo en una línea, ventas y ganancia */
 function heroHTML(){
-  const s=C.sales('hoy'),H=C.horas(),mx=Math.max(1,...H.map(b=>b.v)),d=s.delta,big=C.money(s.total).length>10;
-  let chip,cap='vs ayer';
+  const s=C.sales('hoy',homeRef),H=C.horas(homeRef),mx=Math.max(1,...H.map(b=>b.v)),d=s.delta,big=C.money(s.total).length>10,hoy=homeRef==null,dn=diaNom();
+  let chip,cap=hoy?'vs ayer':'vs día anterior';
   if(d!=null)chip=dlChip(d,'hoy');
   else{chip=`<span class="dl nu">${s.total>0?'Primeras ventas':'Sin ventas'}</span>`;cap=''}
-  const gan=C.verGanancia('hoy')&&s.total>0?`<div class="ttg ${s.ganancia<0?'neg':''}">${s.ganancia<0?'Pierdes hoy':'Ganancia de hoy'} <b>${mk(esc(C.money0(Math.abs(s.ganancia))))}</b></div>`:'';
+  const gan=C.verGanancia('hoy')&&s.total>0?`<span class="ttg ${s.ganancia<0?'neg':''}">${s.ganancia<0?(hoy?'Pierdes hoy':'Pierdes'):(hoy?'Ganancia de hoy':'Ganancia')} <b>${mk(esc(C.money0(Math.abs(s.ganancia))))}</b></span>`:'<span></span>';
   const bars=H.map(b=>`<i class="${b.v>0?'v ':''}${b.now?'n ':''}${b.fut?'f':''}" style="height:${b.v>0?Math.max(10,Math.round(b.v/mx*100)):4}%"></i>`).join('');
-  return `<button type="button" class="tt hero hv" data-a="resumen" data-v="hoy" aria-label="Ventas de hoy: ${hidden()?'monto oculto':esc(C.money(s.total))}. Ver el detalle y la ganancia">
-    <div class="tth"><span class="ttl">Ventas de hoy</span><span class="ttk">${ic('chev',15,'',2.4)}</span></div>
-    <div class="hvr"><div class="ttn ${big?'sm':''}" ${hidden()?'':`data-cu="${s.total}"`}>${hidden()?HID:moneyBig(s.total)}</div><div class="hvc">${chip}<span class="ttc">${esc(cap)}</span></div></div>${gan}
+  const tit=hoy?'Ventas de hoy':dn==='Ayer'?'Ventas de ayer':'Ventas del '+dn;
+  return `<button type="button" class="tt hero hv" data-a="resumen" data-v="hoy" aria-label="${esc(tit)}: ${hidden()?'monto oculto':esc(C.money(s.total))}. Ver el detalle y la ganancia">
+    <div class="tth"><span class="ttl">${esc(tit)}</span><span class="ttk">${ic('chev',15,'',2.4)}</span></div>
+    <div class="hvr"><div class="ttn ${big?'sm':''}" ${hidden()||!hoy?'':`data-cu="${s.total}"`}>${hidden()?HID:moneyBig(s.total)}</div><div class="hvc">${chip}<span class="ttc">${esc(cap)}</span></div></div>
     <div class="hrs" aria-hidden="true">${bars}</div><div class="hax" aria-hidden="true"><em>00</em><em>06</em><em>12</em><em>18</em><em>24</em></div>
-    <div class="hvf"><b>${s.n}</b> ${s.n===1?'venta':'ventas'} hoy</div></button>`;
+    <div class="hvf"><span><b>${s.n}</b> ${s.n===1?'venta':'ventas'}${hoy?' hoy':''}</span>${gan}</div></button>`;
 }
-/* tarjetas compactas Semana / Mes / Año: la ganancia es de Pro, en Gratis sale el candado */
+/* tarjetas compactas Semana / Mes / Año (del día que se mira): la ganancia es de Pro, en Gratis sale el candado */
 function miniHTML(k){
-  const s=C.sales(k),d=s.delta,sr=C.serie(k).filter(b=>!b.fut).slice(-7),ok=C.verGanancia(k);
+  const s=C.sales(k,homeRef),d=s.delta,sr=C.serie(k,homeRef).filter(b=>!b.fut).slice(-7),ok=C.verGanancia(k),et=C.perEtq(k,homeRef);
   const chip=k==='anio'?dlChip(0,'anio'):d!=null?dlChip(d,k):`<span class="dl nu">${s.total>0?'Primeras':'Sin ventas'}</span>`;
   const gan=ok?(s.total>0?`<div class="ttg ${s.ganancia<0?'neg':''}">Ganancia <b>${mk(esc(C.money0(s.ganancia)))}</b></div>`:'<div class="ttg nil">&nbsp;</div>'):`<div class="ttp">${ic('lock',12,'',2.4)}Ganancia · Pro</div>`;
   const t=C.money0(s.total);
-  return `<button type="button" class="tt mini" data-a="resumen" data-v="${k}" aria-label="${esc(C.periodoNom(k))}: ${hidden()?'monto oculto':esc(C.money(s.total))}. Ver el detalle">
-    <div class="tth"><span class="ttl">${C.periodoCorto(k)}</span>${mcHTML(sr)}</div>
+  return `<button type="button" class="tt mini" data-a="resumen" data-v="${k}" aria-label="${esc(et||C.periodoNom(k))}: ${hidden()?'monto oculto':esc(C.money(s.total))}. Ver el detalle">
+    <div class="tth"><span class="ttl">${esc(et||C.periodoCorto(k))}</span>${mcHTML(sr)}</div>
     <div class="ttn ${t.length>8?'xs':''}">${mk(esc(t))}</div>${gan}<div class="ttf">${chip}</div></button>`;
 }
-/* inventario de un vistazo (reemplaza al aviso rojo suelto y a la línea «valor de tu bodega») */
+/* inventario de un vistazo: cada cápsula lleva a su lista (por agotarse, agotados) o al detalle del valor */
 function invHTML(){
   const P=C.prods(),f=C.faltantes(),ago=f.filter(x=>x.p.stock<=0).length,por=f.length-ago,ok=!f.length;
   const nm=f.slice(0,2).map(x=>x.p.nom).join(', ')+(f.length>2?' y '+(f.length-2)+' más':'');
   return `<section class="card inv"><div class="invh"><span class="invi">${ic('box',20)}</span><div class="invt"><h3>Inventario</h3><p>${P.length} ${P.length===1?'producto':'productos'}</p></div>
     ${ok?`<span class="invok">${ic('check',14,'',2.6)}Todo en orden</span>`:`<button type="button" class="lnk" data-a="falt">Ver${ic('chev',14,'',2.4)}</button>`}</div>
-    <div class="invs"><div class="ivs ${por?'w':''}"><b>${por}</b><span>Por agotarse</span></div><div class="ivs ${ago?'r':''}"><b>${ago}</b><span>Agotados</span></div><div class="ivs"><b>${mk(esc(C.money0(C.valorBodega())))}</b><span>Valor a costo</span></div></div>
+    <div class="invs"><button type="button" class="ivs ${por?'w':''}" data-a="falt-bajo" aria-label="${por} por agotarse. Ver la lista"><b>${por}</b><span>Por agotarse</span></button><button type="button" class="ivs ${ago?'r':''}" data-a="falt-ago" aria-label="${ago} agotados. Ver la lista"><b>${ago}</b><span>Agotados</span></button><button type="button" class="ivs" data-a="valor-open" aria-label="Valor a costo del inventario. Ver el detalle"><b>${mk(esc(C.money0(C.valorBodega())))}</b><span>Valor a costo</span></button></div>
     ${ok?'':`<p class="invn">${esc(nm)}</p>`}</section>`;
 }
 function homeHTML(){
@@ -7817,15 +7964,15 @@ function homeHTML(){
   const cf=!has?'':(()=>{const K=C.cloud.info();if(!K.conflict)return '';
     return `<button type="button" class="al rk" data-a="cc-open"><span class="alic">${ic('cloud',22,'',2.2)}</span><span class="alm"><b>Hay dos copias distintas</b><i>Tu Drive y este teléfono no coinciden. Elige cuál usar.</i></span><span class="alg">Elegir${ic('chev',16,'',2.4)}</span></button>`})();
   const qa=`<div class="qa">
-    <button type="button" class="qb pri" data-a="qa-sell"><span>${ic('cart',24)}</span>Vender</button>
-    <button type="button" class="qb" data-a="qa-in"><span>${ic('entrada',24)}</span>Ingreso</button>
-    <button type="button" class="qb" data-a="qa-scan"><span>${ic('scan',24)}</span>Escanear</button>
-    <button type="button" class="qb" data-a="qa-quote"><span>${ic('doc',24)}</span>Cotizar</button></div>`;
+    <button type="button" class="qb pri" data-a="qa-sell"><span>${ic('cart',22)}</span>Vender</button>
+    <button type="button" class="qb" data-a="qa-in"><span>${ic('entrada',22)}</span>Ingreso</button>
+    <button type="button" class="qb" data-a="qa-scan"><span>${ic('scan',22)}</span>Escanear</button>
+    <button type="button" class="qb" data-a="qa-quote"><span>${ic('doc',22)}</span>Cotizar</button></div>`;
   const eye=hidden();
   return `<main class="pg scroll ${anim?'fx':''}" data-sk="m-inicio">
-    <div class="hd hd2"><div><h1>Resumen de ventas</h1><span>${esc(cap1(C.fechaLarga()))}</span></div>
+    <div class="hd hd2"><div><h1>Resumen de ventas</h1>${fechaNavHTML()}</div>
       <button type="button" class="eyeb ${eye?'on':''}" data-a="eye" aria-pressed="${eye}" aria-label="${eye?'Mostrar los montos':'Ocultar los montos'}">${ic(eye?'eyeoff':'eye',22)}</button></div>
-    ${heroHTML()}<div class="tgrid">${['semana','mes','anio'].map(miniHTML).join('')}</div>${has?invHTML():''}${has?cierreAtajoHTML():''}${cf}${rg}${atrasadosAlert()}${qa}
+    ${qa}${heroHTML()}<div class="tgrid">${['semana','mes','anio'].map(miniHTML).join('')}</div>${cf}${rg}${atrasadosAlert()}${has?invHTML():''}${has?cierreAtajoHTML():''}
     ${has?'':startCardHTML()}${bubblesHTML()}${has?rankHTML()+gananciaPorHTML()+chartHTML()+sinMovHTML()+movsHTML():''}
     <div class="endsp"></div></main>`;
 }
@@ -7839,17 +7986,19 @@ function bubblesHTML(){
 }
 function rankHTML(){
   if(!C.verRanking(rp))rp='semana';
-  const rows=C.top(rp,rk,5),mx=Math.max(1,...rows.map(r=>r.q));
+  const rows=C.top(rp,rk,5,homeRef),mx=Math.max(1,...rows.map(r=>r.q));
   const list=!rows.length?`<div class="empty sm">${ic('cart',22)}<p>${rk==='mas'?'Todavía no hay ventas en este período.':'Aquí aparecerán los productos que no se mueven.'}</p></div>`:`<ol class="rkl">${rows.map((r,i)=>`<li class="rk"><span class="rn">${i+1}</span>
     <span class="rm"><b>${esc(r.p.nom)}</b><i class="rbar"><u style="width:${Math.round(r.q/mx*100)}%"></u></i></span>
     <span class="rq">${r.q>0?`<b>${num(r.q)} ${UL(r.p.u)}</b><em>${mk(esc(C.money0(r.imp)))}</em>`:`<b class="zero">Sin ventas</b>`}</span></li>`).join('')}</ol>`;
   return `<section class="card rkc"><div class="rkh"><h3>Ranking de productos</h3>${seg([['mas','Más vendidos'],['menos','Menos vendidos']],rk,'rk','wide')}</div>
-    <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}${C.verRanking(k)?'':ic('lock',11,'plk',2.4)}</button>`).join('')}</div>${list}</section>`;
+    <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}${C.verRanking(k)?'':ic('lock',11,'plk',2.4)}</button>`).join('')}</div>${perCapHTML(rp)}${list}</section>`;
 }
+/* cuando se mira un período que ya pasó, la tarjeta lo dice («Septiembre», «14–20 sep») */
+function perCapHTML(k){const e=C.perEtq(k,homeRef);return e?`<p class="rpc">${ic('clock2',13,'',2.2)}${esc(e)}</p>`:''}
 function chartHTML(){
-  const cp=rp==='hoy'?'semana':rp,ser=C.serie(cp),mx=Math.max(1,...ser.map(b=>b.v)),tot=ser.reduce((a,b)=>a+b.v,0);
+  const cp=rp==='hoy'?'semana':rp,ser=C.serie(cp,homeRef),mx=Math.max(1,...ser.map(b=>b.v)),tot=ser.reduce((a,b)=>a+b.v,0);
   if(tot<=0)return '';
-  const tit={semana:'Ventas por día · esta semana',mes:'Ventas por día · este mes',anio:'Ventas por mes · este año'}[cp];
+  const et=C.perEtq(cp,homeRef),tit={semana:'Ventas por día · '+(et||'esta semana'),mes:'Ventas por día · '+(et?et.toLowerCase():'este mes'),anio:'Ventas por mes · '+(et||'este año')}[cp];
   const bars=ser.map((b,i)=>{const h=b.v>0?Math.max(6,Math.round(b.v/mx*100)):2,lab=cp!=='mes'||i===0||(i+1)%5===0||b.now;
     return `<button type="button" class="bc ${b.now?'n':''} ${i===barSel?'s':''}" data-a="bar" data-i="${i}" data-v="${hidden()?'****':esc(C.money0(b.v))}" aria-label="${esc(b.lab)}: ${hidden()?'monto oculto':esc(C.money0(b.v))}"><span class="trk"><i style="height:${h}%"></i></span><em>${lab?esc(b.lab):''}</em></button>`}).join('');
   return `<section class="card chc"><div class="chh"><h3>${tit}</h3><span class="chs">${mk(esc(C.money0(tot)))}</span></div><div class="bars ${cp}">${bars}</div></section>`;
@@ -7881,6 +8030,8 @@ let prLim=80,prKey='';      // cuántos productos se dibujan (se agregan más co
 function prodList(){
   let list;
   if(fil==='falt')list=C.faltantes().map(x=>x.p);
+  else if(fil==='bajo')list=C.faltantes().filter(x=>x.p.stock>0).map(x=>x.p);
+  else if(fil==='agot')list=C.faltantes().filter(x=>x.p.stock<=0).map(x=>x.p);
   else if(fil==='sinmov')list=C.sinMov(30).map(x=>x.p);
   else if(fil==='arch')list=C.archived();
   else if(fil==='riesgo')list=C.enRiesgo().sort((a,b)=>(a.e.k==='perdida'?0:1)-(b.e.k==='perdida'?0:1)||COL.compare(a.p.nom,b.p.nom)).map(x=>x.p);
@@ -7912,7 +8063,7 @@ function prRow(p,F){
 function ptabHead(){return `<div class="pth" aria-hidden="true"><span class="c0"></span><span class="c1">Código</span><span class="c2">Detalle</span><span class="c3">Ingreso</span><span class="c4">Egreso</span><span class="c5">Precio</span><span class="c6"></span></div>`}
 function prodListInner(){
   const list=prodList();
-  const bar=fil==='falt'&&list.length?`<div class="shop"><span>${list.length} por comprar</span><button type="button" class="btn sm" data-a="compras">${ic('share',16)}Lista de compras</button></div>`:'';
+  const bar=(fil==='falt'||fil==='bajo'||fil==='agot')&&list.length?`<div class="shop"><span>${list.length} por comprar</span><button type="button" class="btn sm" data-a="compras">${ic('share',16)}Lista de compras</button></div>`:'';
   const key=fil+'|'+qv;if(key!==prKey){prKey=key;prLim=80}
   if(list.length){const shown=list.slice(0,prLim),rest=list.length-shown.length;
     const more=rest>0?`<button type="button" class="btn ghost sm moreb" data-a="prod-more">Ver ${Math.min(rest,80)} más <i>(quedan ${num(rest)})</i></button>`:'';
@@ -7920,6 +8071,8 @@ function prodListInner(){
     const F=C.flujo();
     return `${bar}<div class="plist">${ptabHead()}${shown.map(p=>prRow(p,F)).join('')}</div>${more}${tot}<div class="endsp"></div>`}
   if(qv.trim())return `<div class="empty">${ic('search',30)}<h3>No encontré «${esc(qv.trim())}»</h3><p>Revisa el nombre o el código, o agrégalo como producto nuevo.</p><button type="button" class="btn sm" data-a="addp">${ic('plus',16,'',2.4)}Agregar «${esc(qv.trim().slice(0,22))}»</button></div>`;
+  if(fil==='bajo')return `<div class="empty ok">${ic('check',30,'',2.2)}<h3>Nada por agotarse</h3><p>Ningún producto está cerca de acabarse.</p></div>`;
+  if(fil==='agot')return `<div class="empty ok">${ic('check',30,'',2.2)}<h3>Nada agotado</h3><p>Todos tus productos tienen existencias.</p></div>`;
   if(fil==='falt')return `<div class="empty ok">${ic('check',30,'',2.2)}<h3>Nada por acabarse</h3><p>Todos tus productos están por encima del mínimo.</p></div>`;
   if(fil==='sinmov')return `<div class="empty ok">${ic('check',30,'',2.2)}<h3>Todo se ha movido</h3><p>Ningún producto lleva más de 30 días quieto.</p></div>`;
   if(fil==='riesgo')return `<div class="empty ok">${ic('check',30,'',2.2)}<h3>Precios en orden</h3><p>Ningún producto se vende con pérdida ni con menos ganancia que tu mínimo.</p></div>`;
@@ -7939,7 +8092,7 @@ function productosHTML(){
   return `<main class="pg prods ${anim?'fx':''}"><div class="ctl">
     <div class="srow"><div class="sfd ${qv?'has':''}">${ic('search',19)}<input type="text" inputmode="search" autocomplete="off" enterkeyhint="search" placeholder="Buscar o escanear" aria-label="Buscar o escanear" data-f="q" value="${esc(qv)}"><button type="button" class="clr" data-a="clearq" aria-label="Borrar búsqueda">${ic('x',15,'',2.4)}</button><button type="button" class="sbtn" data-a="scanq" aria-label="Escanear código">${ic('scan',21,'',2)}</button></div>
       <button type="button" class="addb" data-a="addp" aria-label="Agregar producto o código nuevo">${ic('plus',20,'',2.6)}<span>Ítem nuevo</span></button></div>
-    <div class="chips" data-sk="chips">${chip('todos','Todos',all.length)}${nf?chip('falt','Faltantes',nf,'red'):''}${ns?chip('sinmov','Sin movimiento',ns):''}${fil==='riesgo'?chip('riesgo','Precio en riesgo',C.enRiesgo().length,'amb'):''}${C.cats().map(c=>chip('cat:'+c,esc(c))).join('')}${C.cats().length&&C.sinCat()?chip('cat:','Sin categoría',C.sinCat()):''}${na?chip('arch','Archivados',na):''}</div></div>
+    <div class="chips" data-sk="chips">${chip('todos','Todos',all.length)}${nf?chip('falt','Faltantes',nf,'red'):''}${ns?chip('sinmov','Sin movimiento',ns):''}${fil==='bajo'?chip('bajo','Por agotarse',C.faltantes().filter(x=>x.p.stock>0).length,'amb'):''}${fil==='agot'?chip('agot','Agotados',C.faltantes().filter(x=>x.p.stock<=0).length,'red'):''}${fil==='riesgo'?chip('riesgo','Precio en riesgo',C.enRiesgo().length,'amb'):''}${C.cats().map(c=>chip('cat:'+c,esc(c))).join('')}${C.cats().length&&C.sinCat()?chip('cat:','Sin categoría',C.sinCat()):''}${na?chip('arch','Archivados',na):''}</div></div>
     ${limHTML()}
     <div class="pl scroll" id="pl" data-sk="m-prod">${prodListInner()}</div></main>`;
 }
@@ -7969,37 +8122,32 @@ function appHTML(){
 /* =====================================================================
    Más: el plan arriba (Gratis vs Pro) y los ajustes como una lista; cada fila abre su propia hoja
    ===================================================================== */
-let cmpAll=false;
-
-/* ---------- plan ---------- */
-function cmpCell(v){
-  if(v===true)return `<span class="cy" aria-label="Incluido">${ic('check',17,'',2.8)}</span>`;
-  if(v===false)return `<span class="cn" aria-label="No incluido">${ic('lock',13,'',2.4)}</span>`;
-  return `<span class="ct">${esc(v)}</span>`;
-}
+/* ---------- plan: dos tarjetas lado a lado (Gratis | Pro) ---------- */
 function planTopHTML(){
   const P=C.PLAN,pro=C.isPro(),tr=C.trial(),st=C.state,L=C.licInfo(),pm=C.billing.precio('mes'),pa=C.billing.precio('anio'),ah=C.ahorroPct(),play=C.billing.kind()==='play';
-  const feats=Object.keys(P.pro).filter(k=>k!=='logo').map(k=>P.pro[k].t);
-  if(pro){
-    const why=st.devPlan?'Modo de pruebas activado.':L?(L.via==='play'?'Suscripción de Google Play activa. Se renueva sola.':L.until?'Activo hasta el '+C.fechaCorta(L.until)+'.':'Activado en tu cuenta. Sin vencimiento.'):tr.active?`Te ${tr.daysLeft===1?'queda 1 día':'quedan '+tr.daysLeft+' días'} de prueba. Después vuelves al plan Gratis sin perder nada.`:'Todo desbloqueado.';
-    return `<section class="card plc act" id="plan"><div class="plh"><span class="pbadge pro">${ic('crown',14,'',2.2)}${tr.active&&!L?'Prueba':'Pro'}</span><div><h3>Plan ${esc(C.planName())} activo</h3><p>${esc(why)}</p></div></div>
-      <ul class="pls">${feats.map(f=>`<li>${ic('check',15,'',2.5)}${esc(f)}</li>`).join('')}</ul>
-      ${tr.active&&!L&&!st.devPlan?`<button type="button" class="btn" data-a="buy">${ic('crown',18)}Hazte Pro · desde ${esc(pm)} al mes</button><p class="fine">Cancelas cuando quieras. Tu información no se borra cuando termina la prueba.</p>`:''}
-      ${L&&L.via==='play'?`<button type="button" class="btn txt" data-a="play-manage">Administrar o cancelar mi suscripción</button>`:''}</section>`;
-  }
-  const rows=P.comparar(),shown=cmpAll?rows:rows.slice(0,7);
-  const zero=C.money0(0);
-  return `<section class="card plc" id="plan"><div class="plt2"><h3>Elige tu plan</h3><p>${tr.expired?'Tu prueba de Pro terminó. Sigues con el plan Gratis y no perdiste nada.':`Empieza gratis. Pro cuesta ${esc(pm)} al mes o ${esc(pa)} al año${ah?' (ahorras '+ah+' %)':''}. Cancelas cuando quieras.`}</p></div>
-    <div class="pcol"><div class="pcc free"><b>Gratis</b><span class="pcp">${esc(zero)}</span><i>Para empezar</i><em class="cur2">Tu plan</em></div>
-      <div class="pcc pro"><span class="pcpop">Recomendado</span><b>Pro</b><span class="pcp">${esc(pm)}</span><i>al mes · o ${esc(pa)} al año</i></div></div>
-    <div class="cmt">${shown.map(r=>`<div class="cmr"><span class="cml">${esc(r[0])}</span><div class="cmv"><div class="cmf">${cmpCell(r[1])}</div><div class="cmp">${cmpCell(r[2])}</div></div></div>`).join('')}</div>
-    <button type="button" class="btn txt cmm" data-a="cmp-more" aria-expanded="${cmpAll}">${cmpAll?'Ver menos':'Ver todo lo que incluye Pro ('+rows.length+')'}${ic('chev',15,cmpAll?'up':'dn',2.4)}</button>
-    <div class="plb"><button type="button" class="btn" data-a="buy">${ic('crown',18)}Hazte Pro · desde ${esc(pm)} al mes</button>
-      ${tr.used?'':`<button type="button" class="btn ghost" data-a="trypro">Probar ${P.trialDays} días gratis</button>`}</div>
-    <ul class="trust"><li>${ic('check',14,'',2.6)}Cancelas cuando quieras</li><li>${ic('check',14,'',2.6)}${tr.used?'Sin letras chicas':'Prueba gratis'}</li><li>${ic('check',14,'',2.6)}Tus datos son tuyos</li></ul>
-    ${tr.used?'':`<div class="pban">${ic('gift',20)}<span><b>Prueba Pro gratis por ${P.trialDays} días</b><i>Sin tarjeta. Si no lo compras, vuelves a Gratis y conservas todo.</i></span></div>`}
-    <div class="faq"><details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Vuelves al plan Gratis. No pierdes productos, ventas ni cotizaciones: lo de Pro queda bloqueado hasta que lo actives.</p></details>
-      <details><summary>¿Cómo pago y activo Pro?</summary><p>${play?'Tocas «Hazte Pro», eliges Mensual o Anual, entras con tu cuenta de Google y pagas con Google Play. Se activa solo, para esa cuenta, y también funciona en tus otros dispositivos.':'Tocas «Hazte Pro», eliges Mensual o Anual, entras con tu cuenta de Google, le pides tu código al vendedor y lo pegas ahí. Se activa para esa cuenta y también funciona en tus otros dispositivos.'}</p></details>
+  const trialOn=pro&&!L&&!st.devPlan&&tr.active,paid=pro&&!trialOn;
+  const li=a=>a.map(t=>`<li>${ic('check',14,'',2.8)}<span>${esc(t)}</span></li>`).join('');
+  const why=st.devPlan?'Modo de pruebas activado.':L?(L.via==='play'?'Suscripción de Google Play activa. Se renueva sola.':L.until?'Activo hasta el '+C.fechaCorta(L.until)+'.':'Activado en tu cuenta. Sin vencimiento.'):'Todo desbloqueado.';
+  const freeFoot=!pro?`<div class="plxcur on">${ic('check',15,'',2.8)}Tu plan actual</div>`:`<div class="plxcur">${trialOn?'Después de la prueba':'Incluido en tu Pro'}</div>`;
+  let proFoot;
+  if(paid)proFoot=`<div class="plxcur on pro">${ic('check',15,'',2.8)}Tu plan actual</div><p class="plxfine">${esc(why)}</p>${L&&L.via==='play'?`<button type="button" class="plxmg" data-a="play-manage">Administrar o cancelar mi suscripción</button>`:''}`;
+  else if(trialOn)proFoot=`<div class="plxst">${ic('clock2',14,'',2.4)}Prueba: ${tr.daysLeft===1?'queda 1 día':'quedan '+tr.daysLeft+' días'}</div><div class="plxcta"><button type="button" class="plxb" data-a="buy">${ic('crown',17)}Hazte Pro</button></div><p class="plxfine">Si no lo compras, vuelves al plan Gratis y no pierdes nada.</p>`;
+  else proFoot=`<div class="plxcta"><button type="button" class="plxb" data-a="buy">${ic('crown',17)}Hazte Pro</button>${tr.used?'':`<button type="button" class="plxo" data-a="trypro">o probar ${P.trialDays} días gratis</button>`}</div><p class="plxfine">Cancelas cuando quieras. Tu información no se borra.</p>`;
+  const trust=[['shield','Pago seguro',play?'Google Play':'Directo con el vendedor'],['refresh','Cancelas cuando quieras','Sin compromiso'],tr.used?['lockc','Tus datos son tuyos','No se borran al terminar']:['gift',P.trialDays+' días gratis','Sin tarjeta']];
+  return `<section class="plx" id="plan">
+    ${tr.expired&&!pro?`<p class="plxnote">Tu prueba de Pro terminó. Sigues con el plan Gratis y no perdiste nada.</p>`:''}
+    <div class="plxg">
+      <div class="plxc free"><div class="plxh"><span class="plxic">${ic('shield',20)}</span><div><b>Plan Gratis</b><i>Ideal para empezar</i></div></div>
+        <div class="plxpr"><b>${esc(C.money0(0))}</b><span>Para siempre</span></div>
+        <ul class="plxl">${li(P.listaGratis())}</ul>${freeFoot}</div>
+      <div class="plxc pro"><span class="plxpop">Más popular</span><div class="plxh"><span class="plxic g">${ic('crown',20)}</span><div><b>Plan Pro</b><i>Más funciones para tu negocio</i></div></div>
+        <div class="plxin"><div class="plxpr"><b>${esc(pa)}</b><span>al año</span></div><p class="plxmes">o ${esc(pm)} al mes</p>${ah?`<p class="plxsv">Ahorras ${ah}&nbsp;% con el plan anual</p>`:''}
+          <ul class="plxl">${li(P.listaPro())}</ul>${proFoot}</div></div>
+    </div>
+    <ul class="plxt">${trust.map(t=>`<li><span class="plxti">${ic(t[0],19)}</span><b>${esc(t[1])}</b><i>${esc(t[2])}</i></li>`).join('')}</ul>
+    ${pro||tr.used?'':`<button type="button" class="pban" data-a="trypro">${ic('gift',22)}<span><b>Prueba Pro gratis por ${P.trialDays} días</b><i>Descubre todas las funciones sin compromiso.</i></span>${ic('chev',17,'',2.4)}</button>`}
+    <div class="faq"><h4>Preguntas frecuentes</h4><details><summary>¿Qué pasa cuando termina la prueba?</summary><p>Vuelves al plan Gratis. No pierdes productos, ventas ni cotizaciones: lo de Pro queda bloqueado hasta que lo actives.</p></details>
+      <details><summary>¿Cómo pago y activo Pro?</summary><p>${play?'Tocas «Hazte Pro», eliges Anual o Mensual y pagas con Google Play. Se activa solo, para tu cuenta de Google, y también funciona en tus otros dispositivos.':'Tocas «Hazte Pro», eliges Anual o Mensual y le escribes al vendedor para pagar. Él te envía un código y lo pegas en «Ya tengo mi código». Se activa para tu cuenta de Google y funciona en tus otros dispositivos.'}</p></details>
       <details><summary>¿Qué pasa si cancelo?</summary><p>Sigues con Pro hasta que termine el período que ya pagaste. Después vuelves al plan Gratis y no pierdes productos, ventas ni cotizaciones.</p></details>
       <details><summary>¿Y si llego al límite de ${P.maxProductos} productos?</summary><p>Sigues usando todo lo que ya tienes. Para agregar más productos hace falta Pro.</p></details></div></section>`;
 }
@@ -8039,7 +8187,7 @@ function masHTML(){
   const groups=masRows().map(([g,rows])=>`<section class="mg" aria-label="${esc(g)}"><h2 class="mgh">${esc(g)}</h2><div class="mgc">${rows.map(r=>{
     const tag=r[4]==='pro'?PRO:r[4]==='aparte'?'<span class="ptag ap">Plan aparte</span>':'';
     return `<button type="button" class="mr2 ${r[4]==='ok'?'ok':''}" data-a="${r[0]==='negocio'?'negocio':'mas-open'}" data-id="${r[0]}"><span class="mri2">${ic(r[2],20)}</span><span class="mrt2"><b>${esc(r[1])}</b><i>${r[3]}</i></span>${tag}${ic('chev',17,'',2.2)}</button>`}).join('')}</div></section>`).join('');
-  return `<main class="pg scroll ${anim?'fx':''}" data-sk="m-mas"><div class="hd"><h1>Más</h1></div>
+  return `<main class="pg scroll ${anim?'fx':''}" data-sk="m-mas"><div class="hd mhd"><div><h1>Más</h1><p>Configura tu negocio, copias de seguridad y mejora tu experiencia con Pro.</p></div></div>
     ${planTopHTML()}${groups}<div class="endsp"></div></main>`;
 }
 
@@ -8199,7 +8347,7 @@ function quoteSummaryHTML(){
 }
 function cotizarHTML(){
   const di=C.docInfo(),S=C.quoteStats(),pro=C.isPro();
-  const cnt=di.pro?`<span class="dcnt pro">${ic('check',14,'',2.4)}PDF sin límite</span>`:`<span class="dcnt ${di.full?'full':''}">PDF hoy: ${di.used} de ${di.max}</span>`;
+  const cnt=di.pro?`<span class="dcnt pro">${ic('check',14,'',2.4)}PDF sin límite${C.trial().active&&!C.licInfo()&&!C.state.devPlan?' · prueba':''}</span>`:`<span class="dcnt ${di.full?'full':''}">PDF hoy: ${di.used} de ${di.max}</span>`;
   const chip=(v,l,n)=>`<button type="button" class="chp ${qfil===v?'on':''}" data-a="qfil" data-v="${v}" aria-pressed="${qfil===v}">${l}<em>${n}</em></button>`;
   return `<main class="pg scroll ${anim?'fx':''}" data-sk="m-cotizar">
     <div class="hd"><h1>Cotizaciones</h1>${cnt}</div>
@@ -8227,17 +8375,18 @@ function gananciaPorHTML(){
   if(!C.isPro())return `<section class="card gpc lk"><div class="rkh"><h3>Qué te deja más ganancia</h3>${PRO}</div>
     <p class="gpp">Mira qué productos y qué categorías te dejan más ganancia en la semana, el mes o el año, para decidir qué comprar más.</p>
     <button type="button" class="btn ghost sm" data-a="gp-lock">${ic('lock',15)}Ver con Pro</button></section>`;
-  const G=C.gananciaPor(rp,gpm),top=G.rows.slice(0,5),mx=top.length?Math.max(0,top[0].gan):0;
+  const G=C.gananciaPor(rp,gpm,homeRef),top=G.rows.slice(0,5),mx=top.length?Math.max(0,top[0].gan):0;
   const list=!top.length?`<div class="empty sm">${ic('trendup',22)}<p>Todavía no hay ventas en este período.</p></div>`:gpRowsHTML(top,mx);
   return `<section class="card gpc"><div class="rkh"><h3>Qué te deja más ganancia</h3>${seg([['prod','Productos'],['cat','Categorías']],gpm,'gpm','wide')}</div>
-    <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}</button>`).join('')}</div>${list}
+    <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}</button>`).join('')}</div>${perCapHTML(rp)}${list}
     ${G.sinCosto?`<p class="fine l">Algunos productos no tienen costo cargado: su ganancia aparece completa. Agrégales el costo para que sea exacta.</p>`:''}
     ${G.rows.length>5?`<button type="button" class="btn txt" data-a="gp-all">Ver todos (${G.rows.length})${ic('chev',15,'',2.4)}</button>`:''}</section>`;
 }
 function cierreAtajoHTML(){
-  if(!C.prods().length||C.cierreVacio(Date.now()))return '';
-  const pro=C.isPro();
-  return `<button type="button" class="al cj" data-a="cierre-open"><span class="alic">${ic('doc',22,'',2.1)}</span><span class="alm"><b>Cierre de caja de hoy</b><i>Resumen imprimible: ventas, costo y ganancia</i></span>${pro?`<span class="alg">Ver${ic('chev',16,'',2.4)}</span>`:PRO}</button>`;
+  const t=homeRef==null?Date.now():homeRef;
+  if(!C.prods().length||C.cierreVacio(t))return '';
+  const pro=C.isPro(),dn=diaNom();
+  return `<button type="button" class="al cj" data-a="cierre-open"${homeRef==null?'':` data-t="${t}"`}><span class="alic">${ic('doc',22,'',2.1)}</span><span class="alm"><b>Cierre de caja ${homeRef==null?'de hoy':dn==='Ayer'?'de ayer':'del '+esc(dn)}</b><i>Resumen imprimible: ventas, costo y ganancia</i></span>${pro?`<span class="alg">Ver${ic('chev',16,'',2.4)}</span>`:PRO}</button>`;
 }
 
 
@@ -8418,7 +8567,7 @@ function shareSheet(s,i){
   return frame(s,i,'Compartir','',body,'');
 }
 function proSheet(s,i){
-  const P=C.PRO[s.key]||C.PRO.membrete,tr=C.trial(),icn={ranking:'trendup',items:'box',productos:'box',membrete:'doc',logo:'image',docs:'doc',rafaga:'scan',etiquetas:'qr',ganancia:'trendup',excel:'excel',mods:'edit',firma:'edit',plantillas:'copy',cierre:'doc',fotosdoc:'image',gprod:'trendup'}[s.key]||'star';
+  const P=C.PRO[s.key]||C.PRO.membrete,tr=C.trial(),icn={ranking:'trendup',items:'box',productos:'box',membrete:'doc',logo:'image',docs:'doc',rafaga:'scan',etiquetas:'qr',ganancia:'trendup',excel:'excel',mods:'edit',firma:'edit',plantillas:'copy',cierre:'doc',fotosdoc:'image',gprod:'trendup',envio:'send'}[s.key]||'star';
   const can=!tr.used;
   const body=`<div class="prb"><span class="pic">${ic(icn,30)}</span>${PRO}<h3>${esc(P.t)}</h3><p>${esc(P.d)}</p><p class="fine">${can?C.PLAN.trialDays+' días de prueba gratis. Después, '+C.billing.precio('mes')+' al mes o '+C.billing.precio('anio')+' al año; cancelas cuando quieras.':tr.expired?'Tu prueba de Pro ya terminó.':'Plan Pro.'}</p></div>`;
   return frame(s,i,'Función Pro','',body,can?`<button type="button" class="btn big" data-a="proyes">Probar ${C.PLAN.trialDays} días gratis</button><button type="button" class="btn big ghost" data-a="prono">Ahora no</button>`
@@ -8433,7 +8582,7 @@ function paperHTML(q){
   const fotos=pro&&q.fotos&&q.lines.some(l=>{const p=l.pid!=null?C.prod(l.pid):null;return p&&p.img});
   const rows=q.lines.map(l=>{const p=l.pid!=null?C.prod(l.pid):null;return `<tr>${fotos?`<td class="pim">${p&&p.img?`<img src="${esc(p.img)}" alt="" width="28" height="28">`:''}</td>`:''}<td>${esc(l.nom)}</td><td class="r">${num(l.q)} ${UL(l.u||'und')}</td><td class="r">${C.money(l.pv)}</td>${hasDesc?`<td class="r">${l.desc?num(l.desc)+' %':''}</td>`:''}<td class="r">${C.money(C.quoteLineTotal(l))}</td></tr>`}).join('');
   const vence=C.fechaCorta(q.t+q.validez*864e5);
-  return `<div class="paper ${pro&&L?'wm':''}">${pro&&L?`<img class="pwm" src="${L.src}" alt="">`:''}${head}<div class="ppm"><div><b>Cotización ${esc(q.num)}</b><span>${esc(C.fechaDoc(q.t))} · válida hasta ${esc(vence)}</span></div>${q.cliente?`<div class="pc"><span>Para</span><b>${esc(q.cliente)}</b>${q.tel?`<span>${esc(q.tel)}</span>`:''}${q.email?`<span>${esc(q.email)}</span>`:''}</div>`:''}</div>
+  return `<div class="paper">${pro&&L?`<img class="pwm" src="${C.wmPrepared(L.src)}" alt="">`:''}${head}<div class="ppm"><div><b>Cotización ${esc(q.num)}</b><span>${esc(C.fechaDoc(q.t))} · válida hasta ${esc(vence)}</span></div>${q.cliente?`<div class="pc"><span>Para</span><b>${esc(q.cliente)}</b>${q.tel?`<span>${esc(q.tel)}</span>`:''}${q.email?`<span>${esc(q.email)}</span>`:''}</div>`:''}</div>
     <table><thead><tr>${fotos?'<th class="pim"></th>':''}<th>Producto</th><th class="r">Cant.</th><th class="r">Precio</th>${hasDesc?'<th class="r">Desc.</th>':''}<th class="r">Total</th></tr></thead><tbody>${rows}</tbody></table>
     <dl class="ptot"><div><dt>Subtotal</dt><dd>${C.money(T.gross)}</dd></div>${T.dtot>0?`<div><dt>Descuento${q.descPct&&!hasDesc?' '+num(q.descPct)+' %':''}</dt><dd>-${C.money(T.dtot)}</dd></div>`:''}${q.ivaPct?`<div><dt>${esc(st.taxName)} ${num(q.ivaPct)} %${T.incl?' (incluido)':''}</dt><dd>${C.money(T.iva)}</dd></div>`:''}<div class="g"><dt>Total</dt><dd>${C.money(T.total)}</dd></div></dl>
     ${q.notas?`<p class="pnt">${esc(q.notas)}</p>`:''}
@@ -8468,12 +8617,14 @@ function pinSheet(s,i){
 }
 /* detalle de un período: ventas → costo → ganancia → salidas sin cobrar → ganancia neta real */
 function resumenSheet(s,i){
-  const K=s.per,R=C.resumen(K),ok=C.verGanancia(K),nom=C.periodoNom(K),cur=n=>C.money(n);
-  const delta=R.delta!=null?`<span class="dl ${R.delta>=0?'up':'dn'}">${ic(R.delta>=0?'trendup':'trenddown',13,'',2.3)}${esc(C.pct(R.delta))} ${({hoy:'vs ayer',semana:'vs semana anterior',mes:'vs mes anterior'})[K]||''}</span>`:'';
+  const K=s.per,R=C.resumen(K,homeRef),ok=C.verGanancia(K),et=C.perEtq(K,homeRef),nom=et||C.periodoNom(K),cur=n=>C.money(n);
+  const vs={hoy:et?'vs el día anterior':'vs ayer',semana:'vs semana anterior',mes:'vs mes anterior',anio:'vs año anterior'}[K]||'';
+  const delta=R.delta!=null?`<span class="dl ${R.delta>=0?'up':'dn'}">${ic(R.delta>=0?'trendup':'trenddown',13,'',2.3)}${esc(C.pct(R.delta))} ${vs}</span>`:'';
+  const nav=`<div class="rsnav"><button type="button" class="dnb" data-a="rs-nav" data-d="-1" aria-label="Anterior" ${C.refCan(K,homeRef,-1)?'':'disabled'}>${ic('back',17,'',2.4)}</button><b>${esc(nom)}</b><button type="button" class="dnb" data-a="rs-nav" data-d="1" aria-label="Siguiente" ${C.refCan(K,homeRef,1)?'':'disabled'}>${ic('chev',17,'',2.4)}</button></div>`;
   const head=`<div class="rsh"><span class="lbl">Vendiste</span><b class="rsv">${moneyBig(R.ventas)}</b>${delta}</div>`;
   const kp=`<div class="rsk"><div><b>${R.n}</b><span>${R.n===1?'venta':'ventas'}</span></div><div><b>${num(R.uds)}</b><span>unidades</span></div><div><b>${R.n?C.money0(R.ticket):'—'}</b><span>por venta</span></div></div>`;
   let gan;
-  if(!R.n){gan=`<p class="rse">Todavía no hay ventas ${K==='hoy'?'hoy':K==='semana'?'esta semana':K==='mes'?'este mes':'este año'}. Cuando vendas, aquí verás cuánto ganaste de verdad.</p>`}
+  if(!R.n){gan=`<p class="rse">${et?'No hubo ventas '+({hoy:'ese día',semana:'esa semana',mes:'ese mes',anio:'ese año'})[K]+'.':'Todavía no hay ventas '+({hoy:'hoy',semana:'esta semana',mes:'este mes',anio:'este año'})[K]+'. Cuando vendas, aquí verás cuánto ganaste de verdad.'}</p>`}
   else if(!ok){gan=`<div class="rsl"><span class="rsli">${ic('lock',20)}</span><div><b>La ganancia de ${K==='semana'?'la semana':K==='mes'?'el mes':'el año'} es de Pro</b><i>En Gratis ves la ganancia de hoy. Con Pro ves también la semana, el mes y el año.</i></div></div><button type="button" class="btn big" data-a="ganlock">Ver Pro ${PRO}</button>`}
   else{
     const neg=R.neta<0;
@@ -8485,8 +8636,19 @@ function resumenSheet(s,i){
       ${R.sinCosto?`<p class="rsw">${ic('alert',16,'',2.4)}<span>${R.sinCosto} ${R.sinCosto===1?'venta no tiene':'ventas no tienen'} el costo puesto, y por eso la ganancia puede verse mayor de lo real. Pon el costo en esos productos (Productos → el producto → Costo).</span></p>`:''}
       ${R.top&&R.top.gan>0?`<p class="rst">${ic('trendup',16,'',2.2)}<span>Lo que más te dejó: <b>${esc(R.top.nom)}</b> (${cur(R.top.gan)})</span></p>`:''}`;
   }
-  const body=`${head}${kp}${gan}<p class="fine l">La ganancia neta es lo vendido menos lo que te costó la mercadería que salió, vendida o sin cobrar. No incluye gastos como arriendo, sueldos o luz.</p>`;
-  return frame(s,i,nom,esc(cap1(C.fechaLarga())),body,`<button type="button" class="btn big ghost" data-a="rs-hist">${ic('clock',18)}Ver los movimientos</button>`,'pros');
+  const body=`${nav}${head}${kp}${gan}<p class="fine l">La ganancia neta es lo vendido menos lo que te costó la mercadería que salió, vendida o sin cobrar. No incluye gastos como arriendo, sueldos o luz.</p>`;
+  return frame(s,i,C.periodoCorto(K)==='Hoy'&&!et?'Hoy':nom,K==='hoy'&&!et?esc(cap1(C.fechaLarga())):'',body,`<button type="button" class="btn big ghost" data-a="rs-hist">${ic('clock',18)}Ver los movimientos</button>`,'pros');
+}
+/* ---- Valor a costo del inventario ---- */
+function valorSheet(s,i){
+  const P=C.prods(),V=C.valorBodega(),VV=C.valorVenta(),G=VV-V,por=new Map();
+  P.forEach(p=>{const v=Math.max(0,p.stock)*(p.costo||0);if(v>0)por.set(C.catNom(p),(por.get(C.catNom(p))||0)+v)});
+  const rows=[...por].sort((a,b)=>b[1]-a[1]).slice(0,6),mx=rows.length?rows[0][1]:1;
+  const body=`<div class="rsh"><span class="lbl">Tu bodega vale, a lo que te costó</span><b class="rsv">${hidden()?HID:moneyBig(V)}</b></div>
+    <dl class="rsd"><div><dt>Si vendes todo a tus precios</dt><dd>${mk(C.money(VV))}</dd></div><div class="sub"><dt>Ganancia posible <em>precio de venta − costo</em></dt><dd>${mk(C.money(G))}</dd></div></dl>
+    ${rows.length?`<h4 class="vlh">Dónde está tu dinero</h4><ul class="vlist">${rows.map(([n,v])=>`<li><span>${esc(n)}</span><i><u style="width:${Math.max(3,Math.round(v/mx*100))}%"></u></i><b>${mk(esc(C.money0(v)))}</b></li>`).join('')}</ul>`:`<p class="rse">Aún no hay productos con costo y existencias.</p>`}
+    <p class="fine l">Cuenta solo lo que hay en existencia, a su costo. Los productos sin costo puesto no suman.</p>`;
+  return frame(s,i,'Valor del inventario',P.length+' '+(P.length===1?'producto':'productos'),body,`<button type="button" class="btn big ghost" data-a="rep-inv">${ic('doc',18)}Inventario valorizado (PDF)</button>`,'pros');
 }
 /* ---- cuenta de Google: ya hay una bodega en su Drive ---- */
 const cuando=t=>{const d=C.diasDesde(t);return d===0?'hoy a las '+C.hora(t):C.hace(d)};
@@ -8527,15 +8689,22 @@ function licBlockHTML(plan,s){
     ${L.via==='play'?`<button type="button" class="btn txt" data-a="play-manage">Administrar o cancelar mi suscripción</button>`:`<button type="button" class="btn txt dng" data-a="lic-clear">Quitar el código de este dispositivo</button>`}`;
   /* dentro de la app de Google Play no se ofrece ningún otro medio de pago: el plan aparece solo cuando ya está en la cuenta */
   if(C.billing.kind()==='play')return `<p class="fine l">${plan==='pc'?'El plan Computadora':'Pro'} se activa en tu cuenta de Google y aparece aquí solo, en todos tus dispositivos.</p>`;
-  const pn=plan==='pc'?'':(s&&s.plan==='mes'?' (plan Mensual '+C.billing.precio('mes')+')':' (plan Anual '+C.billing.precio('anio')+')');
+  return licStepsHTML(plan,s,true);
+}
+/* Pasos para activar con un código del vendedor. Cada paso dice para qué sirve.
+   conPedido=false: se omite «Compra» (en Hazte Pro ese paso es el botón grande de abajo) */
+function licStepsHTML(plan,s,conPedido){
+  const K=C.cloud.info(),P=C.PLAN,pn=plan==='pc'?'':(s&&s.plan==='mes'?' (plan Mensual '+C.billing.precio('mes')+')':' (plan Anual '+C.billing.precio('anio')+')');
   const u=C.contactoURL('Hola, quiero Cuadre '+(plan==='pc'?'con Computadora':'Pro'+pn)+(K.connected&&K.email?'. Mi cuenta de Google es '+K.email:'')+'.');
   const who=(P.contacto&&P.contacto.quien)||'el vendedor';
-  return `<ol class="lst">
-    <li class="${K.connected?'done':''}"><span class="lsn">${K.connected?ic('check',15,'',3):'1'}</span><div><b>Entra con tu cuenta de Google</b>${K.connected?`<i>${esc(K.email||'Conectada')}</i>`:`<i>El código se activa para tu cuenta y la reconocen todos tus dispositivos.</i><button type="button" class="btn sm gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>`}</div></li>
-    <li><span class="lsn">2</span><div><b>Pide tu código</b>${u?`<i>Escríbele a ${esc(who)} y dile tu correo de Google.</i><a class="btn sm ghost" href="${esc(u)}" target="_blank" rel="noopener">${ic('share',16)}Pedir mi código</a>`:`<i>Pídelo a quien te entregó la app: dile tu correo de Google${K.connected&&K.email?' ('+esc(K.email)+')':''}.</i>`}</div></li>
-    <li><span class="lsn">3</span><div><b>Pega el código</b><label class="fl" style="margin:6px 0 0"><input class="fld mono" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="CUADRE-${plan==='pc'?'PC':'PRO'}-…" data-f="liccode" value="${esc(s&&s.code||'')}"></label>
+  let n=0;const num_=()=>++n;
+  const g=`<li class="${K.connected?'done':''}"><span class="lsn">${K.connected?ic('check',15,'',3):num_()}</span><div><b>Entra con tu cuenta de Google</b>${K.connected?`<i>${esc(K.email||'Conectada')}</i>`:`<i>Así tu ${plan==='pc'?'plan':'Pro'} queda guardado en tu cuenta y lo recuperas si cambias de teléfono.</i><button type="button" class="btn sm gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>`}</div></li>`;
+  if(K.connected)num_();
+  const ask=conPedido?`<li><span class="lsn">${num_()}</span><div><b>Compra con ${esc(who)}</b>${u?`<i>Le escribes y le pagas. Ya va escrito tu pedido y tu cuenta de Google; él te manda un código.</i><a class="btn sm ghost" href="${esc(u)}" target="_blank" rel="noopener">${ic('share',16)}Escribir a ${esc(who)}</a>`:`<i>Pídelo a quien te entregó la app: dile tu correo de Google${K.connected&&K.email?' ('+esc(K.email)+')':''}. Te dará un código.</i>`}</div></li>`:'';
+  const code=`<li><span class="lsn">${num_()}</span><div><b>Pega el código que te mandó</b><i>Con eso se activa ${plan==='pc'?'el plan':'Pro'} en tu cuenta.</i><label class="fl" style="margin:6px 0 0"><input class="fld mono" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="CUADRE-${plan==='pc'?'PC':'PRO'}-…" data-f="liccode" value="${esc(s&&s.code||'')}"></label>
       <p class="lerr" data-r="licmsg" ${s&&s.msg?'':'hidden'}>${esc(s&&s.msg||'')}</p>
-      <button type="button" class="btn sm" data-a="lic-go" ${K.connected?'':'disabled'}>${s&&s.busy?'Comprobando…':'Activar'}</button></div></li></ol>`;
+      <button type="button" class="btn sm" data-a="lic-go" ${K.connected?'':'disabled'}>${s&&s.busy?'Comprobando…':'Activar'}</button></div></li>`;
+  return `<ol class="lst">${g}${ask}${code}</ol>`;
 }
 /* Hazte Pro: dos planes (Mensual / Anual). Dentro de la app de Google Play se paga con Google Play; en la versión web, con el código del vendedor */
 function planCardsHTML(pl){
@@ -8547,25 +8716,26 @@ function planCardsHTML(pl){
   return `<div class="hpcs" role="radiogroup" aria-label="Plan">${card('anio')}${card('mes')}</div>`;
 }
 function buySheet(s,i){
-  const P=C.PLAN,K=C.cloud.info(),L=C.licInfo(),play=C.billing.kind()==='play',pl=s.plan||'anio',tr=C.trial();
-  const feats=`<ul class="pls">${Object.keys(P.pro).filter(k=>k!=='logo').map(k=>`<li>${ic('check',16,'',2.5)}${esc(P.pro[k].t)}</li>`).join('')}</ul>`;
-  let pay='';
-  if(L&&(L.plan==='pro'||L.plan==='pc'))pay=licBlockHTML('pro',s);
+  const P=C.PLAN,K=C.cloud.info(),L=C.licInfo(),play=C.billing.kind()==='play',pl=s.plan||'anio',tr=C.trial(),pr=C.billing.precio(pl),pp=P.planes[pl].per;
+  const feats=`<h4 class="bph">Con Pro tienes</h4><ul class="pls">${P.listaPro().map(t=>`<li>${ic('check',16,'',2.5)}${esc(t)}</li>`).join('')}</ul>`;
+  const act=L&&(L.plan==='pro'||L.plan==='pc');
+  let pay='',foot='';
+  if(act)pay=licBlockHTML('pro',s);
   else if(play){
-    const p=P.planes[pl];
-    pay=`${K.connected?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>Tu cuenta de Google</b><i>${esc(K.email||'Conectada')}</i></div></div>`
-      :`<div class="gneed"><b>Primero entra con tu cuenta de Google</b><i>Pro queda en tu cuenta y así lo tienes en todos tus dispositivos.</i><button type="button" class="btn sm gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button></div>`}
-      <p class="lerr" data-r="licmsg" ${s.msg?'':'hidden'}>${esc(s.msg||'')}</p>
-      <button type="button" class="btn big" data-a="buy-play" ${K.connected&&!s.busy?'':'disabled'}>${s.busy?'Abriendo Google Play…':ic('crown',18)+'Suscribirme · '+esc(C.billing.precio(pl))+' '+esc(p.per)}</button>
-      <button type="button" class="btn txt" data-a="buy-restore" ${K.connected&&!s.busy?'':'disabled'}>Ya pagué: restaurar mi compra</button>
-      <p class="fine">El cobro lo hace Google Play y se renueva solo. Cancelas cuando quieras desde Play Store → Pagos y suscripciones.</p>`;
+    pay=K.connected?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>Tu cuenta de Google</b><i>${esc(K.email||'Conectada')}</i></div></div>`
+      :`<p class="bpn">Para guardar tu Pro en tu cuenta de Google (y recuperarlo si cambias de teléfono), entra primero con Google.</p>`;
+    pay+=`<p class="lerr" data-r="licmsg" ${s.msg?'':'hidden'}>${esc(s.msg||'')}</p><p class="fine l">El cobro lo hace Google Play y se renueva solo. Cancelas cuando quieras desde Play Store → Pagos y suscripciones.</p>`;
+    foot=K.connected?`<button type="button" class="btn big" data-a="buy-play" ${s.busy?'disabled':''}>${s.busy?'Abriendo Google Play…':ic('crown',18)+'Suscribirme · '+esc(pr)+' '+esc(pp)}</button><button type="button" class="btn txt" data-a="buy-restore" ${s.busy?'disabled':''}>Ya pagué: restaurar mi compra</button>`
+      :`<button type="button" class="btn big gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>`;
   }else{
-    pay=`<p class="fine l">Plan elegido: <b>${esc(P.planes[pl].nom)}</b> · ${esc(C.billing.precio(pl))} ${esc(P.planes[pl].per)}. Pagas al vendedor y recibes tu código.</p>${licBlockHTML('pro',s)}`;
+    const u=C.contactoURL('Hola, quiero Cuadre Pro '+(pl==='mes'?'Mensual ('+pr+' al mes)':'Anual ('+pr+' al año)')+(K.connected&&K.email?'. Mi cuenta de Google es '+K.email:'')+'.');
+    pay=`<p class="bpn">Pagas directo al vendedor y él te manda un código para activar Pro en tu cuenta de Google.</p>${s.codeOpen?licStepsHTML('pro',s,false):''}`;
+    foot=(u?`<a class="btn big" href="${esc(u)}" target="_blank" rel="noopener">${ic('crown',18)}Comprar · ${esc(pr)} ${esc(pp)}</a>`:`<button type="button" class="btn big" disabled>Pídelo a quien te dio la app</button>`)
+      +`<button type="button" class="btn txt" data-a="buy-code" aria-expanded="${!!s.codeOpen}">${s.codeOpen?'Ocultar':'Ya tengo mi código'}</button>`;
   }
-  const body=`<div class="plh">${ic('crown',30,'',1.8)}<p>${L?'Tu Pro está activo.':tr.active?`Estás en la prueba gratis: te quedan <b>${tr.daysLeft} ${tr.daysLeft===1?'día':'días'}</b>.`:'Elige cómo quieres pagar Pro. <b>Cancelas cuando quieras.</b>'}</p></div>
-    ${L?'':planCardsHTML(pl)}${pay}${feats}
-    ${L?'':`<p class="fine">Mientras tanto sigues con el plan Gratis: ${P.maxProductos} productos, ventas, escáner y copia de seguridad.</p>`}`;
-  return frame(s,i,'Hazte Pro','',body,'','pros');
+  const body=`${act?'':`<div class="plh">${ic('crown',30,'',1.8)}<p>${tr.active?`Estás en la prueba gratis: te quedan <b>${tr.daysLeft} ${tr.daysLeft===1?'día':'días'}</b>.`:'Elige cómo quieres pagar Pro. <b>Cancelas cuando quieras.</b>'}</p></div>${planCardsHTML(pl)}`}${pay}${act?'':feats}
+    ${act||tr.active?'':`<p class="fine">Mientras tanto sigues con el plan Gratis: ${P.maxProductos} productos, ventas, escáner y copia de seguridad.</p>`}`;
+  return frame(s,i,'Hazte Pro','',body,foot,'pros');
 }
 function pcplanSheet(s,i){
   const P=C.PLAN;
@@ -8614,6 +8784,7 @@ function sheetOf(s,i){
     case 'mas':return masSheet(s,i);
     case 'buy':return buySheet(s,i);
     case 'resumen':return resumenSheet(s,i);
+    case 'valor':return valorSheet(s,i);
     case 'gfound':return gfoundSheet(s,i);
     case 'cconf':return cconfSheet(s,i);
     case 'autos':return autosSheet(s,i);
@@ -8626,6 +8797,7 @@ function sheetOf(s,i){
     case 'predet':return predetSheet(s,i);
     case 'predev':return predevSheet(s,i);
     case 'qmenu':return qmenuSheet(s,i);
+    case 'qsend':return sendSheet(s,i);
     case 'qtpl':return qtplSheet(s,i);
     case 'qtplsave':return qtplsaveSheet(s,i);
     case 'cierre':return cierreSheet(s,i);
@@ -8918,8 +9090,22 @@ function qmenuSheet(s,i){
   const T=C.quoteTotals(q),nom=q.cliente||'Sin cliente';
   const body=`<div class="pmh">${thumb({nom},52)}<span><b>${esc(nom)}</b><i>${esc(q.num)} · ${mk(C.money(T.total))}</i></span></div>
     <div class="fl"><span>Estado</span>${seg(C.QESTADOS.map(e=>[e,e]),q.estado,'qm-est','small')}</div>
-    ${row('open','edit','Abrir y editar','Cambia productos, precios y notas')}${row('share','share','Compartir','PDF o texto por WhatsApp, correo…')}${row('dup','copy','Duplicar','Una copia nueva como borrador')}${row('del','trash','Eliminar','Se borra para siempre','dng')}`;
+    ${row('open','edit','Abrir y editar','Cambia productos, precios y notas')}${row('send','send','Enviar al cliente','Por WhatsApp y correo, con un toque')}${row('share','share','Compartir','PDF o texto por WhatsApp, correo…')}${row('dup','copy','Duplicar','Una copia nueva como borrador')}${row('del','trash','Eliminar','Se borra para siempre','dng')}`;
   return frame(s,i,'Cotización','',body,'','pros');
+}
+/* Enviar al cliente: WhatsApp y correo con el mensaje listo; un botón grande va abriendo lo que falta */
+function sendSheet(s,i){
+  const q=C.quotes().find(x=>x.id===s.qid);if(!q)return '';
+  const wa=C.waNumber(q.tel),mail=C.validEmail(q.email)?String(q.email).trim():'',T=C.quoteTotals(q),nom=q.cliente||'tu cliente';
+  const row=(v,ico,color,t,dest,done,ok)=>`<button type="button" class="snr ${ok?'':'off'}" ${ok?`data-a="qsend-go" data-v="${v}"`:'disabled'}><span class="shi" style="--bc:${color}">${ic(ico,21)}</span><span class="snt"><b>${t}</b><i>${ok?esc(dest):v==='wa'?'El cliente no tiene WhatsApp en la cotización':'El cliente no tiene correo en la cotización'}</i></span>${done?`<em class="snok">${ic('check',15,'',2.8)}Abierto</em>`:ok?ic('chev',17):''}</button>`;
+  const next=wa&&!s.wa?'wa':mail&&!s.mail?'mail':'';
+  const body=`<div class="pmh">${thumb({nom},52)}<span><b>${esc(nom)}</b><i>${esc(q.num)} · ${mk(C.money(T.total))}</i></span></div>
+    <div class="snl">${row('wa','chat','#1f9d55','WhatsApp',wa?(q.tel||'+'+wa):'',s.wa,!!wa)}${row('mail','mail','#e0782a','Correo',mail,s.mail,!!mail)}</div>
+    <p class="fine l">Se abre con el mensaje ya escrito (el detalle y el total). Solo falta que toques «enviar» en WhatsApp o en tu correo.</p>
+    <button type="button" class="shm lite" data-a="qsend-pdf"><span class="shi">${ic('share',20)}</span><span><b>Mandar también el PDF</b><i>WhatsApp y el correo no dejan adjuntarlo solos: lo eliges en el menú del teléfono</i></span>${ic('chev',17)}</button>`;
+  const lbl=next==='wa'?'Abrir WhatsApp':next==='mail'?'Abrir el correo':'Listo';
+  const ico=next==='wa'?'chat':next==='mail'?'mail':'check';
+  return frame(s,i,'Enviar cotización','Al cliente, con un toque',body,`<button type="button" class="btn big" data-a="qsend-go" data-v="next">${ic(ico,20)}${lbl}</button>`,'pros');
 }
 function qtplSheet(s,i){
   const L=C.tplList();
@@ -8952,7 +9138,7 @@ function cierreSheet(s,i){
   return frame(s,i,'Cierre de caja','',body,`<button type="button" class="btn big" data-a="cierre-pdf"${vacio?' disabled':''}>${ic('print',19)}Ver el PDF</button><button type="button" class="btn big ghost" data-a="cierre-share"${vacio?' disabled':''}>${ic('share',19)}Compartir</button>`,'pros');
 }
 function gpallSheet(s,i){
-  const G=C.gananciaPor(rp,gpm),mx=G.rows.length?Math.max(0,G.rows[0].gan):0;
+  const G=C.gananciaPor(rp,gpm,homeRef),mx=G.rows.length?Math.max(0,G.rows[0].gan):0;
   const body=`<div class="fl"><span>Ver por</span>${seg([['prod','Productos'],['cat','Categorías']],gpm,'gpm','small')}</div>
     <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}</button>`).join('')}</div>
     ${G.rows.length?gpRowsHTML(G.rows.slice(0,100),mx):`<div class="empty sm">${ic('trendup',22)}<p>Todavía no hay ventas en este período.</p></div>`}
@@ -9148,7 +9334,7 @@ let qd0='';
 function openQuote(id,pre){
   if(pre)qd=pre;else if(id==null)qd=C.quoteNew();else{const o=C.quotes().find(x=>x.id===id);qd=JSON.parse(JSON.stringify(o));if(qd.tel==null)qd.tel='';if(qd.email==null)qd.email=''}
   qd.fotos=!!qd.fotos;
-  qd0=JSON.stringify(qd);page={k:'qed',fresh:true};C.prefetchPDF();render();
+  qd0=JSON.stringify(qd);page={k:'qed',fresh:true};C.prefetchPDF();C.wmWarm();render();
 }
 const estCls=e=>({Borrador:'bor',Enviada:'env',Aceptada:'ace',Rechazada:'rec'})[e]||'bor';
 /* precio efectivo por unidad (con descuento de la línea y el general) frente al costo del producto */
@@ -9195,7 +9381,7 @@ function qedHTML(){
         <div class="trow cetot"><span>Total</span><b data-r="ttot">${C.money(T.total)}</b></div></section>
       <p class="fine l qfn">${di.pro?'PDF con tu membrete y marca de agua, sin límite.':`PDF básico de hoy: ${di.used} de ${di.max}. El texto por WhatsApp o correo no tiene límite.`} Esto no es una factura.</p>
       <div class="endsp"></div></div>
-    <footer class="qfoot"><button type="button" class="btn big ghost" data-a="qprev">${ic('doc',19)}Vista previa</button><button type="button" class="btn big" data-a="qsave">${ic('check',20,'',2.5)}Guardar</button></footer></div>`;
+    <footer class="qfoot"><button type="button" class="btn big ghost" data-a="qprev">${ic('doc',18)}<span>Vista previa</span></button><button type="button" class="btn big ghost" data-a="qsave">${ic('check',19,'',2.5)}<span>Guardar</span></button><button type="button" class="btn big" data-a="qsend">${ic(C.isPro()?'send':'lock',18)}<span>Enviar</span></button></footer></div>`;
 }
 function patchQ(){
   if(!qd)return;
@@ -9493,6 +9679,17 @@ const A={
   plan(){tab='mas';anim=true;scrollTo='#plan';render()},
   gosearch(){tab='productos';fil='todos';focusQ=true;anim=true;render()},
   falt(){tab='productos';fil='falt';qv='';anim=true;resetSk='m-prod';render()},
+  /* cápsulas de Inventario: cada una lleva a su lista */
+  'falt-bajo'(){tab='productos';fil='bajo';qv='';anim=true;resetSk='m-prod';render()},
+  'falt-ago'(){tab='productos';fil='agot';qv='';anim=true;resetSk='m-prod';render()},
+  'valor-open'(){pushSheet({k:'valor'})},
+  /* fecha de Inicio: día anterior / siguiente, volver a hoy, calendario del teléfono */
+  'hd-prev'(){homeRef=C.refShift('hoy',homeRef,-1);barSel=-1;render()},
+  'hd-next'(){homeRef=C.refShift('hoy',homeRef,1);barSel=-1;render()},
+  'hd-today'(){homeRef=null;barSel=-1;render()},
+  'hd-pick'(b){try{if(b.showPicker)b.showPicker()}catch(e){}},
+  /* dentro del resumen de un período: ‹ › cambia de semana, mes o año (Inicio sigue la misma fecha) */
+  'rs-nav'(b){const s=sheets[sheets.length-1];if(!s||s.k!=='resumen')return;homeRef=C.refShift(s.per,homeRef,+b.dataset.d);barSel=-1;render()},
   sinmov(){tab='productos';fil='sinmov';qv='';anim=true;resetSk='m-prod';render()},
   lock(){C.lockNow()},
   /* inicio */
@@ -9500,8 +9697,8 @@ const A={
   /* Más: cada ajuste se abre en su hoja */
   'mas-open'(b){pushSheet({k:'mas',id:b.dataset.id})},
   'mas-go'(b){const go=b.dataset.go;sheets.pop();const f=A[go];if(f)f(b);else render()},
-  'cmp-more'(){cmpAll=!cmpAll;render()},
-  buy(){pushSheet({k:'buy',plan:'anio',code:'',msg:'',busy:false})},
+  buy(){pushSheet({k:'buy',plan:'anio',code:'',msg:'',busy:false,codeOpen:false})},
+  'buy-code'(){const s=sheets[sheets.length-1];if(s&&s.k==='buy'){s.codeOpen=!s.codeOpen;render()}},
   'buy-plan'(b){const s=sheets[sheets.length-1];if(s&&s.k==='buy'){s.plan=b.dataset.v==='mes'?'mes':'anio';s.msg='';render()}},
   /* pagar con Google Play (solo dentro de la app de Play) */
   async 'buy-play'(){const s=sheets[sheets.length-1];if(!s||s.k!=='buy'||s.busy)return;s.busy=true;s.msg='';render();
@@ -9635,7 +9832,7 @@ const A={
   'pro-membrete'(){proSheetFor('membrete')},
   proyes(){const s=sheets[sheets.length-1];if(C.startTrial()){sheets.pop();if(s&&s.key==='rafaga'&&sc){sc.cont=true;patchScan()}render();toast('Pro activado por '+C.PLAN.trialDays+' días. ¡A probar!')}else{sheets.pop();render();toast('Ya usaste tu prueba de Pro')}},
   prono(){closeSheet()},
-  quieropro(){sheets.length&&sheets.pop();pushSheet({k:'buy',plan:'anio',code:'',msg:'',busy:false})},
+  quieropro(){sheets.length&&sheets.pop();pushSheet({k:'buy',plan:'anio',code:'',msg:'',busy:false,codeOpen:false})},
   close(){const s=sheets[sheets.length-1];if(s&&s.k==='gfound')C.cloud.disconnect();closeSheet()},
   async 'cfm-yes'(){const s=sheets[sheets.length-1];if(!s)return;
     if(s.act==='qexit'){sheets.pop();page=null;qd=null;render()}
@@ -9705,7 +9902,7 @@ const A={
     else toast('Pon una cantidad mayor que 0 en al menos un producto',false,true)
   },
   qdel(){const top=sheets[sheets.length-1];if(top&&top.k==='qopt')sheets.pop();pushSheet({k:'cfm',t:'¿Eliminar la cotización?',d:'Se borra '+qd.num+' para siempre. No se puede deshacer.',yes:'Eliminar',no:'Cancelar',act:'qdel'})},
-  qprev(){if(!C.quoteClean(qd).lines.length){toast('Agrega productos para ver la vista previa');return}pushSheet({k:'qprev'})},
+  qprev(){if(!C.quoteClean(qd).lines.length){toast('Agrega productos para ver la vista previa');return}pushSheet({k:'qprev'});C.wmWarm(()=>{const t=sheets[sheets.length-1];if(t&&t.k==='qprev')render()})},
   qshare(){
     if(!C.quoteClean(qd).lines.length){toast('Agrega productos para compartir');return}
     const q=C.quoteClean(qd),top=sheets[sheets.length-1];
@@ -9852,6 +10049,9 @@ const IN={
 };
 const SAVEQ=['nnom','ntel','nmail','ndir','nfis','npie'];
 const CH={
+  /* Inicio: se eligió una fecha en el calendario */
+  hdate(el){const v=String(el.value||'').split('-').map(Number);if(v.length!==3||v.some(isNaN))return;
+    const t=new Date(v[0],v[1]-1,v[2]).getTime();homeRef=t>=C.rango('hoy',null).a?null:Math.max(t,C.refMin());barSel=-1;render()},
   apu(el){ap.u=el.value;const e=$('[data-r="apun"]',mainEl);if(e){e.hidden=el.value!=='__n';if(!e.hidden){const i=e.querySelector('input');if(i)i.focus()}}},
   /* configuración inicial */
   spais(el){const v=C.valoresPais(el.value);Object.assign(su,{pais:v.pais,moneda:v.moneda,monedaSym:'',numStyle:v.numStyle,taxName:v.taxName,ivaPct:v.ivaPct,page:v.page});render();toast('Apliqué los valores de '+C.pais(v.pais).nom+'. Revísalos y cámbialos si hace falta.')},
@@ -10090,6 +10290,7 @@ Object.assign(A,{
   'qm-est'(b){const s=sheets[sheets.length-1];if(s&&s.k==='qmenu'&&C.quoteEstado(s.id,b.dataset.v)){render();toast('Quedó como «'+b.dataset.v+'»')}},
   'qm-go'(b){const id=+b.dataset.id,w=b.dataset.do,q=C.quotes().find(x=>x.id===id);sheets=sheets.filter(x=>x.k!=='qmenu');if(!q){render();return}
     if(w==='open'){openQuote(id);return}
+    if(w==='send'){if(!C.isPro()){proSheetFor('envio');return}if(!C.waNumber(q.tel)&&!C.validEmail(q.email)){toast('Esta cotización no tiene WhatsApp ni correo del cliente. Ábrela y agrégalos.');return}pushSheet({k:'qsend',qid:q.id});return}
     if(w==='share'){pushSheet({k:'share',titulo:'Cotización '+q.num,texto:C.quoteText(q),pdf:()=>C.pdfQuote(q),wa:C.waNumber(q.tel),waTxt:q.tel,mail:C.validEmail(q.email)?String(q.email).trim():'',para:q.cliente});return}
     if(w==='dup'){const n=C.quoteDup(id);render();toast(n?'Copia creada: '+n.num+' (borrador)':'No pude duplicarla');return}
     if(w==='del'){pushSheet({k:'cfm',t:'¿Eliminar la cotización?',d:'Se borra '+q.num+' para siempre. No se puede deshacer.',yes:'Eliminar',no:'Cancelar',act:'qdelid',id});return}
@@ -10108,6 +10309,28 @@ Object.assign(A,{
   'qfotos-toggle'(){if(!qd)return;if(!C.isPro()){proSheetFor('fotosdoc');return}qd.fotos=!qd.fotos;render()},
   /* editor de cotización: hojas y atajos */
   'qcli-open'(){pushSheet({k:'qcli',q:''})},
+  /* Enviar (Pro): guarda la cotización y abre la hoja de envío; sin WhatsApp ni correo pide primero los datos del cliente */
+  qsend(){
+    if(!C.isPro()){proSheetFor('envio');return}
+    if(!C.quoteClean(qd).lines.length){toast('Agrega productos para enviar');return}
+    if(!C.waNumber(qd.tel)&&!C.validEmail(qd.email)){toast('Agrega el WhatsApp o el correo del cliente para poder enviar');pushSheet({k:'qcli',q:''});return}
+    const r=C.quoteSave(qd);if(!r.ok){toast('Pon una cantidad mayor que 0 en al menos un producto',false,true);return}
+    qd0=JSON.stringify(qd);pushSheet({k:'qsend',qid:qd.id,ed:true})},
+  'qsend-go'(b){
+    const s=sheets[sheets.length-1];if(!s||s.k!=='qsend')return;
+    const q=C.quotes().find(x=>x.id===s.qid);if(!q){closeSheet();return}
+    const wa=C.waNumber(q.tel),mail=C.validEmail(q.email)?String(q.email).trim():'';
+    let v=b.dataset.v;if(v==='next')v=wa&&!s.wa?'wa':mail&&!s.mail?'mail':'fin';
+    if(v==='fin'){closeSheet();return}
+    const m=C.quoteMsg(q);
+    if(v==='wa'&&wa){C.shareText('whatsapp-cli',{titulo:m.asunto,texto:m.texto,wa,mail});s.wa=true}
+    else if(v==='mail'&&mail){C.shareText('correo-cli',{titulo:m.asunto,texto:m.texto.replace(/\*/g,''),wa,mail});s.mail=true}
+    else return;
+    /* al abrir el primer destino, la cotización pasa a «Enviada» */
+    if(q.estado==='Borrador'){C.quoteEstado(q.id,'Enviada');if(s.ed&&qd&&qd.id===q.id){qd.estado='Enviada';qd0=JSON.stringify(qd)}}
+    render()},
+  'qsend-pdf'(){const s=sheets[sheets.length-1];if(!s||s.k!=='qsend')return;const q=C.quotes().find(x=>x.id===s.qid);if(!q)return;
+    docFlow('la cotización',()=>C.pdfQuote(C.quoteClean(q)),'share')},
   qcpick(b){const nom=b.dataset.nom||'',cur=String(qd.cliente||'').trim().toLowerCase(),keep=!cur||cur===nom.trim().toLowerCase();   // si ya había escrito su teléfono o correo y el cliente es el mismo (o aún no tenía nombre), no se los borramos
     qd.cliente=nom;qd.tel=b.dataset.tel||(keep?qd.tel||'':'');qd.email=b.dataset.mail||(keep?qd.email||'':'');sheets.pop();render()},
   qline(b){pushSheet({k:'qline',i:+b.dataset.i})},
@@ -10130,7 +10353,9 @@ Object.assign(A,{
   gpm(b){gpm=b.dataset.v==='cat'?'cat':'prod';render()},
   'gp-lock'(){proSheetFor('gprod')},
   'gp-all'(){pushSheet({k:'gpall'})},
-  'cierre-open'(){if(!C.isPro()){proSheetFor('cierre');return}pushSheet({k:'cierre',d:0,t:Date.now()})},
+  'cierre-open'(b){if(!C.isPro()){proSheetFor('cierre');return}
+    const t=b&&b.dataset&&b.dataset.t?+b.dataset.t:Date.now(),d=!(b&&b.dataset&&b.dataset.t)?'0':C.rango('hoy',t).a===C.rango('hoy',null).pa?'1':'x';
+    pushSheet({k:'cierre',d,t})},
   'cierre-day'(b){const s=cierreSh();if(!s)return;const v=b.dataset.v;s.d=v;if(v==='0')s.t=Date.now();else if(v==='1')s.t=Date.now()-864e5;render()},
   'cierre-pdf'(){const s=cierreSh();if(!s||C.cierreVacio(s.t))return;docFlow('el cierre de caja',()=>C.pdfReporte('cierre',s.t),'open')},
   'cierre-share'(){const s=cierreSh();if(!s||C.cierreVacio(s.t))return;const t=s.t;sheets.pop();
