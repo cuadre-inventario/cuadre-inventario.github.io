@@ -23,14 +23,14 @@ a{color:var(--ac)}
 </style></head><body><main>
 <header><img src="icon-192.png" alt=""><div><h1>Política de privacidad de Cuadre</h1><div class="mut">Última actualización: octubre de 2026</div></div></header>
 
-<div class="card"><strong>En corto:</strong> tus productos, ventas y cotizaciones son tuyos. Se guardan en tu teléfono o computadora y, si inicias sesión con Google, en una carpeta privada de <em>tu propio</em> Google Drive. Cuadre no tiene servidores donde se guarden tus datos, no usa publicidad, no vende información y no te rastrea.</div>
+<div class="card"><strong>En corto:</strong> tus productos, ventas y cotizaciones son tuyos. Se guardan en tu teléfono o computadora y, si inicias sesión con Google, en una carpeta privada de <em>tu propio</em> Google Drive. Cuadre no guarda tus datos de negocio en servidores propios, no usa publicidad, no vende información y no te rastrea. La única excepción es si compras Pro con Google Play: para confirmar el pago usamos un pequeño servidor que guarda tu correo y el estado de tu suscripción (ver más abajo).</div>
 
 <h2>Quién es el responsable</h2>
 <p>Cuadre es una aplicación web de control de inventario, ventas y cotizaciones, publicada en <a href="https://cuadre-inventario.github.io/">cuadre-inventario.github.io</a>. Para consultas sobre privacidad puedes escribir a <a href="mailto:luisveintimilla60@gmail.com">luisveintimilla60@gmail.com</a>.</p>
 
 <h2>Qué información usa la aplicación</h2>
 <ul>
-<li><strong>Los datos que tú escribes:</strong> productos, códigos, precios, costos, existencias, movimientos, clientes de tus cotizaciones y los ajustes de tu negocio. Los guarda el navegador de tu dispositivo (almacenamiento local), no un servidor nuestro.</li>
+<li><strong>Los datos que tú escribes:</strong> productos, códigos, precios, costos, existencias, movimientos, clientes de tus cotizaciones (su nombre y, solo si tú los escribes, su teléfono y su correo) y los ajustes de tu negocio. Los guarda el navegador de tu dispositivo (almacenamiento local), no un servidor nuestro.</li>
 <li><strong>Cámara:</strong> solo si tocas «Escanear», para leer códigos de barras o QR. Las imágenes se procesan en tu dispositivo y no se guardan ni se envían.</li>
 <li><strong>Archivos que eliges:</strong> por ejemplo un Excel o CSV que importas. Se leen dentro de tu dispositivo.</li>
 <li><strong>Huella o rostro (opcional):</strong> si activas el desbloqueo biométrico, la verificación la hace tu dispositivo; Cuadre nunca recibe tu huella.</li>
@@ -39,11 +39,21 @@ a{color:var(--ac)}
 <h2>Inicio de sesión con Google (opcional)</h2>
 <p>Puedes usar Cuadre sin cuenta. Si decides iniciar sesión con Google para tener tus datos en otros dispositivos, Cuadre pide estos permisos:</p>
 <ul>
-<li><strong>Tu correo y tu nombre</strong> (alcances <em>userinfo.email</em> y <em>userinfo.profile</em>): solo para mostrarte con qué cuenta estás conectado.</li>
+<li><strong>Tu correo y tu nombre</strong> (alcances <em>userinfo.email</em> y <em>userinfo.profile</em>): para mostrarte con qué cuenta estás conectado y, si compras Pro, para activarlo en esa cuenta.</li>
 <li><strong>Carpeta de datos de la aplicación en Google Drive</strong> (alcance <em>drive.appdata</em>): una carpeta oculta y exclusiva de Cuadre dentro de tu Drive. Ahí se guarda una copia de tus datos para que puedas abrir la misma información en tu celular, tu computadora u otro dispositivo. Cuadre <strong>no puede ver ni modificar</strong> ningún otro archivo de tu Drive.</li>
 </ul>
 <p>Esa copia vive en tu cuenta de Google, bajo tu control. Nosotros no recibimos una copia, no la leemos y no tenemos acceso a ella: la comunicación va directamente entre tu dispositivo y Google. Para mostrar el botón de inicio de sesión, la aplicación carga la biblioteca de Google (accounts.google.com); al hacerlo, Google recibe los datos técnicos habituales de cualquier visita a una página (como tu dirección IP), según su <a href="https://policies.google.com/privacy">política de privacidad</a>.</p>
 <p>El uso que hace Cuadre de la información recibida de las APIs de Google se ajusta a la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los Servicios de API de Google</a>, incluidos los requisitos de uso limitado. No usamos tus datos de Google para publicidad, no los transferimos a terceros y no permitimos que personas los lean.</p>
+
+<h2>Compra de Pro con Google Play (opcional)</h2>
+<p>Pro es una suscripción. Si la compras dentro de la app instalada desde Google Play, el pago lo procesa <strong>Google Play</strong>; Cuadre nunca recibe ni guarda los datos de tu tarjeta. Para activar Pro en tu cuenta, la app envía a un pequeño servidor de Cuadre (alojado en Cloudflare) tres datos: el <strong>identificador de la compra</strong> que te entrega Google, el producto que compraste (mensual o anual) y <strong>el correo de tu cuenta de Google</strong>. El servidor confirma la compra con Google, la liga a ese correo y te devuelve un código de activación firmado.</p>
+<ul>
+<li><strong>Qué se guarda en ese servidor:</strong> tu correo, una huella cifrada (hash) del identificador de compra, el producto, la fecha de vencimiento y el estado de la suscripción. No se guardan tus productos, ventas, clientes ni cotizaciones.</li>
+<li><strong>Para qué:</strong> solo para activar y renovar Pro, evitar que una misma compra se use en varias cuentas y poder ayudarte si escribes porque pagaste y Pro no se activó.</li>
+<li><strong>Cuánto tiempo:</strong> mientras dure tu suscripción y hasta unos dos años después; luego se borra solo. Si quieres que lo borremos antes, escríbenos al correo de contacto.</li>
+<li>No se vende, no se comparte con terceros (salvo Google, para confirmar la compra) y no se usa para publicidad.</li>
+</ul>
+<p>Si usas la versión web con un código que te dio el vendedor, el código se comprueba dentro de tu dispositivo y no se envía nada a ese servidor.</p>
 
 <h2>Lo que Cuadre no hace</h2>
 <ul>
@@ -57,7 +67,7 @@ a{color:var(--ac)}
 <li><strong>En tu dispositivo:</strong> borra los datos del sitio desde los ajustes del navegador, o desinstala la aplicación.</li>
 <li><strong>En tu Google Drive:</strong> entra en <a href="https://myaccount.google.com/connections">myaccount.google.com/connections</a>, elige Cuadre y quita el acceso (puedes marcar la opción de eliminar los datos guardados). También desde Google Drive → Configuración → «Administrar aplicaciones».</li>
 </ul>
-<p>Como nosotros no almacenamos tus datos, no hay nada más que borrar de nuestro lado.</p>
+<p>Tus datos de negocio no están en servidores nuestros, así que no hay nada más que borrar de nuestro lado. Si compraste Pro con Google Play y quieres que borremos también tu correo y el registro de tu suscripción del servidor de compras, escríbenos al correo de contacto y lo hacemos.</p>
 
 <h2>Menores de edad</h2>
 <p>Cuadre es una herramienta para negocios y no está dirigida a menores de 13 años.</p>
