@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Política de privacidad · Cuadre</title>
 <meta name="theme-color" content="#3157d5">
@@ -23,10 +24,10 @@ a{color:var(--ac)}
 </style></head><body><main>
 <header><img src="icon-192.png" alt=""><div><h1>Política de privacidad de Cuadre</h1><div class="mut">Última actualización: octubre de 2026</div></div></header>
 
-<div class="card"><strong>En corto:</strong> tus productos, ventas y cotizaciones son tuyos. Se guardan en tu teléfono o computadora y, si inicias sesión con Google, en una carpeta privada de <em>tu propio</em> Google Drive. Cuadre no guarda tus datos de negocio en servidores propios, no usa publicidad, no vende información y no te rastrea. La única excepción es si compras Pro con Google Play: para confirmar el pago usamos un pequeño servidor que guarda tu correo y el estado de tu suscripción (ver más abajo).</div>
+<div class="card"><strong>En corto:</strong> tus productos, ventas y cotizaciones son tuyos. Se guardan en tu teléfono o computadora y, si inicias sesión con Google, en una carpeta privada de <em>tu propio</em> Google Drive. Cuadre no guarda tus datos de negocio en servidores propios, no usa publicidad, no vende información y no te rastrea. Las únicas excepciones son (1) si compras con Google Play, porque para confirmar el pago usamos un pequeño servidor que guarda tu correo y el estado de tu compra, y (2) si usas la «Foto automática» de Pro, que consulta catálogos abiertos con el nombre, la marca o el código de barras de un producto (ver más abajo).</div>
 
 <h2>Quién es el responsable</h2>
-<p>Cuadre es una aplicación web de control de inventario, ventas y cotizaciones, publicada en <a href="https://cuadre-inventario.github.io/">cuadre-inventario.github.io</a>. Para consultas sobre privacidad puedes escribir a <a href="mailto:luisveintimilla60@gmail.com">luisveintimilla60@gmail.com</a>.</p>
+<p>Cuadre es una aplicación web de control de inventario, ventas y cotizaciones, publicada en <a href="https://cuadre-inventario.github.io/">cuadre-inventario.github.io</a>. Para consultas sobre privacidad puedes escribir a <a href="mailto:stockfacilapp35@gmail.com">stockfacilapp35@gmail.com</a>.</p>
 
 <h2>Qué información usa la aplicación</h2>
 <ul>
@@ -45,15 +46,21 @@ a{color:var(--ac)}
 <p>Esa copia vive en tu cuenta de Google, bajo tu control. Nosotros no recibimos una copia, no la leemos y no tenemos acceso a ella: la comunicación va directamente entre tu dispositivo y Google. Para mostrar el botón de inicio de sesión, la aplicación carga la biblioteca de Google (accounts.google.com); al hacerlo, Google recibe los datos técnicos habituales de cualquier visita a una página (como tu dirección IP), según su <a href="https://policies.google.com/privacy">política de privacidad</a>.</p>
 <p>El uso que hace Cuadre de la información recibida de las APIs de Google se ajusta a la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de usuario de los Servicios de API de Google</a>, incluidos los requisitos de uso limitado. No usamos tus datos de Google para publicidad, no los transferimos a terceros y no permitimos que personas los lean.</p>
 
-<h2>Compra de Pro con Google Play (opcional)</h2>
-<p>Pro es una suscripción. Si la compras dentro de la app instalada desde Google Play, el pago lo procesa <strong>Google Play</strong>; Cuadre nunca recibe ni guarda los datos de tu tarjeta. Para activar Pro en tu cuenta, la app envía a un pequeño servidor de Cuadre (alojado en Cloudflare) tres datos: el <strong>identificador de la compra</strong> que te entrega Google, el producto que compraste (mensual o anual) y <strong>el correo de tu cuenta de Google</strong>. El servidor confirma la compra con Google, la liga a ese correo y te devuelve un código de activación firmado.</p>
+<h2>Compras con Google Play (opcional)</h2>
+<p>Pro es una suscripción (mensual o anual) y la <strong>versión para PC</strong> es un pago único. Si las compras dentro de la app instalada desde Google Play, el pago lo procesa <strong>Google Play</strong>; Cuadre nunca recibe ni guarda los datos de tu tarjeta. Para activar tu compra en tu cuenta, la app envía a un pequeño servidor de Cuadre (alojado en Cloudflare) tres datos: el <strong>identificador de la compra</strong> que te entrega Google, el producto que compraste (Pro mensual, Pro anual o versión para PC) y <strong>el correo de tu cuenta de Google</strong>. El servidor confirma la compra con Google, la liga a ese correo y te devuelve un código de activación firmado.</p>
 <ul>
 <li><strong>Qué se guarda en ese servidor:</strong> tu correo, una huella cifrada (hash) del identificador de compra, el producto, la fecha de vencimiento y el estado de la suscripción. No se guardan tus productos, ventas, clientes ni cotizaciones.</li>
-<li><strong>Para qué:</strong> solo para activar y renovar Pro, evitar que una misma compra se use en varias cuentas y poder ayudarte si escribes porque pagaste y Pro no se activó.</li>
+<li><strong>Para qué:</strong> solo para activar y renovar Pro o la versión para PC, evitar que una misma compra se use en varias cuentas y poder ayudarte si escribes porque pagaste y Pro no se activó.</li>
 <li><strong>Cuánto tiempo:</strong> mientras dure tu suscripción y hasta unos dos años después; luego se borra solo. Si quieres que lo borremos antes, escríbenos al correo de contacto.</li>
 <li>No se vende, no se comparte con terceros (salvo Google, para confirmar la compra) y no se usa para publicidad.</li>
 </ul>
 <p>Si usas la versión web con un código que te dio el vendedor, el código se comprueba dentro de tu dispositivo y no se envía nada a ese servidor.</p>
+<h2>Versión para PC</h2>
+<p>La versión para PC se abre <strong>solo</strong> iniciando sesión con la cuenta de Google con la que se compró. Cuadre comprueba dentro de tu computadora que el código de activación corresponde al correo de esa cuenta (no se envía a ningún servidor nuestro). Como medida de seguridad, la computadora pide conectarse a internet con esa cuenta cada cierto número de días (actualmente 3) para volver a verificar la licencia; si no se puede, la pantalla te lo explica y tus datos siguen guardados en la computadora y en tu Drive. Tu código y tu correo de licencia viajan solo dentro de la copia que se guarda en <em>tu</em> Drive, para que aparezcan en tu teléfono y en tu PC.</p>
+<h2>Foto automática (Pro, opcional)</h2>
+<p>Solo cuando tocas «Buscar foto» en un producto, Cuadre consulta catálogos abiertos y gratuitos — <strong>Open Food Facts, Open Beauty Facts, Open Products Facts</strong> y <strong>Wikipedia</strong> — con <strong>únicamente el código de barras, la marca y/o el nombre</strong> de ese producto, para ofrecerte fotos entre las que eliges. No se envía tu cuenta, tu correo ni ningún dato de tu negocio, y la consulta se hace sin cookies ni referente. Esos servicios reciben, como cualquier sitio web, tu dirección IP y el texto buscado, y se rigen por sus propias políticas. Las fotos que eliges se reducen a una miniatura y se guardan en tu producto (en tu dispositivo y en tu Drive). Si nunca tocas «Buscar foto», no se hace ninguna de estas consultas.</p>
+<h2>WhatsApp y correo</h2>
+<p>Al enviar una cotización, Cuadre solo abre WhatsApp o tu app de correo con el mensaje ya escrito; el envío lo haces tú. Cuadre no recibe ni guarda esos mensajes.
 
 <h2>Lo que Cuadre no hace</h2>
 <ul>
@@ -76,6 +83,6 @@ a{color:var(--ac)}
 <p>Si esta política cambia, publicaremos la nueva versión en esta misma dirección con la fecha de actualización.</p>
 
 <h2>Contacto</h2>
-<p><a href="mailto:luisveintimilla60@gmail.com">luisveintimilla60@gmail.com</a></p>
+<p><a href="mailto:stockfacilapp35@gmail.com">stockfacilapp35@gmail.com</a></p>
 <p class="mut"><a href="terminos.html">Términos del servicio</a> · <a href="./">Volver a Cuadre</a></p>
 </main></body></html>
