@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RzbZ7NEkpoQZQHKCCYrJIdvYot93g2q+Pekkh5yEl5c=' https://accounts.google.com/gsi/client; style-src 'unsafe-inline' https://accounts.google.com/gsi/style; connect-src 'self' https://compras-pro.stockfacilapp35.workers.dev https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; img-src data: https://*.googleusercontent.com; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel del creador · Cuadre</title>
+<style>
+:root{--bg:#f1f4f9;--card:#fff;--ink:#111827;--mut:#5b6678;--line:#dde3ee;--ac:#2563d6;--onac:#fff;--bad:#c8281d;--ok:#0f7a3d;--fill:#eef2f9;--warnbg:#fff4e5;--warnink:#7a4300;--warnline:#f4cf9a;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1520;--card:#18202d;--ink:#eef2f8;--mut:#9aa6ba;--line:#2a3547;--ac:#6ea0ff;--onac:#0b1220;--bad:#ff7b72;--ok:#4cd387;--fill:#212b3b;--warnbg:#3a2a10;--warnink:#ffd9a0;--warnline:#6b4a14;color-scheme:dark}}
+[hidden]{display:none!important}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:20px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+main{max-width:760px;margin:0 auto;display:grid;gap:16px}
+h1{font-size:24px;margin:0 0 2px}h2{font-size:17px;margin:0}p{margin:0}.mut{color:var(--mut);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:12px;min-width:0}
+.warn{background:var(--warnbg);color:var(--warnink);border:1px solid var(--warnline);border-radius:12px;padding:12px 14px;font-size:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+input,select{font:inherit;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);width:100%}
+button{font:inherit;font-weight:800;padding:13px 16px;border-radius:12px;border:0;background:var(--ac);color:var(--onac);cursor:pointer}
+button.g{background:var(--fill);color:var(--ink);border:1px solid var(--line)}
+button:disabled{opacity:.55;cursor:default}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}@media (max-width:560px){.row{grid-template-columns:1fr}}
+.code{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;background:var(--fill);border:1px dashed var(--ac);border-radius:12px;padding:14px;user-select:all;-webkit-user-select:all}
+.err{color:var(--bad);font-weight:700}.okm{color:var(--ok);font-weight:700}
+.btns{display:flex;gap:8px;flex-wrap:wrap}.btns a{text-decoration:none}
+.lst{display:grid;gap:8px}.it{display:grid;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;min-width:0}.it b{font-size:14px;overflow-wrap:anywhere}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#gbtn{min-height:44px}
+</style></head><body><main>
+<div><h1>Panel del creador de Cuadre</h1><p class="mut">Aquí emites los códigos de Pro y de la versión para PC. La clave que los firma vive en tu servidor de Cloudflare: este archivo no guarda ninguna.</p></div>
+
+<section class="card" id="entrar">
+  <h2>1. Entra con tu cuenta de Google</h2>
+  <p class="mut">Solo funciona con el correo del creador. Si tienes la verificación en 2 pasos de Google activada (recomendado: huella, llave de acceso o Google Authenticator), Google te la pedirá aquí.</p>
+  <div id="gbtn"></div>
+  <div id="quien" hidden>
+    <p>Cuenta de Google: <b id="qmail"></b></p>
+    <label>2. Tu PIN del panel<input id="pin" type="password" autocomplete="off" inputmode="text" placeholder="El PIN que pusiste en el servidor"></label>
+    <button id="ent" type="button">Entrar al panel</button>
+  </div>
+  <p id="emsg" class="mut" role="status"></p>
+</section>
+
+<div id="panel" hidden>
+  <div class="card" style="margin-bottom:16px">
+    <div class="top"><b id="sesion"></b><button class="g" id="salir" type="button">Salir</button></div>
+    <div class="warn" id="sinpin" hidden><b>Falta el PIN.</b> En el servidor no hay un PIN puesto: entra cualquiera que tenga tu cuenta de Google. Pon la variable <b>CREADOR_PIN</b> en Cloudflare para exigirlo.</div>
+  </div>
+  <section class="card" style="margin-bottom:16px">
+    <h2>Generar un código</h2>
+    <label>Correo de Google del cliente<input id="mail" type="email" inputmode="email" autocomplete="off" placeholder="cliente@gmail.com"></label>
+    <div class="row">
+      <label>Plan<select id="plan"><option value="pro">Pro (teléfono): suscripción</option><option value="pc">Versión para PC (para siempre) + Pro incluido</option></select></label>
+      <label>Vigencia (en la versión PC: hasta cuándo trae Pro)<select id="vig"><option value="0">Sin límite</option><option value="m1">1 mes</option><option value="y1">1 año</option><option value="f">Hasta una fecha…</option></select></label>
+    </div>
+    <label id="fw" hidden>Vence el<input id="fecha" type="date"></label>
+    <button id="go" type="button">Generar código</button>
+    <p id="msg" class="mut" role="status"></p>
+  </section>
+  <section class="card" id="res" hidden style="margin-bottom:16px">
+    <b>Código generado</b>
+    <div class="code" id="code" tabindex="0"></div>
+    <div class="btns"><button id="c1" type="button">Copiar código</button><button id="c2" class="g" type="button">Copiar mensaje para el cliente</button><a id="wa" target="_blank" rel="noopener"><button class="g" type="button">Abrir WhatsApp</button></a></div>
+    <p id="cmsg" class="mut" role="status"></p>
+    <p class="mut" id="info"></p>
+  </section>
+  <section class="card" style="margin-bottom:16px"><h2>Códigos que has emitido</h2><div class="lst" id="emit"></div>
+    <p class="mut">Un código ya entregado no se puede anular desde aquí: Pro funciona sin internet y se comprueba con la firma. Si hace falta cortar a alguien, se cambia la clave en una versión nueva.</p></section>
+  <section class="card"><h2>Códigos que tus clientes ya activaron</h2><div class="lst" id="acts"></div>
+    <p class="mut">Aparecen solos cuando el cliente activa su código en la app (con internet).</p></section>
+</div>
+</main>
+<script>
+(function(){
+var WORKER='https://compras-pro.stockfacilapp35.workers.dev',CLIENT='503452022293-6m4rrofvdjaogio5jn32ef37as72r13h.apps.googleusercontent.com',MAX=900;
+function $(i){return document.getElementById(i)}
+var cred='',iat=0,pin='',timer=0;
+function msg(el,txt,cls){el.className=cls||'mut';el.textContent=txt||''}
+function b64d(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)))}
+function fecha(n){return String(n).replace(/(\d{4})(\d\d)(\d\d)/,'$3/$2/$1')}
+function vence(x){return x.until?(x.plan==='pc'?'Pro incluido hasta ':'vence ')+fecha(x.until):(x.plan==='pc'?'Pro incluido sin límite':'de por vida')}
+async function llamar(ruta,cuerpo){
+  if(!WORKER||/^%%/.test(WORKER)){return {ok:false,status:0,j:{msg:'Esta página todavía no sabe cuál es tu servidor (PLAN.verificador).'}}}
+  try{var r=await fetch(WORKER+ruta,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({cred:cred,pin:pin},cuerpo||{})),cache:'no-store'});
+    var j=null;try{j=await r.json()}catch(e){}return {ok:r.ok,status:r.status,j:j||{}}}
+  catch(e){return {ok:false,status:0,j:{msg:'No pude conectarme al servidor. Revisa tu internet.'}}}
+}
+function sesionTick(){
+  var left=MAX-(Math.floor(Date.now()/1000)-iat);
+  if(left<=0){cerrar('Pasaron 15 minutos: entra de nuevo con Google para seguir.');return}
+  $('sesion').textContent='Sesión abierta · te quedan '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');
+}
+function cerrar(texto){clearInterval(timer);cred='';pin='';$('panel').hidden=true;$('entrar').hidden=false;$('quien').hidden=true;$('pin').value='';$('res').hidden=true;msg($('emsg'),texto||'','mut');dibujaGoogle()}
+function dibujaGoogle(){
+  $('gbtn').textContent='';
+  if(!window.google||!google.accounts||!google.accounts.id){msg($('emsg'),'No cargó el inicio de sesión de Google. Revisa tu internet y recarga la página.','err');return}
+  google.accounts.id.initialize({client_id:CLIENT,auto_select:false,callback:function(r){
+    try{var p=JSON.parse(b64d(r.credential.split('.')[1]));cred=r.credential;iat=p.iat||Math.floor(Date.now()/1000);$('qmail').textContent=p.email||'';$('quien').hidden=false;$('gbtn').textContent='';msg($('emsg'),'','mut');setTimeout(function(){$('pin').focus()},50)}
+    catch(e){msg($('emsg'),'Google respondió algo que no entiendo. Inténtalo otra vez.','err')}}});
+  google.accounts.id.renderButton($('gbtn'),{theme:'filled_blue',size:'large',text:'signin_with',locale:'es',shape:'pill'});
+}
+async function entrar(){
+  pin=$('pin').value;msg($('emsg'),'Comprobando…','mut');$('ent').disabled=true;
+  var r=await llamar('/creador/registro');$('ent').disabled=false;
+  if(!r.ok){msg($('emsg'),r.j.msg||'No pude entrar.','err');if(r.j.sesion){cerrar(r.j.msg)}return}
+  $('entrar').hidden=true;$('panel').hidden=false;$('sinpin').hidden=!r.j.sinPin;pinteListas(r.j);sesionTick();clearInterval(timer);timer=setInterval(sesionTick,1000);
+}
+function fila(t,s){var d=document.createElement('div');d.className='it';var b=document.createElement('b');b.textContent=t;var m=document.createElement('span');m.className='mut';m.textContent=s;d.appendChild(b);d.appendChild(m);return d}
+function pinteListas(j){
+  var e=$('emit'),a=$('acts');e.textContent='';a.textContent='';
+  if(!(j.emitidos||[]).length)e.appendChild(fila('Todavía ninguno.',''));
+  (j.emitidos||[]).forEach(function(x){e.appendChild(fila(x.mail+' · '+(x.plan==='pc'?'Versión para PC':'Pro'),new Date(x.t).toLocaleString()+' · '+vence(x)))});
+  if(!(j.activaciones||[]).length)a.appendChild(fila('Todavía ninguno.',''));
+  (j.activaciones||[]).forEach(function(x){a.appendChild(fila(x.email+' · '+(x.plan==='pc'?'Versión para PC':'Pro'),'activó el '+new Date(x.t).toLocaleString()+' · '+vence(x)))});
+}
+function mensaje(x){var pc=x.plan==='pc';return 'Gracias por tu compra de Cuadre'+(pc?' (versión para PC)':'')+'. Tu código de activación para la cuenta '+x.mail+':\n\n'+x.code+'\n\nCómo activarlo: entra a Cuadre con esa misma cuenta de Google → '+(pc?'Más → Cuadre en tu computadora → Ver la versión para PC':'Más → Hazte Pro')+' → «Ya tengo mi código de activación» → pega el código y toca Activar. Es para ese correo: con otro no funciona. '+(pc?'La versión para PC es tuya para siempre'+(x.until?' y trae Pro hasta el '+fecha(x.until)+'. Actívalo apenas lo recibas. Después, Pro se compra en la app de tu teléfono Android.':'.'):'El plan queda en tu cuenta y aparece solo en tus otros dispositivos.')}
+/* copiar: primero el portapapeles; si el navegador no lo deja (pasa al abrir desde el teléfono), se selecciona el texto y se prueba «copy»; si tampoco, se deja seleccionado y se dice qué hacer, junto al botón */
+async function copiar(texto,ok,elSel){
+  var c=$('cmsg');
+  try{await navigator.clipboard.writeText(texto);msg(c,ok,'okm');return}catch(e){}
+  try{var ta=document.createElement('textarea');ta.value=texto;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0;font-size:16px';document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,texto.length);
+    var hecho=document.execCommand('copy');ta.remove();if(hecho){msg(c,ok,'okm');return}}catch(e){}
+  try{var rg=document.createRange();rg.selectNodeContents(elSel||$('code'));var sl=getSelection();sl.removeAllRanges();sl.addRange(rg)}catch(e){}
+  msg(c,'Este navegador no deja copiar solo. El código quedó seleccionado: mantenlo pulsado y elige «Copiar».','err');
+}
+function mostrar(x){
+  $('res').hidden=false;$('code').textContent=x.code;
+  $('info').textContent='Para '+x.mail+' · '+(x.plan==='pc'?'Versión para PC (para siempre)':'Pro')+' · '+vence(x)+'. Si el cliente cambia de correo de Google, hay que generar otro código.';
+  msg($('cmsg'),'','mut');
+  $('c1').onclick=function(){copiar(x.code,'Código copiado',$('code'))};
+  $('c2').onclick=function(){copiar(mensaje(x),'Mensaje copiado',$('code'))};
+  $('wa').href='https://wa.me/?text='+encodeURIComponent(mensaje(x));
+  $('res').scrollIntoView({behavior:'smooth'});
+}
+$('ent').onclick=entrar;
+$('pin').addEventListener('keydown',function(e){if(e.key==='Enter')entrar()});
+$('salir').onclick=function(){cerrar('Saliste del panel.')};
+$('vig').onchange=function(){$('fw').hidden=$('vig').value!=='f'};
+$('plan').onchange=function(){$('vig').value=$('plan').value==='pc'?'m1':'y1';$('fw').hidden=true};
+$('go').onclick=async function(){
+  var m=$('msg');msg(m,'','mut');var mail=$('mail').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){msg(m,'Escribe un correo válido.','err');return}
+  var vig=$('vig').value;if(vig==='f'&&!$('fecha').value){msg(m,'Elige la fecha de vencimiento.','err');return}
+  $('go').disabled=true;msg(m,'Generando…','mut');
+  var r=await llamar('/creador/emitir',{mail:mail,plan:$('plan').value,vig:vig,fecha:$('fecha').value});$('go').disabled=false;
+  if(!r.ok){msg(m,r.j.msg||'No pude generar el código.','err');if(r.j.sesion)cerrar(r.j.msg);return}
+  mostrar(r.j);msg(m,r.j.anotado===false?'Código listo y firmado, pero NO quedó anotado en el registro (el servidor no pudo guardarlo). Cópialo ahora; el registro puede no mostrarlo.':'Listo. Firmado por tu servidor y anotado en el registro.',r.j.anotado===false?'err':'okm');
+  var g=await llamar('/creador/registro');if(g.ok)pinteListas(g.j);
+};
+var t0=Date.now();(function esperar(){if(window.google&&google.accounts&&google.accounts.id){dibujaGoogle();return}if(Date.now()-t0>8000){dibujaGoogle();return}setTimeout(esperar,150)})();
+})();
+</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</body></html>
