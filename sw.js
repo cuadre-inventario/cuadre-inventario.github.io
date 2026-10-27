@@ -1,6 +1,6 @@
 /* Cuadre · service worker: la app funciona sin internet.
    Guarda todos los archivos en el teléfono y los sirve desde ahí; si hay internet, los renueva por detrás. */
-const V='cuadre-bb622842bc';
+const V='cuadre-3f90f76206';
 const FILES=['./','index.html','manifest.webmanifest','jspdf.min.js','zxing.min.js','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','favicon-48.png'];
 /* Al instalar se baja todo directo del servidor (sin la copia temporal de GitHub, que dura 10 min), para que una actualización llegue completa y al instante. */
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(FILES.map(f=>fetch(new Request(f,{cache:'reload'})).then(r=>{if(!r.ok)throw new Error(f);return c.put(f,r)})))).then(()=>self.skipWaiting()))});
@@ -16,8 +16,22 @@ function heal(){
   }).catch(()=>{}).then(()=>{healing=null});
   return healing;
 }
+/* «Compartir» de Android → Cuadre (share_target del manifest): la foto llega por POST a /compartir; se guarda en un caché temporal y se abre la app con ?compartido=1,
+   que la muestra para recortarla (foto de producto elegida en Google Imágenes). El caché se llama «compartido-tmp» (no empieza con «cuadre-»: no lo borra la limpieza de versiones). */
+async function recibirCompartido(r){
+  try{
+    const fd=await r.formData(),f=fd.get('foto'),c=await caches.open('compartido-tmp');
+    await c.delete('compartido');await c.delete('compartido-txt');
+    if(f&&typeof f!=='string'&&f.size)await c.put('compartido',new Response(f,{headers:{'Content-Type':f.type||'image/jpeg'}}));
+    const txt=['title','text','url'].map(k=>fd.get(k)).filter(x=>typeof x==='string'&&x).join(' ').slice(0,2000);
+    if(txt)await c.put('compartido-txt',new Response(txt));
+  }catch(err){}
+  return Response.redirect(new URL('./?compartido=1',self.registration.scope).href,303);
+}
 self.addEventListener('fetch',e=>{
-  const r=e.request;if(r.method!=='GET')return;
+  const r=e.request;
+  if(r.method==='POST'){const pu=new URL(r.url);if(pu.origin===location.origin&&/\/compartir$/.test(pu.pathname))e.respondWith(recibirCompartido(r));return}
+  if(r.method!=='GET')return;
   const u=new URL(r.url);if(u.origin!==location.origin)return;
   if(r.mode==='navigate')e.waitUntil(heal());
   /* El manifest (nombre, identidad y íconos de la app instalable) siempre se pide primero al servidor; la copia guardada solo sirve sin internet. */

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RzbZ7NEkpoQZQHKCCYrJIdvYot93g2q+Pekkh5yEl5c=' https://accounts.google.com/gsi/client; style-src 'unsafe-inline' https://accounts.google.com/gsi/style; connect-src 'self' https://compras-pro.stockfacilapp35.workers.dev https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; img-src data: https://*.googleusercontent.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5uJWs6xi4KTAgIJOB2CYkS8XfXSFN5Zfdt8089UPgNo=' https://accounts.google.com/gsi/client; style-src 'unsafe-inline' https://accounts.google.com/gsi/style; connect-src 'self' https://compras-pro.stockfacilapp35.workers.dev https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; img-src data: https://*.googleusercontent.com; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex,nofollow">
 <title>Panel del creador · Cuadre</title>
 <style>
@@ -49,7 +49,7 @@ button:disabled{opacity:.55;cursor:default}
     <label>Correo de Google del cliente<input id="mail" type="email" inputmode="email" autocomplete="off" placeholder="cliente@gmail.com"></label>
     <div class="row">
       <label>Plan<select id="plan"><option value="pro">Pro (teléfono): suscripción</option><option value="pc">Versión para PC (para siempre) + Pro incluido</option></select></label>
-      <label>Vigencia (en la versión PC: hasta cuándo trae Pro)<select id="vig"><option value="0">Sin límite</option><option value="m1">1 mes</option><option value="y1">1 año</option><option value="f">Hasta una fecha…</option></select></label>
+      <label>Vigencia (en la versión PC: hasta cuándo trae Pro)<select id="vig"><option value="y1">1 año</option><option value="m1">1 mes</option><option value="f">Hasta una fecha…</option><option value="0">Sin límite (de por vida)</option></select></label>
     </div>
     <label id="fw" hidden>Vence el<input id="fecha" type="date"></label>
     <button id="go" type="button">Generar código</button>
@@ -79,9 +79,13 @@ function fecha(n){return String(n).replace(/(\d{4})(\d\d)(\d\d)/,'$3/$2/$1')}
 function vence(x){return x.until?(x.plan==='pc'?'Pro incluido hasta ':'vence ')+fecha(x.until):(x.plan==='pc'?'Pro incluido sin límite':'de por vida')}
 async function llamar(ruta,cuerpo){
   if(!WORKER||/^%%/.test(WORKER)){return {ok:false,status:0,j:{msg:'Esta página todavía no sabe cuál es tu servidor (PLAN.verificador).'}}}
-  try{var r=await fetch(WORKER+ruta,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({cred:cred,pin:pin},cuerpo||{})),cache:'no-store'});
-    var j=null;try{j=await r.json()}catch(e){}return {ok:r.ok,status:r.status,j:j||{}}}
-  catch(e){return {ok:false,status:0,j:{msg:'No pude conectarme al servidor. Revisa tu internet.'}}}
+  /* 15 s como máximo; y si lo que contesta no es el servidor de Cuadre (respuesta vacía), se dice así: nada de «Listo» con un código vacío */
+  var ac=typeof AbortController==='function'?new AbortController():null,to=ac?setTimeout(function(){ac.abort()},15000):0;
+  try{var r=await fetch(WORKER+ruta,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({cred:cred,pin:pin},cuerpo||{})),cache:'no-store',signal:ac?ac.signal:undefined});clearTimeout(to);
+    var j=null;try{j=await r.json()}catch(e){}
+    if(r.ok&&(!j||(ruta==='/creador/emitir'&&!j.code)||(ruta==='/creador/registro'&&!Array.isArray(j.emitidos))))return {ok:false,status:r.status,j:{msg:'El servidor de Cuadre todavía no está listo (no contestó lo esperado). Mientras tanto usa tu generador privado en la computadora.'}};
+    return {ok:r.ok,status:r.status,j:j||{}}}
+  catch(e){clearTimeout(to);return {ok:false,status:0,j:{msg:'El servidor de Cuadre no responde. Si tienes internet, todavía no está instalado: usa tu generador privado en la computadora.'}}}
 }
 function sesionTick(){
   var left=MAX-(Math.floor(Date.now()/1000)-iat);
@@ -111,7 +115,8 @@ function pinteListas(j){
   if(!(j.activaciones||[]).length)a.appendChild(fila('Todavía ninguno.',''));
   (j.activaciones||[]).forEach(function(x){a.appendChild(fila(x.email+' · '+(x.plan==='pc'?'Versión para PC':'Pro'),'activó el '+new Date(x.t).toLocaleString()+' · '+vence(x)))});
 }
-function mensaje(x){var pc=x.plan==='pc';return 'Gracias por tu compra de Cuadre'+(pc?' (versión para PC)':'')+'. Tu código de activación para la cuenta '+x.mail+':\n\n'+x.code+'\n\nCómo activarlo: entra a Cuadre con esa misma cuenta de Google → '+(pc?'Más → Cuadre en tu computadora → Ver la versión para PC':'Más → Hazte Pro')+' → «Ya tengo mi código de activación» → pega el código y toca Activar. Es para ese correo: con otro no funciona. '+(pc?'La versión para PC es tuya para siempre'+(x.until?' y trae Pro hasta el '+fecha(x.until)+'. Actívalo apenas lo recibas. Después, Pro se compra en la app de tu teléfono Android.':'.'):'El plan queda en tu cuenta y aparece solo en tus otros dispositivos.')}
+function enlaceDe(x){return location.origin+location.pathname.replace(/creador\.html$/,'')+'?codigo='+encodeURIComponent(x.code)}
+function mensaje(x){var pc=x.plan==='pc';return 'Gracias por tu compra de Cuadre'+(pc?' (versión para PC)':'')+'.\n\n'+(pc?'Abre este enlace en tu computadora: te deja instalar Cuadre con un clic y, al iniciar sesión con tu cuenta de Google ('+x.mail+'), la versión para PC se activa sola:':'Abre este enlace e inicia sesión con tu cuenta de Google ('+x.mail+'): Pro se activa solo:')+'\n'+enlaceDe(x)+'\n\nSi prefieres pegarlo a mano, tu código de activación es:\n'+x.code+'\n\nCómo pegarlo: entra a Cuadre con esa misma cuenta de Google → '+(pc?'Más → Cuadre en tu computadora → Ver la versión para PC':'Más → Hazte Pro')+' → «Ya tengo mi código de activación» → pega el código y toca Activar. Es para ese correo: con otro no funciona. '+(pc?'La versión para PC es tuya para siempre'+(x.until?' y trae Pro hasta el '+fecha(x.until)+'. Actívalo apenas lo recibas. Después, Pro se compra en la app de tu teléfono Android.':'.'):'El plan queda en tu cuenta y aparece solo en tus otros dispositivos.')}
 /* copiar: primero el portapapeles; si el navegador no lo deja (pasa al abrir desde el teléfono), se selecciona el texto y se prueba «copy»; si tampoco, se deja seleccionado y se dice qué hacer, junto al botón */
 async function copiar(texto,ok,elSel){
   var c=$('cmsg');
@@ -139,6 +144,9 @@ $('go').onclick=async function(){
   var m=$('msg');msg(m,'','mut');var mail=$('mail').value.trim();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){msg(m,'Escribe un correo válido.','err');return}
   var vig=$('vig').value;if(vig==='f'&&!$('fecha').value){msg(m,'Elige la fecha de vencimiento.','err');return}
+  if(vig==='f'&&$('fecha').value.replace(/-/g,'')<new Date().toISOString().slice(0,10).replace(/-/g,'')){msg(m,'Esa fecha ya pasó. Elige una fecha futura.','err');return}
+  if(vig==='0'&&window.__conf0!==mail+'|'+$('plan').value){window.__conf0=mail+'|'+$('plan').value;msg(m,'Ojo: vas a dar '+($('plan').value==='pc'?'la versión para PC con Pro SIN LÍMITE':'Pro DE POR VIDA')+' a '+mail+'. Si es correcto, toca «Generar código» otra vez.','err');return}
+  window.__conf0='';
   $('go').disabled=true;msg(m,'Generando…','mut');
   var r=await llamar('/creador/emitir',{mail:mail,plan:$('plan').value,vig:vig,fecha:$('fecha').value});$('go').disabled=false;
   if(!r.ok){msg(m,r.j.msg||'No pude generar el código.','err');if(r.j.sesion)cerrar(r.j.msg);return}
