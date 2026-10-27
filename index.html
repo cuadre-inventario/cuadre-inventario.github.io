@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+HFBXZcLwEbtGMwZInrVYuJCFx8PeiGGcrJv/AC+j1o=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev https://*.openbeautyfacts.org https://*.openfoodfacts.org https://*.openproductsfacts.org; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-usQAriBOBQysLb+k4gxI4g5GCS/PPGE7KAvyrG4vz3c=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>Cuadre</title>
 <meta name="theme-color" content="#3157d5">
@@ -741,6 +741,7 @@ body{margin:0;background:#d5dce6}
 .d1 .freeb{width:100%;margin-top:10px}
 .d1 .lnk.inl{display:inline;height:auto;padding:0;text-decoration:underline;white-space:normal;text-align:left}
 .d1 .lnk.inl::after{display:none}
+.pinf{-webkit-text-security:disc}
 .d1 .pinf{text-align:center;font-size:20px;font-weight:800;letter-spacing:.4em}
 .d1 .pinf::placeholder{font-size:13px;letter-spacing:0;font-weight:500}
 .d1 .net{flex:none;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;font-size:11.5px;font-weight:800;white-space:nowrap}
@@ -968,6 +969,9 @@ body{margin:0;background:#d5dce6}
 .d1 .sigl b{flex:none;font-weight:800}
 .d1 .pfirma{display:flex;flex-direction:column;align-items:center;gap:3px;width:46%;margin:14px 0 0 auto}
 .d1 .pfirma img{max-width:100%;max-height:44px;object-fit:contain}
+.d1 .pfadd{display:flex;align-items:center;gap:8px;width:58%;margin:14px 0 0 auto;padding:9px 10px;border:1.5px dashed var(--ac);border-radius:10px;background:transparent;color:var(--ac);text-align:left;cursor:pointer;font:inherit;font-size:12px;font-weight:700}
+.d1 .pfadd span{display:flex;flex-direction:column;gap:1px}
+.d1 .pfadd i{font-style:normal;font-weight:500;font-size:10.5px;color:var(--mut)}
 .d1 .pfirma span{width:100%;padding-top:3px;border-top:1px solid #c8cfda;text-align:center;font-size:10.5px;font-weight:600;color:var(--mut)}
 .d1 .subh{display:block}
 .d1 .pk .pkl{margin-top:8px}
@@ -1699,16 +1703,10 @@ body{margin:0;background:#d5dce6}
 .d1 .etn{display:flex;align-items:center;gap:8px}.d1 .etn .fld{flex:1;text-align:center;font-weight:800;font-size:18px}
 .d1 .etn .ib{flex:none;width:46px;height:46px;border-radius:12px;background:var(--fill)}
 
-/* foto inteligente (Pro) */
+/* foto del producto: pantalla «Buscar en Google» */
 .d1 .fal{display:grid;justify-items:center;text-align:center;gap:8px;padding:26px 8px 14px}
 .d1 .fal p{margin:0;font-weight:800;font-size:15px}.d1 .fal i{font-style:normal;font-size:12.5px;color:var(--mut);max-width:30ch}
 .d1 .fal .fai{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--fill);color:var(--mut)}
-.d1 .fasp{width:34px;height:34px;border-radius:50%;border:3.5px solid var(--fill);border-top-color:var(--ac);animation:rspin .8s linear infinite}
-.d1 .fag{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0 6px}
-.d1 .fac{display:grid;gap:6px;justify-items:center;padding:8px 6px 7px;border-radius:16px;background:var(--fill);border:2px solid transparent;cursor:pointer;font:inherit;color:inherit;min-width:0}
-.d1 .fac:hover,.d1 .fac:focus-visible{border-color:var(--ac)}.d1 .fac img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:11px;background:#fff}
-.d1 .fac span{font-size:11px;font-weight:800;color:var(--mut);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-@media (prefers-reduced-motion:reduce){.d1 .fasp{animation:none}}
 
 /* mensaje al cliente */
 .d1 .qmpv{margin:0;padding:12px 14px;border-radius:14px;background:var(--fill);font:500 12.5px/1.45 var(--f,inherit);color:var(--ink2);white-space:pre-wrap;word-break:break-word;max-height:220px;overflow:auto}
@@ -2060,6 +2058,14 @@ body{margin:0;background:#d5dce6}
 .d1 .pcst .pcgb{max-width:none;align-items:flex-start;margin:4px 0 0}
 .d1 .pcst .pcgb .btn{min-width:280px}
 .d1 .pcst .gnote{text-align:left;justify-content:flex-start;align-items:flex-start;margin:2px 0 0}
+
+/* 2.7 · cuándo pedir la clave: lista de opciones */
+.d1 .lkopts{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.d1 .lko{display:flex;align-items:center;gap:11px;width:100%;min-height:46px;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);text-align:left;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.d1 .lko i{display:block;margin-top:2px;font-style:normal;font-weight:500;font-size:12px;color:var(--mut)}
+.d1 .lko .rdo{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--mut);box-sizing:border-box}
+.d1 .lko.on{border-color:var(--ac)}
+.d1 .lko.on .rdo{border:5px solid var(--ac)}
 
 .d1 .mi{background:url(data:image/png;base64,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) center/cover no-repeat;box-shadow:0 8px 16px -8px rgba(10,40,120,.6)}
 
@@ -2597,11 +2603,9 @@ const PLAN={
   enviar:{gmail:false,gmailScope:'https://www.googleapis.com/auth/gmail.send',gmailPermitidos:['albertoice18@gmail.com','luisveintimilla60@gmail.com','stockfacilapp35@gmail.com'],pdfDias:30},
   /* cómo se llama la identificación fiscal en cada país (sale en tus documentos) */
   idFiscalNom:{EC:'RUC',CO:'NIT',MX:'RFC',PE:'RUC',AR:'CUIT',CL:'RUT',BO:'NIT',PY:'RUC',UY:'RUT',VE:'RIF',CR:'Cédula jurídica',PA:'RUC',GT:'NIT',SV:'NIT',HN:'RTN',NI:'RUC',DO:'RNC',ES:'NIF',US:'EIN',BR:'CNPJ'},
-  /* Foto automática (Pro): al guardar un producto, Cuadre busca su foto SIN que nadie toque nada y la pone solo si está seguro de que es la correcta; si no, deja las iniciales (nunca una foto dudosa).
-     Busca por el código de barras en catálogos abiertos y por el nombre en el servidor de Cuadre (PLAN.verificador), que mira en internet. Solo viajan el nombre, la marca y el código de barras.
-     auto = poner foto sola (false = solo si la eliges tú) · minScore y minSim = qué tan seguro tiene que estar (0 a 1) · reintentoDias = cuándo vuelve a intentar un producto sin foto · lote = cuántos productos por vuelta
-     px y calidad = tamaño y peso de la miniatura guardada · ms = cuánto espera cada consulta · max = cuántas fotos ofrece al elegir a mano · las direcciones son los catálogos abiertos consultados (si agregas una, también va en la política de privacidad y en connect-src del build) */
-  fotoAuto:{ms:7000,max:6,auto:true,minScore:0.7,minSim:0.8,reintentoDias:7,lote:20,px:240,calidad:0.7,off:'https://world.openfoodfacts.org',obf:'https://world.openbeautyfacts.org',opf:'https://world.openproductsfacts.org'},
+  /* Foto del producto: la persona la busca en Google, la comparte a la app y se recorta sola (no hay búsqueda automática).
+     px y calidad = tamaño y peso de la miniatura que queda guardada dentro del producto */
+  foto:{px:240,calidad:0.7},
   pcMesesPro:1,           // meses de Pro que trae la versión para PC (el servidor de compras y el generador de códigos deben usar el mismo tiempo)
   playPaquete:'io.github.cuadre_inventario.twa',         // nombre de paquete de la app en Google Play (ej. 'io.github.cuadre_inventario.twa'); lo define PWABuilder/Bubblewrap
   verificador:'https://compras-pro.stockfacilapp35.workers.dev',   // el servidor de Cuadre en Cloudflare (UNA sola dirección para todo): confirma las compras de Play, avisa las activaciones, busca fotos, guarda el PDF de una cotización enviada y emite los códigos. Vacío = no se usa servidor (la app funciona igual, sin esas funciones)
@@ -2631,7 +2635,6 @@ const PLAN={
     cierre:{t:'Cierre de caja del día',d:'Un resumen imprimible del día: lo vendido, lo que costó, la ganancia, lo que salió sin cobrar y el detalle por producto.'},
     envio:{t:'Enviar al cliente con un toque',d:'Un toque en «Enviar»: arma el PDF con tu membrete y lo manda ADJUNTO con tu mensaje propio por WhatsApp o correo, y la cotización queda marcada como enviada, con fecha y hora.'},
     fotosdoc:{t:'Fotos en tus cotizaciones',d:'La foto de cada producto sale junto al ítem en el PDF de la cotización.'},
-    fotoauto:{t:'Foto automática del producto',d:'Al guardar un producto, Cuadre le pone su foto solo, sin que toques nada: la busca por el código de barras o por el nombre. Si no está seguro de que sea la correcta, deja las iniciales.'},
     gprod:{t:'Ganancia por producto',d:'Qué producto y qué categoría te dejan más ganancia en la semana, el mes o el año.'}
   },
   /* lo que dice cada tarjeta de plan (Más y Hazte Pro). Es el ÚNICO lugar donde se escribe lo que incluye cada plan:
@@ -2651,7 +2654,6 @@ const PLAN={
     'PDF sin límite, con tu membrete y logo',
     'Enviar cotizaciones por WhatsApp y correo',
     'Fotos, plantillas y firma en tus cotizaciones',
-    'Foto automática de tus productos',
     'Ranking del mes y del año',
     'Cuánto ganaste, por producto y categoría',
     'Cierre de caja del día',
@@ -2818,7 +2820,7 @@ const DEVOK=(()=>{try{return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.
 const ST0=()=>{const d=C.detect();return {step:'welcome',mode:'invitado',nombre:'',rubro:null,rubroTxt:'',
   trialEnd:0,trialUsed:false,devPlan:null,logo:null,firma:null,mods:{entregas:false,prestamos:false},info:{telefono:'',email:'',direccion:'',ciudad:'',idFiscal:'',pie:''},envio:{asunto:'',texto:''},
   pais:d.pais,moneda:d.moneda,monedaSym:'',numStyle:d.numStyle,dec:null,ivaPct:d.tax[1],taxName:d.tax[0],margenDef:30,noPerdida:false,page:d.page,descDef:0,validezDef:7,notasDef:'',ivaIncl:false,ivaAuto:true,
-  descartadas:{},usoScan:false,pin:null,bio:null,pinFail:{n:0,until:0},lockMin:1,sonido:true,vibra:true,snd:'notif',oculto:false,lic:null,etq:{fmt:'r5030',tipo:'',n:12,pv:true},docs:{day:0,n:0,keys:{}},lastBackup:0,notif:{on:false,low:true,daily:false,hour:18,lastDaily:0},cloud:{on:false,email:'',last:0,hash:'',rev:null},creado:Date.now()}};
+  descartadas:{},usoScan:false,pin:null,bio:null,pinFail:{n:0,until:0},lockMin:-1,sonido:true,vibra:true,snd:'notif',oculto:false,lic:null,etq:{fmt:'r5030',tipo:'',n:12,pv:true},docs:{day:0,n:0,keys:{}},lastBackup:0,notif:{on:false,low:true,daily:false,hour:18,lastDaily:0},cloud:{on:false,email:'',last:0,hash:'',rev:null},creado:Date.now()}};
 const D0=()=>({prods:[],movs:[],quotes:[],qtpl:[],entregas:[],prestamos:[],seqs:{prod:1,mov:1,q:1,b:1,e:1,pr:1,venta:1,ingreso:1,salida:1,tpl:1}});
 C.state=ST0();
 let D=null;
@@ -2864,7 +2866,8 @@ function parts(){
 }
 function sigOf(a){let x=0;for(let i=0;i<a.length;i++)x=(x+(+a[i].id||0)*(i+1))%1e9;return a.length+'|'+a[0].id+'|'+a[a.length-1].id+'|'+x}
 function adopt(o){
-  C.state=Object.assign(ST0(),o.s);C.state.info=Object.assign(ST0().info,o.s.info||{});C.state.docs=Object.assign({day:0,n:0,keys:{}},o.s.docs||{});
+  C.state=Object.assign(ST0(),o.s);C.state.info=Object.assign(ST0().info,o.s.info||{});if(C.state.lockMin===1&&!C.state.lockSet)C.state.lockMin=-1;      // «1 minuto» era el valor de fábrica de la 2.6 (nadie lo eligió): pasa al nuevo, «solo si la cierro del todo»
+  C.state.docs=Object.assign({day:0,n:0,keys:{}},o.s.docs||{});
   if(!DEVOK)C.state.devPlan=null;
   D=o.d?Object.assign(D0(),o.d):(C.state.step==='app'?D0():null);
   if(D){D.seqs=Object.assign(D0().seqs,D.seqs||{});if(!Array.isArray(D.movs))D.movs=[]}
@@ -3012,13 +3015,14 @@ addEventListener('pagehide',()=>{C.save()});
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden){C.save();hiddenAt=Date.now()}
   else if(hiddenAt&&C.gvClose&&Date.now()-hiddenAt>=(PLAN.gvSalirSeg==null?30:PLAN.gvSalirSeg)*1000&&C.gvLeft&&C.gvLeft()>0)C.gvClose();
-  if(!document.hidden&&hiddenAt&&C.state.pin&&C.state.step==='app'&&!C.locked){const m=C.state.lockMin||0;if(Date.now()-hiddenAt>=m*60e3){C.locked=true;C.gvClose&&C.gvClose();C.emit()}}
+  /* al volver a la app: -1 = «solo si la cierro del todo» (no se vuelve a pedir; se pide al abrirla de nuevo, o con «Bloquear ahora»); 0 = al salir; o a los N minutos */
+  if(!document.hidden&&hiddenAt&&C.state.pin&&C.state.step==='app'&&!C.locked){const m=C.state.lockMin==null?0:C.state.lockMin;if(m>=0&&Date.now()-hiddenAt>=m*60e3){C.locked=true;C.gvClose&&C.gvClose();C.emit()}}
   if(!document.hidden)hiddenAt=0;
 });
 let hiddenAt=0;
 C.reset=()=>{const T={u:C.state.trialUsed,e:C.state.trialEnd};C.state=ST0();C.state.trialUsed=!!T.u;C.state.trialEnd=T.e||0;      // borrar los datos no regala otra prueba de Pro
   D=null;C.locked=false;clearTimeout(saveT);saveT=0;
-  try{['cuadre.v1','cuadre.hot','cuadre.mig','cuadre.safe.1','cuadre.safe.2','cuadre.safe.1m','cuadre.safe.2m'].forEach(k=>localStorage.removeItem(k))}catch(e){}
+  try{['cuadre.v1','cuadre.hot','cuadre.mig','cuadre.safe.1','cuadre.safe.2','cuadre.safe.1m','cuadre.safe.2m','cuadre.borrador'].forEach(k=>localStorage.removeItem(k))}catch(e){}
   if(STO.mode==='idb'){STO.t=0;STO.sig={};STO.clen={};STO.mlen=0;STO.lastBak='';
     STO.clearing=new Promise(res=>{try{const tx=STO.db.transaction('kv','readwrite');tx.objectStore('kv').clear();tx.oncomplete=tx.onerror=tx.onabort=()=>res()}catch(e){res()}}).then(()=>{STO.clearing=null})}
   C.emit()};
@@ -3067,7 +3071,9 @@ C.pcVerif=()=>{const d=PLAN.pcSinInternetDias|0,P=pcOk();
   const left=v+d*DAY-Date.now();return {ok:left>0,dias:d,faltan:Math.max(0,Math.ceil(left/DAY)),desde:v}};
 /* estado de la computadora: ok · nada (sin cuenta de Google) · sin (cuenta sin la versión para PC) · otra (la PC es de otra cuenta) · verif (hay que conectarse) */
 C.pcEstado=()=>{const s=C.state,dv=DEVOK?s.devPlan:null,K=s.cloud,con=!!(K&&K.on&&K.email);
-  if(C.hasPC()){if(PLAN.pcGratis||dv==='pc'||s.trialEnd>Date.now()||!pcOk())return 'ok';return C.pcVerif().ok?'ok':'verif'}
+  if(C.hasPC()){if(PLAN.pcGratis||dv==='pc'||s.trialEnd>Date.now()||!pcOk())return 'ok';
+    if(!con)return 'nada';                // tiene la licencia pero CERRÓ SESIÓN: vuelve a la ventana de inicio (instalar e iniciar sesión). Solo cambia lo que ve la PC; el teléfono no usa este estado.
+    return C.pcVerif().ok?'ok':'verif'}
   const P=s.licPc;if(P&&P.code&&!mailOk(P))return 'otra';return con?'sin':'nada'};
 C.maskMail=e=>{e=String(e||'');const i=e.indexOf('@');if(i<1)return e;return e.slice(0,Math.min(2,i))+'•••'+e.slice(i)};
 /* enlace para escribir al vendedor ('' si aún no hay contacto en PLAN.contacto) */
@@ -3154,17 +3160,21 @@ C.addProd=o=>{
   D.prods.push(p);
   const st=+o.stock||0;
   if(st>0){D.movs.push({id:D.seqs.mov++,t:now,tipo:'ingreso',pid:id,nom:p.nom,u:p.u,q:st,pv:0,costo:p.costo,antes:0,despues:st,nota:'Stock inicial',b:D.seqs.b++,uid:UID()});p.stock=st}
-  D.undo=null;C.emit();if(!p.img&&!p.ej&&C.fotoCola)C.fotoCola();return {ok:true,p};
+  D.undo=null;C.emit();return {ok:true,p};
 };
 C.updateProd=(id,patch)=>{const p=C.prod(id);if(!p)return null;
   const keys=['nom','marca','cat','u','pv','costo','min','ideal','barras'];
-  const antes=[p.nom,p.marca,p.barras].join('|');
   keys.forEach(k=>{if(patch[k]!==undefined)p[k]=k==='cat'?C.catCanon(patch[k]):(k==='nom'||k==='marca'||k==='u'||k==='barras')?String(patch[k]).trim():+patch[k]||0});delete p._h;
-  if(patch.img!==undefined){if(patch.img){p.img=String(patch.img);delete p.fotoNo}else{delete p.img;delete p.imgAuto;p.fotoNo=true}}      // «quitar la foto» es una decisión: no se vuelve a buscar sola
+  if(patch.img!==undefined){if(patch.img)p.img=String(patch.img);else delete p.img}
   if(!p.nom)p.nom='Producto';
-  if(!p.img&&!p.fotoNo&&[p.nom,p.marca,p.barras].join('|')!==antes){delete p.fotoT;if(C.fotoCola)C.fotoCola()}      // cambió el nombre, la marca o el código: se busca otra vez
   C.emit();return p};
 C.archiveProd=(id,on)=>{const p=C.prod(id);if(!p)return;p.activo=on===false?true:false;C.emit()};
+/* BORRAR de verdad (no archivar): el producto y todos sus movimientos. Se dejan lápidas (como al quitar los ejemplos) para que el borrado llegue a tus otros dispositivos. */
+C.movsDe=id=>D?D.movs.filter(m=>m.pid===id).length:0;
+C.removeProd=id=>{const i=D?D.prods.findIndex(p=>p.id===id):-1;if(i<0)return {ok:false};
+  const p=D.prods[i],ms=D.movs.filter(m=>m.pid===id);
+  tomb('p',p);ms.forEach(m=>tomb('m',m));D.prods.splice(i,1);D.movs=D.movs.filter(m=>m.pid!==id);D.undo=null;C.emit();
+  return {ok:true,nom:p.nom,movs:ms.length}};
 C.deleteProd=id=>{const i=D.prods.findIndex(p=>p.id===id);if(i<0)return false;if(D.movs.some(m=>m.pid===id)){C.archiveProd(id);return 'archivado'}tomb('p',D.prods[i]);D.prods.splice(i,1);C.emit();return true};
 /* productos de ejemplo del rubro (marcados con ej para poder quitarlos todos) */
 C.cargarEjemplos=()=>{
@@ -3642,8 +3652,8 @@ try{C.bio.available().then(v=>{C.bio.ok=v})}catch(e){}
 C.unlockBio=async()=>{const r=await C.bio.check();if(r.ok){C.state.pinFail={n:0,until:0};C.locked=false;C.emit()}return r};
 C.unlock=async pin=>{const r=await C.pin.check(pin);if(r.ok){C.locked=false;C.emit()}return r};
 C.lockNow=()=>{if(C.state.pin){C.locked=true;C.gvClose();C.emit()}};
-C.LOCKS=[[0,'Al salir de la app'],[1,'1 minuto'],[5,'5 minutos'],[15,'15 minutos']];
-C.setLockMin=m=>{C.state.lockMin=m;C.emit()};
+C.LOCKS=[[-1,'Solo si la cierro del todo'],[0,'Al salir de la app'],[1,'1 minuto'],[5,'5 minutos'],[15,'15 minutos']];
+C.setLockMin=m=>{C.state.lockMin=m;C.state.lockSet=true;C.emit()};
 /* ---- Proteger ganancias y costos ----
    Con la opción activada, las ganancias y los costos salen ocultos hasta que el DUEÑO confirma con su huella (o Windows Hello) o con su «clave del dueño».
    La clave del dueño es OTRA distinta a la que abre la app: quien vende por ti puede saber la de abrir y aun así no ve lo que ganas.
@@ -3991,8 +4001,13 @@ addEventListener('offline',()=>{C.emit()});
    Copia de seguridad (Excel que se puede volver a subir, y JSON)
    ===================================================================== */
 /* La licencia (lic) viaja solo con la copia de Google Drive (se vuelve a comprobar su firma al llegar); NUNCA en archivos que el usuario pueda editar. */
+/* una licencia es de UNA cuenta de Google: al Drive (y desde el Drive) solo viaja la de la cuenta conectada. Si no, la licencia de otra persona
+   que entró un rato en este equipo terminaba copiada en el Drive de quien sí es dueño de la cuenta. */
+function licDeLaCuenta(L){const K=C.state.cloud;return !!L&&!(K&&K.on&&K.email&&L.email&&normMail(K.email)!==normMail(L.email))}
+C.licDeLaCuenta=licDeLaCuenta;
 function backupObj(drive){
-  const s=clone(C.state);['pin','bio','pinFail','gvBio','gvFail','duenoReset','devPlan','trialEnd','trialUsed','docs','cloud'].forEach(k=>delete s[k]);if(!drive){delete s.lic;delete s.licPc;delete s.dueno}   // la clave del dueño solo viaja con la copia de Drive de su cuenta (como la licencia), nunca en un archivo que se pueda compartir
+  const s=clone(C.state);['pin','bio','pinFail','gvBio','gvFail','duenoReset','devPlan','trialEnd','trialUsed','docs','cloud'].forEach(k=>delete s[k]);if(!drive){delete s.lic;delete s.licPc;delete s.dueno}
+  else{if(s.lic&&!licDeLaCuenta(s.lic))delete s.lic;if(s.licPc&&!licDeLaCuenta(s.licPc))delete s.licPc}   // la clave del dueño solo viaja con la copia de Drive de su cuenta (como la licencia), nunca en un archivo que se pueda compartir
   const d=JSON.parse(JSON.stringify(D,(k,v)=>k==='undo'||k[0]==='_'?undefined:v));
   return {app:'cuadre',v:1,exportado:Date.now(),s,d};
 }
@@ -4020,9 +4035,9 @@ function applyBackup(o,opts){
   const keep={pin:C.state.pin,bio:C.state.bio,pinFail:C.state.pinFail,dueno:opts&&opts.cloud&&o.s.dueno&&o.s.dueno.hash?o.s.dueno:C.state.dueno,gvBio:C.state.gvBio,gvFail:C.state.gvFail,duenoReset:C.state.duenoReset,
     /* si este equipo ya tiene clave del dueño, «Proteger ganancias» lo decide ESTE equipo: una copia vieja (hecha antes de activarla) no puede apagarla */
     protGan:C.state.dueno&&C.state.dueno.hash?!!C.state.protGan:undefined,devPlan:C.state.devPlan,trialEnd:C.state.trialEnd,trialUsed:C.state.trialUsed,cloud:C.state.cloud,docs:C.state.docs,
-    lic:betterLic(C.state.lic,opts&&opts.cloud&&o.s.lic&&o.s.lic.code?o.s.lic:null),licPc:betterPc(C.state.licPc,opts&&opts.cloud&&o.s.licPc&&o.s.licPc.code?o.s.licPc:null)};
+    lic:betterLic(C.state.lic,opts&&opts.cloud&&o.s.lic&&o.s.lic.code&&licDeLaCuenta(o.s.lic)?o.s.lic:null),licPc:betterPc(C.state.licPc,opts&&opts.cloud&&o.s.licPc&&o.s.licPc.code&&licDeLaCuenta(o.s.licPc)?o.s.licPc:null)};
   Object.keys(keep).forEach(k=>{if(keep[k]===undefined)delete keep[k]});
-  C.state=Object.assign(ST0(),o.s,keep);C.state.info=Object.assign(ST0().info,o.s.info||{});C.state.step='app';
+  C.state=Object.assign(ST0(),o.s,keep);C.state.info=Object.assign(ST0().info,o.s.info||{});C.state.step='app';if(C.state.lockMin===1&&!C.state.lockSet)C.state.lockMin=-1;
   if(C.state.protGan&&!C.gvHasKey())C.state.protGan=false;               // una copia con la protección activa pero sin clave que la sostenga no deja nada oculto sin salida
   if(!C.state.notif)C.state.notif=ST0().notif;
   D=Object.assign(D0(),o.d);D.seqs=Object.assign(D0().seqs,D.seqs||{});D.undo=null;
@@ -4229,7 +4244,9 @@ function getToken(interactive){
     try{const tc=google.accounts.oauth2.initTokenClient({client_id:C.CONFIG.googleClientId,scope:SCOPE,
       callback:r=>{if(r.error)return rej(new Error('auth:'+r.error));cl.tok=r.access_token;cl.exp=Date.now()+(r.expires_in||3600)*1e3;res(cl.tok)},
       error_callback:e=>rej(new Error('auth:'+((e&&e.type)||'cancelado')))});
-      tc.requestAccessToken({prompt:interactive==='cuenta'?'select_account':(CS().email?'':'select_account'),hint:CS().email||undefined});
+      /* 'nueva' = la persona quiere ELEGIR cuenta (entrar o cambiar de cuenta): sin pista, para que Google deje escoger cualquiera.
+         'cuenta' = confirmar que es la de este negocio: se sugiere esa. Sin interactivo: se reutiliza el permiso. */
+      tc.requestAccessToken(interactive==='nueva'?{prompt:'select_account'}:{prompt:interactive==='cuenta'?'select_account':(CS().email?'':'select_account'),hint:CS().email||undefined});
     }catch(e){rej(e)}
   });
 }
@@ -4247,6 +4264,13 @@ async function gapi(url,opt,tk){
   if(!r.ok)throw new Error('drive:'+r.status);
   return r;
 }
+/* por qué Google no dejó entrar: se dice claro (antes todo era «No se completó la entrada con Google.») */
+function authMsg(t){t=String(t||'');
+  if(t==='popup_closed'||t==='cancelado')return 'Se cerró la ventana de Google antes de terminar. Toca de nuevo, elige la cuenta y sigue hasta el final. Si Google mostró un error al elegirla, esa cuenta no está permitida en esta app.';
+  if(t==='popup_failed_to_open')return 'El navegador no dejó abrir la ventana de Google. Permite las ventanas emergentes de este sitio (el ícono de la barra de direcciones) y vuelve a tocar.';
+  if(t==='access_denied')return 'Google no dio el permiso: no se aceptó o esa cuenta no está permitida en esta app. Toca de nuevo y acepta los permisos.';
+  return 'No se completó la entrada con Google ('+t+'). Vuelve a intentar.'}
+C.authMsg=authMsg;
 function cloudMsg(e){const m=String(e&&e.message||e);
   if(m.indexOf('otra:')===0)return 'Entraste con otra cuenta de Google ('+m.slice(5)+'). Este negocio es de '+(CS().email||'otra cuenta')+': entra con esa cuenta.';
   if(m==='sinred'||/Failed to fetch|NetworkError|Load failed/i.test(m))return 'Sin conexión con Google. Se intentará de nuevo solo.';
@@ -4297,8 +4321,8 @@ function unir(o){
   const S=CS(),mine=backupObj(true),sCambio=S.sh===undefined||S.sh===''||sHash()!==S.sh;
   const M=C.mergeData({s:mine.s,d:mine.d},{s:o.s,d:o.d},{sLocalChanged:sCambio});
   splitLic(mine.s);splitLic(o.s);
-  M.s.lic=betterLic(mine.s.lic,o.s.lic)||undefined;if(!M.s.lic)delete M.s.lic;
-  M.s.licPc=betterPc(mine.s.licPc,o.s.licPc)||undefined;if(!M.s.licPc)delete M.s.licPc;
+  M.s.lic=betterLic(mine.s.lic,licDeLaCuenta(o.s.lic)?o.s.lic:null)||undefined;if(!M.s.lic)delete M.s.lic;
+  M.s.licPc=betterPc(mine.s.licPc,licDeLaCuenta(o.s.licPc)?o.s.licPc:null)||undefined;if(!M.s.licPc)delete M.s.licPc;
   return M}
 /* Si dos dispositivos suben a la vez, la copia de uno queda «debajo» (otro archivo principal, de otro dispositivo). Si no se junta, el cambio de ese
    dispositivo se pierde cuando el otro vuelve a subir. Aquí se juntan antes de seguir; se borran al subir la copia que ya las incluye. */
@@ -4334,6 +4358,9 @@ async function mezclar(tk,R,files,h,manual,pre){
   if(C.cloud.onPull){try{C.cloud.onPull(Object.assign({fusion:true},res))}catch(e){console.error(e)}}
   return {ok:true,fusion:true,prods:res.prods,movs:res.movs,info:M.info}
 }
+/* Al empezar y terminar de revisar el Drive se avisa a la pantalla (el indicador «sincronizando»). Si hay algo a medio hacer (una ventana abierta,
+   alguien escribiendo una clave o un precio) NO se redibuja: así lo escrito no se borra. */
+function uiPing(){cl.nk=true;try{if(!C.cloud.idle||C.cloud.idle())C.emit()}finally{cl.nk=false}}
 async function cloudSync(manual,gesture){
   const S=CS();if(!S.on||!cfgOk()||!D||cl.busy)return {ok:false,reason:'nada'};
   if(!C.online())return {ok:false,reason:'offline'};
@@ -4341,7 +4368,7 @@ async function cloudSync(manual,gesture){
   if(cl.conflict&&!manual)return {ok:false,reason:'conflicto'};
   let h=cloudHash();
   if(!manual&&h===S.hash&&!cl.check){cl.dirty=false;return {ok:true,igual:true}}
-  cl.busy=true;cl.err='';cl.nk=true;C.emit();cl.nk=false;
+  cl.busy=true;cl.err='';uiPing();
   try{
     await loadGIS();const tk=await getToken(manual||gesture?true:false);await tokCuenta(tk);
     const files=await driveFiles(tk),R=remoteOf(files);S.vOk=Date.now();            // hubo contacto con tu Drive: la PC con plan queda verificada
@@ -4366,7 +4393,7 @@ async function cloudSync(manual,gesture){
     const sn=await drivePut(tk,JSON.stringify(backupObj(true)),rev,files);
     markSynced(rev,undefined,sn);cl.needAuth=false;cl.err='';return {ok:true};
   }catch(e){cl.err=cloudMsg(e);if(/^(auth|otra):/.test(String(e&&e.message)))cl.needAuth=true;return {ok:false,reason:'error',msg:cl.err}}
-  finally{cl.busy=false;cl.nk=true;C.emit();cl.nk=false;
+  finally{cl.busy=false;uiPing();
     if(cl.again){cl.again=false;clearTimeout(cl.timer);cl.timer=setTimeout(()=>{cloudSync(false)},400)}}      // se cambió algo mientras subía: se vuelve a subir enseguida
 }
 C.cloud={
@@ -4393,7 +4420,7 @@ C.cloud={
       if(!em)return {ok:false,msg:'Google no me dijo qué cuenta es. Intenta de nuevo.'};
       if(em!==String(S.email).toLowerCase())return {ok:false,otra:true,msg:'Esa cuenta ('+u.email+') no es la de este negocio. Elige '+S.email+'.'};
       return {ok:true}
-    }catch(e){const c=String(e&&e.message).indexOf('auth:')===0;return {ok:false,msg:c?'No se confirmó con Google (se canceló o se cerró la ventana).':cloudMsg(e)}}
+    }catch(e){const m=String(e&&e.message),c=m.indexOf('auth:')===0;return {ok:false,msg:c?authMsg(m.slice(5)):cloudMsg(e)}}
   },
   /* Entrar con Google (bienvenida o Más). Devuelve la bodega que ya tenga en su Drive, si hay */
   async signIn(){
@@ -4401,12 +4428,12 @@ C.cloud={
     if(!C.online())return {ok:false,msg:'Necesitas internet para entrar con Google.'};
     if(!cl.gis){try{await loadGIS()}catch(e){return {ok:false,msg:'No pude cargar Google. Revisa tu internet.'}}}
     try{
-      cl.tok=null;const tk=await getToken('cuenta');let email='';
+      cl.tok=null;cl.tokChecked=null;const tk=await getToken('nueva');let email='';
       try{const r=await gapi('https://www.googleapis.com/oauth2/v3/userinfo',{},tk);const u=await r.json();email=u.email||''}catch(e){}
       const R=remoteOf(await driveFiles(tk)),S=CS();
       S.email=email;S.on=true;S.hash='';S.sh='';S.last=0;S.vOk=Date.now();S.rev=null;cl.needAuth=false;cl.err='';cl.conflict=null;C.emit();
       return {ok:true,email,remote:R};
-    }catch(e){return {ok:false,msg:String(e&&e.message).indexOf('auth:')===0?'No se completó la entrada con Google.':cloudMsg(e)}}
+    }catch(e){const m=String(e&&e.message);return {ok:false,msg:m.indexOf('auth:')===0?authMsg(m.slice(5)):cloudMsg(e)}}
   },
   /* «Traer mi bodega»: reemplaza lo de este teléfono por lo que hay en su Drive */
   async take(){
@@ -4526,7 +4553,7 @@ C.buzz=pat=>{if(C.state.vibra===false)return;try{navigator.vibrate&&navigator.vi
    Foto del producto: se toma o se elige y queda como una miniatura cuadrada pequeña (unos 3 KB)
    dentro del propio producto (p.img). Así viaja sola en la copia de Drive y en las copias del teléfono.
    ===================================================================== */
-/* la foto se guarda COMPLETA (sin recortar) sobre fondo blanco, en un cuadrado de PLAN.fotoAuto.px; un producto alargado no pierde sus lados */
+/* la foto se guarda COMPLETA (sin recortar) sobre fondo blanco, en un cuadrado de PLAN.foto.px; un producto alargado no pierde sus lados */
 C.photoThumb=async file=>{
   if(!file)return {ok:false,msg:''};
   if(!/^image\//.test(file.type||'')&&!/\.(jpe?g|png|webp|gif|bmp|heic|heif|avif)$/i.test(file.name||''))return {ok:false,msg:'Ese archivo no es una foto.'};
@@ -4535,7 +4562,7 @@ C.photoThumb=async file=>{
     if(window.createImageBitmap){try{src=await createImageBitmap(file,{imageOrientation:'from-image'});w=src.width;h=src.height}catch(e){src=null}}
     if(!src){url=URL.createObjectURL(file);src=await new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=()=>rej(new Error('img'));im.src=url});w=src.naturalWidth;h=src.naturalHeight}
     if(!w||!h)return {ok:false,msg:'No pude leer esa foto.'};
-    const F=PLAN.fotoAuto||{},N=F.px||240,q=F.calidad||0.7,cv=document.createElement('canvas');cv.width=cv.height=N;const g=cv.getContext('2d');
+    const F=PLAN.foto||{},N=F.px||240,q=F.calidad||0.7,cv=document.createElement('canvas');cv.width=cv.height=N;const g=cv.getContext('2d');
     g.fillStyle='#ffffff';g.fillRect(0,0,N,N);
     const k=Math.min(N/w,N/h),dw=Math.max(1,Math.round(w*k)),dh=Math.max(1,Math.round(h*k));      // se ve entera, centrada
     g.imageSmoothingQuality='high';g.drawImage(src,0,0,w,h,Math.round((N-dw)/2),Math.round((N-dh)/2),dw,dh);
@@ -4611,94 +4638,6 @@ C.fotoCortar=async(blob,box)=>{
     const g=cv.getContext('2d');g.fillStyle='#ffffff';g.fillRect(0,0,cv.width,cv.height);g.imageSmoothingQuality='high';g.drawImage(im.src,sx,sy,sw,sh,0,0,cv.width,cv.height);
     return await new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error('blob')),'image/jpeg',.92))}
   finally{im.close()}};
-
-/* =====================================================================
-   Foto automática (Pro). Al guardar un producto la app busca sola su foto y la pone SOLO si está segura de que es la correcta;
-   si no, deja las iniciales (nunca una foto dudosa). Fuentes: el código de barras en catálogos abiertos (Open Food Facts, Beauty, Products)
-   y el nombre en el servidor de Cuadre, que busca en internet (ver tools/worker). Solo viajan el nombre, la marca y el código de barras.
-   Lo que se muestra es lo que se guarda: la foto se baja aquí y se reduce a miniatura (igual que una foto propia).
-   ===================================================================== */
-/* ¿cuánto se parece el título de una foto al nombre buscado? 0..1 (misma regla que el servidor: marca, modelo y medidas pesan; si falta un número o habla de fundas y accesorios, baja mucho) */
-const F_STOP=new Set(['de','del','la','el','los','las','para','con','sin','y','e','en','por','un','una','x','the','and','of','for','with','pack','paquete','unidad','und','unid','pza','pz','original','nuevo','nueva','oferta']);
-const F_ACC=['funda','fundas','case','cases','cover','carcasa','protector','mica','vidrio','cargador','charger','cable','accesorio','accesorios','repuesto','repuestos','pantalla','skin','sticker','adhesivo','soporte','manual','guia','review','unboxing','vs','comparacion','comparativa'];
-const fNorm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/(\d)[.,](?=\d)/g,'$1p').replace(/(\d)([a-z])/g,'$1 $2').replace(/([a-z])(\d)/g,'$1 $2').replace(/[^a-z0-9]+/g,' ').trim();
-const fToks=t=>fNorm(t).split(' ').filter(x=>x&&!F_STOP.has(x));
-C.fotoSim=(q,tit)=>{
-  const Q=[...new Set(fToks(q))],T=fToks(tit);if(!Q.length||!T.length)return 0;
-  const num=x=>/^\d+$/.test(x),peso=x=>num(x)?2:x.length>=4?1.5:x.length>=2?1:.3;
-  const tiene=x=>T.some(t=>t===x||(x.length>=4&&t.length>=4&&(t.startsWith(x)||x.startsWith(t))&&Math.abs(t.length-x.length)<=2));
-  let a=0,b=0,falta=false;Q.forEach(x=>{const w=peso(x);b+=w;if(tiene(x))a+=w;else if(num(x)&&x.length>=2)falta=true});
-  let r=a/b;if(falta)r*=.5;const Qs=new Set(Q);if(T.some(t=>F_ACC.includes(t)&&!Qs.has(t)))r*=.35;
-  return Math.max(0,Math.min(1,r));
-};
-const fQuery=(nom,marca)=>(marca&&!fNorm(nom).includes(fNorm(marca))?marca+' ':'')+nom;
-C.fotoBuscar=async(q,opt)=>{
-  opt=opt||{};const F=PLAN.fotoAuto,nom=String(q&&q.nom||'').replace(/\s+/g,' ').trim().slice(0,80),marca=String(q&&q.marca||'').trim().slice(0,40),bar0=String(q&&q.barras||'').replace(/[\s-]/g,''),bar=/^\d{8,14}$/.test(bar0)?bar0:'';      // solo códigos de barras numéricos (un código interno con letras no se busca)
-  if(!C.isPro())return {ok:false,msg:'La foto automática es de Pro.',pro:true};
-  if(!C.online())return {ok:false,msg:'Sin internet no puedo buscar. Puedes tomar la foto o elegirla de tu galería.',offline:true};
-  if(bar.length<8&&nom.length<3)return {ok:false,msg:'Escribe el nombre del producto (o escanea su código de barras) y vuelve a buscar.',falta:true};
-  const fx=async(url,tipo)=>{const ac=new AbortController(),t=setTimeout(()=>ac.abort(),F.ms);
-    try{const r=await fetch(url,{signal:ac.signal,credentials:'omit',referrerPolicy:'no-referrer',cache:'no-store'});if(!r.ok)throw new Error('http'+r.status);return tipo==='blob'?await r.blob():await r.json()}finally{clearTimeout(t)}};
-  const cand=[];let consultas=0,fallos=0;const sr=e=>{fallos++;return null};      // «no encontrado» (404) también cuenta como que esa consulta no trajo nada
-  const trabajos=[];
-  /* 1) código de barras → catálogos abiertos: coincidencia exacta */
-  if(bar){[[F.off,'Open Food Facts'],[F.obf,'Open Beauty Facts'],[F.opf,'Open Products Facts']].forEach(([base,fuente])=>{consultas++;
-    trabajos.push(fx(base+'/api/v2/product/'+bar+'.json?fields=product_name,brands,image_front_small_url,image_front_url','json').then(j=>{
-      const p=j&&j.status===1&&j.product;if(!p)return;const u=p.image_front_small_url||p.image_front_url;if(u)cand.push({u,tit:p.product_name||nom,fuente,exacta:true,auto:true,orden:0})}).catch(e=>{if(!/^http4\d\d$/.test(String(e&&e.message||'')))fallos++}))})}
-  /* 2) nombre → servidor de Cuadre (internet); sin servidor, solo Open Food Facts y solo con título muy parecido */
-  let sinServidor=false;
-  if(nom.length>=3){
-    const srv=await C.srv.listo(),txt=fQuery(nom,marca);
-    if(srv){consultas++;
-      trabajos.push(C.srv.pedir('/foto?n='+encodeURIComponent(nom)+(marca?'&m='+encodeURIComponent(marca):'')+(bar?'&b='+bar:''),{method:'GET'},Math.max(F.ms,12000)).then(r=>{
-        if(!r.ok||!r.json||!Array.isArray(r.json.res)){fallos++;return}
-        r.json.res.forEach((x,i)=>{if(!x||!x.u)return;const sim=C.fotoSim(txt,x.tit);if(sim<.3)return;
-          cand.push({u:C.srv.url()+x.u,tit:x.tit||nom,fuente:x.fuente||'internet',exacta:false,auto:!!x.auto&&x.sc>=F.minScore&&sim>=F.minSim,orden:1+i})})}).catch(sr))}
-    else{sinServidor=true;consultas++;
-      trabajos.push(fx(F.off+'/cgi/search.pl?search_terms='+encodeURIComponent(txt)+'&search_simple=1&action=process&json=1&page_size=6&fields=product_name,brands,image_front_small_url','json').then(j=>{
-        (j&&j.products||[]).forEach((p,i)=>{if(!p||!p.image_front_small_url)return;const tit=[p.product_name,p.brands].filter(Boolean).join(' · ')||nom,sim=C.fotoSim(txt,tit);
-          if(sim>=.5)cand.push({u:p.image_front_small_url,tit,fuente:'Open Food Facts',exacta:false,auto:sim>=F.minSim,orden:10+i})})}).catch(sr))}
-  }
-  await Promise.all(trabajos);
-  const vistos=new Set(),lista=[];
-  cand.sort((a,b)=>a.orden-b.orden).forEach(x=>{if(!/^https:\/\//.test(x.u)||vistos.has(x.u))return;vistos.add(x.u);lista.push(x)});
-  const bajar=async x=>{try{const b=await fx(x.u,'blob');if(!b||!(b.size>200))return null;const r=await C.photoThumb(b.type&&/^image\//.test(b.type)?b:new Blob([b],{type:'image/jpeg'}));return r.ok?{img:r.img,tit:x.tit,fuente:x.fuente,exacta:!!x.exacta,auto:!!x.auto}:null}catch(e){return null}};
-  /* modo automático: solo las que el servidor/catálogo da por seguras, de una en una, y se queda con la primera que baje bien */
-  if(opt.auto){
-    for(const x of lista.filter(c=>c.auto).slice(0,3)){const r=await bajar(x);if(r)return {ok:true,res:[r],sinServidor,consultas,fallos}}
-    return {ok:true,res:[],sinServidor,consultas,fallos,completa:consultas>0&&fallos<consultas}
-  }
-  const res=(await Promise.all(lista.slice(0,F.max).map(bajar))).filter(Boolean);
-  /* si no hay servidor de Cuadre, la búsqueda por nombre en el catálogo abierto suele fallar o tardar: eso NO se dice como «revisa tu internet» (el teléfono sí tiene internet);
-     queda «no encontré» y la salida es Google. Solo el código de barras sin respuesta de ningún catálogo se dice como falta de conexión. */
-  if(!res.length&&consultas&&fallos>=consultas&&!sinServidor)return {ok:false,msg:'La búsqueda automática no respondió. Búscala en Google: es rápido y queda la foto que tú elijas.',offline:true};
-  return {ok:true,res,sinServidor,consultas,fallos};
-};
-/* ---- en segundo plano: a cada producto sin foto se le busca una, sin que nadie toque nada ---- */
-const FA={busy:false,t:0,timer:0};
-C.fotoPend=()=>{if(!D)return [];const F=PLAN.fotoAuto,lim=Date.now()-(F.reintentoDias||7)*864e5;
-  return D.prods.filter(p=>!p.img&&!p.fotoNo&&p.activo!==false&&!p.ej&&String(p.nom||'').trim().length>=3&&(!p.fotoT||p.fotoT<lim))};
-C.fotoAutoRun=async()=>{
-  const F=PLAN.fotoAuto;if(!D||!F||!F.auto||FA.busy||!C.ready()||!C.isPro()||!C.online()||C.locked||(typeof document!=='undefined'&&document.hidden))return {n:0,puestas:0};
-  const pend=C.fotoPend().slice(0,F.lote||20);if(!pend.length)return {n:0,puestas:0};
-  FA.busy=true;let puestas=0,n=0;
-  try{for(const p0 of pend){
-      const id=p0.id,r=await C.fotoBuscar({nom:p0.nom,marca:p0.marca,barras:p0.barras},{auto:true});n++;
-      const p=C.prod(id);if(!p)continue;
-      if(r.ok&&r.res.length&&!p.img&&!p.fotoNo){C.updateProd(id,{img:r.res[0].img});p.imgAuto=true;puestas++}
-      if(r.ok&&r.completa!==false)p.fotoT=Date.now();      // la búsqueda se hizo de verdad: no se repite hasta dentro de unos días (si el servidor no contestó, se vuelve a intentar pronto)
-      if(r.offline||r.pro)break;
-      await new Promise(res=>setTimeout(res,900));
-    }}
-  finally{FA.busy=false;FA.t=Date.now()}
-  if(n)try{C.save()}catch(e){}
-  return {n,puestas};
-};
-/* pide una vuelta pronto (al guardar o cambiar un producto); varias peticiones seguidas se juntan en una */
-C.fotoCola=(ms)=>{clearTimeout(FA.timer);FA.timer=setTimeout(()=>{C.fotoAutoRun().catch(()=>{})},ms==null?3500:ms)};
-setInterval(()=>{if(Date.now()-FA.t>120000)C.fotoCola(0)},120000);
-addEventListener('online',()=>C.fotoCola(2500));
-setTimeout(()=>C.fotoCola(0),9000);
 
 /* =====================================================================
    Cotizaciones: lista (conteos y totales por estado), duplicar y plantillas (Pro)
@@ -9094,6 +9033,8 @@ function navFootHTML(){
    ===================================================================== */
 const GLOGO='<svg class="glg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
 let gbusy=false;
+let pcMsg='';
+let draftT=0,draftLive=false,draftChecked=false,draftOffer=null;      // borrador (ui/06g-borrador.js): se declaran aquí porque render() corre ya durante la carga      // por qué no se pudo entrar con Google en la ventana de la PC (se queda a la vista hasta el siguiente intento)
 /* «este teléfono» o «esta computadora», según dónde se usa Cuadre (los textos no deben hablar de teléfono en la PC) */
 const EQ=()=>{try{return window.matchMedia&&matchMedia(PC_Q).matches?'esta computadora':'este teléfono'}catch(e){return 'este teléfono'}};
 function welcomeHTML(){
@@ -9420,6 +9361,10 @@ function pcGateHTML(){
     gn=`<p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>`,
     gb=(act,txt,cls)=>`<button type="button" class="btn big ${cls||'gbtn'}" data-a="${act}"${on&&K.configured&&!gbusy?'':' disabled'}>${GLOGO}<span>${gbusy?'Conectando con Google…':txt}</span></button>`,
     off=on?'':`<p class="pcgm warn">${ic('globe',16)}Sin internet no se puede iniciar sesión. Conéctate y vuelve a intentar.</p>`,
+    err=pcMsg?`<p class="pcgm warn" role="alert" data-r="pcerr">${ic('alert',16)}<span>${esc(pcMsg)}</span></p>`:'',
+    /* salidas que siempre tiene: cerrar sesión (y entrar con la cuenta correcta) o borrar lo de esta computadora. Nunca queda atrapada. */
+    hayDatos=!!(C.state.nombre||C.state.step==='app'),
+    salir=`<div class="pcgb sec pcsal">${K.connected?`<button type="button" class="btn big ghost" data-a="pc-salir">${ic('logout',19)}Cerrar sesión</button>`:''}${hayDatos?`<button type="button" class="btn txt dng" data-a="reset-ask">${ic('trash',17)}Borrar los datos de esta computadora</button>`:''}</div>`,
     /* lo que se ofrece para conseguir la versión para PC: un solo camino según cómo se vende (PLAN.canalWeb) */
     buy=cod?`<button type="button" class="btn big ghost" data-a="pcplan">${ic('monitor',20)}Ver la versión para PC</button>
       <button type="button" class="btn big ghost" data-a="pcplan-code">${ic('lock',19)}Ya tengo mi código de activación</button>
@@ -9432,19 +9377,21 @@ function pcGateHTML(){
     body=`<p>Esta computadora lleva más de <b>${v.dias} ${v.dias===1?'día':'días'}</b> sin conectarse a internet con la cuenta <b>${esc(K.email||(P&&P.email)||'de Google')}</b>. Conéctate un momento para seguir usando la versión para PC.</p>
       <p class="pcgm">Tus datos están a salvo: siguen guardados en esta computadora y en tu Drive.</p>${off.replace('iniciar sesión','verificar')}
       <div class="pcgb"><button type="button" class="btn big" data-a="pc-verif"${on&&!gbusy?'':' disabled'}>${ic('refresh',20)}<span>${gbusy?'Verificando…':'Verificar ahora'}</span></button>
-        ${K.connected?`<button type="button" class="btn txt" data-a="pc-otra"${on&&K.configured?'':' disabled'}>Usar otra cuenta de Google</button>`:''}</div>`;
+        ${K.connected?`<button type="button" class="btn txt" data-a="pc-otra"${on&&K.configured?'':' disabled'}>Usar otra cuenta de Google</button>`:''}</div>${err}${salir}`;
   }else if(est==='otra'){
     h='Cuenta incorrecta';
     body=`<p>Esta computadora tiene la versión para PC de la cuenta <b>${esc(C.maskMail(P&&P.email))}</b>, pero entraste como <b>${esc(K.email)}</b>.</p>
-      <p>Ingresa la cuenta de Google ${via}.</p>${off}
-      <div class="pcgb">${gb('pc-otra','Usar otra cuenta de Google')}${gn}${u?`<a class="btn big ghost" href="${esc(u)}" target="_blank" rel="noopener">${ic('share',19)}Pedir mi código ${esc(aWho)}</a>`:''}</div>`;
+      <p>Ingresa la cuenta de Google ${via}.</p>${off}${err}
+      <div class="pcgb">${gb('pc-otra','Usar otra cuenta de Google')}${gn}</div>
+      <p class="pcgm">¿Esta cuenta (<b>${esc(K.email)}</b>) no tiene la versión para PC? Consíguela para esta cuenta:</p>
+      <div class="pcgb sec">${buy}</div>${salir}`;
   }else if(est==='sin'){
     h='Esta cuenta aún no tiene la versión para PC';
     body=`<p>La cuenta <b>${esc(K.email)}</b> no tiene la versión para PC.</p>
       <p>Ingresa la cuenta de Google ${via}.${cod?'':' Si ya la compraste con esta cuenta, espera unos segundos y toca «Ya compré, revisar».'}</p>
-      ${cod?`<p class="pcgm">¿Aún no la tienes? Pídele tu código de activación ${esc(aWho)} (<b>${esc(C.billing.precio('pc'))}</b> pago único, incluye ${esc(mt)} de Pro).</p>`:''}${off}
+      ${cod?`<p class="pcgm">¿Aún no la tienes? Pídele tu código de activación ${esc(aWho)} (<b>${esc(C.billing.precio('pc'))}</b> pago único, incluye ${esc(mt)} de Pro).</p>`:''}${off}${err}
       <div class="pcgb">${gb('pc-otra','Usar otra cuenta de Google')}${gn}
-        <button type="button" class="btn big ghost" data-a="pc-verif"${on&&!gbusy?'':' disabled'}>${ic('refresh',20)}${cod?'Ya la activé, revisar':'Ya compré, revisar'}</button>${buy}</div>`;
+        <button type="button" class="btn big ghost" data-a="pc-verif"${on&&!gbusy?'':' disabled'}>${ic('refresh',20)}${cod?'Ya la activé, revisar':'Ya compré, revisar'}</button>${buy}</div>${salir}`;
   }else{
     /* dos pasos, en orden: 1) instalar como aplicación (un clic: ícono propio y su ventana)  2) iniciar sesión con Google (se activa sola) */
     h='Versión para PC';const ya=instalada(),ff=/firefox/i.test(navigator.userAgent),pend=codigoPend();
@@ -9454,9 +9401,9 @@ function pcGateHTML(){
       :`<i>En Chrome o Edge: haz clic en el ícono de instalar de la barra de direcciones (o menú ⋮ → <b>Instalar Cuadre</b>). Queda con su propio ícono.</i>`;
     body=`${pend?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>Tu código de activación ya está aquí</b><i>Se activa solo al iniciar sesión con Google.</i></div></div>`:''}
       <ol class="lst pcst"><li class="${ya?'done':''}"><span class="lsn">${ya?ic('check',15,'',3):'1'}</span><div><b>Instala Cuadre en esta computadora</b>${paso1}</div></li>
-      <li><span class="lsn">2</span><div><b>Inicia sesión con tu cuenta de Google</b><i>La misma con la que compraste o activaste la versión para PC.${pend?' Tu versión para PC se activa sola.':''}</i>${off}<div class="pcgb">${gb('pc-entrar','Iniciar sesión con Google',ya||!installEv?'gbtn':'gbtn ghost')}${gn}</div></div></li></ol>
+      <li><span class="lsn">2</span><div><b>Inicia sesión con tu cuenta de Google</b><i>La misma con la que compraste o activaste la versión para PC.${pend?' Tu versión para PC se activa sola.':''}</i>${off}${err}<div class="pcgb">${gb('pc-entrar','Iniciar sesión con Google',ya||!installEv?'gbtn':'gbtn ghost')}${gn}</div></div></li></ol>
       ${pend?'':`<p class="pcgp">¿Aún no la tienes? <b>${esc(C.billing.precio('pc'))}</b> pago único · incluye ${esc(mt)} de Pro · se activa con tu correo de Google</p>
-      <div class="pcgb sec">${buy}</div>`}`;      /* llegó con el enlace del vendedor: ya compró, no se le ofrece comprar */
+      <div class="pcgb sec">${buy}</div>`}${hayDatos?salir:''}`;      /* llegó con el enlace del vendedor: ya compró, no se le ofrece comprar */
   }
   /* sin negocio creado todavía (primera visita en la PC): la marca de Cuadre, no «Mi negocio» */
   const marca=C.state.nombre?C.brandHTML({size:40}):`<span class="c-brand"><span class="mark mi" role="img" aria-label="Cuadre"></span><span class="c-name">Cuadre</span></span>`;
@@ -9586,7 +9533,8 @@ function masBody(id,s){
     ${gvSec()}
     <div class="sep"></div>
     ${st.pin?`<div class="sw"><div class="swt"><b>Clave de la app activada</b><i>Se pide al abrir la app y al volver a ella.</i></div>${ic('lock',22,'okic')}</div>
-      <div class="fl"><span>Pedir la clave</span>${seg(C.LOCKS.map(l=>[l[0],l[1].replace(' de la app','')]),st.lockMin,'lockmin','small')}</div>
+      <div class="fl"><span>Cuándo pedir la clave</span><div class="lkopts" role="radiogroup" aria-label="Cuándo pedir la clave">${C.LOCKS.map(l=>`<button type="button" class="lko ${+st.lockMin===l[0]?'on':''}" role="radio" aria-checked="${+st.lockMin===l[0]}" data-a="lockmin" data-v="${l[0]}"><span class="rdo"></span><span>${esc(l[1])}${l[0]===-1?'<i>Se pide al abrir la app. Si sales y vuelves sin cerrarla, sigues donde estabas.</i>':''}</span></button>`).join('')}</div>
+        <p class="fine l">${+st.lockMin===-1?'Con la app abierta en segundo plano no se vuelve a pedir la clave. Si quieres cerrarla tú, toca «Bloquear ahora».':'Cuando se bloquea, lo que tenías a medias (una cotización, una venta) se conserva y sigues al desbloquear.'}</p></div>
       ${C.bio.ok||C.bio.on()?tg('bio-toggle',C.bio.on(),'Entrar con '+C.bio.nom(),'Usa el sensor del equipo (o su bloqueo) en lugar de escribir la clave. La clave sigue sirviendo.'):''}
       <div class="two" style="margin-top:12px"><button type="button" class="btn ghost sm" data-a="pin-change">Cambiar clave</button><button type="button" class="btn ghost sm" data-a="lock">${ic('lock',16)}Bloquear ahora</button></div>
       <div class="sw" style="margin-top:12px"><div class="swt"><b>${C.pin.hasRec()?'Tienes una clave de recuperación':'Sin clave de recuperación'}</b><i>${C.cloud.info().connected?'Si olvidas tu clave, entras confirmando con tu cuenta de Google'+(C.pin.hasRec()?' o con esta clave.':'. Crea también una clave de recuperación por si acaso.'):C.pin.hasRec()?'Te permite entrar si olvidas tu clave. Conecta tu cuenta de Google para tener otra forma.':'Sin ella ni una cuenta de Google conectada, olvidar la clave obliga a borrar los datos del teléfono.'}</i></div></div>
@@ -9755,6 +9703,11 @@ function cierreAtajoHTML(){
   return `<button type="button" class="al cj" data-a="cierre-open"${homeRef==null?'':` data-t="${t}"`}><span class="alic">${ic('doc',22,'',2.1)}</span><span class="alm"><b>Cierre de caja ${homeRef==null?'de hoy':dn==='Ayer'?'de ayer':'del '+esc(dn)}</b><i>Resumen imprimible: ventas, costo y ganancia</i></span>${pro?`<span class="alg">Ver${ic('chev',16,'',2.4)}</span>`:PRO}</button>`;
 }
 
+/* Campos de clave (números): NO son de tipo «contraseña» —Google ofrecía «¿Guardar contraseña?» y el aviso hacía perder lo escrito—.
+   Son de texto numérico tapado con puntos (CSS .pinf); si el navegador no sabe tapar así, se usa el tipo contraseña. */
+const PINATTR=(()=>{let t='password';try{if(window.CSS&&CSS.supports&&CSS.supports('-webkit-text-security','disc'))t='text'}catch(e){}
+  return t==='text'?'type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-form-type="other"'
+    :'type="password" inputmode="numeric" autocomplete="off"'})();
 
 /* =====================================================================
    Hojas (sheets)
@@ -9794,7 +9747,7 @@ function prodSheet(s,i){
   const kr=K.length?K.map(r=>`<div class="ktr"><span>${esc(r.fecha)}</span><span class="tp ${r.tipo.toLowerCase()}">${esc(r.tipo)}</span><span class="in ${r.ent?'':'z'}">${r.ent?'+'+num(r.ent):'-'}</span><span class="out ${r.sal?'':'z'}">${r.sal?'-'+num(r.sal):'-'}</span><b>${num(r.saldo)}</b></div>`).join(''):`<p class="fine l">Todavía no hay movimientos.</p>`;
   const codeTxt=p.barras||p.cod,qr=C.qrSVG(p.cod,{size:80}),bar=C.barSVG(codeTxt,{w:150,h:54});
   const arch=p.activo===false;
-  const fotoP=arch?'':`<div class="fto"><span class="ftp">${thumb(p,68)}</span><div class="ftb"><b>Foto</b>${p.imgAuto&&p.img?`<i>Foto automática: si no es la correcta, cámbiala o quítala.</i>`:''}<div class="ftr"><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="cam">${ic('cam',16)}${p.img?'Cambiar':'Tomar foto'}</button><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="gal">${ic('image',16)}Galería</button><button type="button" class="btn ghost sm" data-a="fa-open" data-t="prod" data-id="${p.id}">${ic('spark',16)}Buscar foto</button>${p.img?`<button type="button" class="btn txt dng" data-a="ppfoto" data-id="${p.id}" data-v="del">Quitar</button>`:''}</div></div></div>`;
+  const fotoP=arch?'':`<div class="fto"><span class="ftp">${thumb(p,68)}</span><div class="ftb"><b>Foto</b><div class="ftr"><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="cam">${ic('cam',16)}${p.img?'Cambiar':'Tomar foto'}</button><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="gal">${ic('image',16)}Galería</button><button type="button" class="btn ghost sm" data-a="fa-open" data-t="prod" data-id="${p.id}">${ic('spark',16)}Buscar foto</button>${p.img?`<button type="button" class="btn txt dng" data-a="ppfoto" data-id="${p.id}" data-v="del">Quitar</button>`:''}</div></div></div>`;
   const body=`${fotoP}<section class="pst"><div><span class="lbl">En bodega</span><b class="stn">${num(p.stock)} <small>${UL(p.u)}</small></b></div><div data-r="pbadge">${arch?'<span class="badge">Archivado</span>':statusBadge(p)}</div></section>
     ${arch?`<button type="button" class="btn big" data-a="parch" data-id="${p.id}">Volver a mostrar este producto</button>`:`<div class="act3"><button type="button" class="btn sm" data-a="pv-sell" data-id="${p.id}">${ic('cart',17)}Vender</button><button type="button" class="btn ghost sm" data-a="pv-in" data-id="${p.id}">${ic('entrada',17)}Ingreso</button><button type="button" class="btn ghost sm" data-a="pv-out" data-id="${p.id}">${ic('salida',17)}Salida</button></div>`}
     ${arch?'':`<section class="blk"><h4>Aviso de mínimo</h4><div class="minr"><div class="stp"><button type="button" data-a="minstep" data-d="-1" aria-label="Bajar el mínimo">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="pmin" aria-label="Mínimo" value="${esc(pd.min)}"><button type="button" data-a="minstep" data-d="1" aria-label="Subir el mínimo">${ic('plus',18,'',2.4)}</button></div><span class="minu">${UL(p.u)}</span></div>
@@ -9812,7 +9765,8 @@ function prodSheet(s,i){
     <section class="blk"><h4>Kardex</h4><div class="kt"><div class="ktr kth"><span>Fecha</span><span>Tipo</span><span>Entra</span><span>Sale</span><span>Saldo</span></div>${kr}</div>
       <div class="act3"><button type="button" class="btn ghost sm" data-a="kpdf" data-id="${p.id}">${ic('doc',17)}PDF</button><button type="button" class="btn ghost sm" data-a="kexcel" data-id="${p.id}">${ic('excel',17)}Excel${pro?'':PRO}</button><button type="button" class="btn ghost sm" data-a="kshare" data-id="${p.id}">${ic('share',17)}Texto</button></div>
       ${C.movs(9,{pid:p.id}).length>8?`<button type="button" class="btn txt" data-a="khist" data-id="${p.id}">Ver todos los movimientos${ic('chev',14,'',2.4)}</button>`:''}</section>
-    ${arch?'':`<button type="button" class="btn txt dng" data-a="parch" data-id="${p.id}" data-off="1">${ic('trash',16)}Archivar producto (no se borra su historial)</button>`}`;
+    ${arch?'':`<button type="button" class="btn txt dng" data-a="parch" data-id="${p.id}" data-off="1">${ic('trash',16)}Archivar producto (no se borra su historial)</button>`}
+    <button type="button" class="btn txt dng" data-a="pdel" data-id="${p.id}">${ic('trash',16)}Borrar para siempre</button>`;
   return frame(s,i,p.nom,`${esc(p.cod)}${p.marca?' · '+esc(p.marca):''}${p.cat?' · '+esc(p.cat):''}`,body,arch?'':pdSaveBtn(p),'tall');
 }
 /* se cierra la ficha con cambios sin guardar: se pregunta */
@@ -9828,10 +9782,10 @@ function pdirtySheet(s,i){
 function pmenuSheet(s,i){
   const p=C.prod(s.id);if(!p)return '';
   const row=(w,ico,t,d,cls)=>`<button type="button" class="mr ${cls||''}" data-a="pm-go" data-do="${w}" data-id="${p.id}"><span class="mri">${ic(ico,19)}</span><span class="mrt"><b>${t}</b>${d?`<i>${d}</i>`:''}</span>${ic('chev',17)}</button>`;
-  const body=p.activo===false?`${row('open','box','Ver el producto','Historial y kardex')}${row('unarch','refresh','Volver a mostrarlo','Vuelve a la lista de Productos')}`
+  const body=p.activo===false?`${row('open','box','Ver el producto','Historial y kardex')}${row('unarch','refresh','Volver a mostrarlo','Vuelve a la lista de Productos')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`
     :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · ${num(p.stock)} ${UL(p.u)} en bodega</i></span></div>
     ${row('sell','cart','Vender','Registra una venta de este producto')}${row('in','entrada','Ingreso','Suma stock: llegó mercadería')}${row('out','salida','Salida sin cobrar','Merma, regalo o consumo')}
-    ${row('open','box','Ver el producto','Historial, kardex y códigos')}${row('edit','edit','Editar datos y foto','Nombre, precio, mínimo…')}${row('adj','refresh','Corregir stock','Cuando el conteo no coincide')}${row('arch','trash','Archivar','No se borra su historial','dng')}`;
+    ${row('open','box','Ver el producto','Historial, kardex y códigos')}${row('edit','edit','Editar datos y foto','Nombre, precio, mínimo…')}${row('adj','refresh','Corregir stock','Cuando el conteo no coincide')}${row('arch','trash','Archivar','Se oculta, no se borra su historial','dng')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`;
   return frame(s,i,'Acciones','',body,'','pros');
 }
 function catChips(used,sug,cur){
@@ -9956,7 +9910,7 @@ function proSheet(s,i){
   return frame(s,i,'Función Pro','',body,can?`<button type="button" class="btn big" data-a="proyes">Probar ${C.PLAN.trialDays} días gratis</button><button type="button" class="btn big ghost" data-a="prono">Ahora no</button>`
     :`<button type="button" class="btn big" data-a="quieropro">Quiero Pro</button><button type="button" class="btn big ghost" data-a="prono">Ahora no</button>`,'pros');
 }
-function paperHTML(q){
+function paperHTML(q,prev){
   const T=C.quoteTotals(q),pro=C.isPro(),st=C.state,I=st.info,L=st.logo;
   const dat=[I.telefono,I.email,[I.direccion,I.ciudad].filter(Boolean).join(', '),I.idFiscal?C.idFiscalNom()+' '+I.idFiscal:''].filter(Boolean).map(esc).join(' · ');
   const head=pro?`<div class="pph">${L?`<img class="ppl" src="${L.src}" alt="">`:''}<div class="ppd"><b>${esc(st.nombre)}</b>${dat?`<span>${dat}</span>`:''}</div></div>`
@@ -9969,7 +9923,7 @@ function paperHTML(q){
     <table><thead><tr>${fotos?'<th class="pim"></th>':''}<th>Producto</th><th class="r">Cant.</th><th class="r">Precio</th>${hasDesc?'<th class="r">Desc.</th>':''}<th class="r">Total</th></tr></thead><tbody>${rows}</tbody></table>
     <dl class="ptot"><div><dt>Subtotal</dt><dd>${C.money(T.gross)}</dd></div>${T.dtot>0?`<div><dt>Descuento${q.descPct&&!hasDesc?' '+num(q.descPct)+' %':''}</dt><dd>-${C.money(T.dtot)}</dd></div>`:''}${q.ivaPct?`<div><dt>${esc(st.taxName)} ${num(q.ivaPct)} %${T.incl?' (incluido)':''}</dt><dd>${C.money(T.iva)}</dd></div>`:''}<div class="g"><dt>Total</dt><dd>${C.money(T.total)}</dd></div></dl>
     ${q.notas?`<p class="pnt">${esc(q.notas)}</p>`:''}
-    ${pro&&st.firma?`<div class="pfirma"><img src="${st.firma.src}" alt=""><span>Firma autorizada</span></div>`:''}
+    ${pro&&st.firma?`<div class="pfirma"><img src="${st.firma.src}" alt=""><span>Firma autorizada</span></div>`:''}${pro&&!st.firma&&prev?`<button type="button" class="pfadd" data-a="qfirma">${ic('edit',15)}<span>Agrega tu firma o sello<i>Sale aquí, al pie del PDF</i></span></button>`:''}
     <p class="pfoot">${I.pie?esc(I.pie)+'<br>':''}Cotización informativa · No es una factura.${pro?'':'<br><i>Hecho con Cuadre</i>'}</p></div>`;
 }
 function cfmSheet(s,i){
@@ -9990,13 +9944,14 @@ function negocioSheet(s,i){
 }
 /* confirmar como DUEÑO (huella / Windows Hello o clave del dueño) para ver ganancias y costos (o para quitar la protección) */
 function gvSheet(s,i){
-  const bio=C.bio.gvOn(),off=s.off,own=!!C.state.dueno,quien=own?'clave del dueño':'clave';
-  const body=`<p class="fine">${off?'Para quitar la protección confirma que eres tú, el dueño.':'Los costos y las ganancias están protegidos. Confirma que eres el dueño: se ven durante '+C.GV_MIN+' minutos y luego se vuelven a ocultar solos.'}</p>
+  /* s.app: confirmar con la huella o la clave con la que se abre la app (para algo que no se puede deshacer, como borrar un producto; NO abre las ganancias) */
+  const app=!!s.app,bio=app?C.bio.on():C.bio.gvOn(),off=s.off,own=!app&&!!C.state.dueno,quien=own?'clave del dueño':'clave';
+  const body=`<p class="fine">${app?esc(s.txt||'Confirma que eres tú.'):off?'Para quitar la protección confirma que eres tú, el dueño.':s.txt?esc(s.txt)+' Usa tu huella o tu clave del dueño.':'Los costos y las ganancias están protegidos. Confirma que eres el dueño: se ven durante '+C.GV_MIN+' minutos y luego se vuelven a ocultar solos.'}</p>
     ${bio?`<button type="button" class="btn big ghost" data-a="gv-bio">${ic('finger',22)}${C.bio.btn()}</button>`:''}
-    <label class="fl"><span>${bio?'O escribe tu '+quien:'Tu '+quien}</span><input class="fld pinf" type="password" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="${C.gvLen()} números" data-f="gvpin"></label>
+    <label class="fl"><span>${bio?'O escribe tu '+quien:'Tu '+quien}</span><input class="fld pinf" ${PINATTR} maxlength="6" placeholder="${app?C.pin.len():C.gvLen()} números" data-f="gvpin"></label>
     <p class="err" data-r="gverr"${s.err?'':' hidden'}>${esc(s.err||'')}</p>
     ${own?`<button type="button" class="btn txt" data-a="gv-forgot"${s.busy?' disabled':''}>${s.busy?'Esperando a Google…':'Olvidé mi clave del dueño'}</button>`:''}`;
-  return frame(s,i,off?'Quitar la protección':'Ver ganancias y costos','',body,`<button type="button" class="btn big ${off?'dngb':''}" data-a="gv-pin">${off?'Quitar la protección':'Ver'}</button>`,'pros');
+  return frame(s,i,s.title||(off?'Quitar la protección':'Ver ganancias y costos'),'',body,`<button type="button" class="btn big ${off||s.danger?'dngb':''}" data-a="gv-pin">${s.btn||(off?'Quitar la protección':'Ver')}</button>`,'pros');
 }
 /* pedido de «Olvidé mi clave del dueño» en espera: dice cuándo se podrá crear la nueva y deja cancelar */
 function gvwaitSheet(s,i){
@@ -10014,7 +9969,7 @@ function gvwaitSheet(s,i){
 function gvsetSheet(s,i){
   const mode=s.mode||'set',nom=C.bio.nom(),K=C.cloud.info(),hello=C.bio.ok;
   const t=mode==='change'?'Cambiar la clave del dueño':mode==='reset'?'Nueva clave del dueño':'Proteger mis ganancias';
-  const f=(k,l,ph)=>`<label class="fl"><span>${l}</span><input class="fld pinf" type="password" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="${ph||'4 a 6 números'}" data-f="${k}" value="${esc(s[k]||'')}"></label>`;
+  const f=(k,l,ph)=>`<label class="fl"><span>${l}</span><input class="fld pinf" ${PINATTR} maxlength="6" placeholder="${ph||'4 a 6 números'}" data-f="${k}" value="${esc(s[k]||'')}"></label>`;
   const intro=mode==='set'?`<p class="fine">Los costos y las ganancias quedan <b>ocultos para quien use la app</b>. Solo tú los ves, confirmando con ${hello?nom+' o con ':''}tu <b>clave del dueño</b>.</p>
       <p class="fine"><b>Crea una clave NUEVA</b> (4 a 6 números), solo para ver tus ganancias. <b>No es la clave con la que abres la app</b> (esa se queda como está): tiene que ser <b>diferente</b>, para que quien vende por ti no pueda ver lo que ganas. Escríbela dos veces y toca «Activar protección».</p>`
     :mode==='reset'?`<p class="fine">Confirmaste con tu cuenta de Google. Elige una clave del dueño nueva (4 a 6 números), distinta a la que abre la app.</p>`
@@ -10050,28 +10005,12 @@ function etiqSheet(s,i){
     <p class="fine l">Al imprimir elige <b>tamaño real (100 %)</b>, no «ajustar a la página», para que las medidas salgan exactas.</p>`;
   return frame(s,i,'Etiquetas con código','',body,`<button type="button" class="btn big" data-a="etiq-go" data-r="etgo">${ic('print',19)}Crear PDF · <span data-r="etn">${n}</span> ${n===1?'etiqueta':'etiquetas'}</button>`,'pros');
 }
-/* foto del producto (gratis para todos): «Buscar en Google» → compartir la imagen a Cuadre → recortar → Aceptar. Con Pro hay además la búsqueda automática (opcional). */
+/* foto del producto (gratis para todos): «Buscar en Google» → compartir la imagen a Cuadre → recortar → Aceptar. No hay búsqueda automática. */
 function fotoaSheet(s,i){
   const q=s.q||{},nombre=String(q.nom||'').trim(),que=nombre?'«'+esc(nombre)+'»':'este producto';
-  const gBtn=(ghost)=>`<button type="button" class="btn ${ghost?'ghost':''} big" data-a="fa-google">${ic('globe',18)}Buscar en Google</button>`;
   const guia=`<ol class="fgd"><li>Se abre Google Imágenes. Elige la foto que te guste.</li><li>Mantén pulsada la imagen y toca <b>Compartir imagen</b> → <b>Cuadre</b>. (O haz una captura de pantalla y compártela a Cuadre.)</li><li>Aquí se recorta sola; ajusta si quieres y toca <b>Aceptar</b>.</li></ol>`;
-  let body,foot;
-  if(s.st==='google'){
-    body=`<div class="fal"><span class="fai">${ic('globe',26)}</span><p>Busca la foto de ${que} en Google.</p><i>Es gratis. Cuadre no envía nada a Google más que el nombre que buscas.</i></div>${guia}`;
-    foot=gBtn(false)+(C.isPro()?`<button type="button" class="btn ghost big" data-a="fa-auto">${ic('spark',18)}Probar la búsqueda automática</button>`:'')}
-  else if(s.st==='buscando'){body=`<div class="fal" role="status"><span class="fasp"></span><p>Buscando fotos de ${que}…</p><i>Puede tardar unos segundos.</i></div>`;foot=''}
-  else if(s.st==='error'){
-    body=`<div class="fal"><span class="fai">${ic(s.falta?'info':'globe',26)}</span><p>${esc(s.msg||'No pude buscar ahora.')}</p></div>${s.falta?'':guia}`;
-    foot=s.falta?'':gBtn(false)}
-  else if(!s.res.length){
-    body=`<div class="fal"><span class="fai">${ic('image',26)}</span><p>No encontré una foto segura de ${que}.</p><i>No pongo una foto dudosa. Búscala tú en Google y compártela a Cuadre: así queda exactamente la que quieres.</i></div>${guia}`;
-    foot=gBtn(false)}
-  else{
-    body=`<p class="fine">${s.res.some(x=>x.exacta)?'La primera coincide con el código de barras. ':''}Toca la que se parezca a tu producto.</p>
-    <div class="fag">${s.res.map((x,n)=>`<button type="button" class="fac" data-a="fa-pick" data-n="${n}" aria-label="Usar esta foto: ${esc(x.tit)}"><img src="${x.img}" alt=""><span>${esc(x.exacta?'Por código':x.fuente)}</span></button>`).join('')}</div>
-    <p class="fine l">¿No es ninguna? Búscala en Google y compártela a Cuadre.</p>`;
-    foot=gBtn(true)}
-  return frame(s,i,'Foto del producto','',body+(s.st==='buscando'?'':`<p class="fine l">Las fotos son de sus autores; úsalas como referencia de tu producto.</p>`),foot,'pros');
+  const body=`<div class="fal"><span class="fai">${ic('globe',26)}</span><p>Busca la foto de ${que} en Google.</p><i>Es gratis. Cuadre no envía nada a Google más que el nombre que buscas.</i></div>${guia}<p class="fine l">Las fotos son de sus autores; úsalas como referencia de tu producto.</p>`;
+  return frame(s,i,'Foto del producto','',body,`<button type="button" class="btn big" data-a="fa-google">${ic('globe',18)}Buscar en Google</button>`,'pros');
 }
 /* recorte de la foto compartida: cuadro que se mueve y se estira; «Aceptar» la pone en el producto */
 const fcrStyle=b=>`left:${(b.x*100).toFixed(3)}%;top:${(b.y*100).toFixed(3)}%;width:${(b.w*100).toFixed(3)}%;height:${(b.h*100).toFixed(3)}%`;
@@ -10084,7 +10023,7 @@ function fcropSheet(s,i){
 function pinSheet(s,i){
   const has=C.pin.has(),mode=s.mode;
   const t=mode==='remove'?'Quitar la clave':mode==='change'?'Cambiar la clave':mode==='rec'?(C.pin.hasRec()?'Nueva clave de recuperación':'Clave de recuperación'):'Poner una clave';
-  const f=(k,l,ph)=>`<label class="fl"><span>${l}</span><input class="fld pinf" type="password" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="${ph||'4 a 6 números'}" data-f="${k}" value="${esc(s[k]||'')}"></label>`;
+  const f=(k,l,ph)=>`<label class="fl"><span>${l}</span><input class="fld pinf" ${PINATTR} maxlength="6" placeholder="${ph||'4 a 6 números'}" data-f="${k}" value="${esc(s[k]||'')}"></label>`;
   const body=`${mode==='set'?'<p class="fine">Elige una clave de 4 a 6 números. Te la pediremos al abrir la app y al volver a ella. Al guardarla te daré una <b>clave de recuperación</b> para que puedas volver a entrar si la olvidas; con tu cuenta de Google conectada también podrás recuperarla sin perder nada.</p>':''}
     ${mode==='rec'?`<p class="fine">${C.pin.hasRec()?'Se crea una clave de recuperación nueva y <b>la anterior deja de servir</b>.':'Es una clave larga que se muestra una sola vez. Guárdala fuera del teléfono: te sirve si olvidas tu clave.'} Escribe tu clave actual para continuar.</p>`:''}
     ${mode!=='set'?f('pcur','Clave actual'):''}${mode==='set'||mode==='change'?f('pnew','Clave nueva')+f('prep','Repite la clave nueva','Repite los números'):''}
@@ -10298,7 +10237,7 @@ function sheetOf(s,i){
     case 'ajuste':return ajusteSheet(s,i);
     case 'reg':return regSheet(s,i);
     case 'share':return shareSheet(s,i);
-    case 'qprev':return frame(s,i,'Vista previa','',paperHTML(C.quoteClean(qd)),`<button type="button" class="btn big" data-a="qshare">${ic('share',19)}Compartir</button><button type="button" class="btn big ghost" data-a="qpdf">${ic('doc',19)}Abrir PDF</button>`,'tall');
+    case 'qprev':return frame(s,i,'Vista previa','',paperHTML(C.quoteClean(qd),true),`<button type="button" class="btn big" data-a="qshare">${ic(C.isPro()?'send':'share',19)}Compartir</button><button type="button" class="btn big ghost" data-a="qpdf">${ic('doc',19)}Abrir PDF</button>`,'tall');
     case 'qpick':return qpickSheet(s,i);
     case 'qcli':return qd?qcliSheet(s,i):'';
     case 'qline':return qd?qlineSheet(s,i):'';
@@ -10342,7 +10281,7 @@ function sheetOf(s,i){
   }
   return '';
 }
-function pushSheet(s){if(closing)return;s.fresh=true;sheets.push(s);render();
+function pushSheet(s){if(closing)return;s.fresh=true;if(s.k==='pcplan'||s.k==='buy'||s.k==='lic')pcMsg='';sheets.push(s);render();      // abrir «tengo un código / comprar» deja atrás el aviso viejo de la entrada con Google
   /* en la computadora, el cursor queda donde se escribe (V → buscar el producto, N → nombre del producto nuevo) */
   const fk={reg:'regq',add:'apn',qpick:'qpq'}[s.k];
   if(fk&&window.matchMedia&&matchMedia(PC_Q).matches)later(()=>{const el=$('[data-f="'+fk+'"]',mainEl);if(el&&sheets[sheets.length-1]===s)try{el.focus({preventScroll:true})}catch(e){}},60)}
@@ -10630,7 +10569,7 @@ function qmenuSheet(s,i){
   const T=C.quoteTotals(q),nom=q.cliente||'Sin cliente';
   const body=`<div class="pmh">${thumb({nom},52)}<span><b>${esc(nom)}</b><i>${esc(q.num)} · ${mk(C.money(T.total))}</i></span></div>
     <div class="fl"><span>Estado</span>${seg(C.QESTADOS.map(e=>[e,e]),q.estado,'qm-est','small')}</div>
-    ${row('open','edit','Abrir y editar','Cambia productos, precios y notas')}${row('send','send','Enviar al cliente','Por WhatsApp y correo, con un toque')}${row('share','share','Compartir','PDF o texto por WhatsApp, correo…')}${row('dup','copy','Duplicar','Una copia nueva como borrador')}${row('del','trash','Eliminar','Se borra para siempre','dng')}`;
+    ${row('open','edit','Abrir y editar','Cambia productos, precios y notas')}${C.isPro()?row('send','send','Enviar el PDF','Se comparte con el PDF adjunto: WhatsApp, correo…'):row('send','send','Enviar al cliente','Por WhatsApp y correo, con un toque')+row('share','share','Compartir','PDF o texto por WhatsApp, correo…')}${row('dup','copy','Duplicar','Una copia nueva como borrador')}${row('del','trash','Eliminar','Se borra para siempre','dng')}`;
   return frame(s,i,'Cotización','',body,'','pros');
 }
 /* Resultado de «Enviar»: el correo sale solo y WhatsApp se abre con el mensaje; aquí queda lo que pasó y lo que falta (si algo falló, cómo seguir con un toque) */
@@ -10886,7 +10825,8 @@ function lockHTML(){
 }
 function syncLock(){
   const on=C.locked&&C.state.step==='app';
-  if(on&&!lockEl.firstChild){lk={val:'',busy:false,msg:'',forgot:false,bio:false};closeScan(true);sheets=[];page=null;lockEl.innerHTML=lockHTML();if(C.bio.on())later(lockBio,350)}
+  /* Al bloquear solo se apaga la cámara. Lo que estaba a medias (una cotización, una venta, un producto) NO se borra: la pantalla ya está escondida y, al desbloquear, la persona sigue donde estaba. */
+  if(on&&!lockEl.firstChild){lk={val:'',busy:false,msg:'',forgot:false,bio:false};closeScan(true);lockEl.innerHTML=lockHTML();if(C.bio.on())later(lockBio,350)}
   else if(!on&&lockEl.firstChild){lockEl.innerHTML='';lk={val:'',busy:false,msg:'',forgot:false,bio:false}}
 }
 function patchLock(){
@@ -10957,7 +10897,7 @@ function qedHTML(){
   const cd=[q.tel,q.email].filter(Boolean).join(' · ');
   return `<div class="pov qed ${fresh?'in':''}" role="dialog" aria-modal="true" aria-label="Cotización" style="z-index:40">
     <header class="stop lt"><button type="button" class="ib" data-a="qback" aria-label="Volver">${ic('back',22)}</button><div class="qt"><h2>${q.id==null?'Nueva cotización':'Cotización'}</h2><span class="qsub">${esc(q.num)}<button type="button" class="est estb ${estCls(q.estado)}" data-a="qopt" aria-label="Estado: ${esc(q.estado)}. Tocar para cambiarlo">${esc(q.estado)}</button></span></div>
-      ${q.id!=null?`<button type="button" class="ib" data-a="qdel" aria-label="Eliminar la cotización">${ic('trash',21)}</button>`:''}<button type="button" class="ib" data-a="qshare" aria-label="Compartir o crear el PDF">${ic('doc',21)}</button><button type="button" class="ib" data-a="qopt" aria-label="Más opciones"><span class="vdots">${ic('more',21)}</span></button></header>
+      ${q.id!=null?`<button type="button" class="ib" data-a="qdel" aria-label="Eliminar la cotización">${ic('trash',21)}</button>`:''}<button type="button" class="ib" data-a="qshare" aria-label="${C.isPro()?'Enviar el PDF':'Compartir o crear el PDF'}">${ic(C.isPro()?'send':'doc',21)}</button><button type="button" class="ib" data-a="qopt" aria-label="Más opciones"><span class="vdots">${ic('more',21)}</span></button></header>
     <div class="qbody scroll" data-sk="qed">
       <section class="card qcc"><button type="button" class="cecb" data-a="qcli-open"><span class="qcav">${ic('user',22)}</span><span class="qct"><i>Cliente</i><b class="${q.cliente?'':'ph'}" data-r="qcn">${esc(q.cliente||'Agregar cliente')}</b>${cd?`<em>${esc(cd)}</em>`:''}</span>${ic('chev',18)}</button></section>
       <section class="card qps"><div class="ch"><h3>Productos y servicios</h3><button type="button" class="btn sm" data-a="qadd">${ic('plus',16,'',2.4)}Agregar</button></div>
@@ -11031,7 +10971,7 @@ function qoptSheet(s,i){
   const body=`<div class="fl"><span>Estado</span>${seg(C.QESTADOS.map(e=>[e,e]),q.estado,'qest','small')}</div><p class="fine l">${esc(C.QSTAT(q.estado))}. Es solo para tu control.</p>
     ${swRow('qfotos-toggle',!!q.fotos&&pro,'Fotos de los productos en el PDF',foto?'La foto de cada producto sale junto al ítem.':'Ningún producto de esta cotización tiene foto todavía (se agrega al editar el producto).',pro?'':PRO)}
     ${row('qfirma','edit','Firma o sello del negocio'+(pro?'':PRO),pro?(C.state.firma?'Sale al pie de la cotización en PDF. Tocar para cambiarla':'Agrega tu firma o sello: sale al pie de la cotización en PDF'):'Con Pro tu firma o sello sale al pie de la cotización')}
-    ${row('qtpl-save','copy','Guardar como plantilla'+(pro?'':PRO),'Para repetir esta cotización con un toque')}${row('qmsg-open','edit','Mensaje para el cliente'+(pro?'':PRO),pro?(C.envioTpl().propio?'Estás usando tu propio mensaje':'El saludo que lleva «Enviar» por WhatsApp y correo'):'Con Pro escribes tu propio saludo')}${row('qshare','share','Compartir o crear el PDF','Por WhatsApp, correo o en PDF')}${q.id!=null?row('qdel','trash','Eliminar esta cotización','Se borra para siempre','dng'):''}`;
+    ${row('qtpl-save','copy','Guardar como plantilla'+(pro?'':PRO),'Para repetir esta cotización con un toque')}${row('qmsg-open','edit','Mensaje para el cliente'+(pro?'':PRO),pro?(C.envioTpl().propio?'Estás usando tu propio mensaje':'El saludo que lleva «Enviar» por WhatsApp y correo'):'Con Pro escribes tu propio saludo')}${pro?row('qshare','send','Enviar el PDF','Se guarda y se comparte con el PDF adjunto: WhatsApp, correo…')+row('qpdf','doc','Solo ver el PDF','Para revisarlo o descargarlo'):row('qshare','share','Compartir o crear el PDF','Por WhatsApp, correo o en PDF')}${q.id!=null?row('qdel','trash','Eliminar esta cotización','Se borra para siempre','dng'):''}`;
   return frame(s,i,'Opciones de la cotización','',body,`<button type="button" class="btn big" data-a="close">Listo</button>`,'pros');
 }
 
@@ -11092,15 +11032,27 @@ function overlaysHTML(){
   return h+sheets.map(sheetOf).join('');
 }
 let resetSk=null;
+/* Lo que la persona está escribiendo NUNCA se pierde porque la pantalla se dibuje de nuevo (revisión de la nube, reloj, aviso…).
+   Los campos que la app ya sigue al escribir (IN/CH) quedan «limpios» (defaultValue = lo escrito); los demás —por ejemplo las claves, que se leen al tocar
+   Guardar— si siguen con texto escrito se vuelven a poner después de dibujar, SOLO si es la misma ventana y la app no les cambió su valor por su cuenta. */
+const campoOk=el=>(el.tagName==='INPUT'&&!/^(checkbox|radio|file|hidden|button|submit)$/.test(el.type))||el.tagName==='TEXTAREA';
+const campoK=el=>el.dataset.f+'|'+(el.dataset.i||'');
+/* los campos que la app ya sigue al escribir (IN) se dibujan siempre desde su dato: no se restauran (si no, un «+/−» de cantidad podía pasar su valor a otra línea) */
+function campoSeguido(el){try{return !!IN[el.dataset.f]}catch(x){return false}}
+function syncDef(el){try{if(campoOk(el))el.defaultValue=el.value}catch(x){}}
+function firmaPant(){return C.state.step+'#'+(page?page.k:'')+'#'+sheets.map(s=>s.k+':'+(s.id==null?'':s.id)).join('|')}
 function snapshot(){
   const pos={};$$('[data-sk]',mainEl).forEach(el=>{pos[el.dataset.sk]=[el.scrollTop,el.scrollLeft]});
   const a=document.activeElement;let f=null;
   if(a&&a!==document.body&&mainEl.contains(a)&&a.dataset&&a.dataset.f)f={k:a.dataset.f+'|'+(a.dataset.i||''),s:a.selectionStart,e:a.selectionEnd};
-  return {pos,f};
+  const sucio=[];$$('[data-f]',mainEl).forEach(el=>{if(campoOk(el)&&el.value!==el.defaultValue&&!campoSeguido(el))sucio.push({k:campoK(el),v:el.value,d:el.defaultValue})});
+  return {pos,f,sucio,sig:firmaPant()};
 }
 function restore(k){
   $$('[data-sk]',mainEl).forEach(el=>{const v=k.pos[el.dataset.sk];if(v&&el.dataset.sk!==resetSk){el.scrollTop=v[0];el.scrollLeft=v[1]}});
   resetSk=null;
+  if(k.sucio&&k.sucio.length&&k.sig===firmaPant()){const todos=$$('[data-f]',mainEl);
+    k.sucio.forEach(d=>{const el=todos.find(e=>campoOk(e)&&campoK(e)===d.k);if(el&&!el.disabled&&el.defaultValue===d.d&&el.value!==d.v)el.value=d.v})}
   if(k.f){const el=$$('[data-f]',mainEl).find(e=>e.dataset.f+'|'+(e.dataset.i||'')===k.f.k);if(el&&!el.disabled){el.focus({preventScroll:true});try{if(k.f.s!=null)el.setSelectionRange(k.f.s,k.f.e)}catch(e){}}}
 }
 function countUp(){
@@ -11142,6 +11094,7 @@ function render(){
   if(window.matchMedia&&matchMedia(PC_Q).matches)$$('button[aria-label]:not([title])',mainEl).forEach(b=>{if(!b.textContent.trim())b.title=b.getAttribute('aria-label')});
   syncAtras();
   anim=false;
+  draftSoon();if(!draftChecked)later(draftCheck,450);
 }
 /* botón «Atrás» del teléfono (y el gesto de volver): cierra la ventana de arriba, como cualquier app.
    Antes salía de Cuadre y se perdía la venta o el producto a medio hacer. Mientras hay algo abierto se deja UNA entrada en el historial. */
@@ -11153,6 +11106,7 @@ function syncAtras(){try{
 addEventListener('popstate',()=>{
   if(atrasIgn>0){atrasIgn--;return}
   if(!atrasG)return;atrasG=false;
+  if(C.locked){later(syncAtras,260);return}      // con la pantalla de clave, «Atrás» no toca las ventanas que quedan guardadas detrás
   if(sc)closeScan();
   else if(sheets.length)A.close();
   else if(page){const b=$('[data-a="qback"],[data-a="pageback"]',mainEl);if(b)b.click()}
@@ -11173,6 +11127,7 @@ async function recibirFoto(){
   let im;try{im=await C.fotoCargar(r.blob)}catch(e){toast('No pude leer esa imagen. Prueba con otra.',false,true);return}
   const prod=ctx.dest==='prod'&&ctx.id!=null?C.prod(ctx.id):null;
   if(ctx.dest==='prod'&&!prod){im.close();toast('Ese producto ya no existe.',false,true);return}
+  draftNow();draftLive=false;draftChecked=false;      // una cotización o venta a medias queda en el borrador y se ofrece al terminar con la foto (no se pierde en silencio)
   sheets=[];page=null;reg=null;
   if(ctx.dest==='add'){ap=ctx.draft||{id:null,img:'',nom:(ctx.q&&ctx.q.nom)||'',marca:(ctx.q&&ctx.q.marca)||'',cat:'',catn:'',u:'und',un:'',barras:(ctx.q&&ctx.q.barras)||'',costo:'',pct:inp(C.state.margenDef),pv:'',min:'',ideal:'',stock:'',ctx:''};sheets.push({k:'add',fresh:true})}
   else sheets.push({k:'prod',id:prod.id,fresh:true});
@@ -11202,8 +11157,6 @@ const proSheetFor=key=>{if(C.isPro()&&C.planEtq()!=='Prueba'&&key!=='todo'){toas
 function faGoogle(s){const q=s.q||{};
   C.fotoShare.guardar({dest:s.dest,id:s.id,q,draft:s.dest==='add'&&ap?JSON.parse(JSON.stringify(ap)):null});
   window.open('https://www.google.com/search?tbm=isch&q='+encodeURIComponent([q.marca,q.nom].filter(Boolean).join(' ')),'_blank','noopener')}
-async function faRun(s){const r=await C.fotoBuscar(s.q);if(!sheets.includes(s))return;      // si la cerraron mientras buscaba, no se hace nada
-  if(!r.ok){s.st='error';s.msg=r.msg;s.falta=!!r.falta}else{s.st='listo';s.res=r.res;s.sinServidor=!!r.sinServidor}render()}
 function openReg(tipo,pid){
   reg={tipo:tipo||'venta',lines:[],q:'',adding:false,err:'',quien:'',dest:''};
   if(pid){const p=C.prod(pid);if(p)reg.lines.push({pid:p.id,q:1,pv:p.pv})}
@@ -11425,6 +11378,12 @@ const A={
   pajuste(b){pushSheet({k:'ajuste',id:+b.dataset.id})},
   ajsave(b){const p=C.prod(+b.dataset.id),i=$('[data-f="ajq"]',mainEl),n=$('[data-f="ajn"]',mainEl);if(!p||!i)return;
     const r=C.ajustar(p.id,pnum(i.value),n?n.value.trim():'');sheets.pop();render();toast(r.igual?'El stock ya era ese':'Stock corregido: ahora hay '+num(r.despues)+' '+C.uLabel(p.u))},
+  /* BORRAR un producto para siempre (con su historial): primero se explica y se pregunta; después se pide confirmar que eres tú */
+  pdel(b){const p=C.prod(+b.dataset.id);if(!p)return;const n=C.movsDe(p.id);
+    pushSheet({k:'cfm',t:'¿Borrar «'+p.nom+'» para siempre?',
+      d:'Se borra el producto'+(n?' y sus '+n+(n===1?' movimiento':' movimientos')+' (ventas, ingresos y salidas): el kardex y los reportes dejan de contarlos':'')+'. Las cotizaciones que ya hiciste no cambian. También se borra en tus otros dispositivos. No se puede deshacer.',
+      yes:'Sí, borrar para siempre',no:'Cancelar',act:'pdel',id:p.id,alt:p.activo===false?null:{a:'pdel-arch',t:'Mejor archivarlo (se conserva el historial)'}})},
+  'pdel-arch'(){const s=sheets[sheets.length-1];if(!s||s.k!=='cfm'||s.act!=='pdel')return;const p=C.prod(s.id);if(!p)return;C.archiveProd(p.id);sheets=[];render();toast('Archivado: «'+p.nom+'». Lo ves en Productos → Archivados.')},
   parch(b){const p=C.prod(+b.dataset.id);if(!p)return;if(b.dataset.off){C.archiveProd(p.id);sheets=[];render();toast('Archivado: «'+p.nom+'». Lo ves en Productos → Archivados.')}else{if(!C.puedeCrear()){proSheetFor('productos');return}C.archiveProd(p.id,false);render();toast('Producto visible otra vez')}},
   /* foto del producto: se toma con la cámara o se elige de la galería y queda como miniatura */
   async apfoto(b){if(!ap)return;const v=b.dataset.v;
@@ -11433,16 +11392,15 @@ const A={
     const r=await C.photoThumb(f);if(!r.ok){toast(r.msg||'No pude usar esa foto',false,true);return}
     if(ap){ap.img=r.img;render()}},
   /* foto del producto: GRATIS para todos. «Buscar foto» manda directo a Google Imágenes; se comparte la imagen a Cuadre, se recorta y «Aceptar».
-     La primera vez se muestra la guía de 3 pasos; después de poner una foto así, se abre Google directo. Con Pro hay además «búsqueda automática» (opcional). */
+     La primera vez se muestra la guía de 3 pasos; después de poner una foto así, se abre Google directo. Ya no hay búsqueda automática. */
   async 'fa-open'(b){
     let q=null,dest=b.dataset.t,id=null;
     if(dest==='add'){if(!ap)return;q={nom:ap.nom,marca:ap.marca,barras:ap.barras}}
     else{const p=C.prod(+b.dataset.id);if(!p)return;id=p.id;q={nom:p.nom,marca:p.marca,barras:p.barras}}
-    const s={k:'fotoa',dest,id,q,st:'google',res:[]};
+    const s={k:'fotoa',dest,id,q};
     if(C.fotoShare.guiaVista()){faGoogle(s);toast('Elige la foto → mantén pulsada → Compartir imagen → Cuadre');return}
     pushSheet(s)},
   'fa-google'(){const s=sheets[sheets.length-1];if(!s||s.k!=='fotoa')return;faGoogle(s)},
-  async 'fa-auto'(){const s=sheets[sheets.length-1];if(!s||s.k!=='fotoa'||!C.isPro())return;s.st='buscando';s.res=[];s.msg='';render();await faRun(s)},
   'fcr-auto'(){const s=sheets[sheets.length-1];if(!s||s.k!=='fcrop'||!s.im)return;s.box=C.fotoRecorteAuto(s.im.src,s.im.w,s.im.h);fcrApply(s)},
   'fcr-todo'(){const s=sheets[sheets.length-1];if(!s||s.k!=='fcrop')return;s.box={x:0,y:0,w:1,h:1};fcrApply(s)},
   'fcr-no'(){const s=sheets[sheets.length-1];if(!s||s.k!=='fcrop')return;fcrClose(s);C.fotoShare.borrar();render()},
@@ -11450,13 +11408,10 @@ const A={
     try{const bl=await C.fotoCortar(s.blob,s.box),r=await C.photoThumb(bl);
       if(!r.ok){toast(r.msg||'No pude usar esa foto',false,true);return}
       const c=s.ctx||{};
-      if(c.dest==='add'){if(ap)ap.img=r.img}else if(c.id!=null){C.updateProd(c.id,{img:r.img});const p=C.prod(c.id);if(p)p.imgAuto=false}
+      if(c.dest==='add'){if(ap)ap.img=r.img}else if(c.id!=null){C.updateProd(c.id,{img:r.img})}
       fcrClose(s);C.fotoShare.borrar();C.fotoShare.guiaMarcar();render();toast('Foto puesta ✓')}
     catch(e){toast('No pude recortar esa imagen. Prueba con otra.',false,true)}
     finally{s.busy=false}},
-  'fa-pick'(b){const s=sheets[sheets.length-1];if(!s||s.k!=='fotoa')return;const x=s.res[+b.dataset.n];if(!x)return;
-    if(s.dest==='add'){if(ap)ap.img=x.img}else if(s.id!=null)C.updateProd(s.id,{img:x.img});
-    sheets.pop();render();toast('Foto puesta')},
   async ppfoto(b){const id=+b.dataset.id,v=b.dataset.v;
     if(v==='del'){C.updateProd(id,{img:''});toast('Foto quitada');return}
     const f=await pickFile('image/*',v==='cam'?'environment':'');if(!f)return;
@@ -11468,6 +11423,7 @@ const A={
     if(w==='sell')openReg('venta',id);else if(w==='in')openReg('ingreso',id);else if(w==='out')openReg('salida',id);
     else if(w==='open')pushSheet({k:'prod',id});else if(w==='edit')openEdit(p);else if(w==='adj')pushSheet({k:'ajuste',id});
     else if(w==='arch'){C.archiveProd(id);render();toast('Archivado: «'+p.nom+'». Lo ves en Productos → Archivados.')}
+    else if(w==='del')A.pdel({dataset:{id}})
     else if(w==='unarch'){if(!C.puedeCrear()){render();proSheetFor('productos');return}C.archiveProd(id,false);render();toast('Producto visible otra vez')}
     else render()},
   /* agregar / editar producto */
@@ -11536,6 +11492,7 @@ const A={
   prono(){closeSheet()},
   quieropro(){sheets.length&&sheets.pop();pushSheet({k:'buy',plan:'anio',code:'',msg:'',busy:false,codeOpen:false})},
   close(){const s=sheets[sheets.length-1];if(s&&s.k==='gfound')C.cloud.disconnect();
+    if(s&&s.k==='cfm'&&s.act==='draftgo')draftSnooze();
     if(s&&s.k==='prod'){const p=C.prod(s.id);if(p&&pdDirty(p)){pushSheet({k:'pdirty',id:p.id});return}pd=null}
     /* una venta/ingreso/salida a medio hacer o un producto a medio escribir NO se pierde con Esc, la X o un clic fuera: se pregunta */
     if(s&&s.k==='reg'&&reg&&reg.lines.length){const n=reg.lines.length,nom={venta:'venta',ingreso:'entrada',salida:'salida'}[reg.tipo]||'operación';
@@ -11544,7 +11501,10 @@ const A={
       pushSheet({k:'cfm',t:ap.id?'¿Descartar los cambios?':'¿Descartar el producto nuevo?',d:ap.id?'Cambiaste datos de «'+(ap.nom||'este producto')+'» y no los guardaste.':'Ya escribiste datos'+(ap.nom?' de «'+ap.nom+'»':'')+' y todavía no lo guardaste.',yes:'Descartar',no:'Seguir editando',act:'adddiscard'});return}
     closeSheet()},
   async 'cfm-yes'(){const s=sheets[sheets.length-1];if(!s)return;
-    if(s.act==='qexit'){sheets.pop();page=null;qd=null;render()}
+    if(s.act==='draftgo'){draftResume()}
+    else if(s.act==='pdel'){const id=s.id;sheets.pop();
+      askId(()=>{const r=C.removeProd(id);sheets=[];pd=null;render();toast(r.ok?'Borrado: «'+r.nom+'»'+(r.movs?' y sus '+r.movs+(r.movs===1?' movimiento':' movimientos'):''):'No encontré ese producto',false,!r.ok)},'Para borrar el producto confirma que eres tú.','Confirma que eres tú','Borrar')}
+    else if(s.act==='qexit'){sheets.pop();page=null;qd=null;render()}
     else if(s.act==='ejemplos'){sheets.pop();const n=C.cargarEjemplos();render();toast('Agregué '+n+' productos de ejemplo')}
     else if(s.act==='restore'){const f=s.file;sheets.pop();render();doRestore(f)}
     else if(s.act==='autorest'){const k=s.key;sheets=[];render();const r=await C.autoRestore(k);
@@ -11552,7 +11512,7 @@ const A={
     else if(s.act==='qdel'){sheets.pop();C.quoteDel(qd.id);page=null;qd=null;render();toast('Cotización eliminada')}
     else if(s.act==='qdelid'){sheets.pop();C.quoteDel(s.id);render();toast('Cotización eliminada')}
     else if(s.act==='tpldel'){sheets.pop();C.tplDel(s.id);render();toast('Plantilla eliminada')}
-    else if(s.act==='wipe'){sheets=[];C.wipe();toast('Borré todos los datos de '+EQ())}
+    else if(s.act==='wipe'){sheets=[];pcMsg='';C.wipe();toast('Borré todos los datos de '+EQ())}
     else if(s.act==='pinrm'){sheets.pop();render()}
     else if(s.act==='regdiscard'){sheets.pop();sheets=sheets.filter(x=>x.k!=='reg');reg=null;render()}
     else if(s.act==='adddiscard'){sheets.pop();sheets=sheets.filter(x=>x.k!=='add');ap=null;render()}
@@ -11618,10 +11578,12 @@ const A={
     if(!C.quoteClean(qd).lines.length){toast('Agrega productos para compartir');return}
     const q=C.quoteClean(qd),top=sheets[sheets.length-1];
     if(top&&(top.k==='qprev'||top.k==='qopt'))sheets.pop();
+    /* Pro (también en la prueba): «Compartir» es lo mismo que «Enviar»: guarda la cotización y el PDF sale ADJUNTO por el menú de compartir. Ya no hay que abrir el PDF para compartirlo. */
+    if(C.isPro()){render();return A.qsend()}
     pushSheet({k:'share',titulo:'Cotización '+q.num,texto:C.isPro()?C.quoteMsg(q).texto.replace(/\*/g,''):C.quoteText(q),pdf:()=>C.pdfQuote(q),wa:C.waNumber(q.tel),waTxt:q.tel,mail:C.validEmail(q.email)?String(q.email).trim():'',para:q.cliente})},
   qpdf(){
     if(!C.quoteClean(qd).lines.length){toast('Agrega productos para crear el PDF');return}
-    const q=C.quoteClean(qd);if(sheets.length&&sheets[sheets.length-1].k==='qprev')sheets.pop();
+    const q=C.quoteClean(qd);if(sheets.length&&/^(qprev|qopt)$/.test(sheets[sheets.length-1].k))sheets.pop();
     docFlow('la cotización',()=>C.pdfQuote(q),'open')},
   /* más */
   trypro(){proSheetFor('todo')},
@@ -11652,10 +11614,10 @@ const A={
   'pin-bio'(b){const s=sheets[sheets.length-1];if(!s||s.k!=='pin')return;s.bio=s.bio===false;b.classList.toggle('on',s.bio!==false);b.setAttribute('aria-checked',String(s.bio!==false))},
   /* ---- proteger ganancias y costos: activar con clave del dueño, pedir la huella o la clave, ocultar de nuevo, quitar ---- */
   'gv-ask'(){if(C.gv())return;pushSheet({k:'gv'});if(C.bio.gvOn())later(()=>A['gv-bio'](),350)},
-  async 'gv-bio'(){const s=sheets[sheets.length-1];if(!s||s.k!=='gv')return;const r=await C.bio.gvCheck();if(r.ok)gvDone();else if(!r.cancel)gvFail(r.msg||'No se pudo. Usa tu clave.')},
+  async 'gv-bio'(){const s=sheets[sheets.length-1];if(!s||s.k!=='gv')return;const r=await (s.app?C.bio.check():C.bio.gvCheck());if(r.ok)gvDone();else if(!r.cancel)gvFail(r.msg||'No se pudo. Usa tu clave.')},
   async 'gv-pin'(){const s=sheets[sheets.length-1];if(!s||s.k!=='gv')return;const v=(($('[data-f="gvpin"]',mainEl)||{}).value||'').trim();
-    if(!v)return gvFail(C.bio.gvOn()?'Escribe tu clave o usa '+C.bio.nom()+'.':'Escribe tu clave.');
-    const r=await C.gvCheck(v);if(r.ok)gvDone();else gvFail(r.wait?'Espera '+(r.wait>90?Math.ceil(r.wait/60)+' min':r.wait+' s')+' para intentar de nuevo.':'La clave no es correcta.'+(r.left!=null&&r.left<=2?' Te quedan '+r.left+' intentos.':''))},
+    if(!v)return gvFail((s.app?C.bio.on():C.bio.gvOn())?'Escribe tu clave o usa '+C.bio.nom()+'.':'Escribe tu clave.');
+    const r=await (s.app?C.pin.check(v):C.gvCheck(v));if(r.ok)gvDone();else gvFail(r.wait?'Espera '+(r.wait>90?Math.ceil(r.wait/60)+' min':r.wait+' s')+' para intentar de nuevo.':'La clave no es correcta.'+(r.left!=null&&r.left<=2?' Te quedan '+r.left+' intentos.':''))},
   'gv-hide'(){C.gvClose();toast('Ganancias y costos ocultos')},
   /* «Olvidé mi clave del dueño»: se comprueba con la cuenta de Google conectada y se elige otra */
   async 'gv-forgot'(){const s=sheets[sheets.length-1];if(!s||s.k!=='gv'||s.busy)return;
@@ -11729,29 +11691,33 @@ const A={
   async 'pc-entrar'(){
     if(gbusy)return;
     if(C.state.step==='app'&&(C.prods().length||C.movsCount()))return A['cloud-on']();   // ya hay datos aquí: se juntan o se pregunta, como siempre
-    gbusy=true;render();
+    gbusy=true;pcMsg='';render();
     const r=await C.cloud.signIn();gbusy=false;
-    if(!r.ok){render();toast(r.msg||'No se pudo entrar con Google',false,true);return}
+    if(!r.ok){pcMsg=r.msg||'No se pudo entrar con Google';render();toast(pcMsg,false,true);return}      // el motivo queda a la vista en la ventana (el aviso de abajo desaparece solo)
     if(r.remote){const t=await C.cloud.take();render();
       if(codigoPend()){await activarPend();return}
       if(t.ok&&C.hasPC())toast('Listo: tu cuenta tiene la versión para PC');
       else if(!t.ok)toast(t.msg||'No pude revisar tu cuenta',false,true);return}
     render();if(codigoPend())await activarPend()},
   'pc-otra'(){return A['pc-entrar']()},
+  /* «Cerrar sesión» en la ventana de la PC: deja de usar la cuenta y vuelve al inicio (instalar e iniciar sesión con la cuenta que quiera) */
+  'pc-salir'(){if(gbusy)return;pcMsg='';C.cloud.disconnect();render();toast('Sesión cerrada. Ahora puedes iniciar con la cuenta que quieras.')},
   /* «Verificar ahora» / «Ya compré, revisar»: vuelve a mirar tu Drive (ahí viaja el plan) y anota que se verificó */
   async 'pc-verif'(){
     if(gbusy)return;
     if(!C.online()){toast('Sin internet. Conéctate y vuelve a intentar.',false,true);return}
     const K=C.cloud.info();
     if(!K.connected)return A['pc-entrar']();
-    gbusy=true;render();
+    gbusy=true;pcMsg='';render();
     let r=await C.cloud.sync();
     if(!r.ok&&r.reason==='nada')r=await C.cloud.take().catch(()=>({ok:false}));      // PC sin datos todavía: se trae lo que haya en el Drive de esta cuenta (ahí viene la licencia)
-    gbusy=false;render();
-    if(!r.ok&&r.reason!=='conflicto'&&C.pcEstado()!=='ok'){toast(/No encontré ninguna copia/.test(r.msg||'')?'Esta cuenta ('+K.email+') todavía no tiene la versión para PC. Si ya la activaste en tu teléfono, revisa que sea la misma cuenta.':(r.msg||'No pude verificar con Google ahora. Vuelve a intentar en un momento.'),false,true);return}
-    toast(C.pcEstado()==='ok'?'Listo: versión para PC verificada':'Esta cuenta aún no muestra la versión para PC. Si acabas de comprar, espera unos segundos y vuelve a tocar.',false,C.pcEstado()!=='ok')},
-  async 'cloud-on'(){if(gbusy)return;gbusy=true;toast('Conectando con Google…');render();
-    let r;try{r=await C.cloud.signIn()}finally{gbusy=false}render();
+    gbusy=false;
+    if(!r.ok&&r.reason!=='conflicto'&&C.pcEstado()!=='ok'){pcMsg=/No encontré ninguna copia/.test(r.msg||'')?'Esta cuenta ('+K.email+') todavía no tiene la versión para PC. Si ya la activaste en tu teléfono, revisa que sea la misma cuenta.':(r.msg||'No pude verificar con Google ahora. Vuelve a intentar en un momento.');render();toast(pcMsg,false,true);return}
+    if(C.pcEstado()!=='ok')pcMsg='Esta cuenta aún no muestra la versión para PC. Si acabas de comprar, espera unos segundos y vuelve a tocar.';
+    render();toast(C.pcEstado()==='ok'?'Listo: versión para PC verificada':pcMsg,false,C.pcEstado()!=='ok')},
+  async 'cloud-on'(){if(gbusy)return;gbusy=true;pcMsg='';toast('Conectando con Google…');render();
+    let r;try{r=await C.cloud.signIn()}finally{gbusy=false}
+    if(!r.ok)pcMsg=r.msg||'No se pudo entrar con Google';render();
     if(!r.ok){toast(r.msg||'No se pudo entrar con Google',false,true);return}
     if(codigoPend())later(()=>activarPend(),1200);      // código que llegó en el enlace del vendedor
     const tengo=C.prods().length||C.movsCount();
@@ -11878,20 +11844,34 @@ function settle(){
    el botón que se tocó ya no estaría en pantalla y ese primer toque se perdía. */
 function onClick(e){const b=e.target.closest('[data-a]');const f=b&&!b.disabled&&root.contains(b)?A[b.dataset.a]:null;
   if(!f){try{C.cloud.tap()}catch(x){}return}
-  let r;try{r=f(b,e)}finally{try{C.cloud.tap()}catch(x){}Promise.resolve(r).then(settle,err=>{settle();throw err})}}
-function onInput(e){const el=e.target,f=el.dataset&&el.dataset.f;if(f&&IN[f])IN[f](el)}
+  let r;try{r=f(b,e)}finally{try{C.cloud.tap()}catch(x){}draftSoon();Promise.resolve(r).then(settle,err=>{settle();throw err})}}
+function onInput(e){const el=e.target,f=el.dataset&&el.dataset.f;
+  if(el.classList&&el.classList.contains('pinf')){const v=el.value.replace(/\D/g,'');if(v!==el.value)el.value=v}      // claves: solo números
+  if(f&&IN[f]){IN[f](el);syncDef(el)}
+  draftSoon()}
 function onChange(e){const el=e.target,f=el.dataset&&el.dataset.f;if(!f)return;
   if(CH[f])CH[f](el);
-  if(el.dataset.n==='1'&&el.value.trim()!==''&&!(f==='qval'))el.value=(el.dataset.m?inpm:inp)(pnum(el.value))}
+  if(el.dataset.n==='1'&&el.value.trim()!==''&&!(f==='qval'))el.value=(el.dataset.m?inpm:inp)(pnum(el.value));
+  if(IN[f]||CH[f])syncDef(el);
+  draftSoon()}
 function gvFail(m){errVer('gverr',m)}
+/* Confirmar que es el DUEÑO antes de algo que no se puede deshacer:
+   · con «Proteger ganancias» puesta → su clave del dueño o su huella (si ya las confirmó hace unos minutos, no se vuelve a pedir)
+   · si no, con la huella o la clave con la que se abre la app
+   · si no hay ninguna clave en la app, no hay nada que pedir: sigue directo (ya hubo una pregunta de confirmación antes) */
+function askId(then,txt,title,btn){
+  if(C.gvOn()){if(C.gv()){then();return}pushSheet({k:'gv',then,txt,title,btn,danger:true});if(C.bio.gvOn())later(()=>A['gv-bio'](),350);return}
+  if(C.pin.has()){pushSheet({k:'gv',then,txt,title,btn,danger:true,app:true});if(C.bio.on())later(()=>A['gv-bio'](),350);return}
+  then()}
 function gvDone(){const s=sheets[sheets.length-1];if(!s||s.k!=='gv')return;const then=s.then,off=s.off;sheets.pop();
+  if(s.app||s.danger){render();if(then)setTimeout(then,60);return}                         // solo confirmaba que es él para algo que no se deshace (borrar): sigue, SIN abrir las ganancias
   if(off){C.gvSet(false);render();toast('Protección quitada: ganancias y costos a la vista');return}
   C.gvOpen();render();toast('Ganancias y costos a la vista por '+C.GV_MIN+' minutos');if(then)setTimeout(then,60)}
 /* un aviso de error en una hoja: se muestra y SE LLEVA A LA VISTA (con el teclado abierto el aviso quedaba escondido debajo de los campos y parecía que «no pasaba nada») */
 function errVer(r,m){const e=$('[data-r="'+r+'"]',mainEl);if(!e)return;e.textContent=m;e.hidden=false;try{e.scrollIntoView({block:'center',behavior:'smooth'})}catch(x){}}
 function onKey(e){
   if(e.target!==document.body&&e.target!==document.documentElement&&!root.contains(e.target))return;
-  if(e.key==='Escape'){if(sc){closeScan();return}if(sheets.length){A.close();return}
+  if(e.key==='Escape'){if(C.locked)return;if(sc){closeScan();return}if(sheets.length){A.close();return}
     if(page&&C.state.step==='app'){const b=$('[data-a="qback"],[data-a="pageback"]',mainEl);if(b){e.preventDefault();b.click()}}return}
   /* Ctrl+Enter (o Cmd+Enter) en una ventana: el botón principal (registrar la venta, guardar el producto…) */
   if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)&&sheets.length){const sh=[...document.querySelectorAll('#main .sheet')].pop(),bt=sh&&sh.querySelector('.shf .btn:not(.ghost):not([disabled])');if(bt){e.preventDefault();bt.click();return}}
@@ -12263,6 +12243,50 @@ Object.assign(CH,{
   cdia(el){const s=cierreSh();if(!s||!el.value)return;const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(el.value);if(!m)return;
     const t=new Date(+m[1],+m[2]-1,+m[3],12).getTime();s.t=Math.min(t,Date.now());s.d='x';render()}
 });
+
+/* =====================================================================
+   Borrador: lo que se está escribiendo a medias (una cotización, una venta) se guarda solo en el teléfono, aparte de los datos del negocio.
+   Si la app se cierra de golpe (el sistema la apaga para liberar memoria, se acaba la batería, se pide la clave de nuevo…), al abrirla se ofrece
+   seguir donde se quedó. Se borra solo cuando la cotización/venta se guarda, se envía o se descarta. Solo vive en este teléfono.
+   ===================================================================== */
+const DRAFT_K='cuadre.borrador',DRAFT_DIAS=7,DRAFT_SILENCIO=12*3600e3;      // «Ahora no» no vuelve a preguntar por 12 horas (se conserva)
+function draftNow(){clearTimeout(draftT);
+  try{
+    if(!C.state||C.state.step!=='app'||!C.ready()||C.locked)return;
+    const o={t:Date.now(),biz:C.bizId()};      // biz: el borrador es de ESTE negocio; si se restaura otro o se cambia de cuenta, no se ofrece
+    if(qd&&page&&page.k==='qed'&&JSON.stringify(qd)!==qd0&&((qd.lines&&qd.lines.length)||qd.cliente))o.qd=qd;
+    if(reg&&sheets.some(x=>x.k==='reg')&&reg.lines&&reg.lines.length)o.reg=reg;
+    if(o.qd||o.reg){localStorage.setItem(DRAFT_K,JSON.stringify(o));draftLive=true}
+    else if(draftLive){localStorage.removeItem(DRAFT_K);draftLive=false}      // lo que se estaba escribiendo ya se guardó, se envió o se descartó
+  }catch(e){}}
+function draftSoon(){clearTimeout(draftT);draftT=setTimeout(draftNow,700)}
+function draftDrop(){draftOffer=null;draftLive=false;try{localStorage.removeItem(DRAFT_K)}catch(e){}}
+/* «Ahora no»: el borrador se queda, pero no se vuelve a ofrecer durante unas horas */
+function draftSnooze(){if(!draftOffer)return;try{const o=JSON.parse(localStorage.getItem(DRAFT_K)||'null');if(o){o.sil=Date.now()+DRAFT_SILENCIO;localStorage.setItem(DRAFT_K,JSON.stringify(o))}}catch(e){}draftOffer=null}
+/* al abrir la app (ya sin bloqueo y sin nada abierto): si quedó algo a medias, se ofrece seguir */
+function draftCheck(){
+  if(draftChecked||!C.state||C.state.step!=='app'||!C.ready()||C.locked||sheets.length||page||pcGate())return;      // en la computadora sin la versión para PC no se ofrece nada: queda guardado hasta que entre la cuenta correcta
+  draftChecked=true;
+  let o=null;try{o=JSON.parse(localStorage.getItem(DRAFT_K)||'null')}catch(e){}
+  if(!o||(!o.qd&&!o.reg)||Date.now()-(o.t||0)>DRAFT_DIAS*864e5||(o.biz&&o.biz!==C.bizId())){if(o)try{localStorage.removeItem(DRAFT_K)}catch(e){}return}      // vencido, vacío o de otro negocio: se descarta
+  if(o.sil&&o.sil>Date.now())return;      // dijo «Ahora no» hace poco: se conserva, pero no se vuelve a preguntar todavía
+  if(o.reg){o.reg.lines=(o.reg.lines||[]).filter(l=>C.prod(l.pid));if(!o.reg.lines.length)delete o.reg}      // productos que ya no existen
+  if(o.qd&&o.qd.id!=null){const ya=C.quotes().find(x=>x.id===o.qd.id);if(!ya||(ya.num&&o.qd.num&&ya.num!==o.qd.num))o.qd.id=null}      // era una cotización guardada que ya no está (o cambió de número): se retoma como nueva, sin pisar otra
+  if(!o.qd&&!o.reg){draftDrop();return}
+  draftOffer=o;const q=o.qd,r=o.reg,nom=r&&{venta:'venta',ingreso:'entrada',salida:'salida'}[r.tipo]||'venta';
+  pushSheet({k:'cfm',act:'draftgo',safe:true,
+    t:q&&r?'¿Seguir con lo que dejaste a medias?':q?'¿Seguir con tu cotización?':'¿Seguir con tu '+nom+'?',
+    d:(q?'Dejaste a medias la cotización '+q.num+(q.cliente?' de '+q.cliente:'')+' ('+q.lines.length+(q.lines.length===1?' producto':' productos')+'). ':'')+(r?'Dejaste a medias una '+nom+' con '+r.lines.length+(r.lines.length===1?' producto':' productos')+'. ':'')+'Se guardó sola en este teléfono.',
+    yes:'Sí, seguir donde me quedé',no:'Ahora no',alt:{a:'draft-drop',t:'Descartar lo que dejé'}})
+}
+function draftResume(){const o=draftOffer;draftOffer=null;if(!o||pcGate())return;
+  sheets=[];
+  if(o.qd){qd=o.qd;qd.fotos=!!qd.fotos;qd0='';page={k:'qed',fresh:true};C.prefetchPDF();C.wmWarm()}      // sigue marcada como «con cambios sin guardar»
+  if(o.reg){reg=o.reg;sheets.push({k:'reg',fresh:true})}
+  draftLive=true;render()}
+Object.assign(A,{'draft-drop'(){const s=sheets[sheets.length-1];if(!s||s.k!=='cfm'||s.act!=='draftgo')return;sheets.pop();draftDrop();render();toast('Listo, la descarté')}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)draftNow()});
+addEventListener('pagehide',draftNow);
 
 /* =====================================================================
    Computadora: teclas rápidas y lector de códigos USB
