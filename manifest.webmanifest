@@ -1,6 +1,6 @@
 {
-  "name": "Cuadre · Inventario y cotizaciones",
-  "short_name": "Cuadre",
+  "name": "NegocioListo · Inventario y cotizaciones",
+  "short_name": "NegocioListo",
   "description": "Controla tu bodega, tus ventas y tus cotizaciones. Funciona sin internet.",
   "lang": "es",
   "start_url": "./",

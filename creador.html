@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-5uJWs6xi4KTAgIJOB2CYkS8XfXSFN5Zfdt8089UPgNo=' https://accounts.google.com/gsi/client; style-src 'unsafe-inline' https://accounts.google.com/gsi/style; connect-src 'self' https://compras-pro.stockfacilapp35.workers.dev https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; img-src data: https://*.googleusercontent.com; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3o+/10Vv0A4gUx3ZRVi3FLtKlhJ15W5CM27nGXCxMV0=' https://accounts.google.com/gsi/client; style-src 'unsafe-inline' https://accounts.google.com/gsi/style; connect-src 'self' https://compras-pro.stockfacilapp35.workers.dev https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; img-src data: https://*.googleusercontent.com; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex,nofollow">
-<title>Panel del creador · Cuadre</title>
+<title>Panel del creador · NegocioListo</title>
 <style>
 :root{--bg:#f1f4f9;--card:#fff;--ink:#111827;--mut:#5b6678;--line:#dde3ee;--ac:#2563d6;--onac:#fff;--bad:#c8281d;--ok:#0f7a3d;--fill:#eef2f9;--warnbg:#fff4e5;--warnink:#7a4300;--warnline:#f4cf9a;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1520;--card:#18202d;--ink:#eef2f8;--mut:#9aa6ba;--line:#2a3547;--ac:#6ea0ff;--onac:#0b1220;--bad:#ff7b72;--ok:#4cd387;--fill:#212b3b;--warnbg:#3a2a10;--warnink:#ffd9a0;--warnline:#6b4a14;color-scheme:dark}}
@@ -25,7 +25,7 @@ button:disabled{opacity:.55;cursor:default}
 .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 #gbtn{min-height:44px}
 </style></head><body><main>
-<div><h1>Panel del creador de Cuadre</h1><p class="mut">Aquí emites los códigos de Pro y de la versión para PC. La clave que los firma vive en tu servidor de Cloudflare: este archivo no guarda ninguna.</p></div>
+<div><h1>Panel del creador de NegocioListo</h1><p class="mut">Aquí emites los códigos de Pro y de la versión para PC. La clave que los firma vive en tu servidor de Cloudflare: este archivo no guarda ninguna.</p></div>
 
 <section class="card" id="entrar">
   <h2>1. Entra con tu cuenta de Google</h2>
@@ -79,13 +79,13 @@ function fecha(n){return String(n).replace(/(\d{4})(\d\d)(\d\d)/,'$3/$2/$1')}
 function vence(x){return x.until?(x.plan==='pc'?'Pro incluido hasta ':'vence ')+fecha(x.until):(x.plan==='pc'?'Pro incluido sin límite':'de por vida')}
 async function llamar(ruta,cuerpo){
   if(!WORKER||/^%%/.test(WORKER)){return {ok:false,status:0,j:{msg:'Esta página todavía no sabe cuál es tu servidor (PLAN.verificador).'}}}
-  /* 15 s como máximo; y si lo que contesta no es el servidor de Cuadre (respuesta vacía), se dice así: nada de «Listo» con un código vacío */
+  /* 15 s como máximo; y si lo que contesta no es el servidor de NegocioListo (respuesta vacía), se dice así: nada de «Listo» con un código vacío */
   var ac=typeof AbortController==='function'?new AbortController():null,to=ac?setTimeout(function(){ac.abort()},15000):0;
   try{var r=await fetch(WORKER+ruta,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({cred:cred,pin:pin},cuerpo||{})),cache:'no-store',signal:ac?ac.signal:undefined});clearTimeout(to);
     var j=null;try{j=await r.json()}catch(e){}
-    if(r.ok&&(!j||(ruta==='/creador/emitir'&&!j.code)||(ruta==='/creador/registro'&&!Array.isArray(j.emitidos))))return {ok:false,status:r.status,j:{msg:'El servidor de Cuadre todavía no está listo (no contestó lo esperado). Mientras tanto usa tu generador privado en la computadora.'}};
+    if(r.ok&&(!j||(ruta==='/creador/emitir'&&!j.code)||(ruta==='/creador/registro'&&!Array.isArray(j.emitidos))))return {ok:false,status:r.status,j:{msg:'El servidor de NegocioListo todavía no está listo (no contestó lo esperado). Mientras tanto usa tu generador privado en la computadora.'}};
     return {ok:r.ok,status:r.status,j:j||{}}}
-  catch(e){clearTimeout(to);return {ok:false,status:0,j:{msg:'El servidor de Cuadre no responde. Si tienes internet, todavía no está instalado: usa tu generador privado en la computadora.'}}}
+  catch(e){clearTimeout(to);return {ok:false,status:0,j:{msg:'El servidor de NegocioListo no responde. Si tienes internet, todavía no está instalado: usa tu generador privado en la computadora.'}}}
 }
 function sesionTick(){
   var left=MAX-(Math.floor(Date.now()/1000)-iat);
@@ -116,7 +116,7 @@ function pinteListas(j){
   (j.activaciones||[]).forEach(function(x){a.appendChild(fila(x.email+' · '+(x.plan==='pc'?'Versión para PC':'Pro'),'activó el '+new Date(x.t).toLocaleString()+' · '+vence(x)))});
 }
 function enlaceDe(x){return location.origin+location.pathname.replace(/creador\.html$/,'')+'?codigo='+encodeURIComponent(x.code)}
-function mensaje(x){var pc=x.plan==='pc';return 'Gracias por tu compra de Cuadre'+(pc?' (versión para PC)':'')+'.\n\n'+(pc?'Abre este enlace en tu computadora: te deja instalar Cuadre con un clic y, al iniciar sesión con tu cuenta de Google ('+x.mail+'), la versión para PC se activa sola:':'Abre este enlace e inicia sesión con tu cuenta de Google ('+x.mail+'): Pro se activa solo:')+'\n'+enlaceDe(x)+'\n\nSi prefieres pegarlo a mano, tu código de activación es:\n'+x.code+'\n\nCómo pegarlo: entra a Cuadre con esa misma cuenta de Google → '+(pc?'Más → Cuadre en tu computadora → Ver la versión para PC':'Más → Hazte Pro')+' → «Ya tengo mi código de activación» → pega el código y toca Activar. Es para ese correo: con otro no funciona. '+(pc?'La versión para PC es tuya para siempre'+(x.until?' y trae Pro hasta el '+fecha(x.until)+'. Actívalo apenas lo recibas. Después, Pro se compra en la app de tu teléfono Android.':'.'):'El plan queda en tu cuenta y aparece solo en tus otros dispositivos.')}
+function mensaje(x){var pc=x.plan==='pc';return 'Gracias por tu compra de NegocioListo'+(pc?' (versión para PC)':'')+'.\n\n'+(pc?'Abre este enlace en tu computadora: te deja instalar NegocioListo con un clic y, al iniciar sesión con tu cuenta de Google ('+x.mail+'), la versión para PC se activa sola:':'Abre este enlace e inicia sesión con tu cuenta de Google ('+x.mail+'): Pro se activa solo:')+'\n'+enlaceDe(x)+'\n\nSi prefieres pegarlo a mano, tu código de activación es:\n'+x.code+'\n\nCómo pegarlo: entra a NegocioListo con esa misma cuenta de Google → '+(pc?'Más → NegocioListo en tu computadora → Ver la versión para PC':'Más → Hazte Pro')+' → «Ya tengo mi código de activación» → pega el código y toca Activar. Es para ese correo: con otro no funciona. '+(pc?'La versión para PC es tuya para siempre'+(x.until?' y trae Pro hasta el '+fecha(x.until)+'. Actívalo apenas lo recibas. Después, Pro se compra en la app de tu teléfono Android.':'.'):'El plan queda en tu cuenta y aparece solo en tus otros dispositivos.')}
 /* copiar: primero el portapapeles; si el navegador no lo deja (pasa al abrir desde el teléfono), se selecciona el texto y se prueba «copy»; si tampoco, se deja seleccionado y se dice qué hacer, junto al botón */
 async function copiar(texto,ok,elSel){
   var c=$('cmsg');
