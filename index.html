@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-kvWugD4gbD+CAb+G5tC615YaVlv59Yy6POo21fCzkzY=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-2tG4yPi6e9KoxNNLxfEOZXvW3XfYheg5tM2SBaWvXhk=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -2661,8 +2661,33 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'2.9.1',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.0',UI:ICONS.UI,locked:false};
 const DAY=864e5;
+/* =====================================================================
+   Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
+   Antes, «Cerrar sesión» dejaba los datos en el teléfono: si entraba otra cuenta de Google, veía (y subía a su Drive) los datos de la anterior.
+   Ahora se borra todo —todos los negocios, copias automáticas, claves, avisos y el permiso de Google— y la app se abre de nuevo, limpia. Lo que está en el Drive
+   de la cuenta NO se toca: al volver a entrar con ella, se trae. Lo único que se conserva es lo que es del EQUIPO y no de la cuenta: la prueba de Pro ya usada
+   (borrar no regala otra) y las preferencias de pantalla (tamaño de letra…).
+   El borrado se anota ANTES de empezar (cuadre.wipe): si la app se cierra a la mitad, al abrirla se termina antes de leer nada.
+   ===================================================================== */
+const WIPEK='cuadre.wipe',LSNEG=['cuadre.v1','cuadre.hot','cuadre.mig','cuadre.safe.1','cuadre.safe.2','cuadre.safe.1m','cuadre.safe.2m','cuadre.borrador','cuadre.sd'];
+const LSCUENTA=['cuadre.biz','cuadre.acct','cuadre.codigoPend','cuadre.fotoShare','cuadre.bzNew'],SSCUENTA=['cuadre.gtok','cuadre.recarga','cuadre.bzLock','cuadre.bzOpen'];
+const idOk=x=>typeof x==='string'&&/^[a-z0-9]{1,12}$/i.test(x);
+let WIPE=null;try{const w=localStorage.getItem(WIPEK);if(w){try{WIPE=JSON.parse(w)}catch(e){WIPE={}}if(!WIPE||typeof WIPE!=='object')WIPE={}}}catch(e){}
+function wipeLS(ids){      // lo de localStorage y sessionStorage (síncrono)
+  const sf=['',...(ids||[]).filter(idOk).map(x=>'-'+x)];
+  try{sf.forEach(f=>LSNEG.forEach(k=>localStorage.removeItem(k+f)));LSCUENTA.forEach(k=>localStorage.removeItem(k))}catch(e){}
+  try{SSCUENTA.forEach(k=>sessionStorage.removeItem(k))}catch(e){}}
+function idbDel(name){return new Promise(res=>{let fin=false;const done=()=>{if(!fin){fin=true;res()}},to=setTimeout(done,5000);
+  try{const q=indexedDB.deleteDatabase(name);q.onsuccess=q.onerror=()=>{clearTimeout(to);done()};q.onblocked=()=>{}}catch(e){clearTimeout(to);done()}})}
+async function wipeIDB(ids){      // las bases de IndexedDB (la de cada negocio y la de los avisos) y las fotos compartidas a medias
+  if(typeof indexedDB==='undefined')return;
+  const nom=new Set(['cuadre','cuadre-sw']);(ids||[]).filter(idOk).forEach(x=>nom.add('cuadre-'+x));
+  try{if(indexedDB.databases){const l=await indexedDB.databases();(l||[]).forEach(d=>{if(d&&/^cuadre(-|$)/.test(d.name||''))nom.add(d.name)})}}catch(e){}
+  await Promise.all([...nom].map(idbDel));
+  try{if(typeof caches!=='undefined')await caches.delete('compartido-tmp')}catch(e){}}
+if(WIPE){try{wipeLS(WIPE.ids)}catch(e){}}      // un cierre de sesión que quedó a medias: lo de localStorage se termina YA, antes de leer nada
 /* =====================================================================
    Varios negocios (2.9, Pro): cada negocio tiene SU PROPIA base de datos en el teléfono, sus propias copias automáticas y su propio archivo en el Drive.
    El negocio de siempre («principal») conserva EXACTAMENTE los mismos nombres de antes (sufijo vacío): quien tiene un solo negocio no nota nada.
@@ -2738,6 +2763,7 @@ const PLAN={
   pcMesesPro:1,           // meses de Pro que trae la versión para PC (el servidor de compras y el generador de códigos deben usar el mismo tiempo)
   playPaquete:'io.github.cuadre_inventario.twa',         // nombre de paquete de la app en Google Play (ej. 'io.github.cuadre_inventario.twa'); lo define PWABuilder/Bubblewrap
   verificador:'https://compras-pro.stockfacilapp35.workers.dev',   // el servidor de NegocioListo en Cloudflare (UNA sola dirección para todo): confirma las compras de Play, avisa las activaciones, busca fotos, guarda el PDF de una cotización enviada y emite los códigos. Vacío = no se usa servidor (la app funciona igual, sin esas funciones)
+  revisores:['pruebanegociolisto@gmail.com'],   // la(s) cuenta(s) de Google que Google Play usa para REVISAR la app: SOLO a ellas, dentro de la app de Play, se les muestra dónde pegar el código de activación (el código lo hace el generador privado, atado a ese correo). Nadie más lo ve ahí.
   canalWeb:'codigo',      // cómo se compra FUERA de la app de Google Play: 'codigo' = se le pide el código de activación al vendedor (hoy) · 'play' = solo se explica que se compra en la app de Play (cuando ya esté publicada); dentro de Play siempre se compra con Play y no se muestra ningún contacto
   contacto:{whatsapp:'',email:'stockfacilapp35@gmail.com',quien:'el vendedor'},  // dónde escriben los clientes: WhatsApp con código de país y sin «+» (ej. 593999123456) y/o un correo
   /* activación de Pro y del plan Computadora con un código atado a la cuenta de Google del cliente.
@@ -2984,7 +3010,7 @@ C.ready=()=>!!D&&C.state.step==='app';
    - Copias automáticas dentro del teléfono: una por día (las últimas 3) y una antes de reemplazar los datos (las últimas 4).
    - Si el navegador no tiene IndexedDB, se sigue como antes con localStorage.
    ===================================================================== */
-const STO={mode:'ls',db:null,t:0,sig:{},clen:{},mlen:0,busy:false,again:false,err:null,bc:null,clearing:null,lastBak:'',mig:false,recovered:false};
+const STO={dead:false,mode:'ls',db:null,t:0,sig:{},clen:{},mlen:0,busy:false,again:false,err:null,bc:null,clearing:null,lastBak:'',mig:false,recovered:false};
 const WID=Math.random().toString(36).slice(2,10);
 /* ---- registro de negocios (en este equipo) y lo que comparten (cuenta, plan y clave) ---- */
 const bzAll=()=>{const o=BZ.rd();if(!o.list.some(x=>x.id===''))o.list.unshift({id:'',n:'',t:0,c:0});return o};
@@ -3004,7 +3030,7 @@ function bzUni(a,b){
 C.bzUni=bzUni;
 function bzPurge(id){      // quita del equipo todo lo de un negocio quitado
   if(!id)return;const sf='-'+id;
-  try{[ 'cuadre.v1','cuadre.hot','cuadre.mig','cuadre.safe.1','cuadre.safe.2','cuadre.safe.1m','cuadre.safe.2m','cuadre.borrador'].forEach(k=>localStorage.removeItem(k+sf))}catch(e){}
+  try{LSNEG.forEach(k=>localStorage.removeItem(k+sf))}catch(e){}
   try{if(typeof indexedDB!=='undefined')indexedDB.deleteDatabase('cuadre'+sf)}catch(e){}}
 /* lo que se comparte entre los negocios de una misma persona en este equipo: su plan, su cuenta de Google y sus claves (no sus ventas ni su inventario) */
 const ACCT=['pin','bio','pinFail','dueno','gvBio','gvFail','duenoReset','protGan','lockMin','lockSet','lockV','devPlan'];
@@ -3086,7 +3112,7 @@ C.biz={
   async cambiar(id){
     const o=bzAll();if(id===BZ.act||!o.list.some(x=>x.id===id&&!x.x))return {ok:false};
     if(id!==''&&!C.isPro())return {ok:false,pro:true};
-    C.save();await bzFlush();bzGo(id);return {ok:true}},
+    C.save();await bzFlush();try{C.cloud.marcar()}catch(e){}bzGo(id);return {ok:true}},
   async agregar(nombre){
     nombre=String(nombre||'').trim().slice(0,60);
     if(!nombre)return {ok:false,msg:'Escribe el nombre del negocio.'};
@@ -3098,7 +3124,7 @@ C.biz={
     o.list.push({id,n:nombre,t,c:t});
     const tpl={};['pais','moneda','monedaSym','numStyle','ivaPct','taxName','page'].forEach(k=>{if(s[k]!==undefined&&s[k]!=='')tpl[k]=s[k]});
     try{localStorage.setItem('cuadre.bzNew',JSON.stringify({id,t:tpl}))}catch(e){}
-    BZ.wr(o);s.negocios=o.list;acctWrite();C.save();await bzFlush();bzGo(id);return {ok:true}},
+    BZ.wr(o);s.negocios=o.list;acctWrite();C.save();await bzFlush();try{C.cloud.marcar()}catch(e){}bzGo(id);return {ok:true}},
   quitarActual(){
     if(!BZ.act)return {ok:false};const id=BZ.act,o=bzAll(),e=o.list.find(x=>x.id===id);if(!e)return {ok:false};
     e.x=1;e.t=Date.now();o.act='';BZ.wr(o);
@@ -3127,11 +3153,15 @@ function sigOf(a){let x=0;for(let i=0;i<a.length;i++)x=(x+(+a[i].id||0)*(i+1))%1
 /* Actualización automática (2.8): si la app se recarga SOLA para estrenar una versión nueva, no vuelve a pedir la clave (la marca dura 30 s y solo la pone la app ya desbloqueada) */
 function recargaSegura(){try{const t=+sessionStorage.getItem('cuadre.recarga');sessionStorage.removeItem('cuadre.recarga');return t>0&&Date.now()-t<30000}catch(e){return false}}
 function lockMigra(s){if(!s||s.lockV===2)return;if(s.lockMin===0||(s.lockMin===1&&!s.lockSet)){s.lockMin=-1;s.lockV=2}}      // la bandera solo se escribe cuando de verdad se migra (no ensucia las copias que ya estaban bien)
+/* «Proteger ganancias y costos» queda ENCENDIDO apenas existe la clave del dueño (decisión de Luis, 27/10). La clave del dueño solo se crea para proteger, y al apagar la protección esa clave se borra:
+   una copia o un teléfono viejo con la clave pero la protección apagada por descuido se normaliza aquí. */
+function protPorDefecto(s){if(s&&s.dueno&&s.dueno.hash&&!s.protGan)s.protGan=true}
 function adopt(o){
   C.state=Object.assign(ST0(),o.s);C.state.info=Object.assign(ST0().info,o.s.info||{});lockMigra(C.state);      // «1 minuto» era el valor de fábrica de la 2.6 (nadie lo eligió): pasa al nuevo, «solo si la cierro del todo»
   C.state.docs=Object.assign({day:0,n:0,keys:{}},o.s.docs||{});
   if(!DEVOK)C.state.devPlan=null;
   try{bzAdopt(C.state)}catch(e){console.error('NegocioListo: negocios',e)}
+  protPorDefecto(C.state);
   D=o.d?Object.assign(D0(),o.d):(C.state.step==='app'?D0():null);
   if(D){D.seqs=Object.assign(D0().seqs,D.seqs||{});if(!Array.isArray(D.movs))D.movs=[]}
   if(C.state.step==='app'&&!D)D=D0();
@@ -3141,7 +3171,10 @@ function adopt(o){
 const rq=r=>new Promise((res,rej)=>{r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
 function idbOpen(){return new Promise((res,rej)=>{const to=setTimeout(()=>rej(new Error('idb-timeout')),4000);
   try{const r=indexedDB.open('cuadre'+SUF,1);r.onupgradeneeded=()=>{r.result.createObjectStore('kv')};
-    r.onsuccess=()=>{clearTimeout(to);res(r.result)};r.onerror=()=>{clearTimeout(to);rej(r.error||new Error('idb'))}}catch(e){clearTimeout(to);rej(e)}})}
+    r.onsuccess=()=>{clearTimeout(to);const db=r.result;
+      /* si otra ventana borra esta base (cerró sesión o quitó el negocio), se suelta para no trabarla y esta ventana se vuelve a abrir */
+      db.onversionchange=()=>{try{db.close()}catch(e){}if(!C.wiping){C.wiping=true;C.booting=true;STO.dead=true;clearTimeout(saveT);saveT=0;setTimeout(()=>{try{location.reload()}catch(e){}},200)}};
+      res(db)};r.onerror=()=>{clearTimeout(to);rej(r.error||new Error('idb'))}}catch(e){clearTimeout(to);rej(e)}})}
 async function idbLoad(){
   const tx=STO.db.transaction('kv','readonly'),os=tx.objectStore('kv'),R=IDBKeyRange.bound('m:','m;');
   const [m,t,ks,vs]=await Promise.all([rq(os.get('meta')),rq(os.get('t')),rq(os.getAllKeys(R)),rq(os.getAll(R))]);
@@ -3161,6 +3194,7 @@ function hotWrite(P,changed){try{localStorage.setItem(HOT,JSON.stringify({t:STO.
 function diff(P){const changed={};Object.keys(P.sig).forEach(k=>{if(STO.sig[k]!==P.sig[k])changed[k]=JSON.stringify(P.chunks[k],clean)});
   return {changed,gone:Object.keys(STO.sig).filter(k=>!(k in P.sig))}}
 async function flush(){
+  if(STO.dead)return;
   if(STO.busy){STO.again=true;try{const P=parts(),d=diff(P);hotWrite(P,d.changed)}catch(e){}return}
   STO.busy=true;
   try{
@@ -3245,6 +3279,7 @@ function readLegacy(){try{const raw=localStorage.getItem(KEY);if(!raw)return nul
 function readHot(){try{const r=localStorage.getItem(HOT);return r?JSON.parse(r):null}catch(e){return null}}
 function booted(){
   C.booting=false;
+  try{trialSync()}catch(e){console.error(e)}
   if(bzBoot())return;
   try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
   if(STO.mode==='idb'){
@@ -3255,8 +3290,10 @@ function booted(){
     addEventListener('storage',e=>{if(e.key!==KEY||!e.newValue)return;try{const o=JSON.parse(e.newValue);if(o&&o.s&&(o.t||0)>(C.state._t||0)){clearTimeout(saveT);adopt(o);C.refresh();C.toast('Se actualizó con los cambios de otra ventana.')}}catch(x){}})}
   C.refresh();
   setTimeout(()=>{try{window.__bzsOff&&window.__bzsOff()}catch(e){}},250);
+  try{const m=sessionStorage.getItem('cuadre.soMsg');if(m){sessionStorage.removeItem('cuadre.soMsg');setTimeout(()=>{try{C.toast(m)}catch(e){}},1100)}}catch(e){}
 }
 async function boot(){
+  if(WIPE){try{await wipeIDB(WIPE.ids)}catch(e){console.error(e)}try{localStorage.removeItem(WIPEK)}catch(e){}}      // se termina el cierre de sesión pendiente y recién entonces se abre la base
   const legacy=readLegacy();
   try{
     STO.db=await idbOpen();STO.mode='idb';
@@ -3274,7 +3311,7 @@ async function boot(){
   }
   booted();
 }
-if(typeof indexedDB==='undefined'){STO.mode='ls';const lg=readLegacy();if(lg){adopt(lg.o);lastSize=lg.size}booted()}   // sin IndexedDB: arranque inmediato
+if(typeof indexedDB==='undefined'){if(WIPE){try{localStorage.removeItem(WIPEK)}catch(e){}}STO.mode='ls';const lg=readLegacy();if(lg){adopt(lg.o);lastSize=lg.size}booted()}   // sin IndexedDB: arranque inmediato
 else boot();
 addEventListener('pagehide',()=>{C.save()});
 document.addEventListener('visibilitychange',()=>{
@@ -3286,12 +3323,41 @@ document.addEventListener('visibilitychange',()=>{
 });
 
 let hiddenAt=0;
+/* La prueba de Pro es del EQUIPO, no de la cuenta: se anota aparte (cuadre.tr) para que cerrar sesión, borrar los datos o entrar con otra cuenta no regalen otra prueba */
+const TRK='cuadre.tr';
+function trialSync(){
+  const s=C.state;let m=null;try{m=JSON.parse(localStorage.getItem(TRK)||'null')}catch(e){}
+  const u=!!(s.trialUsed||(m&&m.u)),e=Math.max(+s.trialEnd||0,(m&&+m.e)||0);
+  if(u!==!!s.trialUsed||e!==(+s.trialEnd||0)){s.trialUsed=u;s.trialEnd=e;scheduleSave()}
+  if(!m||!!m.u!==u||(+m.e||0)!==e){try{localStorage.setItem(TRK,JSON.stringify({u:u?1:0,e}))}catch(x){}}}
 C.reset=()=>{const T={u:C.state.trialUsed,e:C.state.trialEnd};C.state=ST0();C.state.trialUsed=!!T.u;C.state.trialEnd=T.e||0;      // borrar los datos no regala otra prueba de Pro
   D=null;C.locked=false;clearTimeout(saveT);saveT=0;
   try{[KEY,HOT,MIG,SAFE1,SAFE2,'cuadre.safe.1m'+SUF,'cuadre.safe.2m'+SUF,'cuadre.borrador'+SUF].forEach(k=>localStorage.removeItem(k))}catch(e){}
   if(STO.mode==='idb'){STO.t=0;STO.sig={};STO.clen={};STO.mlen=0;STO.lastBak='';
     STO.clearing=new Promise(res=>{try{const tx=STO.db.transaction('kv','readwrite');tx.objectStore('kv').clear();tx.oncomplete=tx.onerror=tx.onabort=()=>res()}catch(e){res()}}).then(()=>{STO.clearing=null})}
   C.emit()};
+/* Cerrar sesión de Google: borra de este equipo TODO lo de la cuenta y vuelve a abrir la app limpia (la copia del Drive no se toca) */
+C.cerrarSesion=async()=>{
+  if(C.wiping)return {ok:false};C.wiping=true;
+  const ids=bzAll().list.map(x=>x.id).filter(Boolean);
+  try{localStorage.setItem(WIPEK,JSON.stringify({t:Date.now(),ids}))}catch(e){}
+  C.booting=true;STO.dead=true;clearTimeout(saveT);saveT=0;      // desde aquí esta ventana ya no guarda nada
+  try{const bc=new BroadcastChannel('cuadre-wipe');bc.postMessage({w:WID});setTimeout(()=>{try{bc.close()}catch(e){}},800)}catch(e){}
+  try{C.cloud.revocar(true)}catch(e){}                        // el permiso que Google dio a esta app
+  try{if(navigator.clearAppBadge)navigator.clearAppBadge()}catch(e){}
+  try{const r=navigator.serviceWorker&&await navigator.serviceWorker.getRegistration();if(r&&r.periodicSync)await r.periodicSync.unregister('cuadre-daily')}catch(e){}
+  try{if(STO.bc)STO.bc.close()}catch(e){}
+  try{if(STO.db)STO.db.close()}catch(e){}
+  wipeLS(ids);
+  try{await wipeIDB(ids)}catch(e){console.error(e)}
+  wipeLS(ids);
+  try{sessionStorage.setItem('cuadre.soMsg','Sesión cerrada. Los datos de este equipo se borraron; los de tu cuenta siguen en tu Google Drive.')}catch(e){}
+  location.reload();      // (la marca cuadre.wipe sigue puesta: al abrir se repasa todo una vez más y recién ahí se quita)
+  return {ok:true}};
+/* otra ventana de NegocioListo abierta en este equipo cerró la sesión: esta deja de guardar y se vuelve a abrir (si no, volvería a escribir lo que se borró) */
+try{const wbc=new BroadcastChannel('cuadre-wipe');wbc.onmessage=e=>{const m=e.data||{};if(m.w&&m.w!==WID&&!C.wiping){C.wiping=true;C.booting=true;STO.dead=true;clearTimeout(saveT);saveT=0;
+  try{sessionStorage.setItem('cuadre.soMsg','Se cerró la sesión de Google en este equipo. Los datos se borraron; los de tu cuenta siguen en tu Google Drive.')}catch(x){}
+  setTimeout(()=>{try{location.reload()}catch(x){}},300)}}}catch(e){}
 C.start=mode=>{C.state.mode=mode||'invitado';C.state.step='setup';C.emit()};
 C.setStep=s=>{C.state.step=s;C.emit()};
 /* setup: {nombre, rubro, rubroTxt, moneda, monedaSym, numStyle, ivaPct, taxName, logo, info} */
@@ -3362,8 +3428,10 @@ C.contactoURL=msg=>{const c=PLAN.contacto||{},t=encodeURIComponent(msg||'');
   if(c.email)return 'mailto:'+c.email+'?subject='+encodeURIComponent('NegocioListo')+(t?'&body='+t:'');return ''};
 /* ¿se ofrece la vía del código del vendedor (con su contacto)? Solo FUERA de la app de Google Play y mientras PLAN.canalWeb sea 'codigo' */
 C.canalCodigo=()=>!(C.billing&&C.billing.enPlay&&C.billing.enPlay())&&PLAN.canalWeb!=='play';
+/* ¿la cuenta de Google conectada es la de PLAN.revisores (la que usa Google Play para revisar la app)? Solo a ella, dentro de la app de Play, se le muestra dónde pegar el código de activación */
+C.revisor=()=>{const L=PLAN.revisores,K=C.state.cloud;if(!L||!L.length||!(K&&K.on&&K.email))return false;const e=normMail(K.email);return L.some(x=>normMail(x)===e)};
 C.trial=()=>{const s=C.state,left=Math.max(0,s.trialEnd-Date.now());return {active:left>0,used:s.trialUsed,daysLeft:Math.ceil(left/DAY),ends:s.trialEnd,expired:s.trialUsed&&left<=0}};
-C.startTrial=()=>{const s=C.state;if(s.trialUsed)return false;s.trialUsed=true;s.trialEnd=Date.now()+PLAN.trialDays*DAY;C.emit();return true};
+C.startTrial=()=>{const s=C.state;if(s.trialUsed)return false;s.trialUsed=true;s.trialEnd=Date.now()+PLAN.trialDays*DAY;try{trialSync()}catch(e){}C.emit();return true};
 C.setDev=p=>{if(!DEVOK)return;C.state.devPlan=p;C.emit()};      // solo para probar y solo en localhost
 C.devOk=DEVOK;
 /* lo que dice la etiqueta de arriba: «Gratis», «Prueba» (solo los días de prueba, sin compra ni código) o «Pro» (hay compra, código o plan de pruebas) */
@@ -4317,6 +4385,7 @@ function applyBackup(o,opts){
     lic:betterLic(C.state.lic,opts&&opts.cloud&&o.s.lic&&o.s.lic.code&&licDeLaCuenta(o.s.lic)?o.s.lic:null),licPc:betterPc(C.state.licPc,opts&&opts.cloud&&o.s.licPc&&o.s.licPc.code&&licDeLaCuenta(o.s.licPc)?o.s.licPc:null)};
   Object.keys(keep).forEach(k=>{if(keep[k]===undefined)delete keep[k]});
   C.state=Object.assign(ST0(),o.s,keep);C.state.info=Object.assign(ST0().info,o.s.info||{});C.state.step='app';lockMigra(C.state);
+  protPorDefecto(C.state);
   if(C.state.protGan&&!C.gvHasKey())C.state.protGan=false;               // una copia con la protección activa pero sin clave que la sostenga no deja nada oculto sin salida
   if(!C.state.notif)C.state.notif=ST0().notif;
   D=Object.assign(D0(),o.d);D.seqs=Object.assign(D0().seqs,D.seqs||{});D.undo=null;
@@ -4493,6 +4562,9 @@ C.CONFIG={
 };
 const SCOPE='https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile';
 const FMAIN='cuadre-respaldo'+SUF+'.json',FPREV='cuadre-respaldo-anterior'+SUF+'.json',DRV='https://www.googleapis.com/drive/v3',UPL='https://www.googleapis.com/upload/drive/v3';
+/* «cuadre.sd»: este negocio quedó con cambios que no llegaron al Drive (se anota al cambiar de negocio y se quita al subir). Sirve para avisar antes de cerrar sesión (3.0) */
+const SDK='cuadre.sd'+SUF;
+const sdSet=v=>{try{v?localStorage.setItem(SDK,'1'):localStorage.removeItem(SDK)}catch(e){}};
 const cl={tok:null,exp:0,busy:false,err:'',needAuth:false,timer:0,dirty:false,gis:false,loading:null,conflict:null,check:false,lastTap:0,lastCheck:0,nk:false,again:false,tokChecked:null,huDone:new Set(),pendDel:[]};
 /* El permiso que da Google dura ~1 hora. Se guarda SOLO mientras la app está abierta (sessionStorage: se borra al cerrarla) para que, al cambiar de negocio
    (la app se vuelve a abrir), no salga otra vez la ventana «Sign in – Google Accounts». */
@@ -4510,7 +4582,7 @@ function sHash(){const s=C.state,o={};BIZKEYS.forEach(k=>{if(s[k]!==undefined)o[
 /* «snap» = cómo estaba todo en el instante en que se armó la copia que se subió. Lo que se cambió MIENTRAS subía no iba en esa copia:
    no se da por subido (antes se perdía de vista y el otro dispositivo no lo recibía hasta el siguiente cambio). */
 function markSynced(rev,dev,snap){const S=CS();S.rev=rev;S.rdev=dev||DEV;S.hash=snap?snap.h:cloudHash();S.sh=snap?snap.sh:sHash();S.last=S.vOk=Date.now();cl.dirty=false;cl.check=false;cl.conflict=null;
-  if(snap&&S.hash!==cloudHash()){cl.dirty=true;cl.again=true}}
+  if(snap&&S.hash!==cloudHash()){cl.dirty=true;cl.again=true}else sdSet(false)}
 function loadGIS(){
   if(window.google&&google.accounts&&google.accounts.oauth2){cl.gis=true;return Promise.resolve()}
   if(cl.loading)return cl.loading;
@@ -4647,12 +4719,12 @@ async function mezclar(tk,R,files,h,manual,pre){
    alguien escribiendo una clave o un precio) NO se redibuja: así lo escrito no se borra. */
 function uiPing(){cl.nk=true;try{if(!C.cloud.idle||C.cloud.idle())C.emit()}finally{cl.nk=false}}
 async function cloudSync(manual,gesture){
-  const S=CS();if(!S.on||!cfgOk()||!D||cl.busy)return {ok:false,reason:'nada'};
+  const S=CS();if(!S.on||!cfgOk()||!D||cl.busy||cl.stop)return {ok:false,reason:'nada'};
   if(!C.online())return {ok:false,reason:'offline'};
   if(!manual&&!gesture&&cl.needAuth)return {ok:false,reason:'auth'};
   if(cl.conflict&&!manual)return {ok:false,reason:'conflicto'};
   let h=cloudHash();
-  if(!manual&&h===S.hash&&!cl.check){cl.dirty=false;return {ok:true,igual:true}}
+  if(!manual&&h===S.hash&&!cl.check){cl.dirty=false;sdSet(false);return {ok:true,igual:true}}
   cl.busy=true;cl.err='';uiPing();
   try{
     await loadGIS();const tk=await getToken(manual||gesture?true:false);await tokCuenta(tk);
@@ -4672,8 +4744,8 @@ async function cloudSync(manual,gesture){
       return await mezclar(tk,R,files,h,manual);
     }
     cl.check=false;
-    if(h===S.hash&&!manual){cl.dirty=false;cl.needAuth=false;return {ok:true,igual:true}}
-    if(!R&&C.state.step!=='app'){cl.check=false;cl.dirty=false;return {ok:true,igual:true}}      // aún no hay negocio aquí: no se sube una copia vacía
+    if(h===S.hash&&!manual){cl.dirty=false;sdSet(false);cl.needAuth=false;return {ok:true,igual:true}}
+    if(!R&&C.state.step!=='app'){cl.check=false;cl.dirty=false;sdSet(false);return {ok:true,igual:true}}      // aún no hay negocio aquí: no se sube una copia vacía
     const rev=(R?R.rev:0)+1;
     const sn=await drivePut(tk,JSON.stringify(backupObj(true)),rev,files);
     markSynced(rev,undefined,sn);cl.needAuth=false;cl.err='';return {ok:true};
@@ -4681,6 +4753,12 @@ async function cloudSync(manual,gesture){
   finally{cl.busy=false;uiPing();
     if(cl.again){cl.again=false;clearTimeout(cl.timer);cl.timer=setTimeout(()=>{cloudSync(false)},400)}}      // se cambió algo mientras subía: se vuelve a subir enseguida
 }
+/* (3.0) ¿hay cambios de este equipo que todavía no están en el Drive? Se mira antes de cerrar sesión (cerrar borra los datos de aquí).
+   activo = el negocio abierto · otros = nombres de otros negocios de este equipo que quedaron sin subir · conectado = hay cuenta de Google */
+C.sinSubir=()=>{const S=CS(),o={conectado:!!(S.on&&S.email),activo:false,otros:[]};
+  if(o.conectado&&D&&C.state.step==='app'){try{o.activo=cloudHash()!==S.hash}catch(e){o.activo=true}}
+  try{bzLive().forEach(e=>{if(e.id===BZ.act)return;if(localStorage.getItem('cuadre.sd'+(e.id?'-'+e.id:''))==='1')o.otros.push(e.n||'Mi negocio')})}catch(e){}
+  return o};
 C.cloudNuevo=()=>{const S=CS();S.sh=sHash();S.hash='';S.rev=null;S.last=0};      // negocio nuevo en este equipo: si en el Drive ya hay uno con ese código (lo creó otro dispositivo), se trae; los ajustes se toman de allá
 C.cloud={
   info(){const S=CS();if(cfgOk()&&C.online()&&!cl.gis)loadGIS().catch(()=>{});
@@ -4688,7 +4766,7 @@ C.cloud={
       conflict:cl.conflict?Object.assign({},cl.conflict,{aqui:{prods:D?D.prods.length:0,movs:D?D.movs.length:0,nom:C.state.nombre}}):null}},
   configured:cfgOk,
   /* se llama en cada cambio guardado: programa la subida (sin internet queda pendiente) */
-  kick(ms){const S=CS();if(cl.nk||!S.on||!cfgOk())return;cl.dirty=true;clearTimeout(cl.timer);cl.timer=setTimeout(()=>{cloudSync(false)},ms==null?C.CONFIG.subirDespuesMs:ms)},
+  kick(ms){const S=CS();if(cl.nk||cl.stop||!S.on||!cfgOk())return;cl.dirty=true;clearTimeout(cl.timer);cl.timer=setTimeout(()=>{cloudSync(false)},ms==null?C.CONFIG.subirDespuesMs:ms)},
   /* se llama en cada toque del usuario: reconecta con Google si pidió confirmar, o revisa si el otro dispositivo cambió algo */
   tap(){const S=CS();if(!S.on||!cfgOk()||cl.busy||!C.online()||!D)return;const now=Date.now();
     if(cl.needAuth&&now-cl.lastTap>C.CONFIG.reconectarCadaMs){cl.lastTap=now;cloudSync(false,true);return}
@@ -4716,8 +4794,15 @@ C.cloud={
     try{
       tokClear();cl.tokChecked=null;const tk=await getToken('nueva');let email='';
       try{const r=await gapi('https://www.googleapis.com/oauth2/v3/userinfo',{},tk);const u=await r.json();email=u.email||''}catch(e){}
+      /* (3.0) Los datos de este equipo son de UNA cuenta de Google. Si ya hay un negocio aquí y entra OTRA cuenta, no se mezclan ni se suben al Drive de la otra:
+         primero hay que cerrar la sesión de la anterior (eso borra los datos de este equipo; siguen en el Drive de su dueño). */
+      {const S0=CS(),dueno=S0.on?normMail(S0.owner||S0.email):'';      // solo mientras hay una cuenta conectada (sin sesión no hay a quién mostrar el aviso ni qué botón tocar)
+       
+       if(dueno&&email&&normMail(email)!==dueno&&C.state.step==='app'){
+         C.cloud.revocar();cl.tokChecked=null;
+         return {ok:false,otra:true,msg:'Este equipo tiene los datos de otra cuenta de Google ('+C.maskMail(S0.owner||S0.email)+'). Para entrar con '+email+', primero cierra la sesión de esa cuenta con «Cerrar sesión»: se borran los datos de este equipo (siguen guardados en su Drive) y después entras con la tuya.'}}}
       const R=remoteOf(await driveFiles(tk)),S=CS();
-      S.email=email;S.on=true;S.hash='';S.sh='';S.last=0;S.vOk=Date.now();S.rev=null;cl.needAuth=false;cl.err='';cl.conflict=null;C.emit();
+      S.email=email;S.owner=normMail(email)||S.owner||'';S.on=true;S.hash='';S.sh='';S.last=0;S.vOk=Date.now();S.rev=null;cl.needAuth=false;cl.err='';cl.conflict=null;C.emit();
       return {ok:true,email,remote:R};
     }catch(e){const m=String(e&&e.message);return {ok:false,msg:m.indexOf('auth:')===0?authMsg(m.slice(5)):cloudMsg(e)}}
   },
@@ -4736,12 +4821,19 @@ C.cloud={
   disconnect(){const S=CS();try{if(cl.tok&&window.google&&google.accounts&&google.accounts.oauth2)google.accounts.oauth2.revoke(cl.tok,()=>{})}catch(e){}
     tokClear();S.on=false;S.email='';S.hash='';S.sh='';S.last=0;S.rev=null;cl.err='';cl.dirty=false;cl.needAuth=false;cl.conflict=null;clearTimeout(cl.timer);C.emit()},
   sync(){return cloudSync(true)},
+  /* (3.0) cerrar sesión de verdad: el permiso de Google se devuelve y se detiene todo envío a la nube */
+  revocar(fin){try{if(cl.tok&&window.google&&google.accounts&&google.accounts.oauth2)google.accounts.oauth2.revoke(cl.tok,()=>{})}catch(e){}tokClear();cl.tokChecked=null;
+    if(fin){cl.dirty=false;cl.again=false;clearTimeout(cl.timer);clearTimeout(pollT);cl.stop=true}},      // fin = se está cerrando la sesión: no se sube ni se mira nada más
+  /* espera a que termine la subida en curso (como máximo unos segundos) para poder decir con certeza si quedó algo sin subir */
+  async esperar(ms){const t0=Date.now();while(cl.busy&&Date.now()-t0<(ms||8000))await new Promise(r=>setTimeout(r,150))},
+  /* al dejar este negocio (cambiar a otro): se anota si quedaron cambios sin subir, para avisarlo antes de cerrar sesión */
+  marcar(){try{sdSet(!!(CS().on&&C.sinSubir().activo))}catch(e){}},
   async juntar(){cl.juntar=true;cl.conflict=null;try{return await cloudSync(true)}finally{cl.juntar=false}},      // «Juntar los dos»: dos negocios de la misma cuenta, el usuario eligió juntarlos
   async restore(){                      // «Traer de la nube» (desde Más)
     if(!C.online())return {ok:false,msg:'Necesitas internet.'};
     try{await loadGIS();const tk=await getToken(true),files=await driveFiles(tk),R=remoteOf(files);
       if(!R){const f=files.find(x=>x.name===FPREV);if(!f)return {ok:false,msg:'No hay ninguna copia en tu Drive todavía.'};
-        const o=await driveGet(tk,f.id);const res=applyBackup(o,{cloud:true});if(res.ok){CS().hash=cloudHash();CS().sh=sHash();CS().last=Date.now();cl.dirty=false}return res}
+        const o=await driveGet(tk,f.id);const res=applyBackup(o,{cloud:true});if(res.ok){CS().hash=cloudHash();CS().sh=sHash();CS().last=Date.now();cl.dirty=false;sdSet(false)}return res}
       return await pull(tk,R);
     }catch(e){return {ok:false,msg:cloudMsg(e)}}
   },
@@ -9868,10 +9960,11 @@ function masBody(id,s){
       ${K.conflict?`<button type="button" class="btn sm" data-a="cc-open">Elegir qué hacer</button>`:''}
       <p class="fine l">Tus datos se guardan solos en tu Google Drive, en una carpeta privada de la app. Si cambias de teléfono, entra con la misma cuenta y los recuperas.</p>
       <div class="two" style="margin-top:10px"><button type="button" class="btn sm" data-a="cloud-sync"${online?'':' disabled'}>${ic('cloud',17)}Guardar ahora</button><button type="button" class="btn ghost sm" data-a="cloud-restore"${online?'':' disabled'}>Traer de mi Drive</button></div>
-      <button type="button" class="btn txt" data-a="cloud-off">Cerrar sesión de Google</button>`
+      <button type="button" class="btn txt" data-a="cloud-off">Cerrar sesión de Google</button>
+      <p class="fine l">Al cerrar sesión se borran los datos de ${EQ()}; siguen guardados en tu Drive y los recuperas al volver a entrar con la misma cuenta.</p>`
     :`<p class="accn">Entra con tu cuenta de Google: tus datos se guardan solos en tu propio Drive cada vez que hay internet, y si cambias de teléfono los recuperas. Nadie más los ve.</p>
       <button type="button" class="btn sm gbtn" data-a="cloud-on"${online?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>${online?'':'<p class="fine">Necesitas internet para entrar.</p>'}`;
-  T.cuenta=()=>`${nube}${K.configured?`<p class="fine legal"><a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="terminos.html" target="_blank" rel="noopener">Términos</a></p>`:''}`;
+  T.cuenta=()=>`${nube}${K.configured?`<p class="fine legal"><a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="eliminar-datos.html" target="_blank" rel="noopener">Eliminar datos</a></p>`:''}`;
   T.datos=()=>`
     <p class="accn">${ic('check',14,'okic',2.5)} Todo se guarda solo en ${EQ()}, a cada cambio (${kb} KB). Funciona igual sin internet.</p>
     <p class="fine">${db==null?'Todavía no has hecho una copia en archivo.':db===0?'Última copia en archivo: hoy.':'Última copia en archivo: hace '+db+' días.'} Haz una de vez en cuando: si pierdes o cambias el teléfono es lo que te devuelve tus datos.</p>
@@ -10499,7 +10592,8 @@ function buySheet(s,i){
   else if(play){
     mb=K.connected?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>${pc?'Correo de tu plan':'Tu cuenta de Google'}</b><i>${esc(K.email||'Conectada')}</i></div></div>`
       :`<p class="bpn">Para guardar tu plan en tu cuenta de Google (y recuperarlo si cambias de teléfono o de computadora), entra primero con Google.</p><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>`;
-    pt=`<p class="lerr" data-r="licmsg" ${s.msg?'':'hidden'}>${esc(s.msg||'')}</p><p class="fine l">${pc?'El cobro lo hace Google Play, una sola vez.':'El cobro lo hace Google Play y se renueva solo. Cancelas cuando quieras desde Play Store → Pagos y suscripciones.'}</p>`;
+    pt=`<p class="lerr" data-r="licmsg" ${s.msg?'':'hidden'}>${esc(s.msg||'')}</p><p class="fine l">${pc?'El cobro lo hace Google Play, una sola vez.':'El cobro lo hace Google Play y se renueva solo. Cancelas cuando quieras desde Play Store → Pagos y suscripciones.'}</p>`
+      +(K.connected&&C.revisor()?revisorHTML(pc?'pc':'pro',s):'');      // SOLO la cuenta de revisión de Google Play ve dónde pegar el código
     foot=K.connected?`<button type="button" class="btn big" data-a="buy-play" ${s.busy?'disabled':''}>${s.busy?'Abriendo Google Play…':ic('crown',18)+(pc?'Comprar · '+esc(pr)+' pago único':'Suscribirme · '+esc(pr)+' '+esc(P.planes[key].per))}</button><button type="button" class="btn txt" data-a="buy-restore" ${s.busy?'disabled':''}>Ya pagué: restaurar mi compra</button>`
       :`<button type="button" class="btn big gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>`;
   }else if(!C.canalCodigo()){
@@ -10609,6 +10703,7 @@ function sheetOf(s,i){
     case 'qmsg':return qmsgSheet(s,i);
     case 'qtpl':return qtplSheet(s,i);
     case 'qtplsave':return qtplsaveSheet(s,i);
+    case 'so':return soSheet(s,i);
     case 'negs':return negsSheet(s,i);
     case 'bznew':return bznewSheet(s,i);
     case 'cierre':return cierreSheet(s,i);
@@ -11054,6 +11149,34 @@ function bznewSheet(s,i){
     <p class="err" data-r="bzerr" hidden></p>
     <p class="fine">Se copian el país, la moneda y los impuestos del negocio que tienes abierto (los puedes cambiar después en «Mi negocio»). Tu plan Pro, tu cuenta de Google y tu clave son los mismos.</p>`,
     `<button type="button" class="btn big" data-a="bz-create">Crear y abrir</button>`,'pros');
+}
+
+/* =====================================================================
+   Cerrar sesión de Google (3.0): borra los datos de ESTE equipo. Antes avisa si hay cambios que todavía no están en el Drive.
+   ===================================================================== */
+function soSheet(s,i){
+  const K=C.cloud.info(),eq=EQ(),on=C.online(),em=K.email||'tu cuenta';
+  const cancelar=`<button type="button" class="btn big ghost" data-a="close">Cancelar</button>`;
+  if(s.cargando)return frame(s,i,'Cerrar sesión','',`<p class="cfmp">Revisando que todo esté guardado en tu Drive…</p>`,cancelar,'pros');
+  const I=s.info||{activo:false,otros:[]},sin=!!(I.activo||(I.otros&&I.otros.length));
+  const copia=`<button type="button" class="btn big ghost" data-a="backup"${s.busy?' disabled':''}>${ic('excel',19)}Bajar una copia primero</button>`;
+  const msg=s.msg?`<p class="lerr" role="alert">${esc(s.msg)}</p>`:'';
+  if(!sin){
+    const body=`<p class="cfmp">Se borran de ${eq} todos tus datos de NegocioListo: productos, ventas, cotizaciones, tus negocios, las copias automáticas, tu clave o huella y los avisos.</p>
+      <p class="cfmp">Todo sigue guardado en el Drive de <b>${esc(em)}</b>: al volver a entrar con esa cuenta, se trae de nuevo. Si entra otra cuenta de Google, empieza desde cero.</p>${msg}`;
+    return frame(s,i,'¿Cerrar sesión?','',body,`<button type="button" class="btn big dngb" data-a="so-go"${s.busy?' disabled':''}>${s.busy?'Cerrando sesión…':'Cerrar sesión y borrar de '+esc(eq)}</button>${copia}${cancelar}`,'pros');
+  }
+  const otros=(I.otros||[]).map(esc).join(', ');
+  const body=`<div class="mailb">${ic('alert',20,'',2)}<div><b>Hay cambios que todavía no están en tu Google Drive</b><span>Si cierras sesión ahora, se borran de ${eq} y se pierden.</span></div></div>
+    ${I.activo?`<p class="cfmp">${on?'Los de este negocio se pueden subir ahora: toca «Subir y cerrar sesión».':'Los de este negocio no se pueden subir sin internet. Conéctate para subirlos.'}</p>`:''}
+    ${otros?`<p class="cfmp">También quedaron sin subir: <b>${otros}</b>. Abre ese negocio, espera unos segundos a que se suba y vuelve a cerrar sesión.</p>`:''}${msg}`;
+  const foot=(I.activo?`<button type="button" class="btn big" data-a="so-subir"${s.busy||!on?' disabled':''}>${s.busy?'Subiendo…':ic('cloud',19)+'Subir y cerrar sesión'}</button>`:'')
+    +`<button type="button" class="btn big dngb" data-a="so-go"${s.busy?' disabled':''}>Cerrar sin subir (se pierden)</button>${copia}${cancelar}`;
+  return frame(s,i,'Antes de cerrar sesión','',body,foot,'pros');
+}
+/* Solo para la cuenta que Google Play usa para REVISAR la app (PLAN.revisores): ahí no se puede comprar ni usar la prueba, así que se le deja pegar el código de activación */
+function revisorHTML(plan,s){
+  return `<div class="mailb rvb">${ic('shield',20,'',2)}<div><b>Acceso de revisión</b><span>Esta es la cuenta de prueba que Google Play usa para revisar la app. Pega aquí el código de activación que está en las instrucciones de revisión para probar ${plan==='pc'?'la versión para PC':'Pro'}.</span></div></div>${licStepsHTML(plan,s,false)}`;
 }
 
 
@@ -11900,7 +12023,6 @@ const A={
     else if(s.act==='regdiscard'){sheets.pop();sheets=sheets.filter(x=>x.k!=='reg');reg=null;render()}
     else if(s.act==='adddiscard'){sheets.pop();sheets=sheets.filter(x=>x.k!=='add');ap=null;render()}
     else if(s.act==='gfresh'){sheets=[];await C.cloud.keep();C.start('google');toast('Empezamos de cero; tu copia anterior queda en el Drive')}
-    else if(s.act==='cloudoff'){sheets.pop();C.cloud.disconnect();render();toast('Sesión de Google cerrada')}
     else if(s.act==='cloudrestore'){sheets.pop();render();const r=await C.cloud.restore();
       if(r.ok){sheets=[];page=null;tab='inicio';anim=true;render();toast('Listo: recuperé '+r.prods+' productos y '+r.movs+' movimientos de la nube')}
       else toast(r.msg||'No pude traer la copia',false,true)}
@@ -12084,7 +12206,7 @@ const A={
     render();if(codigoPend())await activarPend()},
   'pc-otra'(){return A['pc-entrar']()},
   /* «Cerrar sesión» en la ventana de la PC: deja de usar la cuenta y vuelve al inicio (instalar e iniciar sesión con la cuenta que quiera) */
-  'pc-salir'(){if(gbusy)return;pcMsg='';C.cloud.disconnect();render();toast('Sesión cerrada. Ahora puedes iniciar con la cuenta que quieras.')},
+  'pc-salir'(){pcMsg='';return A['so-open']()},
   /* «Verificar ahora» / «Ya compré, revisar»: vuelve a mirar tu Drive (ahí viaja el plan) y anota que se verificó */
   async 'pc-verif'(){
     if(gbusy)return;
@@ -12110,7 +12232,7 @@ const A={
       const s2=await C.cloud.juntar();render();toast(s2.ok?'Conectado. Se juntó tu bodega con la de tu Drive':(s2.msg||'No pude juntar las copias'),false,!s2.ok);return}
     if(r.remote){const t=await C.cloud.take();render();toast(t.ok?'Listo: recuperé '+t.prods+' productos de tu Drive':(t.msg||'No pude traer la copia'),false,!t.ok);return}
     const s=await C.cloud.sync();render();toast(s.ok?'Conectado. Tus datos ya están en tu Google Drive':'Conectado. Se guardará en tu Drive en cuanto haya internet')},
-  'cloud-off'(){pushSheet({k:'cfm',t:'¿Desconectar Google?',d:'Dejo de subir copias a tu Drive. Lo que ya está guardado ahí no se borra y tus datos de '+EQ()+' siguen igual.',yes:'Desconectar',no:'Cancelar',act:'cloudoff'})},
+  'cloud-off'(){return A['so-open']()},
   async 'cloud-sync'(){const r=await C.cloud.sync();render();
     if(r.ok)toast(r.igual?'Tu copia en la nube ya estaba al día':'Copia subida a tu Drive');else toast(r.msg||(r.reason==='offline'?'Sin internet: se sube sola cuando vuelva.':'No se pudo subir la copia'),false,true)},
   'cloud-restore'(){pushSheet({k:'cfm',t:'¿Traer la copia de la nube?',d:'Los datos de '+EQ()+' se reemplazan por la última copia guardada en tu Google Drive. Lo que hay ahora se pierde.',yes:'Sí, traer la copia',no:'Cancelar',act:'cloudrestore'})},
@@ -12720,6 +12842,32 @@ Object.assign(A,{
     if(er){er.textContent=(r&&r.msg)||'No pude crear el negocio.';er.hidden=false}if(i)i.focus()},
   'bz-del'(b){const x=C.biz.list().find(y=>y.id===b.dataset.id);if(!x)return;
     pushSheet({k:'cfm',t:'¿Quitar «'+x.n+'»?',d:'Se borran de '+EQ()+' todos sus productos, ventas y copias. Tus otros negocios no se tocan. Lo que esté guardado en tu Drive o en un archivo de copia NO se borra. Sin una copia, no se puede recuperar.',yes:'Sí, quitar este negocio',no:'Cancelar',act:'bzdel',id:x.id})}
+});
+
+/* =====================================================================
+   Cerrar sesión de Google · acciones (3.0). Se suman a A (06-actions.js)
+   ===================================================================== */
+Object.assign(A,{
+  /* «Cerrar sesión de Google» (Más) y «Cerrar sesión» (ventana de la PC): primero se mira si todo está en el Drive */
+  async 'so-open'(){
+    if(gbusy)return;
+    const s={k:'so',cargando:true,busy:false,msg:'',info:null};pushSheet(s);
+    await C.cloud.esperar();
+    s.info=C.sinSubir();s.cargando=false;if(sheets.includes(s))render()},
+  /* sube lo que falta y, si quedó todo en el Drive, cierra la sesión */
+  async 'so-subir'(){const s=sheets[sheets.length-1];if(!s||s.k!=='so'||s.busy)return;
+    s.busy=true;s.msg='';render();
+    const r=await C.cloud.sync();await C.cloud.esperar();
+    s.busy=false;s.info=C.sinSubir();
+    if(!sheets.includes(s))return;
+    if(r.ok&&!s.info.activo){
+      if(!s.info.otros.length)return A['so-go']();
+      s.msg='Listo: lo de este negocio ya está en tu Drive.';render();return}
+    s.msg=r.msg||(r.reason==='offline'?'Sin internet: no se pudo subir.':'No se pudo subir ahora. Prueba otra vez.');render()},
+  /* cierra la sesión: borra todo lo de este equipo y vuelve a abrir la app */
+  async 'so-go'(){const s=sheets[sheets.length-1];if(!s||s.k!=='so'||s.busy)return;
+    s.busy=true;render();toast('Cerrando sesión…');
+    try{await C.cerrarSesion()}catch(e){console.error(e);try{location.reload()}catch(x){}}}
 });
 
 /* =====================================================================
