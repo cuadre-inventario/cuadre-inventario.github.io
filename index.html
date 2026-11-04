@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-EmcVlTLGkaswCjCxzxUfKVXejL4e3Ya6QzM3GaCOKjA=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-toFRkn17DYSkhmKS+WoERv2o4lrILQu5zau6VC6SmCo=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -2768,7 +2768,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.1.1',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.1.2',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -10888,7 +10888,7 @@ function buySheet(s,i){
   const P=C.PLAN,K=C.cloud.info(),play=C.billing.enPlay(),pc=s.k==='pcplan',pl=s.plan||'anio',key=pc?'pc':pl,tr=C.trial(),
     pr=C.billing.precio(key),pn=pc?'la versión para PC':'Pro',who=(P.contacto&&P.contacto.quien)||'el vendedor',aWho=/^el /i.test(who)?'al '+who.slice(3):'a '+who,
     pm=C.billing.precio('mes'),pa=C.billing.precio('anio'),mt=pcMesTxt();
-  const L=pc?C.pcInfo():C.licInfo(),act=!!L&&!(!pc&&C.proTermino(L));      // con la suscripción de Play ya terminada (solo queda la gracia) se puede comprar otra
+  const L=pc?C.pcInfo():C.licInfo(),act=!!L&&!(!pc&&(C.proTermino(L)||L.incl));      // con la suscripción de Play ya terminada (solo queda la gracia) o con el Pro que trae la versión PC (vence) se puede comprar el Anual o el Mensual
   let foot='',mb='',pt='';
   if(act)pt=licBlockHTML(pc?'pc':'pro',s);
   else if(play){
@@ -10927,9 +10927,9 @@ function buySheet(s,i){
       ${mb}${mailRuleHTML(K)}${pt}`;
   }else{
     const feats=`<h4 class="bph">Con Pro tienes</h4><ul class="pls">${P.listaPro().map(t=>`<li>${ic('check',16,'',2.5)}${esc(t)}</li>`).join('')}</ul>`;
-    const fin=L&&C.proTermino(L)?`<p class="fine">${esc(C.proFrase(L))}</p>`:'';
+    const fin=L&&C.proTermino(L)?`<p class="fine">${esc(C.proFrase(L))}</p>`:L&&L.incl?`<p class="fine">Tu Pro incluido con la versión para PC sigue hasta el ${esc(C.fechaDoc(L.until))}. Si te suscribes ahora, tu plan de pago empieza hoy y Pro sigue sin cortes.</p>`:'';
     body=`<div class="plh">${ic('crown',30,'',1.8)}<p>${tr.active?`Estás en la prueba gratis: te quedan <b>${tr.daysLeft} ${tr.daysLeft===1?'día':'días'}</b>.`:'Elige cómo quieres pagar Pro. <b>Cancelas cuando quieras.</b>'}</p></div>${fin}${planCardsHTML(pl)}${mb}${pt}${feats}
-      ${tr.active?'':`<p class="fine">Mientras tanto sigues con el plan Gratis: ${P.maxProductos} productos, ventas, escáner y copia de seguridad.</p>`}`;
+      ${tr.active||(L&&L.incl)?'':`<p class="fine">Mientras tanto sigues con el plan Gratis: ${P.maxProductos} productos, ventas, escáner y copia de seguridad.</p>`}`;
   }
   return frame(s,i,pc?'Versión para PC':'Hazte Pro','',body,foot,'pros');
 }
