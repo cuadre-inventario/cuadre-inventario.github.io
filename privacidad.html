@@ -31,7 +31,7 @@ a{color:var(--ac)}
 
 <h2>Qué información usa la aplicación</h2>
 <ul>
-<li><strong>Los datos que tú escribes:</strong> productos, códigos, precios, costos, existencias, movimientos, clientes de tus cotizaciones (su nombre y, solo si tú los escribes, su teléfono y su correo) y los ajustes de tu negocio. Los guarda el navegador de tu dispositivo (almacenamiento local), no un servidor nuestro.</li>
+<li><strong>Los datos que tú escribes:</strong> productos, códigos, precios, costos, existencias, movimientos, clientes de tus cotizaciones (su nombre y, solo si tú los escribes, su teléfono y su correo), las personas a quienes les fías una venta en «Fiados» (su nombre y, solo si tú los escribes, su teléfono y una nota, junto con lo que te deben y lo que te han pagado) y los ajustes de tu negocio. Los guarda el navegador de tu dispositivo (almacenamiento local), no un servidor nuestro.</li>
 <li><strong>Cámara:</strong> solo si tocas «Escanear», para leer códigos de barras o QR. Las imágenes se procesan en tu dispositivo y no se guardan ni se envían. También se usa si tocas «Tomar foto» para ponerle foto a un producto: esa foto se recorta y se guarda solo en tu dispositivo (y en tu Drive, si usas tu cuenta).</li>
 <li><strong>Archivos que eliges:</strong> por ejemplo un Excel o CSV que importas. Se leen dentro de tu dispositivo.</li>
 <li><strong>Huella o rostro (opcional):</strong> si activas el desbloqueo biométrico, la verificación la hace tu dispositivo; NegocioListo nunca recibe tu huella.</li>
@@ -50,7 +50,7 @@ a{color:var(--ac)}
 <h2>Compras con Google Play (opcional)</h2>
 <p>Pro es una suscripción (mensual o anual) y la <strong>versión para PC</strong> es un pago único. Si las compras dentro de la app instalada desde Google Play, el pago lo procesa <strong>Google Play</strong>; NegocioListo nunca recibe ni guarda los datos de tu tarjeta. Para activar tu compra en tu cuenta, la app envía a un pequeño servidor de NegocioListo (alojado en Cloudflare) tres datos: el <strong>identificador de la compra</strong> que te entrega Google, el producto que compraste (Pro mensual, Pro anual o versión para PC) y <strong>el correo de tu cuenta de Google</strong>. El servidor confirma la compra con Google, la liga a ese correo y te devuelve un código de activación firmado.</p>
 <ul>
-<li><strong>Qué se guarda en ese servidor:</strong> tu correo, una huella cifrada (hash) del identificador de compra, el producto, la fecha de vencimiento y el estado de la suscripción. No se guardan tus productos, ventas, clientes ni cotizaciones.</li>
+<li><strong>Qué se guarda en ese servidor:</strong> tu correo, una huella cifrada (hash) del identificador de compra, el producto, la fecha de vencimiento y el estado de la suscripción. No se guardan tus productos, ventas, clientes, fiados ni cotizaciones.</li>
 <li><strong>Para qué:</strong> solo para activar y renovar Pro o la versión para PC, evitar que una misma compra se use en varias cuentas y poder ayudarte si escribes porque pagaste y Pro no se activó.</li>
 <li><strong>Cuánto tiempo:</strong> mientras dure tu suscripción y hasta unos dos años después; luego se borra solo. Si quieres que lo borremos antes, escríbenos al correo de contacto.</li>
 <li>No se vende, no se comparte con terceros (salvo Google, para confirmar la compra) y no se usa para publicidad.</li>
@@ -66,6 +66,7 @@ a{color:var(--ac)}
 <li><strong>Correo:</strong> si en el futuro activas el permiso de Gmail, NegocioListo enviará el correo desde tu cuenta con el PDF adjunto y no guardará ese mensaje. Si no, abre tu app de correo con el texto ya escrito y lo envías tú.</li>
 <li><strong>WhatsApp con enlace (cuando el servidor de NegocioListo esté activo):</strong> WhatsApp no permite que una app envíe mensajes sola; NegocioListo abre el chat de tu cliente con el mensaje ya escrito y un enlace al PDF, y <strong>tú tocas «enviar»</strong>. Para que ese enlace funcione, el PDF de la cotización (nombre y datos de tu cliente, productos, precios y los datos de tu negocio que salen en el documento) se sube al servidor de NegocioListo y se guarda <strong>30 días</strong>; después se borra solo. <strong>Cualquier persona que tenga el enlace puede abrir ese PDF</strong>, así que envíalo solo a quien corresponde. Si quieres que lo borremos antes, escríbenos al correo de contacto con el enlace. Si el servidor no está disponible, se comparte el PDF directamente con la app que elijas.</li>
 <li>NegocioListo no recibe ni guarda los mensajes de WhatsApp ni de tu correo.</li>
+<li><strong>Recordatorio de un fiado:</strong> el texto («Hola…, tu saldo pendiente es de…») se arma en tu dispositivo y abre el chat de WhatsApp de esa persona con el mensaje escrito; <strong>tú tocas «enviar»</strong>. No pasa por ningún servidor nuestro.</li>
 </ul>
 <h2>Protección de ganancias y costos</h2>
 <p>Si activas «Ganancias y costos protegidos», la clave del dueño y la huella o rostro que uses para verlos se verifican dentro de tu dispositivo (la clave se guarda solo como una huella cifrada, no en texto). No se envían a ningún servidor.</p>
