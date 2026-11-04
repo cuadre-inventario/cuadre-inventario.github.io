@@ -1,6 +1,6 @@
 /* Cuadre · service worker: la app funciona sin internet.
    Guarda todos los archivos en el teléfono y los sirve desde ahí; si hay internet, los renueva por detrás. */
-const V='cuadre-ff1accf8a5';
+const V='cuadre-532d03ddc7';
 const FILES=['./','index.html','manifest.webmanifest','jspdf.min.js','zxing.min.js','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','favicon-48.png'];
 /* Al instalar se baja todo directo del servidor (sin la copia temporal de GitHub, que dura 10 min), para que una actualización llegue completa y al instante. */
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(FILES.map(f=>fetch(new Request(f,{cache:'reload'})).then(r=>{if(!r.ok)throw new Error(f);return c.put(f,r)})))).then(()=>self.skipWaiting()))});
@@ -47,17 +47,28 @@ self.addEventListener('fetch',e=>{
 });
 self.addEventListener('notificationclick',e=>{
   e.notification.close();
-  e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(cs=>{for(const c of cs){if('focus' in c)return c.focus()}return self.clients.openWindow('./')}));
+  const url=(e.notification.data&&e.notification.data.url)||'./',fia=/[?&]fia=1/.test(url);
+  e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(cs=>{for(const c of cs){if('focus' in c){if(fia)try{c.postMessage({cuadre:'fia'})}catch(x){}return c.focus()}}return self.clients.openWindow(url)}));
 });
 /* resumen diario con la app cerrada (Android/Chrome, app instalada) */
 function idb(){return new Promise((res,rej)=>{const r=indexedDB.open('cuadre-sw',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
 async function daily(){
   try{
-    const db=await idb(),get=()=>new Promise(res=>{const q=db.transaction('kv').objectStore('kv').get('resumen');q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)});
-    const r=await get();if(!r||!r.on||!r.daily||!r.n)return;
-    const now=new Date(),t0=new Date().setHours(0,0,0,0);if(now.getHours()<r.hour||(r.lastDaily||0)>=t0)return;
-    await self.registration.showNotification('Hoy toca comprar ('+r.n+')',{body:(r.items||[]).slice(0,4).map(x=>x.nom).join(', ')+(r.n>4?'…':''),icon:'icon-192.png',badge:'icon-192.png',tag:'daily',data:{url:'./'}});
-    r.lastDaily=Date.now();await new Promise(res=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').put(r,'resumen');tx.oncomplete=()=>res()});
+    const db=await idb(),get=()=>new Promise(res=>{const q=db.transaction('kv').objectStore('kv').get('resumen');q.onsuccess=()=>res(q.result);q.onerror=()=>res(null)}),
+      put=r=>new Promise(res=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').put(r,'resumen');tx.oncomplete=()=>res()});
+    const r=await get();if(!r||!r.on)return;
+    const now=new Date(),t0=new Date().setHours(0,0,0,0);if(now.getHours()<r.hour)return;
+    /* qué hay que comprar */
+    if(r.daily&&r.n&&(r.lastDaily||0)<t0){
+      await self.registration.showNotification('Hoy toca comprar ('+r.n+')',{body:(r.items||[]).slice(0,4).map(x=>x.nom).join(', ')+(r.n>4?'…':''),icon:'icon-192.png',badge:'icon-192.png',tag:'daily',data:{url:'./'}});
+      r.lastDaily=Date.now();await put(r)}
+    /* Fiados: quién ya debe pagar (la fecha se compara aquí, con el día de hoy) */
+    if(r.fia&&r.fia.length&&(r.lastFia||0)<t0){
+      const DAY=864e5,L=r.fia.map(x=>{const f=new Date(x.fv).setHours(0,0,0,0);return {nom:x.nom,m:x.m,dias:Math.round((f-t0)/DAY)}}).filter(x=>x.dias<=(r.antes||0)).sort((a,b)=>a.dias-b.dias);
+      const txt=d=>d<0?(d===-1?'venció ayer':'venció hace '+(-d)+' días'):d===0?'vence hoy':'vence mañana';
+      if(L.length){
+        await self.registration.showNotification(L.length===1?L[0].nom+' debe pagarte '+L[0].m:L.length+' personas deben pagarte',{body:L.length===1?txt(L[0].dias)[0].toUpperCase()+txt(L[0].dias).slice(1)+'. Toca para recordárselo por WhatsApp.':L.slice(0,3).map(x=>x.nom+' ('+txt(x.dias)+')').join(', ')+(L.length>3?'…':''),icon:'icon-192.png',badge:'icon-192.png',tag:'fiados',data:{url:'./?fia=1'}});
+        r.lastFia=Date.now();await put(r)}}
   }catch(e){}
 }
 self.addEventListener('periodicsync',e=>{if(e.tag==='cuadre-daily')e.waitUntil(daily())});

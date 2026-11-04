@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-toFRkn17DYSkhmKS+WoERv2o4lrILQu5zau6VC6SmCo=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-B+FFmrYty4MdxUCo8OUedrDjpjOT9Mo2svQLESNOwXA=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -2212,19 +2212,46 @@ body{margin:0;background:#d5dce6}
 .d1 .fsum .fine{margin-top:8px}
 .d1 .fpr{font-style:normal;font-size:12.5px;font-weight:700;color:var(--mut)}
 .d1 .fgan{display:block;font-style:normal;font-size:11px;font-weight:700;color:var(--grn);text-align:right}
-.d1 .fph{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.d1 .fph>span:last-child{min-width:0;display:flex;flex-direction:column}
+.d1 .fph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.d1 .fph>.fpn{flex:1;min-width:0;display:flex;flex-direction:column}
+.d1 .fph>span:last-child:not(.fpn){min-width:0;display:flex;flex-direction:column}
+.d1 .fpe{flex:none;color:var(--mut)}
 .d1 .fph b{font-size:17px;font-weight:800;letter-spacing:-.02em;overflow:hidden;text-overflow:ellipsis}
 .d1 .fph i{font-style:normal;font-size:12.5px;font-weight:600;color:var(--mut);overflow:hidden;text-overflow:ellipsis}
-.d1 .fpbal{display:flex;flex-direction:column;gap:2px;padding:13px 14px;border-radius:16px;background:var(--reds);color:var(--red);margin-bottom:10px}
-.d1 .fpbal.ok{background:var(--grns);color:var(--grn)}
-.d1 .fpbal .lbl{font-size:12.5px;font-weight:800}
-.d1 .fpbal .stn{color:inherit}
-.d1 .fpbal i{font-style:normal;font-size:12px;font-weight:600;opacity:.9}
-.d1 .fpa{display:flex;flex-direction:column;gap:8px;margin:2px 0 6px}
-.d1 .fpa2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.d1 .fpbal{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:16px;border-radius:18px;background:var(--fill);margin-bottom:12px}
+.d1 .fpbal .fpt{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;flex-wrap:wrap}
+.d1 .fpbal .lbl{font-size:13px;font-weight:700;color:var(--mut)}
+.d1 .fpbal .stn{font-size:34px;line-height:1.05;letter-spacing:-.03em;color:var(--red)}
+.d1 .fpbal.ok .stn{color:var(--grn)}
+.d1 .fpbal .fbs{font-size:12.5px;font-weight:600;color:var(--mut)}
+.d1 .fpbal .fbs .mk,.d1 .fpbal .fbs b{font-weight:800;color:var(--ink2)}
+.d1 .fbar{width:100%;height:6px;border-radius:99px;background:var(--fill2);overflow:hidden;margin-top:4px}
+.d1 .fbar>i{display:block;height:100%;border-radius:99px;background:var(--grn)}
+.d1 .fpf0{display:inline-flex;align-items:center;gap:6px;margin-top:2px;font-size:13px;font-weight:700;color:var(--act);text-decoration:none}
+.d1 .fvp{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:99px;font-size:12px;font-weight:800;background:var(--fill2);color:var(--ink2)}
+.d1 .fvp.pronto,.d1 .fvp.hoy{background:var(--ambs);color:var(--amb)}
+.d1 .fvp.vencido{background:var(--reds);color:var(--red)}
+.d1 .fvt{font-weight:800;color:var(--mut)}
+.d1 .fvt.pronto,.d1 .fvt.hoy{color:var(--amb)}
+.d1 .fvt.vencido{color:var(--red)}
+.d1 .fpq{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.d1 .fq{display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 8px;border-radius:14px;background:var(--card);box-shadow:inset 0 0 0 1.5px var(--line);font-size:13px;font-weight:800;color:var(--ink2);text-align:center;line-height:1.15;white-space:nowrap}
+.d1 .fq:active{background:var(--fill)}
+.d1 .fq svg{flex:none;color:var(--act)}
+.d1 .shf .fpf{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;width:100%}
+.d1 .fven{padding-right:8px}
+.d1 .fven .alm{background:none;border:0;padding:0;text-align:left;color:inherit;font:inherit;cursor:pointer;align-items:flex-start}
+.d1 .fven .alic{background:var(--ambs);color:var(--amb)}
+.d1 .fven.vencido .alic{background:var(--reds);color:var(--red)}
+.d1 .fven.vencido .alm i{color:var(--red);font-weight:700}
+.d1 .fven.pronto .alm i,.d1 .fven.hoy .alm i{color:var(--amb);font-weight:700}
+.d1 .fven .alg svg{flex:none}
+.d1 .fvm{display:flex;margin-top:6px;padding:0 4px}
+.d1 .fvn{display:flex;align-items:center;gap:6px;color:var(--amb);font-weight:700}
+.d1 .fplz{margin-top:6px}
+.d1 .fiab .fl .fld[type=date]{margin-top:8px}
 .d1 .fhl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.d1 .fh{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.d1 .fh{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
 .d1 .fh:first-child{border-top:0}
 .d1 .fhi{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--acs);color:var(--act)}
 .d1 .fhi.ok{background:var(--grns);color:var(--grn)}
@@ -2235,7 +2262,7 @@ body{margin:0;background:#d5dce6}
 .d1 .fhr{flex:none;text-align:right;display:flex;flex-direction:column;gap:1px}
 .d1 .fhr b{font-size:14px;font-weight:800}
 .d1 .fhr em{font-style:normal;font-size:11px;font-weight:600;color:var(--mut)}
-.d1 .fh.ab .fhr b{color:var(--grn)}
+.d1 .fh.pay .fhr b{color:var(--grn)}
 .d1 .fqk{margin:-4px 0 12px}
 .d1 .fed{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:6px}
 .d1 .fiab{margin-top:16px;padding:6px 14px 14px;border-radius:16px;background:var(--fill)}
@@ -2269,6 +2296,7 @@ body{margin:0;background:#d5dce6}
 
 /* etiqueta del plan arriba: Prueba (ámbar) y Pro de verdad (dorado) se distinguen de un vistazo */
 .d1 .plan.trial{background:var(--ambs);color:var(--amb);box-shadow:inset 0 0 0 1px #e8cf94}
+.d1 .plan.pcm{background:var(--acs);color:var(--act);box-shadow:inset 0 0 0 1px var(--acm)}
 .d1 .plan.real{background:linear-gradient(135deg,#f8d35e,#e9a516);color:#3a2600;box-shadow:inset 0 0 0 1px rgba(122,80,0,.4),0 1px 3px rgba(150,100,0,.25)}
 
 .d1 .mi{background:url(data:image/png;base64,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) center/cover no-repeat;box-shadow:0 8px 16px -8px rgba(10,40,120,.6)}
@@ -2768,7 +2796,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.1.2',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.2.0',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -2868,6 +2896,9 @@ const PLAN={
      px y calidad = tamaño y peso de la miniatura que queda guardada dentro del producto */
   foto:{px:240,calidad:0.7},
   pcMesesPro:1,           // meses de Pro que trae la versión para PC (el servidor de compras y el generador de códigos deben usar el mismo tiempo)
+  /* Fiados: todo lo que se puede ajustar, junto. plazos = atajos de «fecha máxima de pago» al fiar (en días); avisarAntes = cuántos días antes de la fecha empieza a avisarte
+     (en Inicio, en la ficha y en la notificación diaria). Desde ese día se sigue avisando cada día hasta que pague. */
+  fiados:{plazos:[7,15,30],avisarAntes:1},
   playPaquete:'io.github.cuadre_inventario.twa',         // nombre de paquete de la app en Google Play (ej. 'io.github.cuadre_inventario.twa'); lo define PWABuilder/Bubblewrap
   verificador:'https://compras-pro.stockfacilapp35.workers.dev',   // el servidor de NegocioListo en Cloudflare (UNA sola dirección para todo): confirma las compras de Play, avisa las activaciones, busca fotos, guarda el PDF de una cotización enviada y emite los códigos. Vacío = no se usa servidor (la app funciona igual, sin esas funciones)
   revisores:['pruebanegociolisto@gmail.com'],   // la(s) cuenta(s) de Google que Google Play usa para REVISAR la app: SOLO a ellas, dentro de la app de Play, se les muestra dónde pegar el código de activación (el código lo hace el generador privado, atado a ese correo). Nadie más lo ve ahí.
@@ -3089,7 +3120,7 @@ const DEVOK=(()=>{try{return /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.
 const ST0=()=>{const d=C.detect();return {step:'welcome',mode:'invitado',nombre:'',rubro:null,rubroTxt:'',
   trialEnd:0,trialUsed:false,devPlan:null,logo:null,firma:null,mods:{entregas:false,prestamos:false},info:{telefono:'',email:'',direccion:'',ciudad:'',idFiscal:'',pie:''},envio:{asunto:'',texto:''},
   pais:d.pais,moneda:d.moneda,monedaSym:'',numStyle:d.numStyle,dec:null,ivaPct:d.tax[1],taxName:d.tax[0],margenDef:30,noPerdida:false,page:d.page,descDef:0,validezDef:7,notasDef:'',ivaIncl:false,ivaAuto:true,
-  descartadas:{},usoScan:false,pin:null,bio:null,pinFail:{n:0,until:0},lockMin:-1,sonido:true,vibra:true,snd:'notif',oculto:false,lic:null,etq:{fmt:'r5030',tipo:'',n:12,pv:true},docs:{day:0,n:0,keys:{}},lastBackup:0,notif:{on:false,low:true,daily:false,hour:18,lastDaily:0},cloud:{on:false,email:'',last:0,hash:'',rev:null},creado:Date.now()}};
+  descartadas:{},usoScan:false,pin:null,bio:null,pinFail:{n:0,until:0},lockMin:-1,sonido:true,vibra:true,snd:'notif',oculto:false,lic:null,etq:{fmt:'r5030',tipo:'',n:12,pv:true},docs:{day:0,n:0,keys:{}},lastBackup:0,notif:{on:false,low:true,daily:false,hour:18,lastDaily:0,fia:true,lastFia:0},cloud:{on:false,email:'',last:0,hash:'',rev:null},creado:Date.now()}};
 const D0=()=>({prods:[],movs:[],quotes:[],qtpl:[],entregas:[],prestamos:[],deudores:[],abonos:[],seqs:{prod:1,mov:1,q:1,b:1,e:1,pr:1,venta:1,ingreso:1,salida:1,tpl:1}});
 C.state=ST0();
 let D=null;
@@ -3554,8 +3585,9 @@ C.trial=()=>{const s=C.state,left=Math.max(0,s.trialEnd-Date.now());return {acti
 C.startTrial=()=>{const s=C.state;if(s.trialUsed)return false;s.trialUsed=true;s.trialEnd=Date.now()+PLAN.trialDays*DAY;try{trialSync()}catch(e){}C.emit();return true};
 C.setDev=p=>{if(!DEVOK)return;C.state.devPlan=p;C.emit()};      // solo para probar y solo en localhost
 C.devOk=DEVOK;
-/* lo que dice la etiqueta de arriba: «Gratis», «Prueba» (solo los días de prueba, sin compra ni código) o «Pro» (hay compra, código o plan de pruebas) */
-C.planEtq=()=>{const s=C.state,dv=DEVOK?s.devPlan:null;if(!C.isPro())return 'Gratis';if(dv==='pro'||dv==='pc')return 'Pro';return (licOk()||pcProOk())?'Pro':'Prueba'};
+/* lo que dice la etiqueta de arriba: «Gratis», «Prueba» (solo los días de prueba, sin compra ni código), «PC» (el mes de Pro que TRAE la versión para PC: dura hasta una fecha y se puede seguir comprando Anual o Mensual)
+   o «Pro» (hay compra, código del vendedor o plan de pruebas). El dorado es solo para «Pro». */
+C.planEtq=()=>{const s=C.state,dv=DEVOK?s.devPlan:null;if(!C.isPro())return 'Gratis';if(dv==='pro'||dv==='pc')return 'Pro';if(licOk())return 'Pro';const P=pcProOk();if(P)return P.until>0?'PC':'Pro';return 'Prueba'};
 /* línea que se pone junto a cada botón «Entrar con Google», para que nadie se asuste con el texto del permiso de Google */
 C.googleNota='NegocioListo guarda tu copia solo en una carpeta oculta de tu Drive. No ve ni toca tus otros archivos.';
 C.planName=()=>{const pro=C.isPro(),pc=!!pcOk();return pro&&pc?'Pro + Computadora':pro?'Pro':pc?'Computadora':'Gratis'};
@@ -4275,7 +4307,7 @@ C.modSheets=()=>{
 
 /* =====================================================================
    Fiados (Pro): vender ahora y cobrar después.
-   - Persona:  D.deudores[] = {uid, nom, tel, nota, t, mod, arch?}
+   - Persona:  D.deudores[] = {uid, nom, tel, nota, t, mod, arch?, fv?}   (fv = fecha máxima de pago: inicio de ese día en ms; sin fv = sin fecha)
    - Venta fiada: una venta normal (C.mov 'venta') con la marca m.fid = uid de la persona y m.fnom = su nombre de ese día.
      El stock baja igual que en cualquier venta.
    - Abono: D.abonos[] = {uid, fid, fnom, t, monto, costo, nota, b?}. «costo» es la parte del costo de lo que se cobra,
@@ -4290,6 +4322,7 @@ const fdR=n=>{const k=Math.pow(10,Math.max(0,Math.min(3,decs())));return Math.ro
 const fdEps=()=>0.5/Math.pow(10,Math.max(0,Math.min(3,decs())));                                       // menos de media unidad = saldo cero
 const fdNom=s=>String(s==null?'':s).replace(/\s+/g,' ').trim();
 const fdKey=s=>norm(fdNom(s));
+const fdFv=t=>{t=+t;return t>0&&isFinite(t)?startDay(t):0};      // fecha máxima de pago: siempre el inicio de ese día (0 = sin fecha)
 /* por persona (uid): lo vendido a crédito, lo cobrado, el saldo y la ganancia que falta cobrar */
 function fxCalc(){
   const M=new Map();if(!D)return M;
@@ -4319,6 +4352,7 @@ C.fiadoNuevo=d=>{if(!D)return {ok:false};d=d||{};const nom=fdNom(d.nom).slice(0,
   const ex=(D.deudores||[]).find(p=>fdKey(p.nom)===fdKey(nom));
   if(ex){if(ex.arch){ex.arch=false;ex.mod=Date.now();C.emit()}return {ok:true,p:ex,dup:true}}
   const p={uid:UID(),nom,tel:String(d.tel||'').trim().slice(0,30),nota:String(d.nota||'').trim().slice(0,120),t:Date.now()};p.mod=p.t;
+  const fv=fdFv(d.fv);if(fv)p.fv=fv;
   (D.deudores||(D.deudores=[])).push(p);C.emit();return {ok:true,p}};
 function fdFicha(uid){let p=(D.deudores||[]).find(p=>p.uid===uid);
   if(!p){const v=C.deudor(uid);if(!v)return null;p={uid,nom:v.nom,tel:'',nota:'',t:v.ult||Date.now()};p.mod=Date.now();(D.deudores||(D.deudores=[])).push(p)}
@@ -4327,7 +4361,21 @@ C.fiadoEditar=(uid,d)=>{if(!D)return {ok:false};const p=fdFicha(uid);if(!p)retur
   if(d.nom!=null){const nom=fdNom(d.nom).slice(0,60);if(!nom)return {ok:false,reason:'nom'};
     if((D.deudores||[]).some(q=>q.uid!==uid&&fdKey(q.nom)===fdKey(nom)))return {ok:false,reason:'dup'};p.nom=nom}
   if(d.tel!=null)p.tel=String(d.tel).trim().slice(0,30);if(d.nota!=null)p.nota=String(d.nota).trim().slice(0,120);
+  if(d.fv!=null){const fv=fdFv(d.fv);if(fv)p.fv=fv;else delete p.fv}
   p.mod=Date.now();C.emit();return {ok:true,p}};
+/* ---- fecha máxima de pago ----
+   C.fiadoVence(v) → null (sin fecha o ya no debe) o {fv, dias (negativo = pasó), estado: 'vencido' | 'hoy' | 'pronto' | 'ok', txt, corto}.
+   'pronto' = faltan de 1 a PLAN.fiados.avisarAntes días. C.fiadoVencen() = quienes ya hay que avisar (pronto, hoy o vencido), lo más atrasado primero. */
+C.fiadoVence=v=>{if(!v||!(v.saldo>0)||!(v.fv>0))return null;const dias=Math.round((startDay(v.fv)-startDay(Date.now()))/DAY),ant=Math.max(0,(PLAN.fiados&&PLAN.fiados.avisarAntes)|0);
+  const estado=dias<0?'vencido':dias===0?'hoy':dias<=ant?'pronto':'ok',f=C.fechaCorta(v.fv);
+  const txt=dias<0?(dias===-1?'Venció ayer':'Venció hace '+(-dias)+' días'):dias===0?'Vence hoy':dias===1?'Vence mañana':'Vence el '+f;
+  const corto=dias<0?(dias===-1?'Venció ayer':'Hace '+(-dias)+' d'):dias===0?'Hoy':dias===1?'Mañana':f;
+  return {fv:v.fv,dias,estado,txt,corto}};
+C.fiadoVencen=()=>C.deudores().filter(v=>v.saldo>0&&v.fv>0).map(v=>Object.assign({},v,{vence:C.fiadoVence(v)})).filter(v=>v.vence&&v.vence.estado!=='ok').sort((a,b)=>a.vence.dias-b.vence.dias||b.saldo-a.saldo);
+/* con fecha, aunque aún falte (lo usa el service worker para avisar con la app cerrada) */
+/* frase para decir cuándo avisa (sale de PLAN.fiados.avisarAntes) */
+C.fiadoAvisoTxt=()=>{const a=Math.max(0,(PLAN.fiados&&PLAN.fiados.avisarAntes)|0);return (a===0?'el mismo día':a===1?'1 día antes':a+' días antes')+' y cada día hasta que pague'};
+C.fiadoConFecha=()=>C.deudores().filter(v=>v.saldo>0&&v.fv>0).sort((a,b)=>a.fv-b.fv);
 C.fiadoArchivar=(uid,on)=>{if(!D)return {ok:false};const p=fdFicha(uid);if(!p)return {ok:false};      // on=true: la oculta de la lista (si ya no debe nada); on=false: la vuelve a mostrar
   if(on)p.arch=true;else delete p.arch;p.mod=Date.now();C.emit();return {ok:true,p}};
 /* se borra la ficha solo si no debe nada; lo vendido y lo cobrado se queda (con el nombre de ese día) para que los reportes no cambien */
@@ -4367,15 +4415,16 @@ C.fiadoTexto=uid=>{const v=C.deudor(uid);if(!v)return '';const s=C.state,fm=C.mo
     const ventas=H.filter(e=>e.k==='venta').slice(0,5);
     if(ventas.length){L.push('');L.push('Lo que llevaste:');ventas.forEach(e=>L.push('• '+C.fechaCorta(e.t)+': '+e.lines.slice(0,3).map(l=>C.num(l.q)+' '+l.nom).join(', ')+(e.lines.length>3?' y '+(e.lines.length-3)+' más':'')+' — '+fm(e.total)))}
     const ab=H.find(e=>e.k==='abono');if(ab){L.push('');L.push('Tu último pago fue de '+fm(ab.monto)+' el '+C.fechaCorta(ab.t)+'.')}
-    L.push('');L.push('Gracias por tu compra. Avísame cuándo pasas a pagar.')}
+    const vc=C.fiadoVence(v);if(vc){L.push('');L.push('Fecha máxima de pago: *'+C.fechaDoc(v.fv)+'*.')}
+    L.push('');L.push(vc&&vc.estado==='vencido'?'Esa fecha ya pasó. Avísame cuándo pasas a pagar, por favor. Gracias.':'Gracias por tu compra. Avísame cuándo pasas a pagar.')}
   else L.push('Tu cuenta está al día. ¡Gracias!');
   return L.join('\n')};
 /* ---------- hojas de Excel (copia de seguridad y «Descargar a Excel») ---------- */
 C.fiadoSheets=()=>{
   if(!D||!C.fiadoHay())return [];const s=C.state,out=[],nomDe={};(D.deudores||[]).forEach(p=>{nomDe[p.uid]=p.nom});
   out.push({name:'Fiados',title:'Fiados · '+s.nombre,subtitle:'Lo que cada persona lleva a crédito, lo que ya pagó y lo que falta cobrar.',freeze:2,filter:true,
-    cols:[{h:'Persona',w:28,f:'text'},{h:'Teléfono',w:16,f:'text'},{h:'Vendido a crédito',w:17,f:'money',sum:true},{h:'Pagado',w:14,f:'money',sum:true},{h:'Por cobrar',w:14,f:'money',sum:true},{h:'Ganancia por cobrar',w:19,f:'money',sum:true},{h:'Última vez',w:12,f:'date'}],
-    rows:C.deudores({arch:true}).map(x=>[x.nom,x.tel||'',x.venta,x.cob,Math.max(0,x.saldo),x.ganPend,x.ult?new Date(x.ult):null])});
+    cols:[{h:'Persona',w:28,f:'text'},{h:'Teléfono',w:16,f:'text'},{h:'Fecha máxima de pago',w:20,f:'date'},{h:'Vendido a crédito',w:17,f:'money',sum:true},{h:'Pagado',w:14,f:'money',sum:true},{h:'Por cobrar',w:14,f:'money',sum:true},{h:'Ganancia por cobrar',w:19,f:'money',sum:true},{h:'Última vez',w:12,f:'date'}],
+    rows:C.deudores({arch:true}).map(x=>[x.nom,x.tel||'',x.fv>0?new Date(x.fv):null,x.venta,x.cob,Math.max(0,x.saldo),x.ganPend,x.ult?new Date(x.ult):null])});
   if((D.abonos||[]).length)out.push({name:'Cobros de fiados',title:'Cobros de fiados · '+s.nombre,subtitle:'Cada pago que recibiste de una venta a crédito.',freeze:2,filter:true,
     cols:[{h:'Fecha',w:18,f:'datetime'},{h:'Persona',w:28,f:'text'},{h:'Monto',w:14,f:'money',sum:true},{h:'Nota',w:30,f:'text'}],
     rows:D.abonos.slice().sort((a,b)=>b.t-a.t).map(a=>[new Date(a.t),nomDe[a.fid]||a.fnom||'',a.monto,a.nota||''])});
@@ -4753,13 +4802,16 @@ C.backupRestore=async file=>{
    Notificaciones (avisos de stock mínimo y resumen diario)
    ===================================================================== */
 const NS=()=>C.state.notif||(C.state.notif=ST0().notif);
+function idbGet(){return new Promise(res=>{try{const r=indexedDB.open('cuadre-sw',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');
+  r.onsuccess=()=>{try{const q=r.result.transaction('kv').objectStore('kv').get('resumen');q.onsuccess=()=>{r.result.close();res(q.result||null)};q.onerror=()=>res(null)}catch(e){res(null)}};r.onerror=()=>res(null)}catch(e){res(null)}})}
 function idbPut(val){return new Promise(res=>{try{const r=indexedDB.open('cuadre-sw',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');
   r.onsuccess=()=>{try{const tx=r.result.transaction('kv','readwrite');tx.objectStore('kv').put(val,'resumen');tx.oncomplete=()=>{r.result.close();res(true)};tx.onerror=()=>res(false)}catch(e){res(false)}};r.onerror=()=>res(false)}catch(e){res(false)}})}
-async function showN(title,body,tag){
-  const o={body,icon:'icon-192.png',badge:'icon-192.png',tag:tag||'cuadre',renotify:true,data:{url:'./'}};
+async function showN(title,body,tag,url){
+  const o={body,icon:'icon-192.png',badge:'icon-192.png',tag:tag||'cuadre',renotify:true,data:{url:url||'./'}};
   try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistration();if(r){await r.showNotification(title,o);return true}}}catch(e){}
   try{new Notification(title,o);return true}catch(e){return false}
 }
+let fiaBusy=false;      // evita dos revisiones de cobros al mismo tiempo (arranque + volver a la app)
 C.notif={
   perm(){return ('Notification' in window)?Notification.permission:'unsupported'},
   set(p){Object.assign(NS(),p);C.emit();C.notif.mirror()},
@@ -4785,7 +4837,21 @@ C.notif={
   },
   resumen(){const f=C.faltantes();return {n:f.length,items:f.slice(0,8).map(x=>({nom:x.p.nom,stock:x.p.stock,u:C.uLabel(x.p.u),faltan:x.faltan}))}},
   /* resumen diario: si la app está abierta a esa hora (o se abre después), se avisa una vez al día */
+  /* Fiados: aviso de cobro al dueño, una vez al día a la hora elegida (la misma del resumen), desde que falta PLAN.fiados.avisarAntes día y hasta que pague.
+     El texto dice quién, cuánto y cuándo vence; al tocarlo se abre «Por cobrar». Solo con Pro y si el aviso está activo (n.fia !== false). */
+  async tickFia(){if(fiaBusy)return;fiaBusy=true;try{await C.notif.fiaRun()}catch(e){}finally{fiaBusy=false}},
+  async fiaRun(){
+    const n=NS();if(!n.on||n.fia===false||C.notif.perm()!=='granted'||!D||C.state.step!=='app'||!C.isPro())return;
+    if(new Date().getHours()<n.hour||(n.lastFia||0)>=startDay(Date.now()))return;
+    /* si el service worker ya avisó hoy (app cerrada), no se repite al abrirla */
+    const ex=await idbGet(),t0=startDay(Date.now());if(ex&&(ex.lastFia||0)>=t0){n.lastFia=ex.lastFia;C.emit();return}
+    if((n.lastFia||0)>=t0)return;
+    const L=C.fiadoVencen();n.lastFia=Date.now();C.emit();if(!L.length)return;
+    if(L.length===1){const v=L[0];return void showN(v.nom+' debe pagarte '+C.money(v.saldo),v.vence.txt+'. Toca para recordárselo por WhatsApp.','fiados','./?fia=1')}
+    const tot=L.reduce((a,v)=>a+v.saldo,0);
+    showN(L.length+' personas deben pagarte ('+C.money(tot)+')',L.slice(0,3).map(v=>v.nom+' · '+v.vence.corto).join(', ')+(L.length>3?'…':''),'fiados','./?fia=1')},
   tick(){
+    try{C.notif.tickFia()}catch(e){}
     const n=NS();if(!n.on||!n.daily||C.notif.perm()!=='granted'||!D||C.state.step!=='app')return;
     const now=new Date();if(now.getHours()<n.hour||n.lastDaily>=startDay(Date.now()))return;
     const r=C.notif.resumen(),at=C.modOn('prestamos')?C.prestAtrasados():[];n.lastDaily=Date.now();C.emit();if(!r.n&&!at.length)return;
@@ -4797,7 +4863,9 @@ C.notif={
   mirror(){
     if(!D)return;const n=NS(),r=C.notif.resumen();
     try{if(navigator.setAppBadge){r.n>0&&n.on?navigator.setAppBadge(r.n):navigator.clearAppBadge&&navigator.clearAppBadge()}}catch(e){}
-    idbPut({nombre:C.state.nombre,on:n.on,daily:n.daily,hour:n.hour,lastDaily:n.lastDaily,n:r.n,items:r.items});
+    const fia=n.on&&n.fia!==false&&C.isPro()?C.fiadoConFecha().slice(0,12).map(v=>({nom:v.nom,m:C.money(v.saldo),fv:v.fv})):[];
+    idbGet().then(ex=>{const lf=Math.max(n.lastFia||0,(ex&&ex.lastFia)||0);
+      idbPut({nombre:C.state.nombre,on:n.on,daily:n.daily,hour:n.hour,lastDaily:n.lastDaily,n:r.n,items:r.items,fia,antes:Math.max(0,(PLAN.fiados&&PLAN.fiados.avisarAntes)|0),lastFia:lf})})
   }
 };
 setInterval(()=>{try{C.notif.tick()}catch(e){}},5*60e3);
@@ -9693,10 +9761,10 @@ function onStep(s){
    Piezas comunes
    ===================================================================== */
 function topHTML(){
-  const et=C.planEtq(),pro=et!=='Gratis',tr=C.trial();
-  /* tres aspectos distintos: Gratis (gris), Prueba (ámbar, con los días que quedan) y Pro de verdad (dorado con corona) */
-  const kind=et==='Pro'?' real':et==='Prueba'?' trial':'',lab=et==='Pro'?ic('crown',14,'',2.2)+'Pro':et==='Prueba'?ic('clock2',13,'',2.4)+'Prueba · '+tr.daysLeft+' d':'Gratis';
-  const aria=et==='Pro'?'Plan Pro activo: ver detalles':et==='Prueba'?'Prueba gratis de Pro, quedan '+tr.daysLeft+(tr.daysLeft===1?' día':' días')+': ver detalles':'Plan Gratis: ver detalles';
+  const et=C.planEtq(),pro=et!=='Gratis',tr=C.trial(),pd=et==='PC'?Math.max(1,Math.ceil((C.pcInfo().proUntil-Date.now())/864e5)):0;
+  /* cuatro aspectos distintos: Gratis (gris), Prueba (ámbar, con los días), Pro de la PC (azul, con los días que le quedan al mes incluido) y Pro de verdad (dorado con corona) */
+  const kind=et==='Pro'?' real':et==='Prueba'?' trial':et==='PC'?' pcm':'',lab=et==='Pro'?ic('crown',14,'',2.2)+'Pro':et==='Prueba'?ic('clock2',13,'',2.4)+'Prueba · '+tr.daysLeft+' d':et==='PC'?ic('monitor',14,'',2.2)+'Pro · '+pd+' d':'Gratis';
+  const aria=et==='Pro'?'Plan Pro activo: ver detalles':et==='PC'?'Pro incluido con tu versión para PC, quedan '+pd+(pd===1?' día':' días')+': ver detalles o seguir con Pro':et==='Prueba'?'Prueba gratis de Pro, quedan '+tr.daysLeft+(tr.daysLeft===1?' día':' días')+': ver detalles':'Plan Gratis: ver detalles';
   return `<header class="top"><button type="button" class="brand bzb" data-a="negs" aria-label="Mis negocios: ${esc(C.state.nombre||'Mi negocio')}">${C.brandHTML({size:28})}${ic('down',15,'bzc',2.4)}</button>
     ${C.online()?'':`<span class="off" role="status">${ic('wifioff',14,'',2.2)}Sin internet</span>`}
     <button type="button" class="plan ${pro?'pro':''}${kind}" data-a="plan" aria-label="${aria}">${lab}</button>
@@ -10228,7 +10296,8 @@ function masBody(id,s){
     :(!N.on||NP!=='granted')?`<p class="accn">Entérate cuando un producto llegue a su mínimo, y recibe un resumen de lo que falta por comprar.</p><button type="button" class="btn sm" data-a="notif-on">${ic('bell',17)}Activar notificaciones</button>`
     :`${tg('notif-low',N.low,'Producto en su mínimo','Te aviso al registrar una venta o salida que lo deje en el mínimo.')}
       ${tg('notif-daily',N.daily,'Resumen diario','Un aviso con lo que hay que comprar'+(C.modOn('prestamos')?' y los préstamos atrasados':'')+', a la hora que elijas.')}
-      ${N.daily?`<div class="fl"><span>Hora del resumen</span>${seg([[8,'8:00'],[12,'12:00'],[18,'18:00'],[20,'20:00']],N.hour,'notif-hour','small')}</div>`:''}
+      ${C.isPro()?tg('notif-fia',N.fia!==false,'Cobros de fiados','Te aviso '+C.fiadoAvisoTxt()+': «Luis debe pagarte $…», y con un toque le recuerdas por WhatsApp.'):''}
+      ${N.daily||(C.isPro()&&N.fia!==false)?`<div class="fl"><span>Hora de los avisos diarios</span>${seg([[8,'8:00'],[12,'12:00'],[18,'18:00'],[20,'20:00']],N.hour,'notif-hour','small')}</div>`:''}
       <div class="two" style="margin-top:12px"><button type="button" class="btn ghost sm" data-a="notif-test">Enviar prueba</button><button type="button" class="btn txt dng" data-a="notif-off">Desactivar</button></div>`}
     <p class="fine l">Los avisos funcionan mientras la app está instalada. El resumen diario llega aunque la app esté cerrada solo en Android con Chrome; en otros equipos aparece cuando la abres.</p>`;
   /* ganancias y costos: protección propia (clave del dueño aparte de la que abre la app) */
@@ -11493,25 +11562,36 @@ const fi={tab:'deben',q:''};                                     // pestaña y b
 const fiHace=t=>{const d=C.diasDesde(t);return d<=0?'hoy':d===1?'ayer':'hace '+d+' d'};
 const fiMon=n=>mk(esc(C.money(n)));                             // monto que respeta el ojito de Inicio
 const fiVentas=n=>n+' '+(n===1?'venta':'ventas');
+/* fechas de los campos «date» del teléfono (AAAA-MM-DD) ↔ milisegundos del inicio de ese día */
+const fiYmd=t=>{if(!(t>0))return '';const d=new Date(t);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const fiFecha=v=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(v||''));return m?new Date(+m[1],+m[2]-1,+m[3]).getTime():0};
+const fiHoyYmd=()=>fiYmd(Date.now());
+/* la etiqueta de «cuándo vence» (con el color de su estado) */
+const fiVenceTxt=v=>{const c=C.fiadoVence(v);return c?`<span class="fvt ${c.estado}">${esc(c.txt)}</span>`:''};
 
 /* ---------- Inicio: tarjeta «Por cobrar» (solo Pro y solo si alguien debe) ---------- */
 function fiadosAlert(){
   if(!C.isPro())return '';const T=C.fiadoTotales();if(!T.n)return '';
-  const g=C.gv()&&T.ganancia>0?' · ganancia '+(hidden()?'****':C.money0(T.ganancia)):'';
-  return `<button type="button" class="al cj fia" data-a="fia-list"><span class="alic">${ic('clipboard',22,'',2)}</span><span class="alm"><b>Por cobrar ${hidden()?'****':esc(C.money(T.saldo))}</b><i>${T.n} ${T.n===1?'persona te debe':'personas te deben'}${g}</i></span><span class="alg">Ver${ic('chev',16,'',2.4)}</span></button>`;
+  const V=C.fiadoVencen(),g=C.gv()&&T.ganancia>0?' · ganancia '+(hidden()?'****':C.money0(T.ganancia)):'';
+  const main=`<button type="button" class="al cj fia" data-a="fia-list"><span class="alic">${ic('clipboard',22,'',2)}</span><span class="alm"><b>Por cobrar ${hidden()?'****':esc(C.money(T.saldo))}</b><i>${T.n} ${T.n===1?'persona te debe':'personas te deben'}${g}</i></span><span class="alg">Ver${ic('chev',16,'',2.4)}</span></button>`;
+  /* quien ya pasó su fecha o está por pasarla: tarjeta aparte, con «Recordar» a un toque */
+  const due=V.slice(0,2).map(v=>`<div class="al cj fia fven ${v.vence.estado}"><span class="alic">${ic(v.vence.estado==='vencido'?'alert':'cal',22,'',2)}</span><button type="button" class="alm" data-a="fper" data-id="${esc(v.uid)}"><b>${esc(v.nom)} · ${fiMon(v.saldo)}</b><i>${esc(v.vence.txt)}</i></button><button type="button" class="alg" data-a="fpwa" data-id="${esc(v.uid)}" aria-label="Recordarle a ${esc(v.nom)} por WhatsApp">${ic('chat',16)}Recordar</button></div>`).join('');
+  const mas=V.length>2?`<button type="button" class="lnk fvm" data-a="fia-list">Ver los ${V.length} cobros por vencer o vencidos</button>`:'';
+  return main+due+mas;
 }
 
 /* ---------- pantalla completa «Por cobrar» ---------- */
 function fiaHTML(){
   const fresh=page.fresh;page.fresh=false;
-  const T=C.fiadoTotales(),all=C.deudores({arch:true}),vis=all.filter(x=>!x.arch),deben=vis.filter(x=>x.saldo>0),arch=all.filter(x=>x.arch&&!(x.saldo>0)),q=norm1(fi.q.trim()),gv=C.gv();
+  const T=C.fiadoTotales(),all=C.deudores({arch:true}),vis=all.filter(x=>!x.arch),V=C.fiadoVencen(),vr=x=>{const c=C.fiadoVence(x);return c&&c.estado!=='ok'?c.dias:1e6},deben=vis.filter(x=>x.saldo>0).sort((a,b)=>vr(a)-vr(b)),arch=all.filter(x=>x.arch&&!(x.saldo>0)),q=norm1(fi.q.trim()),gv=C.gv();
   if(fi.tab==='arch'&&!arch.length)fi.tab='deben';
   let list=fi.tab==='deben'?deben:fi.tab==='arch'?arch:vis;if(q)list=list.filter(x=>norm1(x.nom).includes(q));
   const chip=(v,l,n)=>`<button type="button" class="chp ${fi.tab===v?'on':''}" data-a="fiatab" data-v="${v}" aria-pressed="${fi.tab===v}">${l}<em>${n}</em></button>`;
   const sum=`<section class="card fsum"><div class="fs1"><span class="lbl">Te deben</span><b class="stn">${fiMon(T.saldo)}</b></div>
     <div class="fs2"><div><span>Ganancia por cobrar</span><b>${gv?fiMon(T.ganancia):'<em class="fpr">Protegida</em>'}</b></div><div><span>${T.n===1?'Persona':'Personas'} con deuda</span><b>${T.n}</b></div></div>
+    ${V.length?`<p class="fine l fvn">${ic('alert',14,'',2.3)}${V.length===1?'1 persona con el pago vencido o por vencer':V.length+' personas con el pago vencido o por vencer'}.</p>`:''}
     ${T.vendido>0?`<p class="fine l">Cobrado hasta hoy: ${fiMon(T.cobrado)} de ${fiMon(T.vendido)} vendidos a crédito.</p>`:''}</section>`;
-  const row=x=>`<button type="button" class="qrow" data-a="fper" data-id="${esc(x.uid)}"><span class="fpav">${thumb({nom:x.nom},40)}</span><span class="qrm"><b>${esc(x.nom)}</b><i>${fiVentas(x.nVentas)} · ${x.ult?fiHace(x.ult):'sin movimientos'}${x.tel?' · '+esc(x.tel):''}</i></span><span class="qrr">${x.saldo>0?`<b>${fiMon(x.saldo)}</b>${gv&&x.ganPend>0?`<em class="fgan">gana ${fiMon(x.ganPend)}</em>`:''}`:`<em class="est ace">Al día</em>`}</span></button>`;
+  const row=x=>`<button type="button" class="qrow" data-a="fper" data-id="${esc(x.uid)}"><span class="fpav">${thumb({nom:x.nom},40)}</span><span class="qrm"><b>${esc(x.nom)}</b><i>${x.saldo>0&&x.fv>0?fiVenceTxt(x)+' · ':''}${fiVentas(x.nVentas)} · ${x.ult?fiHace(x.ult):'sin movimientos'}${x.tel?' · '+esc(x.tel):''}</i></span><span class="qrr">${x.saldo>0?`<b>${fiMon(x.saldo)}</b>${gv&&x.ganPend>0?`<em class="fgan">gana ${fiMon(x.ganPend)}</em>`:''}`:`<em class="est ace">Al día</em>`}</span></button>`;
   const empty=!vis.length&&!arch.length
     ?`<div class="empty">${ic('clipboard',30)}<h3>Aún no hay fiados</h3><p>Cuando vendas algo a crédito, anota a quién. Aquí verás lo que te deben, cuánta ganancia falta cobrar y cada pago que recibas.</p><button type="button" class="btn sm" data-a="fia-new">${ic('plus',16,'',2.4)}Fiar una venta</button></div>`
     :q?`<div class="empty sm">${ic('search',22)}<p>No encontré a nadie con ese nombre.</p></div>`
@@ -11524,21 +11604,28 @@ function fiaHTML(){
     <div class="hbody scroll" data-sk="fia">${vis.length||arch.length?sum:''}${list.length?`<div class="qlist" style="margin-top:10px">${list.map(row).join('')}</div>`:empty}<div class="endsp"></div></div></div>`;
 }
 
-/* ---------- ficha de una persona ---------- */
+/* ---------- ficha de una persona ----------
+   Poco y claro: quién es, cuánto debe (y para cuándo), dos atajos chicos (recordar / marcar pagado), el historial, y abajo lo principal: Fiarle más · Registrar pago. */
 function fperSheet(s,i){
   const v=C.deudor(s.id);
   if(!v)return frame(s,i,'Fiado','','<p class="rse">No encontré a esta persona.</p>',`<button type="button" class="btn big ghost" data-a="close">Cerrar</button>`,'pros');
-  const gv=C.gv(),H=C.fiadoHist(v.uid),debe=v.saldo>0;
+  const gv=C.gv(),H=C.fiadoHist(v.uid),debe=v.saldo>0,vc=C.fiadoVence(v);
   const contacto=[v.tel,v.nota].filter(Boolean).map(esc).join(' · ');
-  const bal=`<div class="fpbal ${debe?'':'ok'}"><span class="lbl">${debe?'Debe ahora':v.saldo<0?'Pagó de más':'Está al día'}</span><b class="stn">${fiMon(Math.abs(v.saldo))}</b>${debe&&gv&&v.ganPend>0?`<i>De eso, ${fiMon(v.ganPend)} es ganancia</i>`:''}</div>`;
-  const stats=`<div class="rsk"><div><b>${fiMon(v.venta)}</b><span>vendido a crédito</span></div><div><b>${fiMon(v.cob)}</b><span>ya pagó</span></div><div><b>${v.nVentas}</b><span>${v.nVentas===1?'venta':'ventas'}</span></div></div>`;
-  const acts=debe?`<div class="fpa"><button type="button" class="btn big" data-a="fpabono" data-id="${esc(v.uid)}">${ic('check',19,'',2.5)}Registrar un pago</button>
-    <div class="fpa2"><button type="button" class="btn ghost" data-a="fppagar" data-id="${esc(v.uid)}">Marcar pagado</button><button type="button" class="btn ghost" data-a="fpwa" data-id="${esc(v.uid)}">${ic('chat',17)}Recordar</button></div></div>`:'';
+  const pct=debe&&v.venta>0&&v.cob>0?Math.max(4,Math.min(96,Math.round(v.cob/v.venta*100))):0;
+  const pill=vc?`<span class="fvp ${vc.estado}">${ic(vc.estado==='vencido'?'alert':'cal',13,'',2.4)}${esc(vc.txt)}</span>`:'';
+  const head=`<div class="fph">${thumb({nom:v.nom},44)}<span class="fpn"><b>${esc(v.nom)}</b>${contacto?`<i>${contacto}</i>`:''}</span><button type="button" class="ib fpe" data-a="fpedit" data-id="${esc(v.uid)}" aria-label="Editar los datos de ${esc(v.nom)}">${ic('pencil',19)}</button></div>`;
+  const bal=`<div class="fpbal ${debe?'':'ok'}"><div class="fpt"><span class="lbl">${debe?'Debe ahora':v.saldo<0?'Pagó de más':'Está al día'}</span>${pill}</div><b class="stn">${fiMon(Math.abs(v.saldo))}</b>
+    ${pct?`<div class="fbar" role="img" aria-label="Ya pagó ${esc(C.money(v.cob))} de ${esc(C.money(v.venta))}"><i style="width:${pct}%"></i></div><span class="fbs">Ya pagó ${fiMon(v.cob)} de ${fiMon(v.venta)}</span>`:debe&&v.nVentas?`<span class="fbs">${fiVentas(v.nVentas)} a crédito · ${fiMon(v.venta)}</span>`:''}
+    ${debe&&gv&&v.ganPend>0?`<span class="fbs">De eso, ${fiMon(v.ganPend)} es ganancia</span>`:''}
+    ${debe&&!vc?`<button type="button" class="lnk inl fpf0" data-a="fpfecha" data-id="${esc(v.uid)}">${ic('cal',14,'',2.2)}Poner fecha máxima de pago</button>`:''}</div>`;
+  const quick=debe?`<div class="fpq"><button type="button" class="fq" data-a="fpwa" data-id="${esc(v.uid)}">${ic('chat',17)}Recordar</button><button type="button" class="fq" data-a="fppagar" data-id="${esc(v.uid)}">${ic('check',17,'',2.4)}Marcar pagado</button></div>`:'';
   const hist=H.length?`<h4 class="shh2">Historial</h4><ul class="fhl">${H.map(e=>e.k==='venta'
     ?`<li class="fh"><span class="fhi">${ic('cart',16,'',2.2)}</span><span class="fhm"><b>Venta${e.nro?' N.º '+String(e.nro).padStart(4,'0'):''}</b><i>${esc(C.fechaCorta(e.t))} · ${esc(C.hora(e.t))} · ${esc(e.lines.slice(0,3).map(l=>num(l.q)+' '+l.nom).join(', '))}${e.lines.length>3?' y '+(e.lines.length-3)+' más':''}</i></span><span class="fhr"><b>${fiMon(e.total)}</b><em>Debía ${fiMon(Math.max(0,e.saldo))}</em></span></li>`
-    :`<li class="fh ab"><span class="fhi ok">${ic('check',16,'',2.6)}</span><span class="fhm"><b>Pago${e.nota?' · '+esc(e.nota):''}</b><i>${esc(C.fechaCorta(e.t))} · ${esc(C.hora(e.t))}</i><button type="button" class="lnk inl" data-a="fpanul" data-id="${esc(e.uid)}">Anular este pago</button></span><span class="fhr"><b>−${fiMon(e.monto)}</b><em>Debe ${fiMon(Math.max(0,e.saldo))}</em></span></li>`).join('')}</ul>`:'';
-  const body=`<div class="fph">${thumb({nom:v.nom},44)}<span><b>${esc(v.nom)}</b>${contacto?`<i>${contacto}</i>`:''}</span></div>${bal}${stats}${acts}${hist}${v.virtual?`<p class="fine l">Esta persona se borró en otro equipo, pero todavía debe: su cuenta sigue aquí.</p>`:''}`;
-  return frame(s,i,'Fiado','',body,`<button type="button" class="btn big" data-a="fpmas" data-id="${esc(v.uid)}">${ic('cart',18)}Fiarle algo más</button><button type="button" class="btn big ghost" data-a="fpedit" data-id="${esc(v.uid)}">${ic('edit',17)}Editar datos</button>`,'tall');
+    :`<li class="fh pay"><span class="fhi ok">${ic('check',16,'',2.6)}</span><span class="fhm"><b>Pago${e.nota?' · '+esc(e.nota):''}</b><i>${esc(C.fechaCorta(e.t))} · ${esc(C.hora(e.t))}</i><button type="button" class="lnk inl" data-a="fpanul" data-id="${esc(e.uid)}">Anular este pago</button></span><span class="fhr"><b>−${fiMon(e.monto)}</b><em>Debe ${fiMon(Math.max(0,e.saldo))}</em></span></li>`).join('')}</ul>`:'';
+  const body=`${head}${bal}${quick}${hist}${v.virtual?`<p class="fine l">Esta persona se borró en otro equipo, pero todavía debe: su cuenta sigue aquí.</p>`:''}`;
+  const foot=debe?`<div class="fpf"><button type="button" class="btn big ghost" data-a="fpmas" data-id="${esc(v.uid)}">Fiarle más</button><button type="button" class="btn big" data-a="fpabono" data-id="${esc(v.uid)}">Registrar pago</button></div>`
+    :`<button type="button" class="btn big" data-a="fpmas" data-id="${esc(v.uid)}">${ic('cart',18)}Fiarle algo más</button>`;
+  return frame(s,i,'Fiado','',body,foot,'tall');
 }
 
 /* ---------- registrar un pago (abono) ---------- */
@@ -11563,6 +11650,8 @@ function feditSheet(s,i){
   const v=C.deudor(s.id);if(!v)return '';
   const body=`<label class="fl"><span>Nombre</span><input class="fld" type="text" maxlength="60" autocomplete="off" autocapitalize="words" data-f="fenom" value="${esc(s.nom)}"></label>
     <label class="fl"><span>WhatsApp o teléfono (opcional)</span><input class="fld" type="tel" inputmode="tel" autocomplete="off" maxlength="24" placeholder="Para recordarle lo que debe" data-f="fetel" value="${esc(s.tel)}"></label>
+    ${v.saldo>0?`<div class="fl"><span>Fecha máxima de pago (opcional)</span><input class="fld" type="date" min="${fiHoyYmd()}" data-f="fefv" value="${fiYmd(s.fv)}" aria-label="Fecha máxima de pago">
+      <p class="fine l" data-r="fefvh">${s.fv>0?'Te aviso '+esc(C.fiadoAvisoTxt())+'.':'Sin fecha: no te avisaré. Si pones una, te aviso cuando se acerque.'}</p>${s.fv>0?`<button type="button" class="lnk inl" data-a="fefv-quitar">Quitar la fecha</button>`:''}</div>`:''}
     <label class="fl"><span>Nota (opcional)</span><input class="fld" type="text" maxlength="120" autocomplete="off" placeholder="Ej. vecino, paga a fin de mes" data-f="fenota" value="${esc(s.nota)}"></label>
     <p class="err" data-r="feerr"${s.err?'':' hidden'}>${esc(s.err||'')}</p>
     ${v.saldo>0?`<p class="fine l">Mientras deba algo no se puede archivar ni borrar.</p>`
@@ -11577,6 +11666,18 @@ function fiarChipsHTML(){
   if(!L.length)return '';
   return `<div class="chips wrapc fchs" role="group" aria-label="Personas">${L.map(x=>`<button type="button" class="chp ${reg.fuid===x.uid?'on':''}" data-a="rfpick" data-id="${esc(x.uid)}" aria-pressed="${reg.fuid===x.uid}">${esc(x.nom)}${x.saldo>0?`<em>${esc(C.money0(x.saldo))}</em>`:''}</button>`).join('')}</div>`;
 }
+/* atajos de plazo: «Sin fecha · 7 días · 15 días · 30 días · Otra fecha» (los días salen de PLAN.fiados.plazos) */
+const fiarPlazoAct=()=>{if(!(reg.ffv>0))return '';const d=Math.round((reg.ffv-startDayUI(Date.now()))/864e5),p=(C.PLAN.fiados&&C.PLAN.fiados.plazos)||[];return p.includes(d)&&!reg.fcust?String(d):''};
+const startDayUI=t=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime()};
+function fiarPlazosHTML(){
+  const pz=(C.PLAN.fiados&&C.PLAN.fiados.plazos)||[],act=fiarPlazoAct(),none=!(reg.ffv>0)&&!reg.fcust,cus=reg.fcust||(reg.ffv>0&&!act);
+  const b=(v,l,on)=>`<button type="button" class="chp ${on?'on':''}" data-a="rffv-set" data-v="${v}" aria-pressed="${!!on}">${l}</button>`;
+  return b('0','Sin fecha',none)+pz.map(d=>b(String(d),d+' días',act===String(d))).join('')+b('otra','Otra fecha',cus);
+}
+function fiarFvTxt(){
+  if(!(reg.ffv>0))return 'Sin fecha: no te avisaré. Si pones una, te aviso cuando se acerque.';
+  return 'Debe pagar antes del <b>'+esc(C.fechaDoc(reg.ffv))+'</b>. Te aviso '+esc(C.fiadoAvisoTxt())+'.';
+}
 function fiarResHTML(){
   const tot=regTotal(),paga=Math.max(0,Math.min(pnum(reg.fpaga),tot)),debe=tot-paga,v=reg.fuid?C.deudor(reg.fuid):null,prev=v&&v.saldo>0?v.saldo:0;
   return (debe>0.0049?'Quedará debiendo <b>'+esc(C.money(debe))+'</b>':'Paga todo ahora: no queda deuda')+(prev>0&&debe>0.0049?'. Con lo que ya debía ('+esc(C.money(prev))+'), en total <b>'+esc(C.money(prev+debe))+'</b>':'')+'.';
@@ -11590,7 +11691,11 @@ function fiarBlockHTML(){
     ${on?`<label class="fl"><span>¿A quién se lo fías?</span><input class="fld" type="text" maxlength="60" autocomplete="off" autocapitalize="words" placeholder="Nombre de la persona" data-f="rfnom" value="${esc(reg.fnom||'')}"></label>
       <div data-r="rfl">${fiarChipsHTML()}</div>
       <label class="fl"><span>Paga ahora (opcional)</span>${inw('$','rfpaga',reg.fpaga||'','',' placeholder="0"')}</label>
-      <p class="fine l" data-r="rfres">${fiarResHTML()}</p>`:''}</section>`;
+      <p class="fine l" data-r="rfres">${fiarResHTML()}</p>
+      <div class="fl"><span>Fecha máxima de pago (opcional)</span><div class="chips wrapc fplz" role="group" aria-label="Fecha máxima de pago">${fiarPlazosHTML()}</div>
+        ${reg.fcust||reg.ffv>0&&!fiarPlazoAct()?`<input class="fld" type="date" min="${fiHoyYmd()}" data-f="rffv" value="${fiYmd(reg.ffv)}" aria-label="Elegir la fecha">`:''}
+        <p class="fine l" data-r="rffvh">${fiarFvTxt()}</p></div>
+      <label class="fl"><span>WhatsApp de quien debe (opcional)</span><input class="fld" type="tel" inputmode="tel" autocomplete="off" maxlength="24" placeholder="Para recordarle con un toque" data-f="rftel" value="${esc(reg.ftel||'')}"></label>`:''}</section>`;
 }
 
 
@@ -11936,7 +12041,7 @@ function okShow(o){
     return `<div class="okw cost">${ic('alert',16,'',2.4)}<span>${t}</span><button type="button" class="okp" data-a="costup">${cu.length>1||!gvOk?'Subir precio'+(cu.length>1?'s':''):'Subir a '+esc(C.money(e.sug))}</button></div>`})():'';
   const pw=(o.done||[]).filter(d=>d.pvAntes!=null&&C.gv());
   const pwH=pw.length?`<div class="okw ok">${ic('check',16,'',2.4)}<span>${pw.length>1?pw.length+' precios de venta actualizados':esc(pw[0].p.nom)+': precio de venta '+esc(C.money(pw[0].pvAntes))+' → '+esc(C.money(pw[0].p.pv))}</span></div>`:'';
-  const fiH=o.fiado?`<div class="okw ok">${ic('clipboard',16,'',2.4)}<span>${esc(o.fiado.nom)} debe ahora ${esc(C.money(o.fiado.debe))}${o.fiado.paga>0?' (dejó '+esc(C.money(o.fiado.paga))+' de entrada)':''}</span></div>`:'';
+  const fiH=o.fiado?`<div class="okw ok">${ic('clipboard',16,'',2.4)}<span>${esc(o.fiado.nom)} debe ahora ${esc(C.money(o.fiado.debe))}${o.fiado.paga>0?' (dejó '+esc(C.money(o.fiado.paga))+' de entrada)':''}${o.fiado.vence?' · paga antes del '+esc(o.fiado.vence):''}</span></div>`:'';
   okEl.innerHTML=`<div class="okc ${o.tipo}" role="status" aria-live="polite" data-a="okhide">
     <div class="okr1"><span class="okb" aria-hidden="true"><svg viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="31"/><path class="tk" d="M19 33.5l9.5 9.5L46 23"/></svg></span>
       <span class="okt"><b class="t">${ttl}</b><span class="big">${esc(big)}</span><i>${esc(sub)}</i></span>
@@ -12082,7 +12187,7 @@ async function fotoCrop(f,ctx,nom){
   let im;try{im=await C.fotoCargar(f)}catch(e){toast('No pude leer esa imagen. Prueba con otra.',false,true);return}
   sheets.push({k:'fcrop',fresh:true,blob:f,url:URL.createObjectURL(f),im,box:C.fotoRecorteAuto(im.src,im.w,im.h),ctx,para:nom||''});render()}
 function openReg(tipo,pid,extra){
-  reg={tipo:tipo||'venta',lines:[],q:'',adding:false,err:'',quien:'',dest:'',fiar:false,fuid:null,fnom:'',fpaga:''};if(extra)Object.assign(reg,extra);
+  reg={tipo:tipo||'venta',lines:[],q:'',adding:false,err:'',quien:'',dest:'',fiar:false,fuid:null,fnom:'',fpaga:'',ffv:0,fcust:false,ftel:''};if(extra)Object.assign(reg,extra);
   if(pid){const p=C.prod(pid);if(p)reg.lines.push({pid:p.id,q:1,pv:p.pv})}
   pushSheet({k:'reg'});
 }
@@ -12397,11 +12502,12 @@ const A={
       let uid=R.fuid,nom=(R.fnom||'').trim();const v=uid?C.deudor(uid):null;if(v){nom=v.nom}else uid=null;
       if(!nom){R.err='Escribe a quién se lo fías.';render();const el=$('[data-f="rfnom"]',mainEl);if(el)try{el.focus()}catch(x){};return}
       if(!uid){const pr=C.fiadoNuevo({nom});if(!pr.ok){R.err='Escribe a quién se lo fías.';render();return}uid=pr.p.uid;nom=pr.p.nom}
+      {const ed={};if(R.ffv>0)ed.fv=R.ffv;if((R.ftel||'').trim())ed.tel=R.ftel;if(Object.keys(ed).length)C.fiadoEditar(uid,ed)}      // fecha máxima de pago y WhatsApp (si los puso)
       fx={uid,nom};
     }
     const res=C.mov(tipo,lines,fx?{fid:fx.uid,fnom:fx.nom}:undefined);if(!res.ok){R.err=res.reason==='stock'?'No alcanza el stock de «'+res.p.nom+'».':'No se pudo registrar.';render();return}
     let fiado=null;
-    if(fx){const paga=Math.max(0,Math.min(pnum(R.fpaga),tot));if(paga>0)C.fiadoAbonar(fx.uid,paga,'Entrada',{b:res.b});const v2=C.deudor(fx.uid);fiado={nom:fx.nom,paga,debe:v2?Math.max(0,v2.saldo):0}}
+    if(fx){const paga=Math.max(0,Math.min(pnum(R.fpaga),tot));if(paga>0)C.fiadoAbonar(fx.uid,paga,'Entrada',{b:res.b});const v2=C.deudor(fx.uid),vc2=C.fiadoVence(v2);fiado={nom:fx.nom,paga,debe:v2?Math.max(0,v2.saldo):0,vence:vc2?C.fechaDoc(v2.fv):''}}
     sheets.pop();reg=null;homeRef=null;barSel=-1;render();      // vuelve a «Hoy»: si mirabas otro día, parecía que la venta no se guardó
     const lows=res.done.filter(d=>d.low);
     if(lows.length)C.notif.low(lows);
@@ -12614,6 +12720,7 @@ const A={
   'snd-test'(){if(C.state.sonido===false&&C.state.vibra===false){toast('El sonido y la vibración están apagados');return}C.sfx('venta');C.buzz([35,45,35])},
   'notif-low'(){C.notif.set({low:!C.state.notif.low});render()},
   'notif-daily'(){C.notif.set({daily:!C.state.notif.daily});render()},
+  'notif-fia'(){C.notif.set({fia:C.state.notif.fia===false});render()},
   'notif-hour'(b){C.notif.set({hour:+b.dataset.v});render()},
   /* computadora */
   /* «Enviarme el enlace»: el menú de compartir del teléfono (correo, WhatsApp…); si no hay menú, se abre un correo para ti mismo con el enlace */
@@ -13330,10 +13437,13 @@ Object.assign(A,{
     pushSheet({k:'cfm',t:'¿Anular este pago?',d:'Se quita el pago de '+C.money(a.monto)+' y esa plata vuelve a estar por cobrar. Úsalo solo si lo anotaste por error.',yes:'Anular el pago',no:'Cancelar',act:'m:fpanul',id:a.uid})},
   fpwa(b){const v=C.deudor(b.dataset.id);if(!v)return;
     pushSheet({k:'share',titulo:'Recordatorio a '+v.nom,texto:C.fiadoTexto(v.uid),wa:C.waNumber(v.tel),waTxt:v.tel,para:v.nom})},
-  fpedit(b){const v=C.deudor(b.dataset.id);if(!v)return;pushSheet({k:'fedit',id:v.uid,nom:v.nom,tel:v.tel||'',nota:v.nota||'',err:''})},
+  fpedit(b){const v=C.deudor(b.dataset.id);if(!v)return;pushSheet({k:'fedit',id:v.uid,nom:v.nom,tel:v.tel||'',nota:v.nota||'',fv:v.fv>0?v.fv:0,err:''})},
+  /* «Poner fecha máxima de pago» desde la ficha: abre «Editar datos» ya con la fecha lista para elegir */
+  fpfecha(b){const v=C.deudor(b.dataset.id);if(!v)return;pushSheet({k:'fedit',id:v.uid,nom:v.nom,tel:v.tel||'',nota:v.nota||'',fv:0,err:'',foco:'fefv'});later(()=>{const el=$('[data-f="fefv"]',mainEl);if(el)try{el.focus({preventScroll:true})}catch(x){}},320)},
+  'fefv-quitar'(){const s=topSheet();if(!s||s.k!=='fedit')return;s.fv=0;render()},
   feok(){
     const s=topSheet();if(!s||s.k!=='fedit')return;
-    const r=C.fiadoEditar(s.id,{nom:s.nom,tel:s.tel,nota:s.nota});
+    const v0=C.deudor(s.id),r=C.fiadoEditar(s.id,Object.assign({nom:s.nom,tel:s.tel,nota:s.nota},v0&&v0.saldo>0?{fv:s.fv>0?s.fv:0}:{}));
     if(!r.ok){s.err=r.reason==='dup'?'Ya tienes a otra persona con ese nombre.':'Escribe el nombre de la persona.';const e=$('[data-r="feerr"]',mainEl);if(e){e.textContent=s.err;e.hidden=false}return}
     sheets.pop();render();toast('Datos guardados')},
   fparch(b){const v=C.deudor(b.dataset.id);if(!v||v.saldo>0)return;const on=!v.arch;C.fiadoArchivar(v.uid,on);fiaCerrarFicha();render();
@@ -13343,7 +13453,12 @@ Object.assign(A,{
   /* hoja de vender */
   rfiar(){if(!C.isPro()){proSheetFor('fiados');return}reg.fiar=!reg.fiar;reg.err='';render();
     if(reg.fiar&&!reg.fnom)later(()=>{const el=$('[data-f="rfnom"]',mainEl);if(el)try{el.focus({preventScroll:true})}catch(x){}},80)},
-  rfpick(b){const v=C.deudor(b.dataset.id);if(!v)return;reg.fuid=v.uid;reg.fnom=v.nom;reg.err='';render()}
+  rfpick(b){const v=C.deudor(b.dataset.id);if(!v)return;reg.fuid=v.uid;reg.fnom=v.nom;reg.err='';
+    reg.ftel=v.tel||'';reg.ffv=v.saldo>0&&v.fv>=startDayUI(Date.now())?v.fv:0;reg.fcust=false;render()},
+  /* atajos de «Fecha máxima de pago» al fiar: Sin fecha · N días · Otra fecha */
+  'rffv-set'(b){const v=b.dataset.v;reg.err='';
+    if(v==='otra'){reg.fcust=true;if(!(reg.ffv>0))reg.ffv=0;render();later(()=>{const el=$('[data-f="rffv"]',mainEl);if(el)try{el.focus({preventScroll:true})}catch(x){}},120);return}
+    reg.fcust=false;reg.ffv=+v>0?startDayUI(Date.now()+(+v)*864e5):0;render()}
 });
 const cfmBaseFia=A['cfm-yes'];
 A['cfm-yes']=async function(){
@@ -13361,8 +13476,11 @@ Object.assign(IN,{
   fenom(el){const s=topSheet();if(!s||s.k!=='fedit')return;s.nom=el.value;s.err='';const e=$('[data-r="feerr"]',mainEl);if(e)e.hidden=true},
   fetel(el){const s=topSheet();if(s&&s.k==='fedit')s.tel=el.value},
   fenota(el){const s=topSheet();if(s&&s.k==='fedit')s.nota=el.value},
+  fefv(el){const s=topSheet();if(!s||s.k!=='fedit')return;s.fv=fiFecha(el.value);const h=$('[data-r="fefvh"]',mainEl);if(h)h.textContent=s.fv>0?'Te aviso '+C.fiadoAvisoTxt()+'.':'Sin fecha: no te avisaré. Si pones una, te aviso cuando se acerque.'},
   rfnom(el){reg.fnom=el.value;reg.fuid=null;reg.err='';const l=$('[data-r="rfl"]',mainEl);if(l)l.innerHTML=fiarChipsHTML();const r=$('[data-r="rfres"]',mainEl);if(r)r.innerHTML=fiarResHTML();const e=$('[data-r="rerr"]',mainEl);if(e)e.hidden=true},
-  rfpaga(el){reg.fpaga=el.value;const r=$('[data-r="rfres"]',mainEl);if(r)r.innerHTML=fiarResHTML()}
+  rfpaga(el){reg.fpaga=el.value;const r=$('[data-r="rfres"]',mainEl);if(r)r.innerHTML=fiarResHTML()},
+  rffv(el){reg.ffv=fiFecha(el.value);const h=$('[data-r="rffvh"]',mainEl);if(h)h.innerHTML=fiarFvTxt()},
+  rftel(el){reg.ftel=el.value}
 });
 
 /* =====================================================================
@@ -13457,6 +13575,10 @@ if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
 ['rep-inv','xl-productos','xl-ventas','xl-movimientos','cierre-pdf','cierre-share','backup-json','backup-send','backup','restore','cloud-restore'].forEach(k=>{const f=A[k];if(!f)return;
   A[k]=function(b){if(C.gv())return f.call(A,b);pushSheet({k:'gv',then:()=>f.call(A,b)});if(C.bio.gvOn())later(()=>A['gv-bio'](),350)}});
 setTimeout(()=>{try{C.notif.tick();C.notif.mirror()}catch(e){}},3000);
+/* al tocar el aviso de un cobro: se abre «Por cobrar» (si la app está bloqueada o sin sesión, no se fuerza nada) */
+const fiaAbrir=()=>{try{if(C.state.step==='app'&&!C.locked&&C.isPro())A['fia-list']()}catch(e){}};
+try{if(/[?&]fia=1(&|$)/.test(location.search)){setTimeout(fiaAbrir,3500);try{history.replaceState(null,'',location.pathname)}catch(e){}}}catch(e){}
+try{if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.cuadre==='fia')fiaAbrir()})}catch(e){}
 setTimeout(()=>{try{if(codigoPend())activarPend()}catch(e){}},2500);      // abrió el enlace del vendedor ya con su cuenta de Google: se activa solo
 })();
 
