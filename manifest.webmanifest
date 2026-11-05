@@ -1,7 +1,7 @@
 {
   "name": "NegocioListo · Inventario y cotizaciones",
   "short_name": "NegocioListo",
-  "description": "Controla tu bodega, tus ventas y tus cotizaciones. Funciona sin internet.",
+  "description": "Controla tu inventario, tus ventas y tus cotizaciones. Funciona sin internet.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",

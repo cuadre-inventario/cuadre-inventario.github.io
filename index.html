@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-B+FFmrYty4MdxUCo8OUedrDjpjOT9Mo2svQLESNOwXA=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-CaN+KYHVrjFOfGpbwZP+MwwIUeosYAYyFQ63t343P8I=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
-<meta name="description" content="Controla tu bodega, tus ventas y tus cotizaciones. Funciona sin internet.">
+<meta name="description" content="Controla tu inventario, tus ventas y tus cotizaciones. Funciona sin internet.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon-48.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -2796,7 +2796,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.2.0',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.2.1',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -5889,7 +5889,7 @@ const KMAP={
   cotizaciones:{doc:['docq','doc'],fecha:['fecha'],cliente:['cliente'],nom:['nom','concepto','item'],cod:['cod'],barras:['barras'],u:['u','unidades_u'],q:['cant'],pv:['precio'],desc:['desc'],total:['total'],estado:['estado'],nota:['nota']}
 };
 const FIELDS={
-  productos:[['nom','Nombre del producto'],['cod','Código'],['barras','Código de barras'],['stock','Cantidad en bodega'],['u','Unidad'],['cat','Categoría'],['marca','Marca'],['costo','Costo'],['pv','Precio de venta'],['min','Mínimo']],
+  productos:[['nom','Nombre del producto'],['cod','Código'],['barras','Código de barras'],['stock','Cantidad en stock'],['u','Unidad'],['cat','Categoría'],['marca','Marca'],['costo','Costo'],['pv','Precio de venta'],['min','Mínimo']],
   movimientos:[['fecha','Fecha'],['hora','Hora'],['nom','Producto'],['cod','Código'],['barras','Código de barras'],['tipo','Tipo de movimiento'],['q','Cantidad'],['qin','Entrada'],['qout','Salida'],['saldo','Saldo'],['pv','Precio'],['costo','Costo'],['total','Total'],['doc','N.º de documento'],['cliente','Cliente'],['nota','Nota']],
   cotizaciones:[['doc','N.º de cotización'],['fecha','Fecha'],['cliente','Cliente'],['nom','Producto'],['cod','Código'],['q','Cantidad'],['pv','Precio'],['desc','Descuento %'],['total','Total'],['estado','Estado'],['nota','Nota']]
 };
@@ -6186,7 +6186,7 @@ function plan(M){
       if(tt>now+864e5)wr('futuro',1,'movimientos con fecha futura (revisa si el día y el mes están al revés).','info');
       const rec={nom:nom||cod||barras,cod,barras,cat:'',marca:'',u:unitOf(g(row,'u')),pv:null,costo:null,min:0,ideal:0,stock:null};
       let L=look(rec),E=null;
-      if(L&&L.ex){existSet.add(L.ex.id);wr('movExist',1,'movimientos de productos que ya estaban en tu bodega no se cargaron (para no duplicar).','info');continue}
+      if(L&&L.ex){existSet.add(L.ex.id);wr('movExist',1,'movimientos de productos que ya estaban en tu inventario no se cargaron (para no duplicar).','info');continue}
       if(L&&L.fe)E=L.fe;
       else{E=mkEnt(rec,'mov');wr('soloMov',1,'productos aparecen en tus movimientos pero no están en tu lista de productos; se agregaron para no perder esos movimientos (revisa su nombre, precio y categoría).','info')}
       if(!E.u&&rec.u)E.u=rec.u;
@@ -6351,7 +6351,7 @@ C.sugerencias=()=>{
   const ra=C.relojAdelanto();
   if(ra)out.push({id:'reloj',kind:'tip',icon:'clock',txt:'Una venta quedó anotada con la hora adelantada (unos '+ra+' min): el reloj de otro equipo está mal. Ponlo en «hora automática» y Inicio contará bien; esa venta entra sola cuando llegue su hora.',cta:'Entendido',act:'tip'});
   if(!s.protGan)out.push({id:'gv',kind:'tip',icon:'shield',txt:'¿Alguien más vende por ti? Protege tus ganancias: solo tú las ves, con '+C.bio.nom()+' o tu clave de dueño.',cta:'Proteger mis ganancias',act:'gv'});
-  if(!s.pin&&np>0)out.push({id:'pin',kind:'tip',icon:'lock',txt:'Protege tu información con una clave: nadie podrá abrir tu bodega sin ella.',cta:'Poner clave',act:'pin'});
+  if(!s.pin&&np>0)out.push({id:'pin',kind:'tip',icon:'lock',txt:'Protege tu información con una clave: nadie podrá abrir tu negocio sin ella.',cta:'Poner clave',act:'pin'});
   const db=C.diasBackup();
   if(np>=3&&(db==null||db>=14))out.push({id:'bk',kind:'tip',icon:'save',txt:db==null?'Todavía no tienes copia de seguridad. Descárgala para no perder tu información si cambias o pierdes el teléfono.':'Hace '+db+' días de tu última copia de seguridad.',cta:'Hacer copia ahora',act:'backup'});
   const desk=typeof innerWidth==='number'&&innerWidth>=900;
@@ -9803,7 +9803,7 @@ function welcomeHTML(){
   return `<div class="wl">
     <div class="wlt"><span class="mark mi" role="img" aria-label="NegocioListo"></span><span class="wm">NegocioListo</span></div>
     <div class="wlg" aria-hidden="true">${tiles}</div>
-    <div class="wlx"><h1>Tu bodega al día, en el teléfono o la computadora</h1>
+    <div class="wlx"><h1>Tu negocio al día, en el teléfono o la computadora</h1>
       <p>Entradas y salidas, avisos de lo que se acaba y cuánto vendiste. Sin facturas, sin complicaciones.</p></div>
     <div class="wla">
       ${G?`<button type="button" class="btn big gbtn" data-a="gsign"${gbusy||!C.online()?' disabled':''}>${GLOGO}<span>${gbusy?'Conectando con Google…':'Continuar con Google'}</span></button>
@@ -9859,7 +9859,7 @@ function setupHTML(){
   }
   if(su.paso===2){
     return `<div class="su">${setupHead(2)}<div class="sub scroll" data-sk="su2">
-      <h1>¿Qué vendes o qué vas a registrar?</h1><p class="sub-p">Elige el que más se parece. Empiezas con la bodega vacía: tú agregas tus productos.</p>
+      <h1>¿Qué vendes o qué vas a registrar?</h1><p class="sub-p">Elige el que más se parece. Empiezas con el inventario vacío: tú agregas tus productos.</p>
       <div class="sfd rsf ${su.rq?'has':''}">${ic('search',19)}<input type="text" inputmode="search" autocomplete="off" placeholder="Busca tu negocio: zapatos, celulares, pan…" aria-label="Buscar tipo de negocio" data-f="rq" value="${esc(su.rq||'')}"><button type="button" class="clr" data-a="rqclr" aria-label="Borrar búsqueda">${ic('x',15,'',2.4)}</button></div>
       <div data-r="rgl">${rubrosListHTML()}</div>
       <label class="fl otro" data-r="otro"${su.rubro==='otro'?'':' hidden'}><span>Cuéntanos qué es (opcional)</span><input class="fld" type="text" maxlength="60" placeholder="Ej. Venta de plantas" data-f="stxt" value="${esc(su.txt)}"></label>
@@ -9876,12 +9876,12 @@ function setupHTML(){
     <p class="fine l">Ejemplo de precio: <b data-r="sex">${esc(sexEj())}</b>. El impuesto es solo una sugerencia: cámbialo o déjalo en 0.</p>
     ${logoCardHTML(su.logo,'Este logo se usará en tus cotizaciones y arriba de la app. Puedes agregarlo o cambiarlo después en Más.')}
     </div>
-    <footer class="suf"><button type="button" class="btn big" data-a="crear">Crear mi bodega</button></footer></div>`;
+    <footer class="suf"><button type="button" class="btn big" data-a="crear">Crear mi negocio</button></footer></div>`;
 }
 function prepHTML(){
   const R=C.rubro(su.rubro),nm=(su.rubro==='otro'&&su.txt.trim()?su.txt.trim():R.nom).toLowerCase();
   return `<div class="pp"><div class="ppi">${C.rubroIcon(su.rubro,{size:104,cls:'draw float'})}</div>
-    <h2>Preparando tu bodega de ${esc(nm)}…</h2><div class="ppb"><i></i></div></div>`;
+    <h2>Preparando tu negocio ${esc(nm)}…</h2><div class="ppb"><i></i></div></div>`;
 }
 const inw=(pre,f,val,suf,extra)=>`<div class="inpw">${pre?`<em>${esc(pre==='$'?C.moneySym():pre)}</em>`:''}<input type="text" inputmode="decimal" autocomplete="off" data-n="1"${pre==='$'?' data-m="1"':''} data-f="${f}" value="${esc(val)}"${extra||''}>${suf?`<em>${suf}</em>`:''}</div>`;
 
@@ -9896,7 +9896,7 @@ function mcHTML(arr){
 }
 function startCardHTML(){
   const R=C.rubro(C.state.rubro);
-  return `<section class="card st0"><div class="st0h"><span class="st0i">${ic('box',24)}</span><div><h3>Empieza tu bodega</h3>
+  return `<section class="card st0"><div class="st0h"><span class="st0i">${ic('box',24)}</span><div><h3>Empieza tu inventario</h3>
     <p>Está vacía: agrega tus productos uno por uno, escanéalos con la cámara, o carga ejemplos de ${esc(R.nom.toLowerCase())} para ver cómo funciona.</p></div></div>
     <button type="button" class="btn big" data-a="addp">${ic('plus',20,'',2.4)}Agregar mi primer producto</button>
     <div class="two"><button type="button" class="btn ghost sm" data-a="scan">${ic('scan',17)}Escanear código</button><button type="button" class="btn ghost sm" data-a="ejemplos">Cargar ejemplos</button></div>
@@ -9983,7 +9983,7 @@ function homeHTML(){
     <div class="endsp"></div></main>`;
 }
 function bubblesHTML(){
-  const pro=C.isPro(),bs=C.sugerencias().filter(b=>b.id!=='ej');   // «ej» repite lo que ya dice la tarjeta «Empieza tu bodega»
+  const pro=C.isPro(),bs=C.sugerencias().filter(b=>b.id!=='ej');   // «ej» repite lo que ya dice la tarjeta «Empieza tu inventario»
   if(!bs.length)return '';
   return `<section class="sg" aria-label="Sugerencias"><div class="sgr" data-sk="bub">${bs.map(b=>`<article class="bb k-${b.kind}">
     <div class="bbt"><span class="bbi">${ic(b.icon,18)}</span><p>${esc(b.txt)}</p></div>
@@ -10318,7 +10318,7 @@ function masBody(id,s){
       <div class="sw" style="margin-top:12px"><div class="swt"><b>${C.pin.hasRec()?'Tienes una clave de recuperación':'Sin clave de recuperación'}</b><i>${C.cloud.info().connected?'Si olvidas tu clave, entras confirmando con tu cuenta de Google'+(C.pin.hasRec()?' o con esta clave.':'. Crea también una clave de recuperación por si acaso.'):C.pin.hasRec()?'Te permite entrar si olvidas tu clave. Conecta tu cuenta de Google para tener otra forma.':'Sin ella ni una cuenta de Google conectada, olvidar la clave obliga a borrar los datos del teléfono.'}</i></div></div>
       <button type="button" class="btn ghost sm" data-a="rec-new">${ic('key',16)}${C.pin.hasRec()?'Crear una nueva clave de recuperación':'Crear clave de recuperación'}</button>
       <button type="button" class="btn txt dng" data-a="pin-remove">Quitar la clave</button>`
-    :`<p class="accn">Con una clave nadie puede abrir tu bodega en este equipo sin saberla.</p><button type="button" class="btn sm" data-a="pin-set">${ic('lock',17)}Poner una clave para abrir la app</button>`}
+    :`<p class="accn">Con una clave nadie puede abrir tu negocio en este equipo sin saberla.</p><button type="button" class="btn sm" data-a="pin-set">${ic('lock',17)}Poner una clave para abrir la app</button>`}
     <p class="fine l">La clave protege la entrada a NegocioListo. No cifra los datos guardados en el equipo: para eso usa también el bloqueo de pantalla.</p>`;
   const K=C.cloud.info(),online=C.online();
   const nube=!K.configured?`<p class="accn">${ic('cloud',15)} La cuenta de Google todavía no está activada. Mientras tanto la copia en Excel te protege.</p>`
@@ -10533,7 +10533,7 @@ function prodSheet(s,i){
   const codeTxt=p.barras||p.cod,qr=C.qrSVG(p.cod,{size:80}),bar=C.barSVG(codeTxt,{w:150,h:54});
   const arch=p.activo===false;
   const fotoP=arch?'':`<div class="fto"><span class="ftp">${thumb(p,68)}</span><div class="ftb"><b>Foto</b><div class="ftr"><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="cam">${ic('cam',16)}${p.img?'Cambiar':'Tomar foto'}</button><button type="button" class="btn ghost sm" data-a="ppfoto" data-id="${p.id}" data-v="gal">${ic('image',16)}Galería</button>${p.img?`<button type="button" class="btn txt dng" data-a="ppfoto" data-id="${p.id}" data-v="del">Quitar</button>`:''}</div></div></div>`;
-  const body=`${fotoP}<section class="pst"><div><span class="lbl">En bodega</span><b class="stn">${num(p.stock)} <small>${UL(p.u)}</small></b></div><div data-r="pbadge">${arch?'<span class="badge">Archivado</span>':statusBadge(p)}</div></section>
+  const body=`${fotoP}<section class="pst"><div><span class="lbl">En stock</span><b class="stn">${num(p.stock)} <small>${UL(p.u)}</small></b></div><div data-r="pbadge">${arch?'<span class="badge">Archivado</span>':statusBadge(p)}</div></section>
     ${arch?`<button type="button" class="btn big" data-a="parch" data-id="${p.id}">Volver a mostrar este producto</button>`:`<div class="act3"><button type="button" class="btn sm" data-a="pv-sell" data-id="${p.id}">${ic('cart',17)}Vender</button><button type="button" class="btn ghost sm" data-a="pv-in" data-id="${p.id}">${ic('entrada',17)}Ingreso</button><button type="button" class="btn ghost sm" data-a="pv-out" data-id="${p.id}">${ic('salida',17)}Salida</button></div>`}
     ${arch?'':`<section class="blk"><h4>Aviso de mínimo</h4><div class="minr"><div class="stp"><button type="button" data-a="minstep" data-d="-1" aria-label="Bajar el mínimo">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="pmin" aria-label="Mínimo" value="${esc(pd.min)}"><button type="button" data-a="minstep" data-d="1" aria-label="Subir el mínimo">${ic('plus',18,'',2.4)}</button></div><span class="minu">${UL(p.u)}</span></div>
       <p class="fine l" data-r="minn">${minTxt(p,pnum(pd.min))}</p></section>
@@ -10568,7 +10568,7 @@ function pmenuSheet(s,i){
   const p=C.prod(s.id);if(!p)return '';
   const row=(w,ico,t,d,cls)=>`<button type="button" class="mr ${cls||''}" data-a="pm-go" data-do="${w}" data-id="${p.id}"><span class="mri">${ic(ico,19)}</span><span class="mrt"><b>${t}</b>${d?`<i>${d}</i>`:''}</span>${ic('chev',17)}</button>`;
   const body=p.activo===false?`${row('open','box','Ver el producto','Historial y kardex')}${row('unarch','refresh','Volver a mostrarlo','Vuelve a la lista de Productos')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`
-    :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · ${num(p.stock)} ${UL(p.u)} en bodega</i></span></div>
+    :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · ${num(p.stock)} ${UL(p.u)} en stock</i></span></div>
     ${row('sell','cart','Vender','Registra una venta de este producto')}${row('in','entrada','Ingreso','Suma stock: llegó mercadería')}${row('out','salida','Salida sin cobrar','Merma, regalo o consumo')}
     ${row('open','box','Ver el producto','Historial, kardex y códigos')}${row('edit','edit','Editar datos y foto','Nombre, precio, mínimo…')}${row('adj','refresh','Corregir stock','Cuando el conteo no coincide')}${row('arch','trash','Archivar','Se oculta, no se borra su historial','dng')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`;
   return frame(s,i,'Acciones','',body,'','pros');
@@ -10599,7 +10599,7 @@ function addSheet(s,i){
 }
 function ajusteSheet(s,i){
   const p=C.prod(s.id);if(!p)return '';
-  const body=`<p class="fine">Usa esto cuando el conteo real no coincide con la app (por ejemplo, después de contar la bodega). Queda registrado como «Ajuste» en el historial.</p>
+  const body=`<p class="fine">Usa esto cuando el conteo real no coincide con la app (por ejemplo, después de contar el inventario). Queda registrado como «Ajuste» en el historial.</p>
     <div class="pst" style="margin-top:12px"><div><span class="lbl">La app dice</span><b class="stn">${num(p.stock)} <small>${UL(p.u)}</small></b></div></div>
     <label class="fl" style="margin-top:12px"><span>Cantidad real que hay (${UL(p.u)})</span>${inw('','ajq',inp(p.stock))}</label>
     <label class="fl"><span>Motivo (opcional)</span><input class="fld" type="text" maxlength="60" placeholder="Ej. Conteo físico" data-f="ajn" value="${esc(s.nota||'')}"></label>`;
@@ -10661,7 +10661,7 @@ function pickListHTML(q,exclude,act,counts,newAct){
   /* al buscar: primero los resultados (Enter agrega el primero) y al final «Crear…» */
   const cab=qq?`<p class="pkt">Resultados</p>`:`<div class="pkh"><p class="pkt">Los que más vendes</p>${nuevo}</div>`,pie=qq&&nuevo?`<div class="pkh solo">${nuevo}</div>`:'';
   return `${cab}${it.map(p=>{const low=C.bajo(p),n=counts&&counts[p.id];
-    return `<button type="button" class="pki" data-a="${act}" data-id="${p.id}"><span class="pkm"><b>${esc(p.nom)}</b><i class="${low?'lowt':''}">${p.stock<=0?'Agotado · ':low?'Por acabarse · ':''}${p.marca?esc(p.marca)+' · ':''}${num(p.stock)} ${UL(p.u)} en bodega</i></span>${n?`<em class="cnt">${ic('check',13,'',2.6)}${num(n)}</em>`:''}<b class="pkp">${C.money(p.pv)}</b></button>`}).join('')}${pie}`;
+    return `<button type="button" class="pki" data-a="${act}" data-id="${p.id}"><span class="pkm"><b>${esc(p.nom)}</b><i class="${low?'lowt':''}">${p.stock<=0?'Agotado · ':low?'Por acabarse · ':''}${p.marca?esc(p.marca)+' · ':''}${num(p.stock)} ${UL(p.u)} en stock</i></span>${n?`<em class="cnt">${ic('check',13,'',2.6)}${num(n)}</em>`:''}<b class="pkp">${C.money(p.pv)}</b></button>`}).join('')}${pie}`;
 }
 function regLineH(l,i){
   const p=C.prod(l.pid);if(!p)return '';
@@ -10859,8 +10859,8 @@ function valorSheet(s,i){
   const P=C.prods(),V=C.valorBodega(),VV=C.valorVenta(),G=VV-V,por=new Map();
   P.forEach(p=>{const v=Math.max(0,p.stock)*(p.costo||0);if(v>0)por.set(C.catNom(p),(por.get(C.catNom(p))||0)+v)});
   const rows=[...por].sort((a,b)=>b[1]-a[1]).slice(0,6),mx=rows.length?rows[0][1]:1;
-  if(!C.gv())return frame(s,i,'Valor del inventario',P.length+' '+(P.length===1?'producto':'productos'),gvBlock('El valor de tu bodega a costo está protegido.'),`<button type="button" class="btn big ghost" data-a="close">Cerrar</button>`,'pros');
-  const body=`<div class="rsh"><span class="lbl">Tu bodega vale, a lo que te costó</span><b class="rsv">${hidden()?HID:moneyBig(V)}</b></div>
+  if(!C.gv())return frame(s,i,'Valor del inventario',P.length+' '+(P.length===1?'producto':'productos'),gvBlock('El valor de tu inventario a costo está protegido.'),`<button type="button" class="btn big ghost" data-a="close">Cerrar</button>`,'pros');
+  const body=`<div class="rsh"><span class="lbl">Tu inventario vale, a lo que te costó</span><b class="rsv">${hidden()?HID:moneyBig(V)}</b></div>
     <dl class="rsd"><div><dt>Si vendes todo a tus precios</dt><dd>${mk(C.money(VV))}</dd></div><div class="sub"><dt>Ganancia posible <em>precio de venta − costo</em></dt><dd>${mk(C.money(G))}</dd></div></dl>
     ${rows.length?`<h4 class="vlh">Dónde está tu dinero</h4><ul class="vlist">${rows.map(([n,v])=>`<li><span>${esc(n)}</span><i><u style="width:${Math.max(3,Math.round(v/mx*100))}%"></u></i><b>${mk(esc(C.money0(v)))}</b></li>`).join('')}</ul>`:`<p class="rse">Aún no hay productos con costo y existencias.</p>`}
     <p class="fine l">Cuenta solo lo que hay en existencia, a su costo. Los productos sin costo puesto no suman.</p>`;
@@ -10869,10 +10869,10 @@ function valorSheet(s,i){
 /* ---- cuenta de Google: ya hay una bodega en su Drive ---- */
 const cuando=t=>{const d=C.diasDesde(t);return d===0?'hoy a las '+C.hora(t):C.hace(d)};
 function gfoundSheet(s,i){
-  const R=s.r,body=`<div class="gfd"><span class="gfi">${ic('cloud',26)}</span><div><b>${esc(R.nom||'Tu bodega')}</b>
+  const R=s.r,body=`<div class="gfd"><span class="gfi">${ic('cloud',26)}</span><div><b>${esc(R.nom||'Tu negocio')}</b>
       <i>${num(R.prods)} ${R.prods===1?'producto':'productos'} · ${num(R.movs)} ${R.movs===1?'movimiento':'movimientos'}</i><i>Guardada ${esc(cuando(R.t))}${R.propio?'':' desde otro dispositivo'}</i></div></div>
-    <p class="fine l">Entraste como <b>${esc(s.email||'tu cuenta')}</b>. Esta es la bodega que ya tenías guardada en tu Google Drive.</p>`;
-  return frame(s,i,'Encontré tu bodega','',body,`<button type="button" class="btn big" data-a="gtake">Traer mi bodega a ${EQ()}</button><button type="button" class="btn big ghost" data-a="gfresh">Empezar de cero</button>`,'pros');
+    <p class="fine l">Entraste como <b>${esc(s.email||'tu cuenta')}</b>. Este es el negocio que ya tenías guardado en tu Google Drive.</p>`;
+  return frame(s,i,'Encontré tu negocio','',body,`<button type="button" class="btn big" data-a="gtake">Traer mi negocio a ${EQ()}</button><button type="button" class="btn big ghost" data-a="gfresh">Empezar de cero</button>`,'pros');
 }
 /* ---- dos NEGOCIOS distintos con la misma cuenta de Google (caso raro): se elige. Dos dispositivos del mismo negocio se juntan solos. ---- */
 function cconfSheet(s,i){
@@ -11203,7 +11203,7 @@ function entdetSheet(s,i){
 function pnCan(){const P=pn.pid?C.prod(pn.pid):null;const q=pnum(pn.qty);return !!(P&&pn.quien.trim()&&q>0&&q<=P.stock)}
 function prenewSheet(s,i){
   const P=pn.pid?C.prod(pn.pid):null;
-  const pick=P?`<section class="pst"><div><span class="lbl">Se presta o se alquila</span><b class="stn sm2">${esc(P.nom)}</b><span class="fine">Hay ${num(P.stock)} ${UL(P.u)} en bodega</span></div><button type="button" class="btn ghost sm" data-a="pnchg">Cambiar</button></section>`
+  const pick=P?`<section class="pst"><div><span class="lbl">Se presta o se alquila</span><b class="stn sm2">${esc(P.nom)}</b><span class="fine">Hay ${num(P.stock)} ${UL(P.u)} en stock</span></div><button type="button" class="btn ghost sm" data-a="pnchg">Cambiar</button></section>`
     :`<div class="pk"><div class="sfd ${pn.s?'has':''}">${ic('search',19)}<input type="text" inputmode="search" autocomplete="off" placeholder="Busca lo que vas a prestar" aria-label="Buscar producto" data-f="pnq" value="${esc(pn.s)}"></div>
       <div class="pkl" data-r="pkl">${pickListHTML(pn.s,null,'pnpick',null,'')}</div></div>`;
   const form=P?`<label class="fl"><span>A quién se lo prestas</span><input class="fld" type="text" maxlength="60" autocomplete="off" placeholder="Nombre de la persona o la empresa" data-f="pnquien" value="${esc(pn.quien)}"></label>
@@ -11233,7 +11233,7 @@ function predetSheet(s,i){
 function predevSheet(s,i){
   const x=C.prestamo(s.id);if(!x)return '';
   const pend=C.prestPend(x),q=Math.min(pend,Math.max(0,pnum(s.q)||0)),cobro=C.prestCobro(x,q);
-  const body=`<p class="fine">Lo que vuelve se suma otra vez a tu bodega.</p>
+  const body=`<p class="fine">Lo que vuelve se suma otra vez a tu inventario.</p>
     <div class="pst" style="margin-top:10px"><div><span class="lbl">Falta que devuelva</span><b class="stn">${num(pend)} <small>${UL(x.u)}</small></b></div></div>
     <label class="fl" style="margin-top:12px"><span>Cantidad que devuelve (${UL(x.u)})</span>${inw('','pdq',s.q)}</label>
     ${x.precioDia>0?`<div class="pst" style="margin-top:12px"><div><span class="lbl">A cobrar por el alquiler (${C.prestDias(x)} ${C.prestDias(x)===1?'día':'días'})</span><b class="stn sm2" data-r="pdcobro">${C.money(cobro)}</b></div></div>`:''}`;
@@ -11347,7 +11347,7 @@ function impoSheet(s,i){
       foot=`<button type="button" class="btn big" data-a="im-go"${nada?' disabled':''}>${nada?'Nada para importar':'Importar '+(W.nProd?num(W.nProd)+(W.nProd===1?' producto':' productos'):'')+(W.nProd&&(W.nMov||W.nCot)?' y ':'')+(!W.nProd&&W.nUpd?'las actualizaciones':'')+(W.nMov?num(W.nMov)+(W.nMov===1?' movimiento':' movimientos'):'')+(!W.nMov&&W.nCot?num(W.nCot)+(W.nCot===1?' cotización':' cotizaciones'):'')}</button><button type="button" class="btn big ghost" data-a="im-pick">Elegir otro archivo</button>`}}
   else if(m.ph==='listo'){
     const r=m.res,W=m.W;
-    body=`<div class="imok" role="status"><span class="imoc">${ic('check',34,'',2.6)}</span><h3>Listo, ya está en tu bodega</h3></div>
+    body=`<div class="imok" role="status"><span class="imoc">${ic('check',34,'',2.6)}</span><h3>Listo, ya está en tu inventario</h3></div>
       <div class="imss">${r.prods?imStat(r.prods,r.prods===1?'producto':'productos'):''}${r.movs?imStat(r.movs,r.movs===1?'movimiento':'movimientos'):''}${r.quotes?imStat(r.quotes,r.quotes===1?'cotización':'cotizaciones'):''}${r.upd?imStat(r.upd,'actualizados','mut'):''}</div>
       ${W&&W.avisos.length?`<h4 class="imh4">Para revisar</h4>${W.avisos.map(imAviso).join('')}`:''}
       <p class="fine l">Se guardó una copia automática justo antes de importar. Si algo no quedó bien, puedes deshacer toda la importación.</p>`;
@@ -11440,7 +11440,7 @@ function qmsgSheet(s,i){
 }
 function qtplSheet(s,i){
   const L=C.tplList();
-  const body=L.length?`<p class="fine l">Toca una plantilla para empezar una cotización con esos productos, notas y condiciones. Los precios se ponen al día con los de tu bodega.</p>
+  const body=L.length?`<p class="fine l">Toca una plantilla para empezar una cotización con esos productos, notas y condiciones. Los precios se ponen al día con los de tu inventario.</p>
     <div class="tpl">${L.map(t=>{const T=C.quoteTotals(t);return `<div class="tpr"><button type="button" class="tpm" data-a="qtpl-use" data-id="${t.id}"><span class="tpi">${ic('copy',20)}</span><span class="tpt"><b>${esc(t.nombre)}</b><i>${t.lines.length} ${t.lines.length===1?'producto':'productos'} · ${mk(C.money(T.total))}</i></span>${ic('chev',17)}</button>
       <button type="button" class="ib sm" data-a="qtpl-del" data-id="${t.id}" aria-label="Eliminar la plantilla ${esc(t.nombre)}">${ic('trash',17)}</button></div>`}).join('')}</div>`
     :`<div class="empty">${ic('copy',30)}<h3>Todavía no tienes plantillas</h3><p>Arma una cotización que repites seguido (por ejemplo «Mantenimiento mensual») y, dentro de ella, toca «Guardar como plantilla». Después la usas con un toque.</p></div>`;
@@ -11810,7 +11810,7 @@ function resultHTML(){
     <div class="rnf"><label class="fl"><span>Nombre</span><input class="fld" type="text" maxlength="80" autocomplete="off" placeholder="Nombre del producto" data-f="snn" value="${esc(S.nn)}"></label>
       <div class="row2" style="margin-top:0"><label class="fl"><span>Precio de venta</span>${inw('$','snp',S.np)}</label><label class="fl"><span>Cantidad</span>${inw('','snq',S.nq)}</label></div></div>
     <p class="err" data-r="snerr"${S.err?'':' hidden'}>${esc(S.err)}</p><div class="rca">${fmt}<button type="button" class="btn sm" data-a="snew">Crear e ingresar</button></div></div>`;
-  if(r.status==='noexiste')return `<div class="rc warn"><div class="rbn amb" role="alert">${ic('alert',24,'',2.1)}<div><b>Este código no está en tu bodega</b><span>${esc(r.code)}</span></div></div>
+  if(r.status==='noexiste')return `<div class="rc warn"><div class="rbn amb" role="alert">${ic('alert',24,'',2.1)}<div><b>Este código no está en tu inventario</b><span>${esc(r.code)}</span></div></div>
     <p class="rnt">Si es un producto nuevo, regístralo como ingreso.</p><div class="rca">${fmt}<button type="button" class="btn sm" data-a="stoin">Pasar a Ingreso</button></div></div>`;
   return `<div class="rc bad"><div class="rbn" role="alert">${ic('alert',24,'',2.1)}<div><b>Sin stock</b><span>${esc(r.p.nom)} no tiene unidades para vender</span></div></div>
     <div class="rca">${fmt}<button type="button" class="btn sm" data-a="stoin">Registrar ingreso</button></div></div>`;
@@ -11831,7 +11831,7 @@ function lockHTML(){
     const sin=!gOk&&!rOk;
     return `<div class="lock" role="dialog" aria-modal="true" aria-label="Olvidé mi clave"><div class="lkt">${C.brandHTML({size:34})}</div>
     <div class="lkf">${ic(sin?'alert':'shield',34,'',2)}<h2>¿Olvidaste tu clave?</h2>
-    ${sin?`<p>Esta bodega no tiene una cuenta de Google conectada ni una clave de recuperación, así que no hay cómo comprobar que eres tú. Lo único que queda es <b>borrar los datos de este teléfono</b> y empezar de nuevo.</p>
+    ${sin?`<p>Este negocio no tiene una cuenta de Google conectada ni una clave de recuperación, así que no hay cómo comprobar que eres tú. Lo único que queda es <b>borrar los datos de este teléfono</b> y empezar de nuevo.</p>
       <p>Si hiciste una <b>copia de seguridad</b>, después la restauras desde la pantalla de inicio y todo vuelve como estaba.</p>`
     :`<p>Puedes volver a entrar <b>sin perder nada</b>. Comprueba que eres tú y pones una clave nueva.</p>
       ${gOk?`<button type="button" class="btn big" data-a="forgot-google"${lk.gbusy||!C.online()?' disabled':''}>${GLOGO}<span>${lk.gbusy?'Esperando a Google…':'Confirmar con mi cuenta de Google'}</span></button>
@@ -12270,15 +12270,15 @@ const A={
     if(gbusy)return;gbusy=true;render();
     const r=await C.cloud.signIn();gbusy=false;
     if(!r.ok){render();toast(r.msg||'No se pudo entrar con Google',false,true);return}
-    if(r.remote){toast('Trayendo tu bodega…');const t=await C.cloud.take();     // entras con tu cuenta y ya está tu bodega, sin preguntar
+    if(r.remote){toast('Trayendo tu negocio…');const t=await C.cloud.take();     // entras con tu cuenta y ya está tu bodega, sin preguntar
       if(t.ok){sheets=[];page=null;tab='inicio';anim=true;render();toast('Listo: recuperé '+t.prods+' productos y '+t.movs+' movimientos')}
-      else{C.cloud.disconnect();render();toast(t.msg||'No pude traer tu bodega',false,true)}return}
+      else{C.cloud.disconnect();render();toast(t.msg||'No pude traer tu negocio',false,true)}return}
     C.start('google');toast('Listo: tus datos se guardarán en tu Google Drive')},
-  async gtake(){sheets.pop();render();toast('Trayendo tu bodega…');
+  async gtake(){sheets.pop();render();toast('Trayendo tu negocio…');
     const r=await C.cloud.take();
     if(r.ok){sheets=[];page=null;tab='inicio';anim=true;render();toast('Listo: recuperé '+r.prods+' productos y '+r.movs+' movimientos')}
-    else{C.cloud.disconnect();render();toast(r.msg||'No pude traer tu bodega',false,true)}},
-  gfresh(){pushSheet({k:'cfm',t:'¿Empezar de cero?',d:'En tu Drive hay una bodega guardada. Si empiezas de cero, esa copia queda como «anterior» y la nueva la reemplaza en cuanto se guarde por primera vez.',yes:'Sí, empezar de cero',no:'Volver',act:'gfresh'})},
+    else{C.cloud.disconnect();render();toast(r.msg||'No pude traer tu negocio',false,true)}},
+  gfresh(){pushSheet({k:'cfm',t:'¿Empezar de cero?',d:'En tu Drive hay un negocio guardado. Si empiezas de cero, esa copia queda como «anterior» y la nueva la reemplaza en cuanto se guarde por primera vez.',yes:'Sí, empezar de cero',no:'Volver',act:'gfresh'})},
   'cc-open'(){const K=C.cloud.info();if(K.conflict)pushSheet({k:'cconf',R:K.conflict})},
   async 'cc-nube'(){sheets.pop();render();toast('Trayendo tu copia del Drive…');const r=await C.cloud.take();
     if(r.ok){sheets=[];page=null;tab='inicio';anim=true;render();toast('Listo: recuperé '+r.prods+' productos y '+r.movs+' movimientos')}else{render();toast(r.msg||'No pude traer la copia',false,true)}},
@@ -12484,7 +12484,7 @@ const A={
   rscan(){openScanPick(code=>{if(!reg)return;const p=C.byCode(code);
     if(p){addRegLine(p);render()}
     else if(reg.tipo==='ingreso')openAdd('',{barras:code,ctx:'reg-ingreso'});
-    else toast('Este código no está en tu bodega. Regístralo primero con un ingreso.',false,true)},'Escanear producto')},
+    else toast('Este código no está en tu inventario. Regístralo primero con un ingreso.',false,true)},'Escanear producto')},
   rsave(){
     const R=reg;if(!regCan())return;
     const tipo=R.tipo,tot=regTotal(),lines=R.lines.map(l=>({pid:l.pid,q:l.q,pv:l.pv,costo:tipo==='ingreso'?l.costo:0,pvNuevo:tipo==='ingreso'?regKeepPrice(l):0}));
@@ -12600,7 +12600,7 @@ const A={
   qadd(){pushSheet({k:'qpick',q:''})},
   qpickp(b){const p=C.prod(+b.dataset.id);if(p){addQLine(p);refreshPick()}},
   qpclr(){const s=sheets[sheets.length-1];if(s){s.q='';render();const i=$('[data-f="qpq"]',mainEl);if(i)i.focus()}},
-  qscan(){openScanPick(code=>{const p=C.byCode(code);if(p&&qd){addQLine(p);render();toast('Agregado: '+p.nom)}else toast('Este código no está en tu bodega',false,true)},'Escanear producto')},
+  qscan(){openScanPick(code=>{const p=C.byCode(code);if(p&&qd){addQLine(p);render();toast('Agregado: '+p.nom)}else toast('Este código no está en tu inventario',false,true)},'Escanear producto')},
   qfreeo(){pushSheet({k:'qfree',nom:'',q:'1',u:'und',p:''})},
   qfsave(){const nom=$('[data-f="qfn"]',mainEl).value.trim(),q=pnum($('[data-f="qfq"]',mainEl).value),pv=pnum($('[data-f="qfp"]',mainEl).value),u=$('[data-f="qfu"]',mainEl).value;
     if(!nom){const e=$('[data-r="qferr"]',mainEl);e.textContent='Escribe qué estás cobrando.';e.hidden=false;return}
@@ -12767,7 +12767,7 @@ const A={
     if(r.remote&&tengo){                                      // el mismo negocio se junta solo; si es otro negocio, se pregunta
       const mismo=(r.remote.biz&&r.remote.biz===C.state.bizId)||String(r.remote.nom||'').trim().toLowerCase()===String(C.state.nombre||'').trim().toLowerCase();
       if(!mismo&&(r.remote.prods+r.remote.movs)>0){pushSheet({k:'cconf',R:r.remote});return}
-      const s2=await C.cloud.juntar();render();toast(s2.ok?'Conectado. Se juntó tu bodega con la de tu Drive':(s2.msg||'No pude juntar las copias'),false,!s2.ok);return}
+      const s2=await C.cloud.juntar();render();toast(s2.ok?'Conectado. Se juntó tu negocio con el de tu Drive':(s2.msg||'No pude juntar las copias'),false,!s2.ok);return}
     if(r.remote){const t=await C.cloud.take();render();toast(t.ok?'Listo: recuperé '+t.prods+' productos de tu Drive':(t.msg||'No pude traer la copia'),false,!t.ok);return}
     const s=await C.cloud.sync();render();toast(s.ok?'Conectado. Tus datos ya están en tu Google Drive':'Conectado. Se guardará en tu Drive en cuanto haya internet')},
   'cloud-off'(){return A['so-open']()},
@@ -13008,7 +13008,7 @@ Object.assign(A,{
   /* préstamos y alquileres */
   pretab(b){pre.tab=b.dataset.v;render()},
   pnnew(){pn={pid:null,s:'',quien:'',tel:'',qty:'1',vence:'',precio:'',nota:'',err:''};pushSheet({k:'prenew'})},
-  pnpick(b){const p=C.prod(+b.dataset.id);if(!p||!pn)return;if(p.stock<=0){toast('De «'+p.nom+'» no queda nada en bodega',false,true);return}pn.pid=p.id;pn.qty='1';render()},
+  pnpick(b){const p=C.prod(+b.dataset.id);if(!p||!pn)return;if(p.stock<=0){toast('De «'+p.nom+'» no queda nada en stock',false,true);return}pn.pid=p.id;pn.qty='1';render()},
   pnchg(){if(!pn)return;pn.pid=null;pn.s='';render()},
   pnsave(){
     if(!pn)return;const P=pn.pid?C.prod(pn.pid):null;
@@ -13016,7 +13016,7 @@ Object.assign(A,{
     if(!P)return fail('Elige qué vas a prestar.');
     const q=pnum(pn.qty);if(!pn.quien.trim())return fail('Escribe a quién se lo prestas.','pnquien');
     if(!(q>0))return fail('Escribe cuántos '+C.uLabel(P.u)+' salen.','pnqty');
-    if(q>P.stock)return fail('Solo hay '+num(P.stock)+' '+C.uLabel(P.u)+' en bodega.','pnqty');
+    if(q>P.stock)return fail('Solo hay '+num(P.stock)+' '+C.uLabel(P.u)+' en stock.','pnqty');
     const v=pn.vence?parseDay(pn.vence):0;if(pn.vence&&(!v||v<d0(Date.now())))return fail('Esa fecha de devolución ya pasó.','pnvence');
     const r=C.prestamoNew({pid:P.id,q,quien:pn.quien,tel:pn.tel,vence:v,precioDia:pnum(pn.precio),nota:pn.nota});
     if(!r.ok)return fail(r.reason==='stock'?'No alcanza el stock.':'No se pudo registrar.');
@@ -13032,7 +13032,7 @@ Object.assign(A,{
     if(q>pend+1e-9)return fail('Solo faltan '+num(pend)+' '+C.uLabel(x.u)+' por devolver.');
     const r=C.prestamoDevolver(x.id,q);if(!r.ok)return fail('No se pudo registrar la devolución.');
     sheets.pop();render();
-    toast((r.completo?'Devuelto completo: ':'Devolución parcial: ')+num(q)+' '+C.uLabel(x.u)+' vuelven a la bodega'+(r.cobro>0?'. Cobra '+C.money(r.cobro)+' de alquiler':''))},
+    toast((r.completo?'Devuelto completo: ':'Devolución parcial: ')+num(q)+' '+C.uLabel(x.u)+' vuelven al inventario'+(r.cobro>0?'. Cobra '+C.money(r.cobro)+' de alquiler':''))},
   prewa(b){const x=C.prestamo(+b.dataset.id);if(!x)return;pushSheet({k:'share',titulo:'Recordatorio a '+x.quien,texto:C.prestamoText(x)})},
   prepdf(b){const x=C.prestamo(+b.dataset.id);if(!x)return;pushSheet({k:'share',titulo:'Préstamo '+x.num,texto:comprobantePrestamoTxt(x),pdf:()=>C.pdfPrestamo(C.prestamo(x.id))})}
 });
@@ -13040,7 +13040,7 @@ Object.assign(A,{
 const cfmBase=A['cfm-yes'];
 A['cfm-yes']=async function(){
   const s=topSheet();
-  if(s&&s.act==='m:entanular'){sheets.pop();const r=C.entregaAnular(s.id);render();toast(r.ok?'Entrega anulada: el stock volvió a la bodega':'No se pudo anular la entrega',false,!r.ok);return}
+  if(s&&s.act==='m:entanular'){sheets.pop();const r=C.entregaAnular(s.id);render();toast(r.ok?'Entrega anulada: el stock volvió al inventario':'No se pudo anular la entrega',false,!r.ok);return}
   return cfmBase.apply(this,arguments);
 };
 /* escritura en los formularios de los módulos */
@@ -13110,7 +13110,7 @@ A['cfm-yes']=async function(){
    ===================================================================== */
 const recDone=()=>{/* la clave ya no está: se entra y se ofrece poner una nueva */
   C.pin.remove();lk={val:'',busy:false,msg:'',forgot:false,bio:false,rec:false,recv:'',fmsg:'',gbusy:false};lockEl.innerHTML='';
-  tab='mas';anim=true;scrollTo='#seg';render();pushSheet({k:'pin',mode:'set'});toast('Listo, entraste. Pon una clave nueva para volver a proteger tu bodega.')};
+  tab='mas';anim=true;scrollTo='#seg';render();pushSheet({k:'pin',mode:'set'});toast('Listo, entraste. Pon una clave nueva para volver a proteger tu negocio.')};
 const lkMsg=m=>{lk.fmsg=m;const e=$('[data-r="lkfm"]',lockEl);if(e)e.textContent=m};
 Object.assign(A,{
   async 'forgot-google'(){
@@ -13497,8 +13497,8 @@ Object.assign(IN,{
     if(s&&s.k==='reg'&&reg){const p=C.byCode(code);
       if(p){addRegLine(p);render();toast('Leído: '+code)}
       else if(reg.tipo==='ingreso')openAdd('',{barras:code,ctx:'reg-ingreso'});
-      else toast('Este código no está en tu bodega. Regístralo primero con un ingreso.',false,true);return}
-    if(s&&s.k==='qpick'){const p=C.byCode(code);if(p){addQLine(p);refreshPick()}else toast('Ese código no está en tu bodega',false,true);return}
+      else toast('Este código no está en tu inventario. Regístralo primero con un ingreso.',false,true);return}
+    if(s&&s.k==='qpick'){const p=C.byCode(code);if(p){addQLine(p);refreshPick()}else toast('Ese código no está en tu inventario',false,true);return}
     if(!free())return;
     const p=C.byCode(code);
     if(p)pushSheet({k:'prod',id:p.id});else openAdd(code);
