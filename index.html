@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-CaN+KYHVrjFOfGpbwZP+MwwIUeosYAYyFQ63t343P8I=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-tR9Uo/GAEjX/RyfyeaEaT4TY+dFxjveD4wL6LBajfEI=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -1098,12 +1098,12 @@ body{margin:0;background:#d5dce6}
 .d1 .ttg b{font-weight:800}
 .d1 .ttg.neg{color:var(--red)}
 
-.d1 .sheet.pros .rsh{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:2px 0 12px}
+.d1 .sheet.pros .rsh{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:2px 0 12px;container-type:inline-size}
 .d1 .rsh .lbl{flex:1 0 100%}
-.d1 .rsv{font-size:34px;font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.d1 .rsv{font-size:min(34px,max(20px,calc(100cqw/var(--u,8))));font-weight:800;letter-spacing:-.04em;line-height:1.1;overflow-wrap:anywhere}
 .d1 .rsk{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.d1 .rsk>div{min-width:0;padding:9px 10px;border-radius:12px;background:var(--fill2);display:flex;flex-direction:column;gap:1px}
-.d1 .rsk b{font-size:17px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d1 .rsk>div{min-width:0;padding:9px 10px;border-radius:12px;background:var(--fill2);display:flex;flex-direction:column;gap:1px;container-type:inline-size}
+.d1 .rsk b{font-size:min(17px,max(11px,calc(100cqw/var(--u,5))));font-weight:800;letter-spacing:-.02em;overflow-wrap:anywhere}
 .d1 .rsk span{font-size:11.5px;font-weight:600;color:var(--mut)}
 .d1 .rsd{margin:0;padding:2px 0;border-top:1px solid var(--line)}
 .d1 .rsd>div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
@@ -1269,9 +1269,8 @@ body{margin:0;background:#d5dce6}
 .d1 .hvt .dl{height:20px;padding:0 7px 0 5px;font-size:11px}
 .d1 .hvn{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:1px;height:24px;padding:0 6px 0 10px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--acm);color:var(--act);font-size:11.5px;font-weight:800;white-space:nowrap}
 .d1 .hvb{display:flex;flex-direction:column;gap:6px;margin-top:3px}
-.d1 .hvl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:3px 10px;min-width:0}
-.d1 .hv .ttn{margin:0;font-size:32px;line-height:1.1}
-.d1 .hv .ttn.sm{font-size:25px}
+.d1 .hvl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:3px 10px;min-width:0;container-type:inline-size}
+.d1 .hv .ttn{margin:0;--mx:32px;font-size:min(var(--mx),max(16px,calc(100cqw/var(--u,8))));line-height:1.1}
 .d1 .hvg{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--grn);white-space:nowrap}
 .d1 .hvg b{font-weight:800}
 .d1 .hvg u{flex:none;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--grn);color:#fff;text-decoration:none}
@@ -1290,14 +1289,13 @@ body{margin:0;background:#d5dce6}
 .d1 .hvv{display:none}
 /* semana · mes · año */
 .d1 .tgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.d1 .tt.mini{padding:9px 10px 8px}
+.d1 .tt.mini{padding:9px 10px 8px;container-type:inline-size}
 .d1 .hmh{display:flex;align-items:center;gap:6px;min-width:0}
 .d1 .hmi{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--acs);color:var(--act)}
 .d1 .tt.mini .ttl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11.5px;line-height:22px}
 .d1 .hmp{margin:1px 0 0;font-size:10.5px;font-weight:700;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.d1 .tt.mini .ttn{margin:4px 0 0;font-size:19px;letter-spacing:-.035em}
-.d1 .tt.mini .ttn.xs{font-size:16px}
-.d1 .tt.mini .ttg{margin-top:1px;font-size:11px}
+.d1 .tt.mini .ttn{margin:4px 0 0;--mx:19px;font-size:min(var(--mx),max(10px,calc(100cqw/var(--u,8))));letter-spacing:-.035em;white-space:normal;overflow-wrap:anywhere}
+.d1 .tt.mini .ttg{margin-top:1px;--gx:11px;font-size:min(var(--gx),max(9.5px,calc(100cqw/var(--ug,9))))}
 .d1 .hmf{display:flex;align-items:flex-end;justify-content:space-between;gap:4px;margin-top:auto;padding-top:6px;min-height:26px}
 .d1 .tt.mini .mc{width:30px;height:20px}
 .d1 .tt.mini .dl{height:20px;padding:0 6px 0 4px;font-size:10.5px}
@@ -1309,10 +1307,10 @@ body{margin:0;background:#d5dce6}
 .d1 .invh h3{flex:1;min-width:0;font-size:14.5px}
 .d1 .invok{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px 0 8px;border-radius:999px;background:var(--grns);color:var(--grn);font-size:12px;font-weight:800;white-space:nowrap}
 .d1 .invs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:6px}
-.d1 button.ivs{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;min-width:0;padding:5px 2px;border:0;border-radius:10px;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s}
+.d1 button.ivs{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;min-width:0;container-type:inline-size;padding:5px 2px;border:0;border-radius:10px;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s}
 .d1 button.ivs:active{transform:scale(.96);background:var(--fill)}
 .d1 .ivs+.ivs{box-shadow:inset 1px 0 0 var(--line)}
-.d1 .ivs b{max-width:100%;font-size:16px;font-weight:800;letter-spacing:-.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d1 .ivs b{max-width:100%;font-size:min(16px,max(11px,calc(100cqw/var(--u,3))));font-weight:800;letter-spacing:-.04em;text-align:center;overflow-wrap:anywhere}
 .d1 .ivs span{font-size:10.5px;font-weight:600;color:var(--mut);white-space:nowrap}
 .d1 .ivs.w b{color:var(--amb)}
 .d1 .ivs.r b{color:var(--red)}
@@ -1358,9 +1356,9 @@ body{margin:0;background:#d5dce6}
 @media (min-width:700px){
   .d1 .pg[data-sk="m-inicio"]>.hv,.d1 .pg[data-sk="m-inicio"]>.inv{grid-column:1/-1}
   .d1 .tgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .d1 .hv .ttn{font-size:42px}.d1 .hv .ttn.sm{font-size:34px}
+  .d1 .hv .ttn{--mx:42px}
   .d1 .hrs{height:84px}
-  .d1 .tt.mini .ttn{font-size:22px}.d1 .tt.mini .ttn.xs{font-size:19px}
+  .d1 .tt.mini .ttn{--mx:22px}
 }
 
 /* ---------- Más: plan Gratis vs Pro + lista de ajustes que abren su hoja ---------- */
@@ -1598,7 +1596,7 @@ body{margin:0;background:#d5dce6}
   .d1 .pg[data-sk="m-inicio"] .qb{height:60px;gap:3px;font-size:11.5px;position:relative;padding:0 2px;min-width:0}
   .d1 .pg[data-sk="m-inicio"] .qb span{width:30px;height:30px;border-radius:10px}
 }
-@media (min-width:700px){.d1 .hv .ttn{font-size:40px}.d1 .hv .ttn.sm{font-size:32px}.d1 .hrs{height:62px}}
+@media (min-width:700px){.d1 .hv .ttn{--mx:40px}.d1 .hrs{height:62px}}
 /* resumen de un período con ‹ › y detalle del valor del inventario */
 .d1 .rsnav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px}
 .d1 .rsnav b{flex:1;min-width:0;text-align:center;font-size:15px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -1810,7 +1808,7 @@ body{margin:0;background:#d5dce6}
   .d1 .hvt .dl{height:24px;font-size:12px}
   .d1 .hvn{height:30px;font-size:12.5px}
   .d1 .hvb{gap:14px;margin-top:8px}
-  .d1 .hv .ttn{font-size:50px}.d1 .hv .ttn.sm{font-size:40px}
+  .d1 .hv .ttn{--mx:50px}
   .d1 .hvg{font-size:14px}
   .d1 .hvg u{width:20px;height:20px}
   .d1 .hrs{height:80px;gap:3px}
@@ -1821,9 +1819,8 @@ body{margin:0;background:#d5dce6}
   .d1 .tt.mini .hmi{width:28px;height:28px;border-radius:9px}
   .d1 .hmp{margin:2px 0 0 36px;font-size:12.5px}
   .d1 .tt.mini .ttl{font-size:14px;line-height:28px}
-  .d1 .tt.mini .ttn,.d1 .tt.mini .ttn.xs{margin:10px 0 0;font-size:30px}
-  .d1 .tt.mini .ttn.xs{font-size:25px}
-  .d1 .tt.mini .ttg{margin-top:3px;font-size:13px}
+  .d1 .tt.mini .ttn{margin:10px 0 0;--mx:30px}
+  .d1 .tt.mini .ttg{margin-top:3px;--gx:13px}
   .d1 .tt.mini .hmf{flex:1;align-items:flex-end;gap:12px;padding-top:12px;min-height:64px}
   .d1 .tt.mini .mc{flex:1;align-self:stretch;width:auto;height:auto;max-width:150px;margin-left:auto;gap:4px}
   .d1 .tt.mini .dl{height:24px;padding:0 8px 0 6px;font-size:12px}
@@ -2299,6 +2296,52 @@ body{margin:0;background:#d5dce6}
 .d1 .plan.pcm{background:var(--acs);color:var(--act);box-shadow:inset 0 0 0 1px var(--acm)}
 .d1 .plan.real{background:linear-gradient(135deg,#f8d35e,#e9a516);color:#3a2600;box-shadow:inset 0 0 0 1px rgba(122,80,0,.4),0 1px 3px rgba(150,100,0,.25)}
 
+/* ===== 3.4 · Registrar: cada producto en 2 líneas, «?» de «Salida sin venta» ===== */
+.d1 .rl.rcx{margin:6px 0 0;padding:6px 6px 7px 12px;border-radius:14px}
+.d1 .rcx1{display:flex;align-items:center;gap:8px;min-height:30px}
+.d1 .rcx1>b{flex:1;min-width:0;font-size:15px;line-height:1.2;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.d1 .rcxchip{flex:none;display:inline-flex;align-items:center;gap:4px;max-width:58%;font-size:11.5px;line-height:1.1;font-weight:700;padding:5px 9px;border-radius:999px;background:var(--acs);color:var(--act);white-space:normal;text-align:left}
+.d1 .rcxchip svg{flex:none;width:12px;height:12px}
+.d1 .rcxchip.amb{background:var(--ambs);color:var(--amb)}
+.d1 .rcxchip.red{background:var(--reds);color:var(--red)}
+.d1 .rcx1>.ib{flex:none;width:36px;height:36px;margin:-3px 0 -3px -2px;color:var(--mut);background:none}
+.d1 .rcx2{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding-right:6px}
+.d1 .rcx2 .stp{flex:none;width:124px;height:38px;border-radius:11px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.d1 .rcx2 .stp button{width:36px;height:38px}
+.d1 .rcx2 .stp input{width:52px;height:36px;font-size:16px;font-weight:800}
+.d1 .rcx2 .inpw{flex:0 1 var(--pw,96px);min-width:84px;max-width:100%;height:38px;border-radius:11px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.d1 .rcx2 .inpw input{height:36px;font-size:16px;font-weight:700}
+.d1 .rcx2 .inpw.rcxc{flex-basis:var(--pw,138px)}
+.d1 .rcx2 .inpw small{flex:none;font-size:11.5px;font-weight:700;color:var(--mut)}
+.d1 .rcxsub{margin-left:auto;flex:none;font-size:16px;font-weight:800;color:var(--ink);white-space:nowrap;line-height:1}
+.d1 .rcxsub.one{color:var(--mut);font-weight:700}
+.d1 .rl.rcx .rln{margin:5px 6px 0 0;font-size:12px;line-height:1.3}
+.d1 .rl.rcx .rln:empty{display:none}
+.d1 .rl.rcx .rln .red,.d1 .rl.rcx .rln .amb{display:flex;align-items:flex-start;gap:5px}
+.d1 .rl.rcx .rln svg{flex:none;width:14px;height:14px;margin-top:1px}
+.d1 .sheet.regs .addo{height:42px;margin-top:8px}
+.d1 .sheet.regs .fiab{padding:6px 14px 8px;margin-top:10px}
+.d1 .sheet.regs .fiab .swt i{display:none}
+.d1 .sheet.regs .fiab .sw{align-items:center;min-height:0;padding:4px 0}
+/* pestañas Venta / Ingreso / Salida sin venta, con el «?» chico en la esquina */
+.d1 .rcxseg{position:relative}
+.d1 .rcxq{position:absolute;top:-8px;right:-4px;z-index:2;width:20px;height:20px;padding:0;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;line-height:1;color:var(--act);background:var(--card);box-shadow:inset 0 0 0 1.5px var(--act),0 1px 3px rgba(15,23,42,.18);cursor:pointer}
+.d1 .rcxq::after{content:"";position:absolute;inset:-9px}
+.d1 .rcxq.on{background:var(--act);color:#fff}
+.d1 .rcxhelp{margin:10px 0 0;padding:11px 13px;border-radius:14px;background:var(--acs);color:var(--ink);font-size:13px;line-height:1.4}
+.d1 .rcxhelp>b{display:block;margin-bottom:3px;font-size:13.5px;font-weight:800;color:var(--act)}
+.d1 .rcxhelp p{margin:3px 0}
+.d1 .rcxhelp ul{margin:4px 0 4px;padding-left:18px}
+.d1 .rcxhelp li{margin:1px 0}
+
+/* 3.4 · montos completos: la ganancia de las tarjetas baja a otra línea si no cabe (antes se cortaba con «…») */
+.d1 .tt.mini .ttg{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25}
+.d1 .tt.mini .ttg b{overflow-wrap:anywhere}
+/* cifras largas: los centavos bajan juntos a la línea de abajo (nunca se parte el número); el valor del inventario muy largo ocupa toda la fila */
+.d1 .tt.mini .ttn .cts{display:inline-block}
+.d1 .invs.lg .ivs:last-child{grid-column:1/-1;margin-top:4px;padding-top:9px;box-shadow:inset 0 1px 0 var(--line)}
+.d1 .invs.lg .ivs:last-child b{font-size:min(19px,max(11px,calc(100cqw/var(--u,3))))}
+
 .d1 .mi{background:url(data:image/png;base64,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) center/cover no-repeat;box-shadow:0 8px 16px -8px rgba(10,40,120,.6)}
 
 </style></head><body>
@@ -2395,7 +2438,7 @@ window.CUADRE_DATA = (function(){
     'Jabón antibacterial|Higiene|und|1.80|1.10|18|8|30|4','Termómetro digital|Botiquín|und|6.50|4.20|6|3|10|2','Suero oral|Botiquín|und|1.40|0.85|22|10|40|6',
     'Curitas|Botiquín|caja|1.60|0.90|16|8|30|0'],{ej:{nom:'Ej. Paracetamol 500 mg x 10',marca:'Ej. Genfar',cat:'Ej. Analgésicos',dest:'Ej. Botiquín o producto por vencer',libre:'Ej. Inyección, toma de presión'}}),
   R('restaurante','Restaurante y cafetería','#d9342b',['Carnes','Lácteos','Bebidas','Despensa'],4,
-    ['Lo que usas en la cocina sin cobrar (insumos) se registra como salida sin cobrar.'],[
+    ['Lo que usas en la cocina sin cobrar (insumos) se registra como salida sin venta.'],[
     'Café en grano|Bebidas|kg|14.00|10.50|6|4|12|7','Leche entera|Lácteos|litro|1.05|0.85|30|24|96|9','Queso mozzarella|Lácteos|kg|7.80|6.20|5|6|18|6',
     'Pollo|Carnes|kg|3.60|2.90|18|15|50|8','Carne molida|Carnes|kg|5.20|4.30|9|10|30|7','Arroz|Despensa|kg|1.10|0.85|40|15|60|7',
     'Aceite de cocina|Despensa|litro|2.60|2.10|12|8|24|5','Servilletas|Despensa|paquete|1.20|0.70|20|10|40|4','Vasos desechables|Despensa|paquete|2.40|1.60|9|6|20|3',
@@ -2415,7 +2458,7 @@ window.CUADRE_DATA = (function(){
   /*NUEVOS*/
   /* rubros_A1.js */
   R('carniceria','Carnicería y embutidos','#a82b3d',['Res','Cerdo','Pollo','Embutidos','Menudencias'],3,
-    ['Vendes por peso: registra libras o kilos con decimales (1,5 lb) y el stock siempre cuadra.','El hueso y la yapa que regalas van como «salida sin cobrar»: ves tu merma real del mes.'],[
+    ['Vendes por peso: registra libras o kilos con decimales (1,5 lb) y el stock siempre cuadra.','El hueso y la yapa que regalas van como «salida sin venta»: ves tu merma real del mes.'],[
     'Lomo fino de res|Res|lb|5.80|4.40|22|10|30|8','Carne molida|Res|lb|3.60|2.80|30|12|36|10','Costilla de res|Res|lb|3.40|2.60|6|10|30|7',
     'Chuleta de cerdo|Cerdo|lb|3.20|2.40|18|8|24|8','Costilla de cerdo|Cerdo|lb|3.50|2.60|14|6|18|7','Pechuga de pollo|Pollo|lb|2.60|2.00|35|15|45|10',
     'Pollo entero|Pollo|und|6.50|5.10|4|6|18|9','Chorizo parrillero|Embutidos|paquete|3.80|2.60|20|8|24|7','Hígado de res|Menudencias|lb|1.80|1.20|3|5|15|5',
@@ -2451,7 +2494,7 @@ window.CUADRE_DATA = (function(){
     'Comedor de 4 puestos|Sala y comedor|juego|220.00|165.00|3|2|6|5','Escritorio de oficina|Oficina|und|85.00|60.00|4|3|9|6','Silla giratoria|Oficina|und|45.00|30.00|2|4|12|7',
     'Zapatero organizador|Organización|und|28.00|18.00|5|2|6|0'],{ej:{nom:'Ej. Colchón de resortes 2 plazas',marca:'Ej. Chaide',dest:'Ej. Mueble de exhibición o reposición por garantía',libre:'Ej. Flete y armado a domicilio'}}),
   R('jugueteria','Juguetería y regalos','#ff5d73',['Muñecas y peluches','Juegos de mesa','Carros y figuras','Didácticos','Regalos y fiestas'],2,
-    ['Antes de Navidad y el Día del Niño sube tus mínimos de juguetes: son las fechas en que más vendes.','Los juguetes de exhibición y los obsequios por compra grande van como «salida sin cobrar».'],[
+    ['Antes de Navidad y el Día del Niño sube tus mínimos de juguetes: son las fechas en que más vendes.','Los juguetes de exhibición y los obsequios por compra grande van como «salida sin venta».'],[
     'Muñeca con accesorios|Muñecas y peluches|und|9.00|5.50|12|5|15|7','Peluche mediano|Muñecas y peluches|und|7.50|4.20|9|4|12|7','Carro a control remoto|Carros y figuras|und|18.00|11.00|3|4|12|8',
     'Carrito de colección|Carros y figuras|und|1.50|0.80|40|15|45|9','Figura de acción|Carros y figuras|und|6.00|3.50|2|5|15|7','Rompecabezas 100 piezas|Didácticos|und|4.50|2.60|5|6|18|6',
     'Bloques de construcción 200 piezas|Didácticos|caja|14.00|8.50|8|4|12|7','Juego de mesa familiar|Juegos de mesa|und|12.00|7.50|6|3|9|5','Globos de colores x50|Regalos y fiestas|bolsa|2.00|1.00|22|8|24|8',
@@ -2463,7 +2506,7 @@ window.CUADRE_DATA = (function(){
     'Cuadro decorativo|Decoración|und|8.00|4.50|7|3|9|5','Florero de vidrio|Decoración|und|5.00|2.80|2|4|12|6','Escoba y recogedor|Aseo del hogar|juego|4.50|2.80|12|5|15|8',
     'Vela aromática|Velas y aromas|und|3.50|1.90|18|6|18|0'],{ej:{nom:'Ej. Juego de vasos de vidrio x6',marca:'Ej. Rimax',dest:'Ej. Obsequio por compra grande',libre:'Ej. Arreglo decorativo por encargo'}}),
   R('estetica','Centro de estética y spa','#c97b9e',['Faciales','Corporales','Masajes y aromaterapia','Depilación','Desechables'],3,
-    ['Lo que gastas en cada tratamiento (crema, cera, aceite) va como «salida sin cobrar»: sabrás cuánto cuesta cada uno.','Arma paquetes en una cotización PDF: el cliente ve el total del facial, el masaje y la depilación juntos.'],[
+    ['Lo que gastas en cada tratamiento (crema, cera, aceite) va como «salida sin venta»: sabrás cuánto cuesta cada uno.','Arma paquetes en una cotización PDF: el cliente ve el total del facial, el masaje y la depilación juntos.'],[
     'Crema limpiadora facial|Faciales|frasco|8.00|4.80|10|4|12|7','Mascarilla de arcilla 500 g|Faciales|tarro|12.00|7.50|6|3|9|6','Sérum de vitamina C|Faciales|frasco|16.00|10.00|3|4|12|6',
     'Exfoliante corporal 1 kg|Corporales|tarro|14.00|8.50|5|3|9|5','Crema reductora|Corporales|tarro|18.00|11.00|7|3|9|6','Aceite para masajes 500 ml|Masajes y aromaterapia|botella|10.00|6.20|2|4|12|7',
     'Cera para depilación|Depilación|tarro|9.00|5.50|8|4|12|7','Tiras depilatorias x100|Depilación|paquete|4.00|2.20|3|5|15|7','Sábanas desechables para camilla|Desechables|paquete|9.00|5.50|6|3|9|7',
@@ -2482,13 +2525,13 @@ window.CUADRE_DATA = (function(){
     'Panel LED cuadrado 18 W|Iluminación|und|7.50|4.80|14|6|18|6','Breaker de 20 A|Protecciones|und|5.50|3.50|3|6|18|7','Cinta aislante|Accesorios|rollo|0.90|0.50|60|24|72|9',
     'Sensor de movimiento|Accesorios|und|9.00|5.80|5|2|6|0'],{ej:{nom:'Ej. Foco LED 9 W luz blanca',marca:'Ej. Philips',dest:'Ej. Foco de reposición por garantía',libre:'Ej. Instalación eléctrica (mano de obra)'}}),
   R('pinturas','Pinturas y acabados','#f61bb8',['Pinturas','Esmaltes y barnices','Masillas y selladores','Brochas y rodillos','Solventes y lijas'],2,
-    ['Las muestras de color que preparas para que el cliente pruebe van como «salida sin cobrar».','Cotiza pintura, rodillos y mano de obra en un PDF: el cliente ve el total antes de decidir.'],[
+    ['Las muestras de color que preparas para que el cliente pruebe van como «salida sin venta».','Cotiza pintura, rodillos y mano de obra en un PDF: el cliente ve el total antes de decidir.'],[
     'Pintura látex blanca de 4 L|Pinturas|galón|19.50|13.50|16|8|24|9','Pintura látex de color de 4 L|Pinturas|galón|22.00|15.00|3|6|18|7','Pintura de caucho para exteriores 19 L|Pinturas|balde|78.00|58.00|5|2|6|5',
     'Esmalte sintético negro de 4 L|Esmaltes y barnices|galón|26.00|18.00|8|4|12|6','Barniz transparente|Esmaltes y barnices|litro|8.50|5.50|2|4|12|5','Masilla plástica|Masillas y selladores|kg|2.20|1.40|25|10|30|6',
     'Sellador acrílico|Masillas y selladores|galón|14.00|9.50|6|4|12|5','Rodillo de 9 pulgadas|Brochas y rodillos|und|3.50|2.00|18|8|24|8','Brocha de 3 pulgadas|Brochas y rodillos|und|2.20|1.20|4|10|30|8',
     'Removedor de pintura|Solventes y lijas|litro|6.50|4.10|7|3|9|0'],{ej:{nom:'Ej. Pintura látex blanca de 4 L',marca:'Ej. Pintuco',dest:'Ej. Muestra de color para un cliente',libre:'Ej. Pintada de paredes por m² (mano de obra)'}}),
   R('construccion','Materiales de construcción','#a9552f',['Cemento y morteros','Bloques y ladrillos','Áridos','Hierro y alambre','Cubiertas y acabados'],1,
-    ['La arena y la piedra se venden por m³ y el cemento por saco: registra cada uno en su propia unidad.','Los bloques y ladrillos se rompen: anota esa pérdida como «salida sin cobrar» y sabrás cuánto pierdes.'],[
+    ['La arena y la piedra se venden por m³ y el cemento por saco: registra cada uno en su propia unidad.','Los bloques y ladrillos se rompen: anota esa pérdida como «salida sin venta» y sabrás cuánto pierdes.'],[
     'Cemento de 50 kg|Cemento y morteros|saco|8.60|6.60|60|30|90|10','Mortero listo para pegar|Cemento y morteros|saco|6.00|4.30|14|8|24|6','Bloque de 15 cm|Bloques y ladrillos|und|0.55|0.40|400|200|600|9',
     'Ladrillo común|Bloques y ladrillos|und|0.30|0.20|150|300|900|7','Arena fina|Áridos|m3|18.00|12.00|8|4|12|7','Piedra triturada|Áridos|m3|22.00|15.00|2|4|12|6',
     'Varilla corrugada de 10 mm|Hierro y alambre|barra|7.80|6.00|40|30|90|8','Alambre de amarre|Hierro y alambre|kg|1.70|1.15|3|10|30|7','Plancha de zinc de 3 m|Cubiertas y acabados|plancha|7.50|5.30|25|10|30|5',
@@ -2500,32 +2543,32 @@ window.CUADRE_DATA = (function(){
     'Faro delantero|Batería y luces|und|32.00|21.00|4|2|6|3','Alfombras de caucho|Accesorios y estética|juego|18.00|11.00|6|3|9|5','Aromatizante para auto|Accesorios y estética|und|1.50|0.70|10|15|45|8',
     'Cubre volante|Accesorios y estética|und|5.50|3.00|8|3|9|0'],{ej:{nom:'Ej. Kit de embrague Aveo 1.6',marca:'Ej. Monroe',dest:'Ej. Repuesto de cambio por garantía',libre:'Ej. Instalación del repuesto (mano de obra)'}}),
   R('comidarapida','Comida rápida y parrilla','#f8041d',['Carnes y embutidos','Panes y papas','Salsas','Bebidas','Carbón y desechables'],3,
-    ['La comida del personal y las cortesías van como «salida sin cobrar»: ves cuánto te cuestan al mes.','Pon mínimo a la carne, el pan y las papas: sin ellos no abres, y la app te avisa a tiempo.'],[
+    ['La comida del personal y las cortesías van como «salida sin venta»: ves cuánto te cuestan al mes.','Pon mínimo a la carne, el pan y las papas: sin ellos no abres, y la app te avisa a tiempo.'],[
     'Carne de hamburguesa (paquete x10)|Carnes y embutidos|paquete|9.00|6.50|5|6|18|9','Alitas de pollo|Carnes y embutidos|kg|5.50|3.90|4|6|18|8','Chorizo para parrilla|Carnes y embutidos|lb|3.00|2.10|10|5|15|7',
     'Salchicha para hot dog|Carnes y embutidos|paquete|4.50|3.20|8|6|18|8','Pan de hamburguesa (x6)|Panes y papas|paquete|1.80|1.25|20|10|30|9','Papas prefritas de 2 kg|Panes y papas|funda|5.20|3.80|15|8|24|9',
     'Salsa de tomate|Salsas|galón|7.50|5.00|2|3|9|7','Gaseosa de 500 ml|Bebidas|botella|1.00|0.60|48|24|72|10','Carbón vegetal de 10 kg|Carbón y desechables|saco|6.50|4.50|7|4|12|6',
     'Palillos para brocheta|Carbón y desechables|paquete|1.20|0.70|10|4|12|0'],{ej:{nom:'Ej. Pan de hamburguesa (x6)',marca:'Ej. Bimbo',dest:'Ej. Comida del personal o cortesía para una mesa',libre:'Ej. Servicio de parrillada para evento'}}),
   R('bar','Bar y discoteca','#762249',['Cervezas','Licores','Mezclas y hielo','Bebidas sin alcohol','Picadas y extras'],3,
-    ['Los tragos de cortesía, lo que se rompe y lo que se derrama van como «salida sin cobrar».','Pon mínimo a la cerveza y al hielo: viernes y sábado se acaban primero, y sin eso no hay noche.'],[
+    ['Los tragos de cortesía, lo que se rompe y lo que se derrama van como «salida sin venta».','Pon mínimo a la cerveza y al hielo: viernes y sábado se acaban primero, y sin eso no hay noche.'],[
     'Cerveza nacional de 600 ml|Cervezas|botella|1.75|1.10|96|48|144|10','Cerveza importada|Cervezas|botella|3.00|1.90|10|12|36|7','Ron de 750 ml|Licores|botella|14.00|9.50|10|5|15|7',
     'Whisky de 750 ml|Licores|botella|28.00|20.00|3|4|12|6','Aguardiente de 750 ml|Licores|botella|11.00|7.50|14|6|18|8','Hielo en funda|Mezclas y hielo|funda|1.50|0.60|40|20|60|10',
     'Agua tónica|Mezclas y hielo|botella|1.20|0.70|12|24|72|6','Energizante en lata|Bebidas sin alcohol|lata|2.00|1.25|36|18|54|8','Maní salado|Picadas y extras|funda|0.80|0.45|50|20|60|7',
     'Bengalas para botella|Picadas y extras|paquete|4.00|2.40|8|3|9|0'],{ej:{nom:'Ej. Cerveza nacional de 600 ml',marca:'Ej. Corona',dest:'Ej. Cortesía para una mesa o para el DJ',libre:'Ej. Paquete de barra libre para evento'}}),
   R('suplementos','Suplementos deportivos','#31ad0c',['Proteínas','Creatina y aminoácidos','Energía y pre-entreno','Vitaminas y salud','Barras y snacks','Accesorios'],2,
-    ['Las muestras en sobre que regalas para probar van como «salida sin cobrar»: ves cuánto cuesta ganar clientes.','Los tarros caducan: pon un mínimo y vende primero los más antiguos para no perder dinero.'],[
+    ['Las muestras en sobre que regalas para probar van como «salida sin venta»: ves cuánto cuesta ganar clientes.','Los tarros caducan: pon un mínimo y vende primero los más antiguos para no perder dinero.'],[
     'Proteína whey de 2 lb|Proteínas|tarro|38.00|27.00|8|3|9|9','Proteína whey de 5 lb|Proteínas|tarro|79.00|58.00|4|2|6|6','Creatina de 300 g|Creatina y aminoácidos|tarro|24.00|16.00|2|3|9|7',
     'BCAA en polvo|Creatina y aminoácidos|tarro|26.00|18.00|5|3|9|5','Pre-entreno|Energía y pre-entreno|tarro|32.00|22.00|6|3|9|7','Quemador de grasa|Energía y pre-entreno|frasco|28.00|19.00|1|3|9|5',
     'Multivitamínico|Vitaminas y salud|frasco|14.00|9.00|10|4|12|6','Barra de proteína|Barras y snacks|und|2.50|1.50|12|20|60|9','Shaker de 600 ml|Accesorios|und|4.50|2.30|15|6|18|7',
     'Straps para levantamiento|Accesorios|par|6.00|3.40|6|2|6|0'],{ej:{nom:'Ej. Proteína whey de 2 lb sabor chocolate',marca:'Ej. Optimum Nutrition',dest:'Ej. Muestra en sobre para un cliente',libre:'Ej. Asesoría de plan de suplementación'}}),
   R('limpieza','Productos de limpieza','#21c3c8',['Detergentes y jabones','Desinfectantes y cloro','Ambientadores y ceras','Escobas y trapeadores','Bolsas y desechables'],2,
-    ['Vende cloro y detergente a granel por litro: registra cantidades con decimales (0,5 litro) y el stock cuadra.','Los derrames y las muestras que regalas para probar van como «salida sin cobrar».'],[
+    ['Vende cloro y detergente a granel por litro: registra cantidades con decimales (0,5 litro) y el stock cuadra.','Los derrames y las muestras que regalas para probar van como «salida sin venta».'],[
     'Detergente en polvo de 1 kg|Detergentes y jabones|bolsa|2.20|1.50|40|20|60|9','Lavavajillas líquido de 750 ml|Detergentes y jabones|botella|1.80|1.10|18|10|30|9','Detergente líquido a granel|Detergentes y jabones|litro|1.50|0.90|30|15|45|7',
     'Cloro a granel|Desinfectantes y cloro|litro|0.80|0.40|40|20|60|9','Desinfectante de pisos|Desinfectantes y cloro|galón|4.00|2.40|3|5|15|8','Ambientador en aerosol|Ambientadores y ceras|und|2.50|1.40|4|6|18|6',
     'Escoba|Escobas y trapeadores|und|2.50|1.40|12|6|18|6','Trapeador de algodón|Escobas y trapeadores|und|3.00|1.70|2|5|15|6','Bolsas de basura grandes|Bolsas y desechables|paquete|2.20|1.40|25|10|30|8',
     'Cera para pisos|Ambientadores y ceras|galón|9.00|5.80|6|3|9|0'],{ej:{nom:'Ej. Detergente en polvo de 1 kg',marca:'Ej. Ariel',dest:'Ej. Muestra para que el cliente pruebe',libre:'Ej. Entrega a domicilio del pedido'}}),
   /* rubros_B.js */
   R('heladeria','Heladería y postres','#f08a5d',['Helados','Postres','Toppings','Insumos'],2,
-    ['Las bolas de degustación y los conos de cortesía van como «salida sin cobrar»: ves cuánto regalas al mes.','Pon mínimo a conos y vasos: si se acaban un sábado de calor, ese día no vendes.'],[
+    ['Las bolas de degustación y los conos de cortesía van como «salida sin venta»: ves cuánto regalas al mes.','Pon mínimo a conos y vasos: si se acaban un sábado de calor, ese día no vendes.'],[
     'Cono simple|Helados|und|1.00|0.45|60|30|90|10','Cono doble|Helados|und|1.75|0.80|18|20|60|8','Helado de paila|Helados|und|1.25|0.60|30|12|36|7',
     'Litro de helado de mora|Helados|litro|5.50|3.40|12|6|18|7','Brownie con helado|Postres|und|2.75|1.50|14|8|24|6','Torta de helado|Postres|und|9.50|5.80|3|4|12|4',
     'Jarabe de chocolate|Toppings|botella|3.20|2.10|10|4|12|5','Grageas de colores|Toppings|bolsa|2.80|1.90|15|6|18|4','Vasos de 8 oz|Insumos|paquete|2.40|1.60|9|10|30|6',
@@ -2537,13 +2580,13 @@ window.CUADRE_DATA = (function(){
     'Zapatilla deportiva|Deportivo|par|32.00|20.00|14|6|18|8','Plantillas ortopédicas|Cuidado y accesorios|par|3.50|1.80|25|10|30|6','Betún negro|Cuidado y accesorios|und|1.50|0.80|30|12|36|7',
     'Chancla de playa|Deportivo|par|6.50|3.80|15|6|18|0'],{ej:{nom:'Ej. Zapato escolar negro talla 35',marca:'Ej. Bata',dest:'Ej. Par de cambio por garantía',libre:'Ej. Arreglo de suela'}}),
   R('joyeria','Joyería y bisutería','#2d4a9a',['Anillos','Cadenas y collares','Aretes','Pulseras','Relojes y accesorios'],1,
-    ['Cuenta tus piezas de plata cada semana: son pequeñas y de mucho valor, un faltante se nota rápido.','Los regalos y detalles que entregas a clientes se registran como «salida sin cobrar».'],[
+    ['Cuenta tus piezas de plata cada semana: son pequeñas y de mucho valor, un faltante se nota rápido.','Los regalos y detalles que entregas a clientes se registran como «salida sin venta».'],[
     'Argollas de matrimonio en plata|Anillos|par|38.00|24.00|4|3|9|4','Anillo de plata 925|Anillos|und|14.00|8.50|12|5|15|6','Cadena de plata 50 cm|Cadenas y collares|und|22.00|14.00|9|4|12|6',
     'Collar de bisutería|Cadenas y collares|und|4.50|2.20|25|10|30|7','Aretes de acero quirúrgico|Aretes|par|3.50|1.60|40|20|60|9','Aretes de plata con circón|Aretes|par|9.50|5.80|3|6|18|8',
     'Pulsera de hilo|Pulseras|und|1.75|0.75|50|20|60|8','Esclava de plata|Pulseras|und|18.00|11.50|2|3|9|5','Reloj de pulsera|Relojes y accesorios|und|15.00|9.50|8|3|9|4',
     'Estuche para joyas|Relojes y accesorios|und|3.00|1.70|10|4|12|0'],{ej:{nom:'Ej. Cadena de plata 925 de 50 cm',marca:'Ej. Casio',dest:'Ej. Regalo para cliente frecuente',libre:'Ej. Soldadura o arreglo de cadena'}}),
   R('perfumeria','Perfumería y cosméticos','#8664e8',['Perfumes','Colonias y splash','Cuidado corporal','Desodorantes','Estuches y regalos'],2,
-    ['Los testers y las muestras que regalas van como «salida sin cobrar»: sabrás cuánto te cuestan.','Escanea el código de barras de cada frasco: con tantas marcas, vender se vuelve un toque.'],[
+    ['Los testers y las muestras que regalas van como «salida sin venta»: sabrás cuánto te cuestan.','Escanea el código de barras de cada frasco: con tantas marcas, vender se vuelve un toque.'],[
     'Perfume de mujer 100 ml|Perfumes|frasco|32.00|20.00|8|4|12|6','Perfume de hombre 100 ml|Perfumes|frasco|34.00|21.50|7|4|12|6','Colonia infantil 120 ml|Colonias y splash|frasco|6.50|3.80|14|6|18|5',
     'Splash corporal 250 ml|Colonias y splash|frasco|7.50|4.50|3|6|18|7','Crema corporal 400 ml|Cuidado corporal|frasco|6.00|3.40|18|8|24|7','Aceite de almendras|Cuidado corporal|frasco|4.20|2.40|10|5|15|4',
     'Desodorante en barra|Desodorantes|und|3.20|1.90|30|12|36|9','Desodorante roll-on|Desodorantes|und|2.80|1.65|5|12|36|8','Set de regalo perfume y crema|Estuches y regalos|kit|24.00|15.00|6|3|9|4',
@@ -2555,7 +2598,7 @@ window.CUADRE_DATA = (function(){
     'Líquido para lentes de contacto|Lentes de contacto|frasco|6.50|3.80|12|5|15|5','Gafas de sol|Gafas de sol|und|15.00|7.50|16|6|18|7','Paño de microfibra|Accesorios|und|1.50|0.65|40|15|45|8',
     'Cadenita para gafas|Accesorios|und|2.50|1.20|12|4|12|0'],{ej:{nom:'Ej. Armazón de acetato negro',marca:'Ej. Essilor',dest:'Ej. Ajuste o cambio por garantía',libre:'Ej. Examen visual y montaje de lunas'}}),
   R('unas','Uñas y estética','#e0529c',['Esmaltes','Gel y acrílico','Equipo','Cuidado','Consumibles'],3,
-    ['El esmalte y el gel que gastas en cada servicio van como «salida sin cobrar»: sabrás cuánto cuesta cada clienta.','Registra tus servicios (manicura, pedicura) como productos sin stock y cotiza paquetes en PDF.'],[
+    ['El esmalte y el gel que gastas en cada servicio van como «salida sin venta»: sabrás cuánto cuesta cada clienta.','Registra tus servicios (manicura, pedicura) como productos sin stock y cotiza paquetes en PDF.'],[
     'Esmalte semipermanente|Esmaltes|frasco|5.50|3.20|30|12|36|9','Esmalte tradicional|Esmaltes|frasco|1.80|0.95|45|20|60|8','Base y top coat|Esmaltes|frasco|6.00|3.60|6|8|24|7',
     'Gel constructor|Gel y acrílico|frasco|12.00|7.50|7|4|12|5','Polvo acrílico 30 g|Gel y acrílico|frasco|9.00|5.50|8|4|12|5','Lámpara UV LED|Equipo|und|18.00|11.00|3|2|6|3',
     'Limas profesionales|Equipo|paquete|3.50|1.90|2|6|18|7','Removedor de esmalte|Cuidado|botella|2.20|1.30|18|8|24|6','Aceite de cutícula|Cuidado|frasco|2.50|1.30|15|6|18|5',
@@ -2579,7 +2622,7 @@ window.CUADRE_DATA = (function(){
     'Chía en grano|Semillas y proteína|lb|2.80|1.70|20|8|24|7','Linaza molida|Semillas y proteína|kg|3.50|2.10|4|6|18|6','Proteína vegetal|Semillas y proteína|tarro|38.00|27.00|5|2|6|4',
     'Jabón de azufre|Cuidado natural|und|1.50|0.80|18|6|18|0'],{ej:{nom:'Ej. Colágeno hidrolizado 300 g',marca:'Ej. Nature Made',dest:'Ej. Muestra de prueba para un cliente',libre:'Ej. Preparación de mezcla de hierbas'}}),
   R('odontologia','Odontología y consultorio','#45c4a0',['Anestesia y medicamentos','Resinas y cementos','Desechables','Higiene oral','Instrumental'],2,
-    ['Pon mínimo a guantes y anestesia: sin ellos no puedes atender, y la app te avisa antes de que falten.','Los materiales que gastas en cada tratamiento (resina, guantes) van como «salida sin cobrar».'],[
+    ['Pon mínimo a guantes y anestesia: sin ellos no puedes atender, y la app te avisa antes de que falten.','Los materiales que gastas en cada tratamiento (resina, guantes) van como «salida sin venta».'],[
     'Anestesia dental|Anestesia y medicamentos|caja|28.00|19.00|5|3|9|6','Resina compuesta|Resinas y cementos|und|14.00|9.00|8|4|12|6','Ácido grabador|Resinas y cementos|und|4.50|2.60|3|4|12|5',
     'Guantes de nitrilo|Desechables|caja|7.50|5.00|10|8|24|9','Mascarillas quirúrgicas|Desechables|caja|2.80|1.70|14|8|24|8','Baberos desechables|Desechables|paquete|5.50|3.40|2|4|12|6',
     'Crema dental|Higiene oral|und|2.20|1.30|40|15|45|8','Cepillo dental|Higiene oral|und|1.50|0.75|35|15|45|8','Enjuague bucal 500 ml|Higiene oral|botella|4.20|2.60|12|5|15|6',
@@ -2603,7 +2646,7 @@ window.CUADRE_DATA = (function(){
     'Bomba de fumigar 20 L|Fumigación|und|42.00|30.00|4|2|6|3','Balanceado para pollos|Alimento animal|qq|27.00|21.00|12|6|18|8','Sal mineralizada|Alimento animal|saco|18.00|13.00|8|4|12|5',
     'Machete|Herramientas de campo|und|7.50|4.50|6|3|9|0'],{ej:{nom:'Ej. Balanceado para pollos 40 kg',marca:'Ej. Agripac',dest:'Ej. Muestra para probar en la finca',libre:'Ej. Flete hasta la finca'}}),
   R('floristeria','Floristería y viveros','#b83280',['Flores','Plantas','Follaje y relleno','Macetas y sustratos','Empaque y regalos'],3,
-    ['Las flores duran pocos días: lo que se marchita o regalas va como «salida sin cobrar» y ves tu merma real.','Antes de San Valentín y el Día de la Madre sube tus mínimos de rosas: son las fechas que más venden.'],[
+    ['Las flores duran pocos días: lo que se marchita o regalas va como «salida sin venta» y ves tu merma real.','Antes de San Valentín y el Día de la Madre sube tus mínimos de rosas: son las fechas que más venden.'],[
     'Rosas rojas|Flores|docena|12.00|7.50|6|4|12|9','Girasol|Flores|und|1.50|0.80|8|12|36|6','Clavel mixto|Flores|docena|5.00|3.00|3|4|12|6',
     'Orquídea en maceta|Plantas|und|18.00|11.00|5|3|9|6','Suculentas pequeñas|Plantas|und|2.50|1.20|30|12|36|8','Gypsophila|Follaje y relleno|paquete|3.50|2.00|2|5|15|7',
     'Maceta de barro|Macetas y sustratos|und|3.00|1.70|16|6|18|5','Tierra negra abonada|Macetas y sustratos|saco|3.50|2.00|14|6|18|5','Papel celofán|Empaque y regalos|rollo|4.00|2.40|9|4|12|5',
@@ -2615,7 +2658,7 @@ window.CUADRE_DATA = (function(){
     'Foco de farola|Eléctrico|und|1.80|0.90|3|10|30|6','Llanta para moto 90/90-17|Llantas|und|32.00|23.00|6|4|12|6','Casco integral|Cascos y accesorios|und|35.00|22.00|5|3|9|4',
     'Espejos retrovisores|Cascos y accesorios|par|8.00|4.50|8|3|9|0'],{ej:{nom:'Ej. Pastillas de freno Pulsar 180',marca:'Ej. Honda',dest:'Ej. Uso en una moto del taller',libre:'Ej. Mano de obra de mantenimiento'}}),
   R('lubricadora','Lubricadora y autolavado','#e8a317',['Aceites','Filtros','Aditivos y líquidos','Lavado','Accesorios'],2,
-    ['Vende el aceite por litro o por galón: registra decimales (3,5 litros) y el stock siempre cuadra.','Los lavados de cortesía y el aceite de promoción van como «salida sin cobrar».'],[
+    ['Vende el aceite por litro o por galón: registra decimales (3,5 litros) y el stock siempre cuadra.','Los lavados de cortesía y el aceite de promoción van como «salida sin venta».'],[
     'Aceite 15W40|Aceites|galón|24.00|17.50|14|8|24|9','Aceite sintético 5W30|Aceites|litro|9.50|6.80|18|10|30|8','Aceite para caja|Aceites|litro|8.00|5.50|3|6|18|5',
     'Filtro de aceite|Filtros|und|4.50|2.80|20|10|30|9','Filtro de aire|Filtros|und|7.00|4.40|6|8|24|7','Líquido de frenos|Aditivos y líquidos|frasco|4.00|2.50|12|5|15|5',
     'Refrigerante|Aditivos y líquidos|galón|9.00|6.00|10|4|12|6','Shampoo para autos|Lavado|litro|3.50|2.00|25|10|30|7','Cera líquida|Lavado|botella|6.50|3.80|9|4|12|4',
@@ -2796,7 +2839,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.2.1',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.4.0',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -2925,7 +2968,7 @@ const PLAN={
     firma:{t:'Firma o sello del negocio',d:'Sube tu firma o sello y sale al pie de tus cotizaciones en PDF.'},
     logo:{t:'Logo en tus documentos',d:'Tu logo y tus datos arriba de cada cotización y reporte, con marca de agua.'},
     plantillas:{t:'Plantillas de cotización',d:'Guarda una cotización como plantilla y empieza las siguientes con un toque: mismos productos, notas y condiciones.'},
-    cierre:{t:'Cierre de caja',d:'Un resumen imprimible del día, la semana, el mes, el año o las fechas que elijas: lo vendido, lo que costó, la ganancia, lo que salió sin cobrar y el detalle por producto.'},
+    cierre:{t:'Cierre de caja',d:'Un resumen imprimible del día, la semana, el mes, el año o las fechas que elijas: lo vendido, lo que costó, la ganancia, lo que salió sin venta y el detalle por producto.'},
     envio:{t:'Enviar al cliente con un toque',d:'Un toque en «Enviar»: arma el PDF con tu membrete y lo manda ADJUNTO con tu mensaje propio por WhatsApp o correo, y la cotización queda marcada como enviada, con fecha y hora.'},
     fotosdoc:{t:'Fotos en tus cotizaciones',d:'La foto de cada producto sale junto al ítem en el PDF de la cotización.'},
     negocios:{t:'Varios negocios',d:'Hasta 5 negocios en la misma app (por ejemplo una tienda, una ferretería y una frutería). Cada uno con sus productos, ventas, ganancias y copias totalmente aparte. Cambias de uno a otro tocando el nombre de arriba.'},
@@ -3726,13 +3769,13 @@ C.kardex=pid=>{if(!D)return [];return C.movs(500,{pid}).map(m=>{
   const ent=(m.tipo==='ingreso'||(m.tipo==='ajuste'&&m.despues>m.antes))?m.q:0,sal=(m.tipo==='venta'||m.tipo==='salida'||(m.tipo==='ajuste'&&m.despues<m.antes))?m.q:0;
   return {t:m.t,tipo:({venta:'Venta',ingreso:'Ingreso',salida:'Salida',ajuste:'Ajuste'})[m.tipo],ent,sal,saldo:m.despues,nota:m.nota||'',fecha:C.fechaCorta(m.t),hora:C.hora(m.t)}})};
 /* totales por producto para la tabla de Productos: unidades que han entrado (ingresos)
-   y unidades que han salido (egresos = ventas, salidas sin cobrar y ajustes a la baja) */
+   y unidades que han salido (egresos = ventas, salidas sin venta y ajustes a la baja) */
 C.flujo=()=>{const F=new Map();if(!D)return F;
   for(const m of D.movs){let f=F.get(m.pid);if(!f){f={i:0,e:0};F.set(m.pid,f)}
     if(m.tipo==='ingreso'||(m.tipo==='ajuste'&&m.despues>m.antes))f.i+=m.q;
     else if(m.tipo==='venta'||m.tipo==='salida'||(m.tipo==='ajuste'&&m.despues<m.antes))f.e+=m.q}
   F.forEach(f=>{f.i=r3(f.i);f.e=r3(f.e)});return F};
-C.tipoNom=t=>({venta:'Venta',ingreso:'Ingreso',salida:'Salida sin cobrar',ajuste:'Ajuste'})[t]||t;
+C.tipoNom=t=>({venta:'Venta',ingreso:'Ingreso',salida:'Salida sin venta',ajuste:'Ajuste'})[t]||t;
 
 /* ---- estadísticas: salen de los movimientos ---- */
 /* periodRange(k, ref): el período «hoy | semana | mes | anio» que contiene la fecha ref (sin ref = ahora).
@@ -3794,7 +3837,7 @@ C.trend=(k,ref)=>{const r=periodRange(k,ref);let pa=r.pa,pb=r.pb;
   const cur=sumVentas(r.a,r.b);
   return {d:Math.max(-999,Math.min(999,(cur.total-prev.total)/prev.total*100)),prev:prev.total,cur:cur.total}};
 /* Resumen de un período (lo que abre al tocar Hoy / Semana / Mes / Año):
-   ventas, costo de lo vendido, ganancia de las ventas, lo que salió sin cobrar (a costo) y la ganancia neta real. */
+   ventas, costo de lo vendido, ganancia de las ventas, lo que salió sin venta (a costo) y la ganancia neta real. */
 /* ¿es la salida o la vuelta de un préstamo/alquiler? (los anteriores a la 2.6 no traen la marca: se reconocen por la nota) */
 C.esPrest=m=>!!(m&&(m.prest||/^(Préstamo a |Devolución de )/.test(m.nota||'')));
 C.resumen=(k,ref)=>{
@@ -3966,10 +4009,10 @@ C.reporte=(que,arg)=>{
   if(que==='cierre'){const c=C.cierre(arg);
     c.por.forEach(x=>rows.push({nom:x.nom,q:num(x.q)+' '+C.uLabel(x.u),imp:fm(x.imp),costo:fm(x.costo),gan:fm(x.gan)}));
     return {titulo:'Cierre de caja'+(c.e==='dia'?'':' '+C.cierreTitulo(c.e)),subtitulo:c.txt+' · '+(c.n===1?'1 venta':c.n+' ventas'),
-      meta:[['Ventas',String(c.n)],['Unidades',num(c.uds)],['Ticket promedio',fm(c.ticket)],['Salidas sin cobrar',String(c.salN)]],
+      meta:[['Ventas',String(c.n)],['Unidades',num(c.uds)],['Ticket promedio',fm(c.ticket)],['Salidas sin venta',String(c.salN)]],
       cols:[{h:'Producto',key:'nom'},{h:'Cantidad',key:'q',align:'r',w:26},{h:'Vendido',key:'imp',align:'r',w:27},{h:'Costo',key:'costo',align:'r',w:25},{h:'Ganancia',key:'gan',align:'r',w:27}],rows,
       totales:(c.fx?[{label:'Total vendido',value:fm(c.vendido)},{label:'Quedó fiado (por cobrar)',value:fm(c.fiado)},{label:'Cobrado de fiados',value:fm(c.cobrado)},{label:'Dinero cobrado',value:fm(c.ventas)},{label:'Costo de lo cobrado',value:fm(c.costo)},{label:'Ganancia de lo cobrado',value:fm(c.bruta)}]
-        :[{label:'Total vendido',value:fm(c.ventas)},{label:'Costo de lo vendido',value:fm(c.costo)},{label:'Ganancia de las ventas',value:fm(c.bruta)}]).concat([{label:'Salió sin cobrar (a costo)',value:fm(c.salCosto)},{label:'Ganancia neta '+c.per,value:fm(c.neta)},{label:'Mercadería que entró (a costo)',value:fm(c.entroCosto)}]),
+        :[{label:'Total vendido',value:fm(c.ventas)},{label:'Costo de lo vendido',value:fm(c.costo)},{label:'Ganancia de las ventas',value:fm(c.bruta)}]).concat([{label:'Salió sin venta (a costo)',value:fm(c.salCosto)},{label:'Ganancia neta '+c.per,value:fm(c.neta)},{label:'Mercadería que entró (a costo)',value:fm(c.entroCosto)}]),
       nota:'Cierre calculado con los movimientos '+c.per+'. Esto no es una factura.'}}
   return null};
 C.pdfCierre=t=>{const c=C.cierre(t);c.fechaTxt=c.txt;c.titulo=c.e==='dia'?'':C.cierreTitulo(c.e);c.ver=C.gv();
@@ -5397,7 +5440,7 @@ C.cierreText=(t,b,e)=>{const c=C.cierre(t,b,e),s=C.state,fm=C.money,L=['*'+s.nom
   if(c.fx){L.push('Total vendido: '+fm(c.vendido));if(c.fiado>0)L.push('Quedó fiado (por cobrar): '+fm(c.fiado));if(c.cobrado>0)L.push('Cobrado de fiados: '+fm(c.cobrado));L.push('*Dinero cobrado: '+fm(c.ventas)+'*')}
   else L.push('Total vendido: '+fm(c.ventas));
   if(ver){L.push(c.fx?'Costo de lo cobrado: '+fm(c.costo):'Costo de lo vendido: '+fm(c.costo));L.push(c.fx?'Ganancia de lo cobrado: '+fm(c.bruta):'Ganancia de las ventas: '+fm(c.bruta));
-    if(c.salCosto>0)L.push('Salió sin cobrar (a costo): '+fm(c.salCosto));L.push('*Ganancia neta '+c.per+': '+fm(c.neta)+'*');if(c.entroCosto>0)L.push('Mercadería que entró (a costo): '+fm(c.entroCosto))}
+    if(c.salCosto>0)L.push('Salió sin venta (a costo): '+fm(c.salCosto));L.push('*Ganancia neta '+c.per+': '+fm(c.neta)+'*');if(c.entroCosto>0)L.push('Mercadería que entró (a costo): '+fm(c.entroCosto))}
   if(c.por.length){L.push('');c.por.slice(0,15).forEach(x=>L.push('• '+C.num(x.q)+' '+C.uLabel(x.u)+' × '+x.nom+' — '+fm(x.imp)));if(c.por.length>15)L.push('… y '+(c.por.length-15)+' productos más')}
   return L.join('\n')};
 C.cierreVacio=(t,b,e)=>{const c=C.cierre(t,b,e);return !(c.n||c.salN||c.entroN||c.ajN||c.nCob)};
@@ -9536,7 +9579,7 @@ async function tabla(rep,ctx){
 
 /* ---------- cierre de caja del día ----------
    Portada de una sola hoja: el título y la fecha, las cifras grandes, el resultado del día (de la venta a la ganancia neta),
-   el detalle por producto, lo que no es venta (entradas, salidas sin cobrar, ajustes) y las líneas de firma.
+   el detalle por producto, lo que no es venta (entradas, salidas sin venta, ajustes) y las líneas de firma.
    Si los costos están protegidos (c.ver=false) el documento no lleva costos ni ganancias: solo lo vendido. */
 async function cierre(c,ctx){
   await ready();const st=make(ctx),d=st.doc,F=ctx.fmt,money=F.moneyPdf||F.money,ver=c.ver!==false;
@@ -9560,7 +9603,7 @@ async function cierre(c,ctx){
   if(c.fx){if(c.fiado>0)L.push(['(-)  Quedó fiado (por cobrar)','-'+money(c.fiado),'n']);if(c.cobrado>0)L.push(['(+)  Cobrado de fiados',money(c.cobrado),'n']);L.push(['Dinero cobrado',money(c.ventas),'b'])}
   if(ver){L.push([c.fx?'(-)  Costo de lo cobrado':'(-)  Costo de lo vendido','-'+money(c.costo),'n']);L.push([c.fx?'Ganancia de lo cobrado':'Ganancia de las ventas',money(c.bruta),'b']);
     if(c.alq>0)L.push(['(+)  Cobros de alquiler',money(c.alq),'n']);
-    if(c.salCosto>0)L.push(['(-)  Salió sin cobrar (a costo)','-'+money(c.salCosto),'n']);
+    if(c.salCosto>0)L.push(['(-)  Salió sin venta (a costo)','-'+money(c.salCosto),'n']);
     L.push(['Ganancia neta '+(c.per||'del día'),money(c.neta),'t'])}
   d.setFont('helvetica','bold');d.setFontSize(10.5);tc(d,st.ink);d.text('Resultado '+(c.per||'del día'),st.M,st.y+1);st.y+=4;
   L.forEach(r=>{ensure(st,10);const tot=r[2]==='t';
@@ -9581,7 +9624,7 @@ async function cierre(c,ctx){
   /* lo que no es una venta */
   const otros=[];
   if(c.entroN>0)otros.push(['Mercadería que entró',c.entroN+(c.entroN===1?' ingreso':' ingresos')+(ver?' · '+money(c.entroCosto)+' a costo':'')]);
-  if(c.salN>0)otros.push(['Salidas sin cobrar',c.salN+(c.salN===1?' salida':' salidas')+(ver?' · '+money(c.salCosto)+' a costo':'')]);
+  if(c.salN>0)otros.push(['Salidas sin venta',c.salN+(c.salN===1?' salida':' salidas')+(ver?' · '+money(c.salCosto)+' a costo':'')]);
   if(c.ajN>0)otros.push(['Ajustes de stock',c.ajN+(c.ajN===1?' ajuste':' ajustes')]);
   if(otros.length){ensure(st,10+otros.length*6);d.setFont('helvetica','bold');d.setFontSize(10.5);tc(d,st.ink);d.text('Otros movimientos del día',st.M,st.y+1);st.y+=5;
     otros.forEach(o=>{d.setFont('helvetica','normal');d.setFontSize(9.5);tc(d,st.mut);d.text(S(o[0]),st.M,st.y+3);tc(d,st.ink);d.text(S(o[1]),st.W-st.M,st.y+3,{align:'right'});st.y+=6});st.y+=4}
@@ -9697,6 +9740,10 @@ const num=C.num,inp=C.inp,inpm=C.inpm,pnum=C.parseNum,frac=u=>C.fracU(u),UL=u=>e
 const cap1=s=>s?s[0].toUpperCase()+s.slice(1):s;
 function moneyBig(n){const p=C.moneyParts(n),cur=`<span class="cur">${esc(p.sym)}</span>`,cts=p.dec?`<span class="cts">${esc(p.dec)}</span>`:'';
   return p.pos==='suf'?(p.neg?'-':'')+esc(p.int)+cts+' '+cur:(p.neg?'-':'')+cur+esc(p.int)+cts}
+/* ancho aproximado de un monto, en «em»: la cifra larga se achica para caber en vez de cortarse (ver --u en real.css) */
+const emT=t=>{let w=0;for(const c of String(t))w+=/\d/.test(c)?.62:/[.,]/.test(c)?.3:c===' '?.25:.6;return w};
+const emW=t=>Math.round((emT(t)+.2)*10)/10;
+const emWB=n=>{const p=C.moneyParts(n);return Math.round((emT(p.sym)*.62+emT(p.int)+emT(p.dec)*.58+(p.neg?.4:0)+.2)*10)/10};
 const d0=t=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime()};
 function when(t){const dd=Math.round((d0(Date.now())-d0(t))/864e5);return dd<=0?'hoy '+C.hora(t):dd===1?'ayer '+C.hora(t):C.fechaCorta(t)}
 const seg=(items,cur,a,cls)=>`<div class="seg ${cls||''}" role="group">${items.map(([v,l])=>`<button type="button" class="${String(v)===String(cur)?'on':''}" data-a="${a}" data-v="${v}" aria-pressed="${String(v)===String(cur)}">${l}</button>`).join('')}</div>`;
@@ -9924,16 +9971,16 @@ function fechaNavHTML(){
    El eje dice «0 h … 24 h» y la tarjeta dice «Ventas por hora»; en pantalla grande las barras más altas llevan su monto y todas dicen su hora al pasar el mouse. */
 const hh=h=>String(h).padStart(2,'0')+':00';
 function heroHTML(){
-  const s=C.sales('hoy',homeRef),H=C.horas(homeRef),mx=Math.max(1,...H.map(b=>b.v)),hoy=homeRef==null,dn=diaNom(),T=C.trend('hoy',homeRef),big=C.money(s.total).length>9;
+  const s=C.sales('hoy',homeRef),H=C.horas(homeRef),mx=Math.max(1,...H.map(b=>b.v)),hoy=homeRef==null,dn=diaNom(),T=C.trend('hoy',homeRef);
   const neg=s.ganancia<0,hid=hidden();
-  const gan=!C.verGanancia('hoy')?'':s.total>0?(C.gv()?`<span class="hvg ${neg?'neg':''}"><u>${ic(neg?'down':'up',12,'',3.2)}</u>${neg?(hoy?'Pierdes hoy':'Pierdes'):(hoy?'Ganancia de hoy':'Ganancia')} <b>${mk(esc(C.money0(Math.abs(s.ganancia))))}</b></span>`:`<span class="hvg lk" data-a="gv-ask" role="button" tabindex="0">${ic('lock',13,'',2.6)}Ganancia protegida <b>Ver</b></span>`):`<span class="hvg nil">Sin ventas${hoy?' todavía':''}</span>`;
+  const gan=!C.verGanancia('hoy')?'':s.total>0?(C.gv()?`<span class="hvg ${neg?'neg':''}"><u>${ic(neg?'down':'up',12,'',3.2)}</u>${neg?(hoy?'Pierdes hoy':'Pierdes'):(hoy?'Ganancia de hoy':'Ganancia')} <b>${mk(esc(C.money(Math.abs(s.ganancia))))}</b></span>`:`<span class="hvg lk" data-a="gv-ask" role="button" tabindex="0">${ic('lock',13,'',2.6)}Ganancia protegida <b>Ver</b></span>`):`<span class="hvg nil">Sin ventas${hoy?' todavía':''}</span>`;
   const conV=H.filter(b=>b.v>0),topH=conV.slice().sort((a,b)=>b.v-a.v||a.h-b.h),alto=new Set(topH.slice(0,4).map(b=>b.h)),mejor=topH[0];
-  const bars=H.map(b=>{const tip=hh(b.h)+' a '+hh(b.h+1)+(b.v>0?' · '+(hid?'****':C.money0(b.v))+' · '+b.n+(b.n===1?' venta':' ventas'):b.fut?'':' · sin ventas');
-    return `<i class="${b.v>0?'v ':''}${b.now?'n ':''}${b.fut?'f':''}" style="height:${b.v>0?Math.max(10,Math.round(b.v/mx*100)):4}%" title="${esc(tip)}">${b.v>0&&alto.has(b.h)?`<b class="hvv">${hid?'**':esc(C.money0(b.v))}</b>`:''}</i>`}).join('');
+  const bars=H.map(b=>{const tip=hh(b.h)+' a '+hh(b.h+1)+(b.v>0?' · '+(hid?'****':C.money(b.v))+' · '+b.n+(b.n===1?' venta':' ventas'):b.fut?'':' · sin ventas');
+    return `<i class="${b.v>0?'v ':''}${b.now?'n ':''}${b.fut?'f':''}" style="height:${b.v>0?Math.max(10,Math.round(b.v/mx*100)):4}%" title="${esc(tip)}">${b.v>0&&alto.has(b.h)?`<b class="hvv">${hid?'**':esc(C.money(b.v))}</b>`:''}</i>`}).join('');
   const tit=hoy?'Ventas de hoy':dn==='Ayer'?'Ventas de ayer':'Ventas del '+dn;
   return `<button type="button" class="tt hero hv" data-a="resumen" data-v="hoy" aria-label="${esc(tit)}: ${hid?'monto oculto':esc(C.money(s.total))}, ${s.n} ${s.n===1?'venta':'ventas'}. Ver el detalle y la ganancia">
     <div class="hvt"><span class="ttl">${esc(tit)}</span>${T?dlChip(T.d):''}<span class="hvn">${s.n} ${s.n===1?'venta':'ventas'}${ic('chev',13,'',2.8)}</span></div>
-    <div class="hvb"><div class="hvl"><div class="ttn ${big?'sm':''}" ${hid||!hoy?'':`data-cu="${s.total}"`}>${hid?HID:moneyBig(s.total)}</div>${gan}</div>
+    <div class="hvb"><div class="hvl"><div class="ttn" style="--u:${emWB(s.total)}" ${hid||!hoy?'':`data-cu="${s.total}"`}>${hid?HID:moneyBig(s.total)}</div>${gan}</div>
       <div class="hvc2"><div class="hcap"><span>Ventas por hora</span>${mejor&&!hid?`<em>Mejor hora: ${hh(mejor.h)}</em>`:''}</div><div class="hrs" aria-hidden="true">${bars}</div><div class="hax" aria-hidden="true"><em>0 h</em><em>6 h</em><em>12 h</em><em>18 h</em><em>24 h</em></div></div></div></button>`;
 }
 /* tarjetas compactas Esta semana / Este mes / Este año (del día que se mira): calendario, monto, tendencia y mini gráfico.
@@ -9942,18 +9989,17 @@ const MINI_NOM={semana:'Semana',mes:'Mes',anio:'Año'};
 function miniHTML(k){
   const s=C.sales(k,homeRef),T=C.trend(k,homeRef),sr=C.serie(k,homeRef).filter(b=>!b.fut).slice(-7),ok=C.verGanancia(k),per=C.perFechas(k,homeRef),cur=!C.perEtq(k,homeRef);
   const chip=T?dlChip(T.d):`<span class="hmn">${s.total>0?(cur?'En curso':''):'Sin ventas'}</span>`;
-  const gan=ok&&s.total>0?`<div class="ttg ${s.ganancia<0?'neg':''}">Ganancia <b>${gk(mk(esc(C.money0(s.ganancia))))}</b></div>`:'';
-  const t=C.money0(s.total);
+  const gan=ok&&s.total>0?`<div class="ttg ${s.ganancia<0?'neg':''}" style="--ug:${Math.round((emT('Ganancia ')+emW(C.money(s.ganancia)))*10)/10}">Ganancia <b>${gk(mk(esc(C.money(s.ganancia))))}</b></div>`:'';
   return `<button type="button" class="tt mini" data-a="resumen" data-v="${k}" aria-label="${esc(MINI_NOM[k]+' ('+per+')')}: ${hidden()?'monto oculto':esc(C.money(s.total))}${T?', '+esc(C.pct(T.d))+' frente al período anterior':''}. Ver el detalle">
     <div class="hmh"><span class="hmi">${ic('cal',14,'',2.2)}</span><span class="ttl">${esc(MINI_NOM[k])}</span></div><div class="hmp">${esc(per)}</div>
-    <div class="ttn ${t.length>8?'xs':''}">${mk(esc(t))}</div>${gan}<div class="hmf">${chip}${mcHTML(sr)}</div></button>`;
+    <div class="ttn" style="--u:${emWB(s.total)}">${mk(moneyBig(s.total))}</div>${gan}<div class="hmf">${chip}${mcHTML(sr)}</div></button>`;
 }
 /* inventario de un vistazo, en una sola fila: cada cifra lleva a su lista (productos, por agotarse, agotados) o al detalle del valor */
 function invHTML(){
-  const P=C.prods(),f=C.faltantes(),ago=f.filter(x=>x.p.stock<=0).length,por=f.length-ago,ok=!f.length;
+  const P=C.prods(),f=C.faltantes(),ago=f.filter(x=>x.p.stock<=0).length,por=f.length-ago,ok=!f.length,vb=C.gv()?C.money(C.valorBodega()):'';
   return `<section class="card inv"><div class="invh"><span class="invi">${ic('box',18)}</span><h3>Inventario</h3>
     ${ok?`<span class="invok">${ic('check',14,'',2.6)}Todo en orden</span>`:`<button type="button" class="lnk" data-a="falt">Ver faltantes${ic('chev',14,'',2.4)}</button>`}</div>
-    <div class="invs"><button type="button" class="ivs" data-a="inv-all" aria-label="${P.length} productos. Ver la lista"><b>${num(P.length)}</b><span>productos</span></button><button type="button" class="ivs ${por?'w':''}" data-a="falt-bajo" aria-label="${por} por agotarse. Ver la lista"><b>${por}</b><span>por agotarse</span></button><button type="button" class="ivs ${ago?'r':''}" data-a="falt-ago" aria-label="${ago} ${ago===1?'agotado':'agotados'}. Ver la lista"><b>${ago}</b><span>${ago===1?'agotado':'agotados'}</span></button><button type="button" class="ivs" data-a="valor-open" aria-label="Valor a costo del inventario. Ver el detalle"><b>${C.gv()?mk(esc(C.money0(C.valorBodega()))):'<span class="gm0">•••</span>'}</b><span>valor a costo</span></button></div></section>`;
+    <div class="invs${emW(vb)>6.6?' lg':''}"><button type="button" class="ivs" data-a="inv-all" aria-label="${P.length} productos. Ver la lista"><b>${num(P.length)}</b><span>productos</span></button><button type="button" class="ivs ${por?'w':''}" data-a="falt-bajo" aria-label="${por} por agotarse. Ver la lista"><b>${por}</b><span>por agotarse</span></button><button type="button" class="ivs ${ago?'r':''}" data-a="falt-ago" aria-label="${ago} ${ago===1?'agotado':'agotados'}. Ver la lista"><b>${ago}</b><span>${ago===1?'agotado':'agotados'}</span></button><button type="button" class="ivs" data-a="valor-open" aria-label="Valor a costo del inventario. Ver el detalle"><b${C.gv()?` style="--u:${emW(vb)}"`:''}>${C.gv()?mk(esc(vb)):'<span class="gm0">•••</span>'}</b><span>valor a costo</span></button></div></section>`;
 }
 /* pantalla ancha (computadora): Inicio reparte sus tarjetas en dos columnas y «Últimos movimientos» pasa a la columna grande */
 const WIDE_Q='(min-width:1180px)';
@@ -9995,7 +10041,7 @@ function rankHTML(){
   const rows=C.top(rp,rk,5,homeRef),mx=Math.max(1,...rows.map(r=>r.q));
   const list=!rows.length?`<div class="empty sm">${ic('cart',22)}<p>${rk==='mas'?'Todavía no hay ventas en este período.':'Aquí aparecerán los productos que no se mueven.'}</p></div>`:`<ol class="rkl">${rows.map((r,i)=>`<li class="rk"><span class="rn">${i+1}</span>
     <span class="rm"><b>${esc(r.p.nom)}</b><i class="rbar"><u style="width:${Math.round(r.q/mx*100)}%"></u></i></span>
-    <span class="rq">${r.q>0?`<b>${num(r.q)} ${UL(r.p.u)}</b><em>${mk(esc(C.money0(r.imp)))}</em>`:`<b class="zero">Sin ventas</b>`}</span></li>`).join('')}</ol>`;
+    <span class="rq">${r.q>0?`<b>${num(r.q)} ${UL(r.p.u)}</b><em>${mk(esc(C.money(r.imp)))}</em>`:`<b class="zero">Sin ventas</b>`}</span></li>`).join('')}</ol>`;
   return `<section class="card rkc"><div class="rkh"><h3>Ranking de productos</h3>${seg([['mas','Más vendidos'],['menos','Menos vendidos']],rk,'rk','wide')}</div>
     <div class="pch" role="group" aria-label="Período">${C.periodos.map(([k])=>`<button type="button" class="${k===rp?'on':''}" data-a="rp" data-v="${k}" aria-pressed="${k===rp}">${C.periodoCorto(k)}${C.verRanking(k)?'':ic('lock',11,'plk',2.4)}</button>`).join('')}</div>${perCapHTML(rp)}${list}</section>`;
 }
@@ -10008,10 +10054,10 @@ function chartHTML(){
   const cp=ev,ser=C.serie(cp,homeRef),mx=Math.max(1,...ser.map(b=>b.v)),tot=ser.reduce((a,b)=>a+b.v,0),T=C.trend(cp,homeRef),per=C.perFechas(cp,homeRef),hid=hidden();
   const bars=ser.map((b,i)=>{const h=b.v>0?Math.max(6,Math.round(b.v/mx*100)):2,
       lab=cp==='semana'?`<em class="d2">${esc(b.lab3)}<small>${b.dia}</small></em>`:cp==='anio'?`<em>${esc(b.lab3)}</em>`:`<em class="${(i===0||(i+1)%5===0||b.now)?'':'x'}">${esc(b.lab)}</em>`,      // mes: en el teléfono solo cada 5 días; en pantalla grande, todos
-      val=hid?'****':esc(C.money0(b.v));
-    return `<button type="button" class="bc ${b.now?'n':''} ${b.fut?'f':''} ${i===barSel?'s':''}" data-a="bar" data-i="${i}" data-v="${esc(b.full)} · ${val}" aria-label="${esc(b.full)}: ${hid?'monto oculto':esc(C.money0(b.v))}"><span class="trk"><i style="height:${h}%">${cp!=='mes'&&b.v>0?`<b class="bv">${val}</b>`:''}</i></span>${lab}</button>`}).join('');
+      val=hid?'****':esc(C.money(b.v));
+    return `<button type="button" class="bc ${b.now?'n':''} ${b.fut?'f':''} ${i===barSel?'s':''}" data-a="bar" data-i="${i}" data-v="${esc(b.full)} · ${val}" aria-label="${esc(b.full)}: ${hid?'monto oculto':esc(C.money(b.v))}"><span class="trk"><i style="height:${h}%">${cp!=='mes'&&b.v>0?`<b class="bv">${val}</b>`:''}</i></span>${lab}</button>`}).join('');
   return `<section class="card chc"><div class="chh"><h3>Evolución</h3>${seg([['semana','Semana'],['mes','Mes'],['anio','Año']],cp,'ev','sm')}</div>
-    <div class="chs2"><b>${mk(esc(C.money0(tot)))}</b>${T?dlChip(T.d):''}<span>${esc(cap1(EV_TIT[cp]))} · ${esc(per)}</span></div>
+    <div class="chs2"><b>${mk(esc(C.money(tot)))}</b>${T?dlChip(T.d):''}<span>${esc(cap1(EV_TIT[cp]))} · ${esc(per)}</span></div>
     <div class="bars ${cp}">${bars}</div></section>`;
 }
 function sinMovHTML(){
@@ -10021,7 +10067,7 @@ function sinMovHTML(){
     <button type="button" class="lnk" data-a="sinmov">Ver${ic('chev',14,'',2.4)}</button></div>
     <ul class="sml">${sm.slice(0,3).map(x=>`<li><span>${esc(x.p.nom)}</span><em>${C.hace(x.dias)}</em></li>`).join('')}</ul></section>`;
 }
-const MT={venta:['Venta','cart','v'],ingreso:['Ingreso','entrada','i'],salida:['Salida sin cobrar','salida','s'],ajuste:['Ajuste de stock','edit','s']};
+const MT={venta:['Venta','cart','v'],ingreso:['Ingreso','entrada','i'],salida:['Salida sin venta','salida','s'],ajuste:['Ajuste de stock','edit','s']};
 function movRow(m){
   const t=MT[m.tipo]||MT.venta,u=m.p?m.p.u:m.u;
   const amt=m.tipo==='venta'?C.money(m.q*m.pv):m.tipo==='ajuste'?num(m.antes)+' → '+num(m.despues):(m.tipo==='ingreso'?'+':'-')+num(m.q)+' '+C.uLabel(u);
@@ -10466,7 +10512,7 @@ let gpm='prod';
 function gpRowsHTML(rows,mx){
   return `<ol class="rkl gpl">${rows.map((r,i)=>`<li class="rk"><span class="rn">${i+1}</span>
     <span class="rm"><b>${esc(r.nom)}</b><i class="rbar"><u style="width:${mx>0?Math.max(2,Math.round(Math.max(0,r.gan)/mx*100)):0}%"></u></i></span>
-    <span class="rq"><b class="${r.gan<0?'neg':''}">${mk(esc(C.money0(r.gan)))}</b><em>${r.pct==null?'sin costo cargado':(r.pct>=0?'+':'')+num(Math.round(r.pct))+' % sobre costo'}</em></span></li>`).join('')}</ol>`;
+    <span class="rq"><b class="${r.gan<0?'neg':''}">${mk(esc(C.money(r.gan)))}</b><em>${r.pct==null?'sin costo cargado':(r.pct>=0?'+':'')+num(Math.round(r.pct))+' % sobre costo'}</em></span></li>`).join('')}</ol>`;
 }
 function gananciaPorHTML(){
   if(!C.isPro())return `<section class="card gpc lk"><div class="rkh"><h3>Qué te deja más ganancia</h3>${PRO}</div>
@@ -10569,7 +10615,7 @@ function pmenuSheet(s,i){
   const row=(w,ico,t,d,cls)=>`<button type="button" class="mr ${cls||''}" data-a="pm-go" data-do="${w}" data-id="${p.id}"><span class="mri">${ic(ico,19)}</span><span class="mrt"><b>${t}</b>${d?`<i>${d}</i>`:''}</span>${ic('chev',17)}</button>`;
   const body=p.activo===false?`${row('open','box','Ver el producto','Historial y kardex')}${row('unarch','refresh','Volver a mostrarlo','Vuelve a la lista de Productos')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`
     :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · ${num(p.stock)} ${UL(p.u)} en stock</i></span></div>
-    ${row('sell','cart','Vender','Registra una venta de este producto')}${row('in','entrada','Ingreso','Suma stock: llegó mercadería')}${row('out','salida','Salida sin cobrar','Merma, regalo o consumo')}
+    ${row('sell','cart','Vender','Registra una venta de este producto')}${row('in','entrada','Ingreso','Suma stock: llegó mercadería')}${row('out','salida','Salida sin venta','Merma, regalo o consumo')}
     ${row('open','box','Ver el producto','Historial, kardex y códigos')}${row('edit','edit','Editar datos y foto','Nombre, precio, mínimo…')}${row('adj','refresh','Corregir stock','Cuando el conteo no coincide')}${row('arch','trash','Archivar','Se oculta, no se borra su historial','dng')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`;
   return frame(s,i,'Acciones','',body,'','pros');
 }
@@ -10607,7 +10653,7 @@ function ajusteSheet(s,i){
 }
 
 /* ---- registrar venta / ingreso / salida ---- */
-const TIPOS={venta:['Venta','Registrar venta','Descuenta del stock y suma a tus ventas.'],ingreso:['Ingreso','Registrar ingreso','Suma unidades al stock: compra, producción o devolución.'],salida:['Salida sin cobrar','Registrar salida','Descuenta del stock sin cobrar: consumo, merma, regalo o uso interno.']};
+const TIPOS={venta:['Venta','Registrar venta','Descuenta del stock y suma a tus ventas.'],ingreso:['Ingreso','Registrar ingreso','Suma unidades al stock: compra, producción o devolución.'],salida:['Salida sin venta','Registrar salida','Sale del stock sin venta: consumo, merma, regalo o uso interno.']};
 /* 2.8 · Ingreso con un costo distinto al que tenía el producto: se ve cuánta ganancia deja el precio de hoy y, con un toque, se mantiene el % de ganancia de antes
    (precio nuevo = costo nuevo + ese %). Sirve igual si el costo sube o baja. Solo para quien puede ver costos (si están protegidos, no se muestra nada). */
 const pcTxt=x=>String(Math.round(x*10)/10).replace('.',',');
@@ -10619,25 +10665,37 @@ function regCostoInfo(l){
   const keep=pct>0?C.precioDe(l.costo,pct):0;
   return {p,pvAct,prev,pct,keep,ahora:pvAct>0?C.margen(l.costo,pvAct):null,puede:keep>0&&pvAct>0&&Math.abs(keep-pvAct)>=0.005}}
 function regKeepPrice(l){const k=regCostoInfo(l);return l&&l.keep&&k&&k.puede?k.keep:0}
-function regLineRes(l){
+/* 3.4 · cada producto del registro ocupa 2 líneas: nombre + estado del stock + quitar / cantidad + precio (o costo) + subtotal.
+   El aviso largo (precio bajo, costo que sube…) solo aparece cuando hay algo que decir; el estado del stock va en la pastilla de la primera línea. */
+function regLineNote(l){
   const p=C.prod(l.pid);if(!p)return '';
-  const ing=reg.tipo==='ingreso',after=Math.round((ing?p.stock+l.q:p.stock-l.q)*1000)/1000,u=UL(p.u);
-  const ci=ing?regCostoInfo(l):null;
+  const ing=reg.tipo==='ingreso',ci=ing?regCostoInfo(l):null;
   if(ci){const i=reg.lines.indexOf(l),M=C.money,sube=l.costo>p.costo;
     return `<span class="rkcost"><b>${sube?'El costo sube':'El costo baja'}: ${esc(M(p.costo))} → ${esc(M(l.costo))}</b>`
       +(ci.pvAct>0?`<span>Tu precio ${esc(M(ci.pvAct))} te deja ${pcTxt(ci.ahora)} % de ganancia${ci.prev!=null?' (antes '+pcTxt(ci.prev)+' %)':''}.${ci.ahora<0?' <em class="red">Venderías con pérdida.</em>':''}</span>`:'')
       +(ci.puede?(l.keep?`<span class="rkok">${ic('check',14,'',2.6)}Al registrar, el precio pasa a ${esc(M(ci.keep))} (ganancia ${pcTxt(ci.pct)} %).</span><button type="button" class="lnk inl" data-a="lkeep" data-i="${i}">Dejar el precio como está</button>`
         :`<button type="button" class="btn ghost sm rkb" data-a="lkeep" data-i="${i}">Mantener mi ${pcTxt(ci.pct)} %: precio ${esc(M(ci.keep))}</button>`):'')
-      +`<span>Hay ${num(p.stock)} ${u}. Quedarían ${num(after)}.</span></span>`}
-  if(!ing&&l.q>p.stock)return `<span class="red">${ic('alert',14,'',2.3)}Solo hay ${num(p.stock)} ${u}</span>`;
-  if(!ing){const e=C.avisoPrecio()?C.precioEstado(p.costo,l.pv):null;
+      +`</span>`}
+  if(reg.tipo==='venta'&&l.q<=p.stock){const e=C.avisoPrecio()?C.precioEstado(p.costo,l.pv):null;
     if(e&&e.k==='perdida')return `<span class="red">${ic('alert',14,'',2.3)}${C.gv()?'Pierdes '+esc(C.money(e.por))+' por '+UL(p.u)+' (te cuesta '+esc(C.money(p.costo))+')':'Estás vendiendo por debajo del costo'}${C.bloqueaPerdida()?'. Sube el precio para vender':''}</span>`;
-    if(e&&reg.tipo==='venta')return `<span class="amb">${ic('alert',14,'',2.3)}${C.gv()?'Ganancia baja: '+Math.round(e.m)+' % (tu mínimo es '+Math.round(e.min)+' %)':'Ganancia baja: está bajo tu mínimo'}</span>`}
+    if(e)return `<span class="amb">${ic('alert',14,'',2.3)}${C.gv()?'Ganancia baja: '+Math.round(e.m)+' % (tu mínimo es '+Math.round(e.min)+' %)':'Ganancia baja: está bajo tu mínimo'}</span>`}
   if(ing&&l.costo>0&&p.costo>0&&l.costo>p.costo+1e-9){const e=C.avisoPrecio()?C.precioEstado(l.costo,p.pv):null;
     if(e)return `<span class="amb">${ic('alert',14,'',2.3)}${C.gv()?'El costo sube de '+esc(C.money(p.costo))+' a '+esc(C.money(l.costo))+': '+(e.k==='perdida'?'venderías con pérdida':'tu ganancia bajaría a '+Math.round(e.m)+' %'):'El costo sube: '+(e.k==='perdida'?'venderías con pérdida':'tu ganancia bajaría')}</span>`}
-  if(!ing&&p.min>0&&after<=p.min)return `<span class="amb">${ic('alert',14,'',2.3)}Quedarían ${num(after)}: bajo el mínimo (${num(p.min)})</span>`;
-  return `<span>Hay ${num(p.stock)} ${u}. Quedarían ${num(after)}.</span>`;
+  return '';
 }
+/* lo que se ve de una línea: pastilla de stock (cls ''/amb/red), aviso largo, subtotal (solo en venta) */
+function regLineView(l){
+  const p=C.prod(l.pid);if(!p)return {cls:'',ico:false,chip:'',tip:'',note:'',sub:''};
+  const ing=reg.tipo==='ingreso',sf=p.u==='und'?'':' '+esc(C.uLabel(p.u)),after=Math.round((ing?p.stock+l.q:p.stock-l.q)*1000)/1000,min=Math.max(0,+p.min||0);
+  let cls='',ico=false,chip,tip='';
+  if(ing)chip='Habrá '+num(after)+sf+' (hay '+num(p.stock)+')';
+  else if(l.q>p.stock){cls='red';ico=true;chip='Solo hay '+num(p.stock)+sf;tip='No alcanza: solo hay '+num(p.stock)+' en stock'}
+  else{chip='Quedan '+num(after)+' de '+num(p.stock)+sf;if(after<=min){cls='amb';ico=true;tip=min>0?'Quedarían '+num(after)+': bajo el mínimo ('+num(min)+')':'Se agota el stock'}}
+  return {cls,ico,chip,tip,note:regLineNote(l),sub:reg.tipo==='venta'?C.money(l.q*l.pv):''};
+}
+const regChipH=v=>(v.ico?ic('alert',12,'',2.3):'')+v.chip;
+/* ancho del campo de precio/costo según lo escrito: ni se corta el número ni se come la fila */
+const regPw=(n,ing)=>Math.round(Math.max(ing?138:96,(ing?72:30)+9.8*n))+'px';
 function regCan(){
   if(!reg.lines.length)return false;
   return reg.lines.every(l=>{const p=C.prod(l.pid);return l.q>0&&p&&(reg.tipo==='ingreso'||l.q<=p.stock)&&!(reg.tipo==='venta'&&C.bloqueaPerdida()&&C.precioEstado(p.costo,l.pv)?.k==='perdida')});
@@ -10665,11 +10723,13 @@ function pickListHTML(q,exclude,act,counts,newAct){
 }
 function regLineH(l,i){
   const p=C.prod(l.pid);if(!p)return '';
-  return `<div class="rl"><div class="rlh"><b>${esc(p.nom)}</b><button type="button" class="ib sm" data-a="rdel" data-i="${i}" aria-label="Quitar ${esc(p.nom)}">${ic('x',17,'',2.2)}</button></div>
-    <div class="rlg"><div class="fl"><span>Cantidad (${UL(p.u)})</span><div class="stp"><button type="button" data-a="rstep" data-i="${i}" data-d="-1" aria-label="Menos">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="lq" data-i="${i}" aria-label="Cantidad" value="${inp(l.q)}"><button type="button" data-a="rstep" data-i="${i}" data-d="1" aria-label="Más">${ic('plus',18,'',2.4)}</button></div></div>
-      ${reg.tipo==='venta'?`<label class="fl"><span>Precio</span>${inw('$','lpv',inpm(l.pv),'',' data-i="'+i+'"')}</label>`:''}
-      ${reg.tipo==='ingreso'?`<label class="fl"><span>Costo de compra</span>${inw('$','lcosto',l.costo!=null?inpm(l.costo):(C.gv()&&p.costo?inpm(p.costo):''),'',' data-i="'+i+'" placeholder="'+esc(C.gv()?C.money(0):'Costo protegido')+'"')}</label>`:''}</div>
-    <p class="rln" data-r="lres" data-i="${i}">${regLineRes(l)}</p></div>`;
+  const v=regLineView(l),venta=reg.tipo==='venta',ing=reg.tipo==='ingreso';
+  const campo=venta?inw('$','lpv',inpm(l.pv),'',' data-i="'+i+'" aria-label="Precio"')
+    :ing?inw('$','lcosto',l.costo!=null?inpm(l.costo):(C.gv()&&p.costo?inpm(p.costo):''),'',' data-i="'+i+'" aria-label="Costo de compra" placeholder="'+esc(C.gv()?C.money(0):'Costo protegido')+'"').replace('<div class="inpw">','<div class="inpw rcxc"><small>Costo</small>'):'';
+  const campoW=campo.replace(/<div class="inpw( rcxc)?"/,(m)=>m+' style="--pw:'+regPw((campo.match(/value="([^"]*)"/)||[,''])[1].length,ing)+'"');
+  return `<div class="rl rcx"><div class="rcx1"><b>${esc(p.nom)}</b><span class="rcxchip ${v.cls}" data-r="lchip" data-i="${i}" title="${esc(v.tip)}">${regChipH(v)}</span><button type="button" class="ib sm" data-a="rdel" data-i="${i}" aria-label="Quitar ${esc(p.nom)}">${ic('x',17,'',2.2)}</button></div>
+    <div class="rcx2"><div class="stp"><button type="button" data-a="rstep" data-i="${i}" data-d="-1" aria-label="Menos">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="lq" data-i="${i}" aria-label="Cantidad (${UL(p.u)})" value="${inp(l.q)}"><button type="button" data-a="rstep" data-i="${i}" data-d="1" aria-label="Más">${ic('plus',18,'',2.4)}</button></div>${campoW}${venta?`<b class="rcxsub${l.q===1?' one':''}" data-r="lsub" data-i="${i}">${esc(v.sub)}</b>`:''}</div>
+    <p class="rln" data-r="lres" data-i="${i}">${v.note}</p></div>`;
 }
 function regSheet(s,i){
   const R=reg;
@@ -10681,14 +10741,19 @@ function regSheet(s,i){
     <label class="fl"><span>Quién recibe</span><input class="fld" type="text" maxlength="60" autocomplete="off" placeholder="Nombre de quien se lleva esto" data-f="rquien" value="${esc(R.quien||'')}"></label>
     <label class="fl"><span>Para quién o para qué</span><input class="fld" type="text" maxlength="60" autocomplete="off" placeholder="${esc(C.ej('dest'))}" data-f="rdest" value="${esc(R.dest||'')}"></label>
     <p class="fine l">Si escribes quién recibe, al registrar le pasas la pantalla para que firme con el dedo y sale un comprobante en PDF.</p></section>`:'';
-  const body=`${seg([['venta','Venta'],['ingreso','Ingreso'],['salida','Salida sin cobrar']],R.tipo,'rtipo','tri')}<p class="fine l tdesc">${TIPOS[R.tipo][2]}</p>
+  const ayuda=`<div class="rcxhelp" data-r="rhelp" hidden><b>Salida sin venta</b><p>Sale mercadería de tu stock sin que nadie te la pague: uso propio, regalo o muestra, producto dañado o vencido, uso interno.</p><ul><li>Baja el stock.</li><li>No cuenta como venta.</li><li>Baja tu Ganancia neta por lo que te costó.</li></ul><p>Si el cliente te paga después, no es esto: usa Venta y «Vender a crédito (fiar)».</p></div>`;
+  const body=`<div class="rcxseg">${seg([['venta','Venta'],['ingreso','Ingreso'],['salida','Salida sin venta']],R.tipo,'rtipo','tri')}<button type="button" class="rcxq" data-a="rhelp" aria-label="¿Qué es una salida sin venta?" aria-expanded="false">?</button></div>${ayuda}${R.tipo==='venta'?'':`<p class="fine l tdesc">${TIPOS[R.tipo][2]}</p>`}
     ${R.lines.map(regLineH).join('')}${R.adding?fiarBlockHTML()+pick:pick+fiarBlockHTML()}${ent}<p class="err" data-r="rerr"${R.err?'':' hidden'}>${esc(R.err)}</p>`;
   const foot=`<div class="rtot" data-r="rinfo">${regFootInfo()}</div><button type="button" class="btn big" data-a="rsave" data-r="rbtn"${regCan()?'':' disabled'}>${regBtnTxt()}</button>`;
   return frame(s,i,'Registrar','',body,foot,'tall regs');
 }
 function patchReg(){
   if(!reg)return;
-  reg.lines.forEach((l,i)=>{const e=$('[data-r="lres"][data-i="'+i+'"]');if(e)e.innerHTML=regLineRes(l)});
+  reg.lines.forEach((l,i)=>{const v=regLineView(l),q='[data-i="'+i+'"]';
+    const n=$('[data-r="lres"]'+q);if(n)n.innerHTML=v.note;
+    const c=$('[data-r="lchip"]'+q);if(c){c.className='rcxchip '+v.cls;c.title=v.tip;c.innerHTML=regChipH(v)}
+    const m=$('[data-r="lsub"]'+q);if(m){m.textContent=v.sub;m.classList.toggle('one',l.q===1)}
+    const f=$('[data-f="'+(reg.tipo==='ingreso'?'lcosto':'lpv')+'"]'+q);if(f&&f.parentElement)f.parentElement.style.setProperty('--pw',regPw(f.value.length,reg.tipo==='ingreso'))});
   const t=$('[data-r="rinfo"]');if(t)t.innerHTML=regFootInfo();
   const b=$('[data-r="rbtn"]');if(b)b.disabled=!regCan();
   const fr=$('[data-r="rfres"]');if(fr)fr.innerHTML=fiarResHTML();
@@ -10827,15 +10892,15 @@ function pinSheet(s,i){
     <p class="err" data-r="pinerr"${s.err?'':' hidden'}>${esc(s.err||'')}</p>`;
   return frame(s,i,t,'',body,`<button type="button" class="btn big ${mode==='remove'?'dngb':''}" data-a="pin-save">${mode==='remove'?'Quitar la clave':mode==='rec'?'Crear clave de recuperación':'Guardar clave'}</button>`,'pros');
 }
-/* detalle de un período: ventas → costo → ganancia → salidas sin cobrar → ganancia neta real */
+/* detalle de un período: ventas → costo → ganancia → salidas sin venta → ganancia neta real */
 function resumenSheet(s,i){
   const K=s.per,R=C.resumen(K,homeRef),ok=C.verGanancia(K),et=C.perEtq(K,homeRef),nom=et||C.periodoNom(K),cur=n=>hidden()?'****':C.money(n);      // con el ojo cerrado, aquí también se ocultan los montos
   const vs={hoy:et?'vs el día anterior':'vs ayer',semana:'vs semana anterior',mes:'vs mes anterior',anio:'vs año anterior'}[K]||'';
   const delta=R.delta!=null?`<span class="dl ${R.delta>=0?'up':'dn'}">${ic(R.delta>=0?'trendup':'trenddown',13,'',2.3)}${esc(C.pct(R.delta))} ${vs}</span>`:'';
   const nav=`<div class="rsnav"><button type="button" class="dnb" data-a="rs-nav" data-d="-1" aria-label="Anterior" ${C.refCan(K,homeRef,-1)?'':'disabled'}>${ic('back',17,'',2.4)}</button><b>${esc(nom)}</b><button type="button" class="dnb" data-a="rs-nav" data-d="1" aria-label="Siguiente" ${C.refCan(K,homeRef,1)?'':'disabled'}>${ic('chev',17,'',2.4)}</button></div>`;
   const fx=R.fiadoVend>0||R.fiadoCob>0;      // hay fiados en el período: «Vendiste» pasa a ser lo COBRADO (contado + lo que te pagaron de fiados)
-  const head=`<div class="rsh"><span class="lbl">${fx?'Cobraste':'Vendiste'}</span><b class="rsv">${mk(moneyBig(R.ventas))}</b>${delta}</div>`;
-  const kp=`<div class="rsk"><div><b>${R.n}</b><span>${R.n===1?'venta':'ventas'}</span></div><div><b>${num(R.uds)}</b><span>unidades</span></div><div><b>${R.n?(hidden()?'****':C.money0(R.ticket)):'—'}</b><span>por venta</span></div></div>`;
+  const head=`<div class="rsh"><span class="lbl">${fx?'Cobraste':'Vendiste'}</span><b class="rsv" style="--u:${emWB(R.ventas)}">${mk(moneyBig(R.ventas))}</b>${delta}</div>`;
+  const kp=`<div class="rsk"><div><b>${R.n}</b><span>${R.n===1?'venta':'ventas'}</span></div><div><b>${num(R.uds)}</b><span>unidades</span></div><div><b${R.n&&!hidden()?` style="--u:${emW(C.money(R.ticket))}"`:''}>${R.n?(hidden()?'****':C.money(R.ticket)):'—'}</b><span>por venta</span></div></div>`;
   let gan;
   if(!R.n&&!R.fiadoCob){gan=`<p class="rse">${et?'No hubo ventas '+({hoy:'ese día',semana:'esa semana',mes:'ese mes',anio:'ese año'})[K]+'.':'Todavía no hay ventas '+({hoy:'hoy',semana:'esta semana',mes:'este mes',anio:'este año'})[K]+'. Cuando vendas, aquí verás cuánto ganaste de verdad.'}</p>`}
   else if(!ok){gan=`<div class="rsl"><span class="rsli">${ic('lock',20)}</span><div><b>La ganancia ${K==='semana'?'de la semana':K==='mes'?'del mes':'del año'} es de Pro</b><i>En Gratis ves la ganancia de hoy. Con Pro ves también la semana, el mes y el año.</i></div></div><button type="button" class="btn big" data-a="ganlock">Ver Pro ${PRO}</button>`}
@@ -10845,13 +10910,13 @@ function resumenSheet(s,i){
     gan=`<dl class="rsd"><div><dt>${fx?'Cobrado':'Ventas'}</dt><dd>${cur(R.ventas)}</dd></div>
       <div><dt>${fx?'Lo que te costó lo cobrado':'Lo que te costó lo vendido'}</dt><dd class="m">−${cur(R.costo)}</dd></div>
       <div class="sub"><dt>${fx?'Ganancia de lo cobrado':'Ganancia de las ventas'}${R.margen!=null?` <em>${Math.round(R.margen)} % de lo vendido</em>`:''}</dt><dd>${cur(R.bruta)}</dd></div>
-      ${R.salidasCosto>0?`<div><dt>Salió sin cobrar (a costo) <em>${num(R.salidasUds)} ${R.salidasUds===1?'unidad':'unidades'}: mermas, regalos, consumo</em></dt><dd class="m">−${cur(R.salidasCosto)}</dd></div>`:''}</dl>
-      <div class="rsn ${neg?'neg':''}"><span>${neg?'Pérdida neta':'Ganancia neta'}</span><b>${cur(Math.abs(R.neta))}</b>${R.margen!=null&&!neg&&!hidden()?`<i>De cada ${C.money0(100)} que vendes te quedan ${C.money0(R.neta/R.ventas*100)}</i>`:''}</div>
+      ${R.salidasCosto>0?`<div><dt>Salió sin venta (a costo) <em>${num(R.salidasUds)} ${R.salidasUds===1?'unidad':'unidades'}: mermas, regalos, consumo</em></dt><dd class="m">−${cur(R.salidasCosto)}</dd></div>`:''}</dl>
+      <div class="rsn ${neg?'neg':''}"><span>${neg?'Pérdida neta':'Ganancia neta'}</span><b>${cur(Math.abs(R.neta))}</b>${R.margen!=null&&!neg&&!hidden()?`<i>De cada ${C.money0(100)} que vendes te quedan ${C.money(R.neta/R.ventas*100)}</i>`:''}</div>
       ${R.sinCosto?`<p class="rsw">${ic('alert',16,'',2.4)}<span>${R.sinCosto} ${R.sinCosto===1?'venta no tiene':'ventas no tienen'} el costo puesto, y por eso la ganancia puede verse mayor de lo real. Pon el costo en esos productos (Productos → el producto → Costo).</span></p>`:''}
       ${R.top&&R.top.gan>0?`<p class="rst">${ic('trendup',16,'',2.2)}<span>Lo que más te dejó: <b>${esc(R.top.nom)}</b> (${cur(R.top.gan)})</span></p>`:''}`;
   }
   const fxn=fx?`<p class="rsfx">${ic('clipboard',16,'',2.2)}<span>${R.fiadoVend>0?'Vendiste <b>'+cur(R.fiadoVend)+'</b> a crédito (fiado). ':''}${R.fiadoCob>0?'Te pagaron <b>'+cur(R.fiadoCob)+'</b> de fiados. ':''}Lo fiado cuenta como cobrado el día que te pagan.</span></p>`:'';
-  const body=`${nav}${head}${kp}${fxn}${gan}<p class="fine l">La ganancia neta es lo vendido menos lo que te costó la mercadería que salió, vendida o sin cobrar. No incluye gastos como arriendo, sueldos o luz.</p>`;
+  const body=`${nav}${head}${kp}${fxn}${gan}<p class="fine l">La ganancia neta es lo vendido menos lo que te costó la mercadería que salió, por venta o sin venta. No incluye gastos como arriendo, sueldos o luz.</p>`;
   return frame(s,i,C.periodoCorto(K)==='Hoy'&&!et?'Hoy':nom,K==='hoy'&&!et?esc(cap1(C.fechaLarga())):'',body,`<button type="button" class="btn big ghost" data-a="rs-hist">${ic('clock',18)}Ver los movimientos</button>`,'pros');
 }
 /* ---- Valor a costo del inventario ---- */
@@ -10862,7 +10927,7 @@ function valorSheet(s,i){
   if(!C.gv())return frame(s,i,'Valor del inventario',P.length+' '+(P.length===1?'producto':'productos'),gvBlock('El valor de tu inventario a costo está protegido.'),`<button type="button" class="btn big ghost" data-a="close">Cerrar</button>`,'pros');
   const body=`<div class="rsh"><span class="lbl">Tu inventario vale, a lo que te costó</span><b class="rsv">${hidden()?HID:moneyBig(V)}</b></div>
     <dl class="rsd"><div><dt>Si vendes todo a tus precios</dt><dd>${mk(C.money(VV))}</dd></div><div class="sub"><dt>Ganancia posible <em>precio de venta − costo</em></dt><dd>${mk(C.money(G))}</dd></div></dl>
-    ${rows.length?`<h4 class="vlh">Dónde está tu dinero</h4><ul class="vlist">${rows.map(([n,v])=>`<li><span>${esc(n)}</span><i><u style="width:${Math.max(3,Math.round(v/mx*100))}%"></u></i><b>${mk(esc(C.money0(v)))}</b></li>`).join('')}</ul>`:`<p class="rse">Aún no hay productos con costo y existencias.</p>`}
+    ${rows.length?`<h4 class="vlh">Dónde está tu dinero</h4><ul class="vlist">${rows.map(([n,v])=>`<li><span>${esc(n)}</span><i><u style="width:${Math.max(3,Math.round(v/mx*100))}%"></u></i><b>${mk(esc(C.money(v)))}</b></li>`).join('')}</ul>`:`<p class="rse">Aún no hay productos con costo y existencias.</p>`}
     <p class="fine l">Cuenta solo lo que hay en existencia, a su costo. Los productos sin costo puesto no suman.</p>`;
   return frame(s,i,'Valor del inventario',P.length+' '+(P.length===1?'producto':'productos'),body,`<button type="button" class="btn big ghost" data-a="rep-inv">${ic('doc',18)}Inventario valorizado (PDF)</button>`,'pros');
 }
@@ -11291,7 +11356,7 @@ function firmaCardHTML(){
    ===================================================================== */
 let im=null,pendImp=false;
 const IMK={productos:'Productos',movimientos:'Movimientos',cotizaciones:'Cotizaciones',omitir:'No importar'};
-const imTipos=[['venta','Ventas (salen y se cobran)'],['ingreso','Ingresos / compras (entran)'],['salida','Salidas (sin cobrar)']];
+const imTipos=[['venta','Ventas (salen y se cobran)'],['ingreso','Ingresos / compras (entran)'],['salida','Salidas (sin venta)']];
 function imReplan(){try{im.W=C.imp.plan(im.M)}catch(e){console.error('NegocioListo: importar',e);im.W=null;im.msg='Algo salió mal al revisar el archivo.'}}
 function imStat(n,l,cls){return `<div class="ims ${cls||''}"><b>${num(n)}</b><i>${l}</i></div>`}
 /* el texto del motor está en plural; con 1 se pasa a singular */
@@ -11470,7 +11535,7 @@ function cierreSheet(s,i){
     <div class="fl"><span>Período</span>${seg([['semana','Semana'],['mes','Mes'],['anio','Año'],['rango','Rango']],String(s.d),'cierre-day','small')}</div>${nav}${rango}
     ${vacio?`<div class="empty sm">${ic('doc',24)}<p>${c.e==='dia'?'Ese día no hay movimientos para cerrar.':'En este período no hay movimientos para cerrar.'}</p></div>`
     :`<dl class="dtl cjd">${row('Ventas',c.n+(c.n===1?' venta':' ventas')+' · '+num(c.uds)+' unid.')}${c.fx?`${row('Total vendido',mk(C.money(c.vendido)))}${c.fiado>0?row('Quedó fiado (por cobrar)',mk(C.money(c.fiado))):''}${c.cobrado>0?row('Cobrado de fiados',mk(C.money(c.cobrado))):''}${row('Dinero cobrado',mk(C.money(c.ventas)),'sub')}`:row('Total vendido',mk(C.money(c.ventas)))}${C.gv()?`${row(c.fx?'Costo de lo cobrado':'Costo de lo vendido',mk(C.money(c.costo)))}${row(c.fx?'Ganancia de lo cobrado':'Ganancia de las ventas',mk(C.money(c.bruta)))}
-      ${c.alq>0?row('Cobros de alquiler',mk(C.money(c.alq))):''}${c.salCosto>0||c.salN?row('Salió sin cobrar (a costo)',mk(C.money(c.salCosto))):''}${row('Ganancia neta '+c.per,mk(C.money(c.neta)),'tot')}${c.entroN?row('Mercadería que entró (a costo)',mk(C.money(c.entroCosto))):''}`:''}</dl>
+      ${c.alq>0?row('Cobros de alquiler',mk(C.money(c.alq))):''}${c.salCosto>0||c.salN?row('Salió sin venta (a costo)',mk(C.money(c.salCosto))):''}${row('Ganancia neta '+c.per,mk(C.money(c.neta)),'tot')}${c.entroN?row('Mercadería que entró (a costo)',mk(C.money(c.entroCosto))):''}`:''}</dl>
       ${C.gv()?`<p class="fine l">El PDF lleva además el detalle por producto. Esto no es una factura.</p>`:gvBlock('El costo y la ganancia '+c.per+' están protegidos. El PDF también los lleva.')}`}`;
   return frame(s,i,'Cierre de caja','',body,`<button type="button" class="btn big" data-a="cierre-pdf"${vacio?' disabled':''}>${ic('print',19)}Ver el PDF</button><button type="button" class="btn big ghost" data-a="cierre-share"${vacio?' disabled':''}>${ic('share',19)}Compartir</button>`,'pros');
 }
@@ -11490,7 +11555,7 @@ function negResSheet(s,i){
     <h4 class="cjh">Lo que tienes ahora en mercadería</h4>
     <dl class="dtl cjd">${row('A costo (lo que te costó)',m(R.stockCosto))}${row('A precio de venta',m(R.stockPrecio))}${row('Ganancia que te falta por cobrar',m(R.porGanar),'tot')}</dl>
     ${C.gvOn()?'':`<p class="fine l">Para que solo tú veas esto, activa «Proteger ganancias y costos» en Más → Seguridad.</p>`}
-    <p class="fine l">Lo invertido es lo que entró como mercadería (incluye el stock con el que empezaste). La ganancia neta descuenta lo que salió sin cobrar y suma los alquileres cobrados. Esto no es un balance contable.</p>`;
+    <p class="fine l">Lo invertido es lo que entró como mercadería (incluye el stock con el que empezaste). La ganancia neta descuenta lo que salió sin venta y suma los alquileres cobrados. Esto no es un balance contable.</p>`;
   return frame(s,i,'Resumen del negocio','Lo invertido y lo ganado',body,`<button type="button" class="btn big" data-a="close">Listo</button>`,'tall');
 }
 function gpallSheet(s,i){
@@ -11572,7 +11637,7 @@ const fiVenceTxt=v=>{const c=C.fiadoVence(v);return c?`<span class="fvt ${c.esta
 /* ---------- Inicio: tarjeta «Por cobrar» (solo Pro y solo si alguien debe) ---------- */
 function fiadosAlert(){
   if(!C.isPro())return '';const T=C.fiadoTotales();if(!T.n)return '';
-  const V=C.fiadoVencen(),g=C.gv()&&T.ganancia>0?' · ganancia '+(hidden()?'****':C.money0(T.ganancia)):'';
+  const V=C.fiadoVencen(),g=C.gv()&&T.ganancia>0?' · ganancia '+(hidden()?'****':C.money(T.ganancia)):'';
   const main=`<button type="button" class="al cj fia" data-a="fia-list"><span class="alic">${ic('clipboard',22,'',2)}</span><span class="alm"><b>Por cobrar ${hidden()?'****':esc(C.money(T.saldo))}</b><i>${T.n} ${T.n===1?'persona te debe':'personas te deben'}${g}</i></span><span class="alg">Ver${ic('chev',16,'',2.4)}</span></button>`;
   /* quien ya pasó su fecha o está por pasarla: tarjeta aparte, con «Recordar» a un toque */
   const due=V.slice(0,2).map(v=>`<div class="al cj fia fven ${v.vence.estado}"><span class="alic">${ic(v.vence.estado==='vencido'?'alert':'cal',22,'',2)}</span><button type="button" class="alm" data-a="fper" data-id="${esc(v.uid)}"><b>${esc(v.nom)} · ${fiMon(v.saldo)}</b><i>${esc(v.vence.txt)}</i></button><button type="button" class="alg" data-a="fpwa" data-id="${esc(v.uid)}" aria-label="Recordarle a ${esc(v.nom)} por WhatsApp">${ic('chat',16)}Recordar</button></div>`).join('');
@@ -11639,7 +11704,7 @@ function fabonoSheet(s,i){
   const v=C.deudor(s.id);if(!v)return '';
   const body=`<div class="fph">${thumb({nom:v.nom},44)}<span><b>${esc(v.nom)}</b><i>Debe ${esc(C.money(v.saldo))}</i></span></div>
     <label class="fl"><span>¿Cuánto te paga?</span>${inw('$','fam',s.m,'',' autofocus')}</label>
-    <div class="chips fqk" role="group" aria-label="Montos rápidos"><button type="button" class="chp" data-a="fam-set" data-v="all">Todo · ${esc(C.money0(v.saldo))}</button><button type="button" class="chp" data-a="fam-set" data-v="half">La mitad · ${esc(C.money0(v.saldo/2))}</button></div>
+    <div class="chips fqk" role="group" aria-label="Montos rápidos"><button type="button" class="chp" data-a="fam-set" data-v="all">Todo · ${esc(C.money(v.saldo))}</button><button type="button" class="chp" data-a="fam-set" data-v="half">La mitad · ${esc(C.money(v.saldo/2))}</button></div>
     <label class="fl"><span>Nota (opcional)</span><input class="fld" type="text" maxlength="100" autocomplete="off" placeholder="Ej. transferencia, efectivo…" data-f="fanota" value="${esc(s.nota||'')}"></label>
     <p class="fine l" data-r="fares">${fabonoRes(s)}</p>`;
   return frame(s,i,'Registrar un pago','',body,`<button type="button" class="btn big" data-a="fabok" data-r="fabtn"${pnum(s.m)>0?'':' disabled'}>Registrar pago</button>`,'pros');
@@ -11664,7 +11729,7 @@ function feditSheet(s,i){
 function fiarChipsHTML(){
   const q=norm1((reg.fnom||'').trim()),L=C.deudores().filter(x=>!q||norm1(x.nom).includes(q)).slice(0,8);
   if(!L.length)return '';
-  return `<div class="chips wrapc fchs" role="group" aria-label="Personas">${L.map(x=>`<button type="button" class="chp ${reg.fuid===x.uid?'on':''}" data-a="rfpick" data-id="${esc(x.uid)}" aria-pressed="${reg.fuid===x.uid}">${esc(x.nom)}${x.saldo>0?`<em>${esc(C.money0(x.saldo))}</em>`:''}</button>`).join('')}</div>`;
+  return `<div class="chips wrapc fchs" role="group" aria-label="Personas">${L.map(x=>`<button type="button" class="chp ${reg.fuid===x.uid?'on':''}" data-a="rfpick" data-id="${esc(x.uid)}" aria-pressed="${reg.fuid===x.uid}">${esc(x.nom)}${x.saldo>0?`<em>${esc(C.money(x.saldo))}</em>`:''}</button>`).join('')}</div>`;
 }
 /* atajos de plazo: «Sin fecha · 7 días · 15 días · 30 días · Otra fecha» (los días salen de PLAN.fiados.plazos) */
 const fiarPlazoAct=()=>{if(!(reg.ffv>0))return '';const d=Math.round((reg.ffv-startDayUI(Date.now()))/864e5),p=(C.PLAN.fiados&&C.PLAN.fiados.plazos)||[];return p.includes(d)&&!reg.fcust?String(d):''};
@@ -12474,6 +12539,7 @@ const A={
   },
   /* registrar */
   rtipo(b){reg.tipo=b.dataset.v;reg.err='';render()},
+  rhelp(b){const h=$('[data-r="rhelp"]');if(!h)return;const abre=h.hidden;h.hidden=!abre;b.setAttribute('aria-expanded',String(abre));b.classList.toggle('on',abre)},      /* el «?» de «Salida sin venta»: explica solo al tocarlo */
   rpick(b){const p=C.prod(+b.dataset.id);if(p){addRegLine(p);render();if(reg&&reg.adding)later(()=>{const el=$('[data-f="regq"]',mainEl);if(el)try{el.focus({preventScroll:true})}catch(x){}},60)}},
   radd(){if(reg.lines.length>=C.maxLineas()){proSheetFor('items');return}reg.adding=true;render()},
   rnew(b){openAdd(b.dataset.q||'',{ctx:reg.tipo==='ingreso'?'reg-ingreso':'reg'})},
