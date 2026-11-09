@@ -1,6 +1,6 @@
 /* Cuadre · service worker: la app funciona sin internet.
    Guarda todos los archivos en el teléfono y los sirve desde ahí; si hay internet, los renueva por detrás. */
-const V='cuadre-3371eef7b9';
+const V='cuadre-a8025d92d5';
 const FILES=['./','index.html','manifest.webmanifest','jspdf.min.js','zxing.min.js','icon-192.png','icon-512.png','icon-maskable-512.png','apple-touch-icon.png','favicon-48.png'];
 /* Al instalar se baja todo directo del servidor (sin la copia temporal de GitHub, que dura 10 min), para que una actualización llegue completa y al instante. */
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(FILES.map(f=>fetch(new Request(f,{cache:'reload'})).then(r=>{if(!r.ok)throw new Error(f);return c.put(f,r)})))).then(()=>self.skipWaiting()))});
@@ -28,11 +28,18 @@ async function recibirCompartido(r){
   }catch(err){}
   return Response.redirect(new URL('./?compartido=1',self.registration.scope).href,303);
 }
+/* Lector de facturas (3.4.1): archivos grandes que se bajan solo la primera vez que se usa «Leer factura». Van en su propio caché (no empieza con «cuadre-»,
+   así la limpieza de versiones no lo borra y no se vuelve a bajar en cada actualización). Si algún día cambian, se cambia el número del nombre. */
+const LC='lector-factura-1',LAZY=['tesseract.min.js','tesseract-worker.min.js','tesseract-core-simd-lstm.wasm.js','spa.traineddata.gz','pdf.min.js','pdf.worker.min.js'];
 self.addEventListener('fetch',e=>{
   const r=e.request;
   if(r.method==='POST'){const pu=new URL(r.url);if(pu.origin===location.origin&&/\/compartir$/.test(pu.pathname))e.respondWith(recibirCompartido(r));return}
   if(r.method!=='GET')return;
   const u=new URL(r.url);if(u.origin!==location.origin)return;
+  if(LAZY.indexOf(u.pathname.split('/').pop())>=0){
+    e.respondWith(caches.open(LC).then(c=>c.match(r.url).then(hit=>hit||fetch(r.url).then(res=>{if(res&&res.ok)c.put(r.url,res.clone());return res}))));
+    return;
+  }
   if(r.mode==='navigate')e.waitUntil(heal());
   /* El manifest (nombre, identidad y íconos de la app instalable) siempre se pide primero al servidor; la copia guardada solo sirve sin internet. */
   if(r.destination==='manifest'){

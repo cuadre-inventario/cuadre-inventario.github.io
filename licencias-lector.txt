@@ -1,0 +1,4 @@
+Lector de facturas de NegocioListo (todo se ejecuta dentro del teléfono; la foto o el PDF no salen del equipo):
+- Tesseract.js 5.1.1 y tesseract.js-core 5.1.1 · Apache-2.0 · https://github.com/naptha/tesseract.js
+- Datos de idioma español (tessdata_best_int, vía @tesseract.js-data/spa 1.0.0) · Apache-2.0 / MIT · https://github.com/naptha/tessdata
+- PDF.js 3.11.174 · Apache-2.0 · Mozilla Foundation · https://github.com/mozilla/pdf.js
