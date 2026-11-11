@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-iJqlCNy5B63wPT2hGm0swTGpBDwgSe2CYTfJNGyqWc4=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-CKzBJ2HxL05zujr2OcowOLLJxCuEA90uHAGQPEOb4fE=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -2361,6 +2361,66 @@ body{margin:0;background:#d5dce6}
 .d1 .csw.on{box-shadow:0 0 0 3px var(--card),0 0 0 5px var(--c)}
 .d1 .cauto{gap:6px}
 .d1 .cauto.on{background:var(--acs);color:var(--act);border-color:transparent}
+/* colores de Venta / Ingreso / Salida (3.4.2 · E12). La hoja «Registrar» toma el acento de su tipo (los --ac… vienen en el style de la hoja):
+   pestaña elegida, botón de abajo, contador, ayuda y la rayita de arriba. Las pestañas no elegidas llevan su puntito de color. */
+.d1 .rcxtabs button{display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.d1 .tdot{flex:none;display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--tc)}
+.d1 .rcxtabs button.on{background:var(--acb);color:var(--onb);box-shadow:0 1px 3px rgba(15,23,42,.22)}
+.d1 .rcxtabs button.on .tdot{display:none}
+.d1 .sheet.regs .grab{width:46px;height:5px;background:var(--acb);opacity:.9}
+.d1 .sheet.regs .tdesc{color:var(--act);font-weight:600}
+.d1 .sheet.regs .shf .rtot span{color:var(--act)}
+/* ajustes: tres grupos de colores, cada uno en 2 filas de 5, justo debajo del color de la tienda */
+.d1 .tcc .tcg{margin-top:12px}
+.d1 .tcc .tcn{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800}
+.d1 .tcc .tcn .tdot{width:12px;height:12px}
+.d1 .tcc .tcs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));justify-items:center;gap:8px;margin:8px 0 4px}
+.d1 .csw.sm{width:38px;height:38px}
+.d1 .tcc .tcw{display:flex;align-items:flex-start;gap:6px;margin:10px 0 0;color:var(--amb);font-weight:700}
+.d1 .tcc .tcw svg{flex:none;margin-top:1px}
+.d1 .tcc .tcrest{margin-top:12px;gap:6px}
+.d1 .tcc .tcrest.on{background:var(--acs);color:var(--act);border-color:transparent}
+/* Registrar: cada producto MÁS BAJITO (3.4.2 · E13). Antes cada uno ocupaba ~110 px (cantidad, precio y total en 3 filas); ahora ~77 px:
+   cantidad, precio y total en UNA fila, cápsulas más bajas y nombre y etiqueta «Quedan» más chicos. Se ven ~40 % más productos sin deslizar. */
+.d1 .rl.rcx{margin:5px 0 0;padding:5px 3px 6px 10px;border-radius:12px}
+.d1 .rcx1{min-height:26px;gap:6px}
+.d1 .rcx1>b{font-size:14px;line-height:1.15}
+.d1 .rcxchip{font-size:10.5px;padding:2px 7px}
+.d1 .rcxchip svg{width:11px;height:11px}
+.d1 .rcx1>.ib{width:32px;height:32px;margin:-3px -2px -3px -2px}
+.d1 .rcx2{gap:6px 6px;margin-top:6px}
+.d1 .rcx2 .stp{width:104px;height:34px;border-radius:10px}
+.d1 .rcx2 .stp button{width:32px;height:34px}
+.d1 .rcx2 .stp input{width:40px;height:32px;font-size:16px}
+.d1 .rcx2 .inpw{height:34px;border-radius:10px;padding:0 8px}
+.d1 .rcx2 .inpw input{height:32px}
+.d1 .rcxsub{font-size:15px}
+.d1 .rl.rcx .rln{margin-top:3px}
+@media (max-width:430px){.d1 .sheet.regs .shb{padding-left:16px;padding-right:16px}}
+@media (max-width:340px){.d1 .sheet.regs .shb{padding-left:12px;padding-right:12px}.d1 .rl.rcx{padding-left:8px}.d1 .rcx2{gap:6px 4px}.d1 .rcx2 .stp{width:90px}.d1 .rcx2 .stp button{width:27px}.d1 .rcx2 .stp input{width:36px}.d1 .rcx2 .inpw{padding:0 6px}.d1 .rcxsub{font-size:13.5px}}
+/* teclado abierto o pantalla baja (3.4.2 · E11): con el teclado a la app le quedan ~400 px (o menos en teléfonos chicos). Las hojas ocupan toda la altura,
+   el título y el botón de abajo se hacen compactos y la zona de casillas gana ~30 % (medido: 226 → 296 px en un S25 Ultra) */
+@media (max-height:540px){
+  .d1 .ov{padding-top:0;padding-bottom:0}
+  .d1 .sheet{max-height:100%;border-radius:16px 16px 0 0}
+  .d1 .sheet.tall{min-height:0}
+  .d1 .grab{margin:4px auto 0}
+  .d1 .shh{min-height:40px;padding:0 4px 0 18px}
+  .d1 .sht h2{font-size:16px;line-height:1.15}
+  .d1 .sht p{display:none}
+  .d1 .shh .ib{width:38px;height:38px}
+  .d1 .shb{padding-top:4px;padding-bottom:12px}
+  .d1 .shf{padding:8px 18px 8px;gap:6px}
+  .d1 .shf .btn.big{height:44px;font-size:15px}
+}
+@media (max-height:330px){
+  .d1 .grab{display:none}
+  .d1 .shh{min-height:34px}
+  .d1 .shh .ib{width:34px;height:34px}
+  .d1 .shf{padding:6px 14px}
+  .d1 .shf .btn.big{height:40px}
+  .d1 .shb{padding-left:14px;padding-right:14px}
+}
 /* descuento en la venta (3.4.1 · E8): cerrado por defecto, una sola fila */
 .d1 .sheet.regs .dtob{height:42px;margin-top:8px}
 .d1 .dtob2{margin-top:10px;padding:10px 14px 12px;border-radius:16px;background:var(--fill)}
@@ -2897,7 +2957,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.4.1',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.4.2',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -3102,6 +3162,19 @@ C.COLORES=[['#3157d5','Azul'],['#0b7a8a','Turquesa'],['#1e8449','Verde'],['#a562
 C.colorTienda=()=>{const s=C.state,c=String(s.color||'').toLowerCase();return C.COLORES.some(x=>x[0]===c)?c:C.rubro(s.rubro).color};
 C.colorElegido=()=>{const s=C.state,c=String(s.color||'').toLowerCase();return C.COLORES.some(x=>x[0]===c)?c:''};
 C.setColor=c=>{const s=C.state;c=String(c||'').toLowerCase();if(C.COLORES.some(x=>x[0]===c))s.color=c;else delete s.color;C.emit()};
+/* colores de «Registrar» (3.4.2 · E12): Venta, Ingreso y Salida sin venta se distinguen por color (pestaña, ayuda, botón de abajo y contador).
+   De fábrica: azul, verde y naranja (los mismos del historial). Se cambian en «Mi negocio», junto al color de la tienda, con la MISMA paleta.
+   Solo se guarda lo que la persona cambió (state.ctipo = {venta?, ingreso?, salida?}): así el hash de ajustes de quienes no lo usan no cambia. */
+C.TIPOS_REG=[['venta','Venta'],['ingreso','Ingreso'],['salida','Salida sin venta']];
+C.TIPO_COLOR={venta:'#3157d5',ingreso:'#1e8449',salida:'#c2410c'};
+C.colorTipo=t=>{const c=String(((C.state&&C.state.ctipo)||{})[t]||'').toLowerCase();return C.COLORES.some(x=>x[0]===c)?c:(C.TIPO_COLOR[t]||C.TIPO_COLOR.venta)};
+C.colorTipoCambiado=()=>!!(C.state&&C.state.ctipo&&Object.keys(C.state.ctipo).length);
+C.setColorTipo=(t,c)=>{if(!C.TIPO_COLOR[t])return;const s=C.state,m=Object.assign({},s.ctipo||{});c=String(c||'').toLowerCase();
+  if(C.COLORES.some(x=>x[0]===c)&&c!==C.TIPO_COLOR[t])m[t]=c;else delete m[t];
+  if(Object.keys(m).length)s.ctipo=m;else delete s.ctipo;C.emit()};
+C.resetColoresTipo=()=>{delete C.state.ctipo;C.emit()};
+/* ¿dos tipos con el mismo color? (se avisa en Ajustes: ya no se distinguirían) */
+C.colorTipoRepetido=()=>{const v=C.TIPOS_REG.map(x=>C.colorTipo(x[0]));return new Set(v).size<v.length};
 /* ---- rubros: grupos para elegir y buscador (sin tildes ni mayúsculas) ---- */
 const RGRUPOS=[
   ['Comida y bebida',['tienda','frutas','panaderia','carniceria','heladeria','restaurante','comidarapida','bar','licoreria','distribuidora']],
@@ -5017,7 +5090,7 @@ const rnd=n=>{let s='';const a='abcdefghijklmnopqrstuvwxyz0123456789';for(let i=
 const DEV=(()=>{try{let d=localStorage.getItem('cuadre.dev');if(!d){d=rnd(10);localStorage.setItem('cuadre.dev',d)}return d}catch(e){return rnd(10)}})();
 function cloudHash(){try{stampMods()}catch(e){}const o=backupObj(true);return hash32(JSON.stringify([o.s,o.d]))}
 /* ajustes del NEGOCIO (nombre, logo, impuestos…): si no cambiaron aquí desde la última vez, se usan los del otro dispositivo */
-const BIZKEYS=['nombre','rubro','rubroTxt','logo','firma','mods','info','pais','moneda','monedaSym','numStyle','dec','ivaPct','taxName','margenDef','noPerdida','descDef','validezDef','notasDef','ivaIncl','ivaAuto','plantillas','envio','color'];
+const BIZKEYS=['nombre','rubro','rubroTxt','logo','firma','mods','info','pais','moneda','monedaSym','numStyle','dec','ivaPct','taxName','margenDef','noPerdida','descDef','validezDef','notasDef','ivaIncl','ivaAuto','plantillas','envio','color','ctipo'];
 const nombreNeg=n=>String(n||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
 function sHash(){const s=C.state,o={};BIZKEYS.forEach(k=>{if(s[k]!==undefined)o[k]=s[k]});return hash32(JSON.stringify(o))}
 /* «snap» = cómo estaba todo en el instante en que se armó la copia que se subió. Lo que se cambió MIENTRAS subía no iba en esa copia:
@@ -10977,10 +11050,10 @@ const PINATTR=(()=>{let t='password';try{if(window.CSS&&CSS.supports&&CSS.suppor
 /* =====================================================================
    Hojas (sheets)
    ===================================================================== */
-function frame(s,i,title,sub,body,foot,cls){
+function frame(s,i,title,sub,body,foot,cls,sty){
   const fresh=s.fresh;s.fresh=false;
   return `<div class="ov ${fresh?'in':''}" style="z-index:${60+i*2}" data-i="${i}"><div class="scrim" data-a="close"></div>
-    <section class="sheet ${cls||''}" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="grab"></div>
+    <section class="sheet ${cls||''}" role="dialog" aria-modal="true" aria-label="${esc(title)}"${sty?' style="'+sty+'"':''}><div class="grab"></div>
     <header class="shh"><div class="sht"><h2>${esc(title)}</h2>${sub?`<p>${sub}</p>`:''}</div><button type="button" class="ib" data-a="close" aria-label="Cerrar">${ic('x',21)}</button></header>
     <div class="shb scroll" data-sk="sheet${i}">${body}</div>${foot?`<footer class="shf">${foot}</footer>`:''}</section></div>`;
 }
@@ -11201,10 +11274,16 @@ function regSheet(s,i){
     <label class="fl"><span>Para quién o para qué</span><input class="fld" type="text" maxlength="60" autocomplete="off" placeholder="${esc(C.ej('dest'))}" data-f="rdest" value="${esc(R.dest||'')}"></label>
     <p class="fine l">Si escribes quién recibe, al registrar le pasas la pantalla para que firme con el dedo y sale un comprobante en PDF.</p></section>`:'';
   const ayuda=`<div class="rcxhelp" data-r="rhelp" hidden><b>Salida sin venta</b><p>Sale mercadería de tu stock sin que nadie te la pague: uso propio, regalo o muestra, producto dañado o vencido, uso interno.</p><ul><li>Baja el stock.</li><li>No cuenta como venta.</li><li>Baja tu Ganancia neta por lo que te costó.</li></ul><p>Si el cliente te paga después, no es esto: usa Venta y «Vender a crédito (fiar)».</p></div>`;
-  const body=`<div class="rcxseg">${seg([['venta','Venta'],['ingreso','Ingreso'],['salida','Salida sin venta']],R.tipo,'rtipo','tri')}<button type="button" class="rcxq" data-a="rhelp" aria-label="¿Qué es una salida sin venta?" aria-expanded="false">?</button></div>${ayuda}${R.tipo==='venta'?'':`<p class="fine l tdesc">${TIPOS[R.tipo][2]}</p>`}${R.tipo==='ingreso'?facBarHTML():''}
+  const body=`<div class="rcxseg">${segTipo(R.tipo)}<button type="button" class="rcxq" data-a="rhelp" aria-label="¿Qué es una salida sin venta?" aria-expanded="false">?</button></div>${ayuda}${R.tipo==='venta'?'':`<p class="fine l tdesc">${TIPOS[R.tipo][2]}</p>`}${R.tipo==='ingreso'?facBarHTML():''}
     ${R.lines.map(regLineH).join('')}${R.adding?dtoBlockHTML()+fiarBlockHTML()+pick:pick+dtoBlockHTML()+fiarBlockHTML()}${ent}<p class="err" data-r="rerr"${R.err?'':' hidden'}>${esc(R.err)}</p>`;
   const foot=`<div class="rtot" data-r="rinfo">${regFootInfo()}</div><button type="button" class="btn big" data-a="rsave" data-r="rbtn"${regCan()?'':' disabled'}>${regBtnTxt()}</button>`;
-  return frame(s,i,'Registrar','',body,foot,'tall regs');
+  return frame(s,i,'Registrar','',body,foot,'tall regs t-'+R.tipo,tipoStyle(R.tipo));
+}
+/* colores de Venta / Ingreso / Salida (3.4.2 · E12): la hoja entera toma el acento de su tipo (botón de abajo, contador, ayuda, pestaña elegida);
+   cada pestaña lleva su puntito de color para que se aprenda cuál es cuál aunque no esté elegida */
+function tipoStyle(t){const a=accentOf(C.colorTipo(t));return Object.keys(a).map(k=>'--'+k+':'+a[k]).join(';')}
+function segTipo(cur){
+  return `<div class="seg tri rcxtabs" role="group">${C.TIPOS_REG.map(([v,l])=>`<button type="button" class="${v===cur?'on':''}" data-a="rtipo" data-v="${v}" aria-pressed="${v===cur}" style="--tc:${C.colorTipo(v)}"><i class="tdot" aria-hidden="true"></i>${l}</button>`).join('')}</div>`;
 }
 function patchReg(){
   if(!reg)return;
@@ -11269,11 +11348,24 @@ function colorCardHTML(){
     <div class="csws" role="group" aria-label="Color de la tienda">${sw}</div>
     <button type="button" class="btn ghost sm cauto ${el?'':'on'}" data-a="ncolor" data-v="" aria-pressed="${!el}">${el?'':ic('check',16,'',3)}Automático (según el rubro)</button></section>`;
 }
+/* colores de Venta / Ingreso / Salida sin venta (3.4.2 · E12): van JUNTOS, justo debajo del color de la tienda, con la misma paleta */
+function colorTipoCardHTML(){
+  const cam=C.colorTipoCambiado();
+  const grupos=C.TIPOS_REG.map(([t,nom])=>{const cur=C.colorTipo(t);
+    const sw=C.COLORES.map(([c,n])=>`<button type="button" class="csw sm ${cur===c?'on':''}" data-a="ntcolor" data-t="${t}" data-v="${c}" style="--c:${c}" aria-label="${esc(nom+': '+n)}" aria-pressed="${cur===c}" title="${esc(n)}">${cur===c?ic('check',15,'',3):''}</button>`).join('');
+    return `<div class="tcg"><p class="tcn"><i class="tdot" style="--tc:${cur}" aria-hidden="true"></i>${esc(nom)}</p><div class="csws tcs" role="group" aria-label="Color de ${esc(nom)}">${sw}</div></div>`}).join('');
+  return `<section class="card tcc"><div class="ch"><h3>Colores de Registrar</h3></div>
+    <p class="fine">Para distinguir de un vistazo si vendes, ingresas mercadería o sacas sin venta. Elige el color de cada uno.</p>
+    ${grupos}
+    ${C.colorTipoRepetido()?`<p class="fine tcw">${ic('alert',14,'',2.4)}Dos de los tres tienen el mismo color: así no se distinguen.</p>`:''}
+    <button type="button" class="btn ghost sm tcrest ${cam?'':'on'}" data-a="ntrest"${cam?'':' disabled'}>${cam?'':ic('check',16,'',3)}Como vienen (azul, verde y naranja)</button></section>`;
+}
 function negocioSheet(s,i){
   const st=C.state,I=st.info,L=st.logo;
   const body=`<label class="fl"><span>Nombre del negocio</span><input class="fld" type="text" maxlength="60" data-f="nnom" value="${esc(st.nombre)}"></label>
     ${logoCardHTML(L,'Sale arriba de la app y en tus cotizaciones. Con Pro, tus PDF llevan el logo, tus datos y una marca de agua.')}
     ${colorCardHTML()}
+    ${colorTipoCardHTML()}
     ${firmaCardHTML()}
     <label class="fl"><span>Teléfono</span><input class="fld" type="tel" inputmode="tel" maxlength="30" data-f="ntel" value="${esc(I.telefono)}"></label>
     <label class="fl"><span>Correo</span><input class="fld" type="email" inputmode="email" autocapitalize="off" maxlength="60" data-f="nmail" value="${esc(I.email)}"></label>
@@ -12323,7 +12415,7 @@ function facSheet(s,i){
   const res=facResumenH(),warn=f.rows.some(facRev);
   const body=`${facEstadoH()}${facCtlH()}<div class="fxl" data-r="fxl">${f.rows.map(facRowH).join('')}</div>
     <p class="fine l">Lo que lee la app puede tener errores: compara con tu factura. Lo que cambies aquí queda guardado al agregarlo. Después toca «Registrar» en el ingreso.</p><p class="err" data-r="fxerr"${f.err?'':' hidden'}>${esc(f.err||'')}</p>`;
-  return frame(s,i,'Factura leída',esc(f.nom||''),body,`<div class="rtot" data-r="fxinfo">${res.txt}</div><button type="button" class="btn big" data-a="fa-ok" data-r="fxbtn"${res.n?'':' disabled'}>${warn?'Agregar de todos modos':'Agregar al ingreso'}</button>`,'tall regs facs');
+  return frame(s,i,'Factura leída',esc(f.nom||''),body,`<div class="rtot" data-r="fxinfo">${res.txt}</div><button type="button" class="btn big" data-a="fa-ok" data-r="fxbtn"${res.n?'':' disabled'}>${warn?'Agregar de todos modos':'Agregar al ingreso'}</button>`,'tall regs facs',tipoStyle('ingreso'));
 }
 function patchFac(){
   if(!fac||fac.ph!=='revisar')return;
@@ -13280,6 +13372,8 @@ const A={
   negocio(){pushSheet({k:'negocio'})},
   numst(b){C.setMonedaDe({numStyle:b.dataset.v});toast('Formato: '+C.money(1234.5))},
   decs(b){C.setMonedaDe({dec:+b.dataset.v});toast('Precios con '+(+b.dataset.v?'2 decimales':'0 decimales'))},
+  ntcolor(b){C.setColorTipo(b.dataset.t,b.dataset.v||'')},
+  ntrest(){C.resetColoresTipo();toast('Colores como vienen: azul, verde y naranja')},
   ncolor(b){const v=b.dataset.v||'';C.setColor(v);toast(v?'Color de la tienda: '+(C.COLORES.find(x=>x[0]===v)||[,''])[1]:'Color automático, según tu rubro')},
   pagesz(b){C.setMonedaDe({page:b.dataset.v});toast('Hoja de PDF: '+(b.dataset.v==='a4'?'A4':'Carta'))},
   lockmin(b){C.setLockMin(+b.dataset.v)},
@@ -14277,7 +14371,11 @@ Object.assign(CH,{
   const kb=()=>vv?Math.max(0,Math.round(innerHeight-vv.height-vv.offsetTop)):0;
   const apply=()=>{const k=kb(),v=k>80?k:0;if(v===last)return;last=v;root.style.setProperty('--kb',v+'px')};
   const isField=t=>!!(t&&t.tagName&&/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)&&!/^(checkbox|radio|file|button|range|submit)$/.test(t.type||''));
-  const show=t=>{try{const r=t.getBoundingClientRect(),bottom=innerHeight-Math.max(0,last)-14;if(r.bottom>bottom||r.top<64)t.scrollIntoView({block:'center',inline:'nearest'})}catch(e){}};
+  /* 3.4.2 (E11): dentro de una hoja, «a la vista» es la zona de casillas (.shb) entre el título y el botón de abajo, no la pantalla entera:
+     antes una casilla podía quedar a medias bajo el botón fijo de abajo. */
+  const show=t=>{try{const r=t.getBoundingClientRect(),sb=t.closest&&t.closest('.shb');
+    if(sb){const b=sb.getBoundingClientRect();if(r.bottom>b.bottom-6||r.top<b.top+2)t.scrollIntoView({block:'center',inline:'nearest'});return}
+    const bottom=innerHeight-Math.max(0,last)-14;if(r.bottom>bottom||r.top<64)t.scrollIntoView({block:'center',inline:'nearest'})}catch(e){}};
   if(vv){vv.addEventListener('resize',apply);vv.addEventListener('scroll',apply)}
   addEventListener('focusin',e=>{const t=e.target;
     /* campos de una ventana: el teclado muestra «Sig.» si hay otro campo después y «Listo» en el último */
