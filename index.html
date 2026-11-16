@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+KAi+mAhSYMhB2/jFJFE1VHxonLisdfb0NYz8HYAYmU=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-57gsiT1WK2VOzQkGSd0w5I7hMxx/PBSs7o2eDzuHisM=' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://www.googleapis.com https://gmail.googleapis.com https://accounts.google.com https://play.google.com https://compras-pro.stockfacilapp35.workers.dev; frame-src https://accounts.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>NegocioListo</title>
 <meta name="theme-color" content="#3157d5">
@@ -2564,6 +2564,53 @@ body{margin:0;background:#d5dce6}
   .d1 .sheet.regs .rcxd>b{font-size:12.5px}
 }
 
+/* =====================================================================
+   3.4.4 · E20 + E18 — línea de producto de «Registrar» más clara y unidades de stock con color
+   · la unidad («por UND», «por kg») va DENTRO de la cápsula del precio, debajo del número (antes «c/u» colgaba del borde y se veía mal)
+   · «Quedan 6 UND»: el número en negrita y con su color (--stk = hay, --stkl = por acabarse); la lista de productos igual («8 UND» en color)
+   · el botón % lleva «Descuento» debajo, en letra chica
+   · colores de fábrica: verde (hay) y rojo (por acabarse); se cambian en Más → Mi negocio → «Colores del stock»
+   ===================================================================== */
+.d1{--stk:#1e8449;--stkl:#c8281d}
+/* cantidad y precio a la misma altura (la cápsula del precio lleva dos renglones: número y unidad) */
+.d1 .sheet.regs .rcx2.rcxv .stp,.d1 .sheet.regs .rcx2.rcxv .inpw{height:40px}      /* solo en Venta (la cápsula del precio lleva la unidad debajo del número); Ingreso y Salida quedan como antes */
+.d1 .sheet.regs .rcx2.rcxv .stp button{height:38px}
+.d1 .sheet.regs .rcx2.rcxv .stp input{height:38px}
+.d1 .sheet.regs .rcx2 .inpw.rcxp{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;align-content:center;column-gap:4px;padding:0 10px}
+.d1 .sheet.regs .rcx2 .inpw.rcxp>em:first-child{grid-column:1;grid-row:1/3;align-self:center;font-size:15px;font-weight:600}
+.d1 .sheet.regs .rcx2 .inpw.rcxp>input{grid-column:2;grid-row:1;align-self:end;height:22px;padding:0;font-size:16px;line-height:22px}
+.d1 .sheet.regs .rcx2 .inpw.rcxp>em:last-child{position:static;grid-column:2;grid-row:2;align-self:start;margin:0;padding:0;border-radius:0;background:none;box-shadow:none;pointer-events:none;
+  font-size:9.5px;line-height:11px;font-weight:700;letter-spacing:.02em;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* «Quedan 6 UND» */
+.d1 .sheet.regs .rcxchip{gap:3px;align-items:baseline}
+.d1 .sheet.regs .rcxchip svg{align-self:center}
+.d1 .sheet.regs .rcxchip .qn{font-size:13px;font-weight:800;color:var(--stk);font-variant-numeric:tabular-nums}
+.d1 .sheet.regs .rcxchip.amb{color:var(--stkl)}
+.d1 .sheet.regs .rcxchip.amb .qn{color:var(--stkl)}
+.d1 .sheet.regs .rcxchip.red .qn{color:var(--red)}
+/* botón % con su rótulo */
+.d1 .sheet.regs .dtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:auto;min-width:46px;height:36px;padding:0 4px;margin:-3px 0}
+.d1 .sheet.regs .dtn svg{width:14px;height:14px}
+.d1 .sheet.regs .dtn i{font-style:normal;font-size:9px;font-weight:700;line-height:1;letter-spacing:.01em}
+/* lista de productos de «Registrar» (y de los demás buscadores): las unidades con su color */
+.d1 .stq{font-style:normal;font-weight:700;color:var(--stk)}
+.d1 .stq.z{color:var(--mut)}
+.d1 .stq.lo{color:var(--stkl)}      /* ficha del producto y préstamos: igual que en la lista de «Registrar» */
+.d1 .pkm i.lowt{color:var(--stkl)}
+.d1 .pkm i.lowt .stq{color:var(--stkl)}
+/* lista de Productos: no cambia hasta que la persona elija un color (las variables «x» solo existen entonces) */
+.d1 .plist .stc b{color:var(--stkx,var(--ink));background:var(--stkxs,var(--fill))}
+.d1 .plist .stc.low b{background:var(--stklxs,#fff1da);color:var(--stklx,#9a5b00)}
+.d1 .plist .stc.zero b{background:#fde7e4;color:var(--red)}
+@media (max-width:340px){
+  .d1 .sheet.regs .dtn{min-width:40px}
+  .d1 .sheet.regs .dtn i{font-size:8.5px}
+}
+/* 3.4.4 (E16): mensaje fijo cuando Google no dio el permiso de Drive (o no dejó entrar): queda a la vista junto al botón, no desaparece solo */
+.d1 .gerr{display:flex;gap:8px;align-items:flex-start;margin:8px 0 0;padding:9px 11px;border-radius:12px;background:var(--reds);color:var(--ink);font-size:12.5px;line-height:1.4;font-weight:600;text-align:left}
+.d1 .gerr svg{flex:none;margin-top:1px;color:var(--red)}
+.d1 .wla .gerr{margin:0}
+
 .d1 .mi{background:url(data:image/png;base64,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) center/cover no-repeat;box-shadow:0 8px 16px -8px rgba(10,40,120,.6)}
 
 </style></head><body>
@@ -3061,7 +3108,7 @@ window.CuadreIcons={UI,RI,icon,rubroIcon};
 (function(){
 'use strict';
 const DATA=window.CUADRE_DATA,ICONS=window.CuadreIcons;
-const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.4.3',UI:ICONS.UI,locked:false};
+const C=window.CUADRE={RUBROS:DATA,state:null,root:null,version:'3.4.4',UI:ICONS.UI,locked:false};
 const DAY=864e5;
 /* =====================================================================
    Cerrar sesión de Google = borrar de ESTE equipo todo lo de esa cuenta (3.0)
@@ -3279,6 +3326,19 @@ C.setColorTipo=(t,c)=>{if(!C.TIPO_COLOR[t])return;const s=C.state,m=Object.assig
 C.resetColoresTipo=()=>{delete C.state.ctipo;C.emit()};
 /* ¿dos tipos con el mismo color? (se avisa en Ajustes: ya no se distinguirían) */
 C.colorTipoRepetido=()=>{const v=C.TIPOS_REG.map(x=>C.colorTipo(x[0]));return new Set(v).size<v.length};
+/* colores del stock (3.4.4 · E18): «Unidades que hay» y «Por acabarse». Misma paleta de 10 colores. Solo se guarda lo que la persona cambió
+   (state.cstk = {hay?, bajo?}): así el hash de ajustes de quienes no lo usan no cambia.
+   De fábrica: en «Registrar» el número de unidades sale en verde y, si queda poco, en rojo (el mismo de los avisos). En las demás listas
+   (Productos) no cambia nada hasta que la persona elija un color: entonces también lo toma. */
+C.STK_ROLES=[['hay','Unidades que hay'],['bajo','Por acabarse']];
+C.STK_COLOR={hay:'#1e8449',bajo:'#c8281d'};
+C.colorStk=r=>{const c=String(((C.state&&C.state.cstk)||{})[r]||'').toLowerCase();return C.COLORES.some(x=>x[0]===c)?c:(C.STK_COLOR[r]||C.STK_COLOR.hay)};
+C.colorStkElegido=r=>{const c=String(((C.state&&C.state.cstk)||{})[r]||'').toLowerCase();return C.COLORES.some(x=>x[0]===c)?c:''};
+C.colorStkCambiado=()=>!!(C.state&&C.state.cstk&&Object.keys(C.state.cstk).length);
+C.setColorStk=(r,c)=>{if(!C.STK_COLOR[r])return;const s=C.state,m=Object.assign({},s.cstk||{});c=String(c||'').toLowerCase();
+  if(C.COLORES.some(x=>x[0]===c)&&c!==C.STK_COLOR[r])m[r]=c;else delete m[r];
+  if(Object.keys(m).length)s.cstk=m;else delete s.cstk;C.emit()};
+C.resetColoresStk=()=>{delete C.state.cstk;C.emit()};
 /* ---- rubros: grupos para elegir y buscador (sin tildes ni mayúsculas) ---- */
 const RGRUPOS=[
   ['Comida y bebida',['tienda','frutas','panaderia','carniceria','heladeria','restaurante','comidarapida','bar','licoreria','distribuidora']],
@@ -3877,7 +3937,7 @@ C.devOk=DEVOK;
    o «Pro» (hay compra, código del vendedor o plan de pruebas). El dorado es solo para «Pro». */
 C.planEtq=()=>{const s=C.state,dv=DEVOK?s.devPlan:null;if(!C.isPro())return 'Gratis';if(dv==='pro'||dv==='pc')return 'Pro';if(licOk())return 'Pro';const P=pcProOk();if(P)return P.until>0?'PC':'Pro';return 'Prueba'};
 /* línea que se pone junto a cada botón «Entrar con Google», para que nadie se asuste con el texto del permiso de Google */
-C.googleNota='NegocioListo guarda tu copia solo en una carpeta oculta de tu Drive. No ve ni toca tus otros archivos.';
+C.googleNota='NegocioListo guarda tu copia solo en una carpeta oculta de tu Drive. No ve ni toca tus otros archivos. En la pantalla de Google deja marcada la casilla de «Google Drive» y toca «Continuar».';
 C.planName=()=>{const pro=C.isPro(),pc=!!pcOk();return pro&&pc?'Pro + Computadora':pro?'Pro':pc?'Computadora':'Gratis'};
 
 /* =====================================================================
@@ -5194,7 +5254,7 @@ const rnd=n=>{let s='';const a='abcdefghijklmnopqrstuvwxyz0123456789';for(let i=
 const DEV=(()=>{try{let d=localStorage.getItem('cuadre.dev');if(!d){d=rnd(10);localStorage.setItem('cuadre.dev',d)}return d}catch(e){return rnd(10)}})();
 function cloudHash(){try{stampMods()}catch(e){}const o=backupObj(true);return hash32(JSON.stringify([o.s,o.d]))}
 /* ajustes del NEGOCIO (nombre, logo, impuestos…): si no cambiaron aquí desde la última vez, se usan los del otro dispositivo */
-const BIZKEYS=['nombre','rubro','rubroTxt','logo','firma','mods','info','pais','moneda','monedaSym','numStyle','dec','ivaPct','taxName','margenDef','noPerdida','descDef','validezDef','notasDef','ivaIncl','ivaAuto','plantillas','envio','color','ctipo'];
+const BIZKEYS=['nombre','rubro','rubroTxt','logo','firma','mods','info','pais','moneda','monedaSym','numStyle','dec','ivaPct','taxName','margenDef','noPerdida','descDef','validezDef','notasDef','ivaIncl','ivaAuto','plantillas','envio','color','ctipo','cstk'];
 const nombreNeg=n=>String(n||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
 function sHash(){const s=C.state,o={};BIZKEYS.forEach(k=>{if(s[k]!==undefined)o[k]=s[k]});return hash32(JSON.stringify(o))}
 /* «snap» = cómo estaba todo en el instante en que se armó la copia que se subió. Lo que se cambió MIENTRAS subía no iba en esa copia:
@@ -5213,16 +5273,30 @@ function loadGIS(){
 }
 /* ¿hay un permiso de Google vigente (guardado en esta sesión)? Sin él, pedirlo abre la ventana de Google. */
 const tokVivo=()=>!!(cl.tok&&Date.now()<cl.exp-60e3);
+/* (3.4.4, E16) Google deja DESMARCAR el permiso de Drive en su pantalla («permisos detallados»): la persona entra, pero el permiso que vuelve no sirve para
+   guardar nada. Antes se tomaba como entrada buena y la app seguía como si nada (después fallaba con «Google negó el acceso»). Ahora se revisa lo que Google
+   concedió: si falta Drive, NO se guarda ese permiso y se explica qué marcar; el siguiente intento (otro toque) pide la confirmación completa, con la cuenta que
+   acaba de elegir. Si Google no dice qué concedió («scope» ausente), se acepta como siempre. */
+const conDrive=r=>typeof r.scope!=='string'||!r.scope||r.scope.indexOf('drive.appdata')>=0;
+async function sinDrive(tk){
+  cl.forzar=Date.now();cl.hint='';
+  try{const x=await Promise.race([fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+tk}}),new Promise((_,no)=>setTimeout(no,4000))]);
+    const u=await x.json();cl.hint=String(u&&u.email||'')}catch(e){}}
+const forzando=()=>!!(cl.forzar&&Date.now()-cl.forzar<10*60e3);      // solo vale para el reintento inmediato; pasados 10 minutos se olvida
 function getToken(interactive){
   if(cl.tok&&Date.now()<cl.exp-60e3)return Promise.resolve(cl.tok);
   if(!(window.google&&google.accounts&&google.accounts.oauth2))return Promise.reject(new Error('sinGIS'));
   return new Promise((res,rej)=>{
     try{const tc=google.accounts.oauth2.initTokenClient({client_id:C.CONFIG.googleClientId,scope:SCOPE,
-      callback:r=>{if(r.error)return rej(new Error('auth:'+r.error));cl.tok=r.access_token;cl.exp=Date.now()+(r.expires_in||3600)*1e3;try{sessionStorage.setItem('cuadre.gtok',JSON.stringify({t:cl.tok,e:cl.exp}))}catch(x){}res(cl.tok)},
+      callback:r=>{if(r.error)return rej(new Error('auth:'+r.error));
+        if(!conDrive(r)){sinDrive(r.access_token).then(()=>rej(new Error('nodrive:')));return}
+        cl.forzar=0;cl.hint='';cl.tok=r.access_token;cl.exp=Date.now()+(r.expires_in||3600)*1e3;try{sessionStorage.setItem('cuadre.gtok',JSON.stringify({t:cl.tok,e:cl.exp}))}catch(x){}res(cl.tok)},
       error_callback:e=>rej(new Error('auth:'+((e&&e.type)||'cancelado')))});
       /* 'nueva' = la persona quiere ELEGIR cuenta (entrar o cambiar de cuenta): sin pista, para que Google deje escoger cualquiera.
-         'cuenta' = confirmar que es la de este negocio: se sugiere esa. Sin interactivo: se reutiliza el permiso. */
-      tc.requestAccessToken(interactive==='nueva'?{prompt:'select_account'}:{prompt:interactive==='cuenta'?'select_account':(CS().email?'':'select_account'),hint:CS().email||undefined});
+         'cuenta' = confirmar que es la de este negocio: se sugiere esa. Sin interactivo: se reutiliza el permiso.
+         Tras un intento sin el permiso de Drive: se vuelve a mostrar la pantalla de permisos completa (prompt «consent») para la misma cuenta. */
+      if(forzando())tc.requestAccessToken({prompt:'consent',hint:cl.hint||CS().email||undefined});
+      else tc.requestAccessToken(interactive==='nueva'?{prompt:'select_account'}:{prompt:interactive==='cuenta'?'select_account':(CS().email?'':'select_account'),hint:CS().email||undefined});
     }catch(e){rej(e)}
   });
 }
@@ -5250,11 +5324,14 @@ C.authMsg=authMsg;
 function cloudMsg(e){const m=String(e&&e.message||e);
   if(m.indexOf('otra:')===0)return 'Entraste con otra cuenta de Google ('+m.slice(5)+'). Este negocio es de '+(CS().email||'otra cuenta')+': entra con esa cuenta.';
   if(m==='sinred'||/Failed to fetch|NetworkError|Load failed/i.test(m))return 'Sin conexión con Google. Se intentará de nuevo solo.';
+  if(m.indexOf('nodrive:')===0)return NODRIVE_MSG;
   if(m.indexOf('auth:')===0)return 'Google necesita que confirmes el permiso. Toca cualquier botón o «Subir ahora».';
   if(m==='drive:403')return 'Google negó el acceso a la carpeta de la app. Cierra la sesión y vuelve a entrar.';
   if(m==='sinGIS')return GIS_MSG;
   if(/^drive:/.test(m))return 'Google Drive no aceptó la copia ahora. Se intentará de nuevo solo.';
   return 'No pude conectar con Google ahora. Se intentará de nuevo solo.'}
+/* (3.4.4, E16) la persona entró con Google pero dejó DESMARCADA la casilla de Google Drive */
+const NODRIVE_MSG='Entraste con Google, pero falta el permiso de Google Drive: en la pantalla de Google marca la casilla de «Google Drive» y toca «Continuar». Sin ese permiso no se puede guardar tu copia. Si no quieres darlo, puedes seguir usando NegocioListo sin cuenta.';
 const GIS_MSG='No pude abrir el inicio de sesión de Google. Si tienes un bloqueador de anuncios, un antivirus o la red de una empresa, permite «accounts.google.com» o abre NegocioListo en Chrome. Mientras tanto puedes seguir usando NegocioListo sin cuenta.';
 async function driveFiles(tk){const r=await gapi(DRV+'/files?spaces=appDataFolder&fields='+encodeURIComponent('files(id,name,modifiedTime,appProperties)')+'&pageSize=100',{},tk);return (await r.json()).files||[]}
 /* Si dos dispositivos suben a la vez, Drive puede quedarse con dos archivos «principal»: se toma el de revisión más alta (a igual revisión, el más reciente). */
@@ -5372,7 +5449,7 @@ async function cloudSync(manual,gesture){
     const rev=(R?R.rev:0)+1;
     const sn=await drivePut(tk,JSON.stringify(backupObj(true)),rev,files);
     markSynced(rev,undefined,sn);cl.needAuth=false;cl.err='';return {ok:true};
-  }catch(e){cl.err=cloudMsg(e);if(/^(auth|otra):/.test(String(e&&e.message)))cl.needAuth=true;return {ok:false,reason:'error',msg:cl.err}}
+  }catch(e){cl.err=cloudMsg(e);if(/^(auth|otra|nodrive):/.test(String(e&&e.message)))cl.needAuth=true;return {ok:false,reason:'error',msg:cl.err}}
   finally{cl.busy=false;uiPing();
     if(cl.again){cl.again=false;clearTimeout(cl.timer);cl.timer=setTimeout(()=>{cloudSync(false)},400)}}      // se cambió algo mientras subía: se vuelve a subir enseguida
 }
@@ -5429,7 +5506,7 @@ C.cloud={
       const R=remoteOf(await driveFiles(tk)),S=CS();
       S.email=email;S.owner=normMail(email)||S.owner||'';S.on=true;S.hash='';S.sh='';S.last=0;S.vOk=Date.now();S.rev=null;cl.needAuth=false;cl.err='';cl.conflict=null;C.emit();
       return {ok:true,email,remote:R};
-    }catch(e){const m=String(e&&e.message);return {ok:false,msg:m.indexOf('auth:')===0?authMsg(m.slice(5)):cloudMsg(e)}}
+    }catch(e){const m=String(e&&e.message);return {ok:false,nodrive:m.indexOf('nodrive:')===0||undefined,msg:m.indexOf('auth:')===0?authMsg(m.slice(5)):cloudMsg(e)}}
   },
   /* «Traer mi bodega»: reemplaza lo de este teléfono por lo que hay en su Drive */
   async take(){
@@ -10345,6 +10422,15 @@ function setAccent(color){
   curRd=h>=0&&(h<22||h>338);
 }
 const DEF_AC='#3157d5';
+/* colores del stock (3.4.4 · E18): --stk (hay) y --stkl (por acabarse) los usa «Registrar»; de fábrica son verde y rojo (ver real.css).
+   Las variables «x» (--stkx, --stkxs, --stklx, --stklxs) SOLO existen cuando la persona eligió un color: así la lista de Productos no cambia hasta entonces. */
+let curStk='';
+function stkApply(){
+  const on=C.state&&C.state.step==='app',h=on?C.colorStkElegido('hay'):'',b=on?C.colorStkElegido('bajo'):'',key=h+'|'+b;
+  if(key===curStk)return;curStk=key;const s=root.style;
+  if(h){s.setProperty('--stk',h);s.setProperty('--stkx',h);s.setProperty('--stkxs',softOf(h))}else['--stk','--stkx','--stkxs'].forEach(k=>s.removeProperty(k));
+  if(b){s.setProperty('--stkl',b);s.setProperty('--stklx',b);s.setProperty('--stklxs',softOf(b))}else['--stkl','--stklx','--stklxs'].forEach(k=>s.removeProperty(k));
+}
 
 /* ---------- formato (todo sale de C: moneda y números del país del usuario) ---------- */
 const num=C.num,inp=C.inp,inpm=C.inpm,pnum=C.parseNum,frac=u=>C.fracU(u),UL=u=>esc(C.uLabel(u));
@@ -10452,6 +10538,14 @@ function navFootHTML(){
 const GLOGO='<svg class="glg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
 let gbusy=false;
 let pcMsg='';
+/* (3.4.4, E16) por qué no se pudo entrar con Google (p. ej. quedó desmarcada la casilla de Drive): queda a la vista junto al botón hasta que la persona cambie de pantalla o vuelva a intentar. El aviso de abajo (toast) desaparece solo y se perdía. */
+/* (3.4.4, E17) «cuadre.gvof»: en este equipo ya se ofreció «Protege tus ganancias» al crear un negocio (se ofrece UNA sola vez; sin almacenamiento no se ofrece) */
+const gvofGet=()=>{try{return localStorage.getItem('cuadre.gvof')||''}catch(e){return 'x'}};
+const gvofSet=()=>{try{localStorage.setItem('cuadre.gvof','1')}catch(e){}};
+let gMsg='',gView='';
+/* tras un intento fallido, el mensaje se acerca a la vista si quedó fuera de la pantalla (teléfonos chicos) */
+const gerrVer=()=>{const e=$('[data-r="gerr"]',mainEl);if(e)e.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})};
+const gerrHTML=()=>gMsg?`<p class="gerr" role="alert" data-r="gerr">${ic('alert',16)}<span>${esc(gMsg)}</span></p>`:'';
 let draftT=0,draftLive=false,draftChecked=false,draftOffer=null;      // borrador (ui/06g-borrador.js): se declaran aquí porque render() corre ya durante la carga      // por qué no se pudo entrar con Google en la ventana de la PC (se queda a la vista hasta el siguiente intento)
 /* «este teléfono» o «esta computadora», según dónde se usa NegocioListo (los textos no deben hablar de teléfono en la PC) */
 const EQ=()=>{try{return window.matchMedia&&matchMedia(PC_Q).matches?'esta computadora':'este teléfono'}catch(e){return 'este teléfono'}};
@@ -10464,13 +10558,13 @@ function welcomeHTML(){
     <div class="wlx"><h1>Tu negocio al día, en el teléfono o la computadora</h1>
       <p>Entradas y salidas, avisos de lo que se acaba y cuánto vendiste. Sin facturas, sin complicaciones.</p></div>
     <div class="wla">
-      ${G?`<button type="button" class="btn big gbtn" data-a="gsign"${gbusy||!C.online()?' disabled':''}>${GLOGO}<span>${gbusy?'Conectando con Google…':'Continuar con Google'}</span></button>
+      ${G?`<button type="button" class="btn big gbtn" data-a="gsign"${gbusy||!C.online()?' disabled':''}>${GLOGO}<span>${gbusy?'Conectando con Google…':'Continuar con Google'}</span></button>${gerrHTML()}
         <button type="button" class="btn big ghost" data-a="guest">Empezar sin cuenta</button>`
       :`<button type="button" class="btn big" data-a="guest">Empezar ahora</button>
         <button type="button" class="btn big ghost" data-a="signin">Iniciar sesión</button>`}
       <button type="button" class="btn txt" data-a="wimp">${ic('excel',17)}Ya tengo mi inventario en Excel</button>
       <button type="button" class="btn txt" data-a="restore">${ic('upload',17)}Restaurar una copia de seguridad</button>
-      <p class="note">${ic('lock',14)}${G?(C.online()?'Con tu cuenta, tus datos se guardan en una carpeta oculta de tu propio Google Drive (no ve tus otros archivos) y los recuperas en cualquier teléfono':'Sin internet no se puede entrar con Google. Puedes empezar sin cuenta y conectarla después.'):'Tus datos quedan solo en este equipo'}</p>
+      <p class="note">${ic('lock',14)}${G?(C.online()?'Con tu cuenta, tus datos se guardan en una carpeta oculta de tu propio Google Drive (no ve tus otros archivos) y los recuperas en cualquier teléfono. En la pantalla de Google deja marcada la casilla de «Google Drive» y toca «Continuar».':'Sin internet no se puede entrar con Google. Puedes empezar sin cuenta y conectarla después.'):'Tus datos quedan solo en este equipo'}</p>
       ${G?`<p class="fine legal">Al continuar aceptas los <a href="terminos.html" target="_blank" rel="noopener">Términos</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a></p>`:''}
     </div></div>`;
 }
@@ -10541,7 +10635,7 @@ function prepHTML(){
   return `<div class="pp"><div class="ppi">${C.rubroIcon(su.rubro,{size:104,cls:'draw float'})}</div>
     <h2>Preparando tu negocio ${esc(nm)}…</h2><div class="ppb"><i></i></div></div>`;
 }
-const inw=(pre,f,val,suf,extra)=>`<div class="inpw">${pre?`<em>${esc(pre==='$'?C.moneySym():pre)}</em>`:''}<input type="text" inputmode="decimal" autocomplete="off" data-n="1"${pre==='$'?' data-m="1"':''} data-f="${f}" value="${esc(val)}"${extra||''}>${suf?`<em>${suf}</em>`:''}</div>`;
+const inw=(pre,f,val,suf,extra,cls)=>`<div class="inpw${cls?' '+cls:''}">${pre?`<em>${esc(pre==='$'?C.moneySym():pre)}</em>`:''}<input type="text" inputmode="decimal" autocomplete="off" data-n="1"${pre==='$'?' data-m="1"':''} data-f="${f}" value="${esc(val)}"${extra||''}>${suf?`<em>${suf}</em>`:''}</div>`;
 
 
 /* =====================================================================
@@ -10987,7 +11081,7 @@ function masBody(id,s){
       <button type="button" class="btn txt" data-a="cloud-off">Cerrar sesión de Google</button>
       <p class="fine l">Al cerrar sesión se borran los datos de ${EQ()}; siguen guardados en tu Drive y los recuperas al volver a entrar con la misma cuenta.</p>`
     :`<p class="accn">Entra con tu cuenta de Google: tus datos se guardan solos en tu propio Drive cada vez que hay internet, y si cambias de teléfono los recuperas. Nadie más los ve.</p>
-      <button type="button" class="btn sm gbtn" data-a="cloud-on"${online?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>${online?'':'<p class="fine">Necesitas internet para entrar.</p>'}`;
+      <button type="button" class="btn sm gbtn" data-a="cloud-on"${online?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>${gerrHTML()}<p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>${online?'':'<p class="fine">Necesitas internet para entrar.</p>'}`;
   T.cuenta=()=>`${nube}${K.configured?`<p class="fine legal"><a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="eliminar-datos.html" target="_blank" rel="noopener">Eliminar datos</a></p>`:''}`;
   T.datos=()=>`
     <p class="accn">${ic('check',14,'okic',2.5)} Todo se guarda solo en ${EQ()}, a cada cambio (${kb} KB). Funciona igual sin internet.</p>
@@ -11225,7 +11319,7 @@ function pmenuSheet(s,i){
   const p=C.prod(s.id);if(!p)return '';
   const row=(w,ico,t,d,cls)=>`<button type="button" class="mr ${cls||''}" data-a="pm-go" data-do="${w}" data-id="${p.id}"><span class="mri">${ic(ico,19)}</span><span class="mrt"><b>${t}</b>${d?`<i>${d}</i>`:''}</span>${ic('chev',17)}</button>`;
   const body=p.activo===false?`${row('open','box','Ver el producto','Historial y kardex')}${row('unarch','refresh','Volver a mostrarlo','Vuelve a la lista de Productos')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`
-    :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · ${num(p.stock)} ${UL(p.u)} en stock</i></span></div>
+    :`<div class="pmh">${thumb(p,52)}<span><b>${esc(p.nom)}</b><i>${esc(p.cod)} · <span class="stq${p.stock<=0?' z':C.bajo(p)?' lo':''}">${num(p.stock)} ${UL(p.u)}</span> en stock</i></span></div>
     ${row('sell','cart','Vender','Registra una venta de este producto')}${row('in','entrada','Ingreso','Suma stock: llegó mercadería')}${row('out','salida','Salida sin venta','Merma, regalo o consumo')}
     ${row('open','box','Ver el producto','Historial, kardex y códigos')}${row('edit','edit','Editar datos y foto','Nombre, precio, mínimo…')}${row('adj','refresh','Corregir stock','Cuando el conteo no coincide')}${row('arch','trash','Archivar','Se oculta, no se borra su historial','dng')}${row('del','trash','Borrar para siempre','Se borra con su historial','dng')}`;
   return frame(s,i,'Acciones','',body,'','pros');
@@ -11299,9 +11393,10 @@ function regLineView(l){
   const p=C.prod(l.pid);if(!p)return {cls:'',ico:false,chip:'',tip:'',note:'',sub:''};
   const ing=reg.tipo==='ingreso',sf=p.u==='und'?'':' '+esc(C.uLabel(p.u)),after=Math.round((ing?p.stock+l.q:p.stock-l.q)*1000)/1000,min=Math.max(0,+p.min||0);
   let cls='',ico=false,chip,tip='';
-  if(ing)chip='Habrá '+num(after)+sf+' (hay '+num(p.stock)+')';
-  else if(l.q>p.stock){cls='red';ico=true;chip='Solo hay '+num(p.stock)+sf;tip='No alcanza: solo hay '+num(p.stock)+' en stock'}
-  else{chip='Quedan '+num(after)+sf;tip='Quedan '+num(after)+' de '+num(p.stock)+sf;if(after<=min){cls='amb';ico=true;tip=min>0?'Quedarían '+num(after)+': bajo el mínimo ('+num(min)+')':'Se agota el stock'}}
+  /* 3.4.4 · E20: el NÚMERO va en un tag propio (<b class="qn">) para que tenga su color; la unidad (UND, kg…) siempre se dice */
+  if(ing)chip='Habrá <b class="qn">'+num(after)+'</b>'+sf+' (hay '+num(p.stock)+')';
+  else if(l.q>p.stock){cls='red';ico=true;chip='Solo hay <b class="qn">'+num(p.stock)+'</b> '+UL(p.u);tip='No alcanza: solo hay '+num(p.stock)+' en stock'}
+  else{chip='Quedan <b class="qn">'+num(after)+'</b> '+UL(p.u);tip='Quedan '+num(after)+' de '+num(p.stock)+sf;if(after<=min){cls='amb';ico=true;tip=min>0?'Quedarían '+num(after)+': bajo el mínimo ('+num(min)+')':'Se agota el stock'}}
   return {cls,ico,chip,tip,note:regLineNote(l),sub:reg.tipo==='venta'?C.money(l.q*l.pv):''};
 }
 const regChipH=v=>(v.ico?ic('alert',12,'',2.3):'')+v.chip;
@@ -11315,7 +11410,8 @@ function regFit(){
     let w=b.getBoundingClientRect().width;
     for(let k=0;k<6&&i.scrollWidth>i.clientWidth+0.5;k++){w+=i.scrollWidth-i.clientWidth+3;b.style.setProperty('--pw',Math.ceil(w)+'px')}});
 }
-const regSuf=p=>p.u==='und'?'c/u':'/'+C.uLabel(p.u);
+/* rótulo de la unidad DENTRO de la cápsula del precio (3.4.4 · E20): «por UND», «por kg»… (antes «c/u» colgaba del borde y se veía mal) */
+const regSuf=p=>'por '+UL(p.u);
 function regCan(){
   if(!reg.lines.length)return false;
   return reg.lines.every(l=>{const p=C.prod(l.pid);return l.q>0&&p&&(reg.tipo==='ingreso'||l.q<=p.stock)&&!(reg.tipo==='venta'&&C.bloqueaPerdida()&&C.precioEstado(p.costo,regNetPv(l))?.k==='perdida')});
@@ -11352,16 +11448,16 @@ function pickListHTML(q,exclude,act,counts,newAct){
   /* al buscar: primero los resultados (Enter agrega el primero) y al final «Crear…» */
   const cab=qq?`<p class="pkt">Resultados</p>`:`<div class="pkh"><p class="pkt">Los que más vendes</p>${nuevo}</div>`,pie=qq&&nuevo?`<div class="pkh solo">${nuevo}</div>`:'';
   return `${cab}${it.map(p=>{const low=C.bajo(p),n=counts&&counts[p.id];
-    return `<button type="button" class="pki" data-a="${act}" data-id="${p.id}"><span class="pkm"><b>${esc(p.nom)}</b><i class="${low?'lowt':''}">${p.stock<=0?'Agotado · ':low?'Por acabarse · ':''}${p.marca?esc(p.marca)+' · ':''}${num(p.stock)} ${UL(p.u)} en stock</i></span>${n?`<em class="cnt">${ic('check',13,'',2.6)}${num(n)}</em>`:''}<b class="pkp">${C.money(p.pv)}</b></button>`}).join('')}${pie}`;
+    return `<button type="button" class="pki" data-a="${act}" data-id="${p.id}"><span class="pkm"><b>${esc(p.nom)}</b><i class="${low?'lowt':''}">${p.stock<=0?'Agotado · ':low?'Por acabarse · ':''}${p.marca?esc(p.marca)+' · ':''}<span class="stq${p.stock<=0?' z':''}">${num(p.stock)} ${UL(p.u)}</span> en stock</i></span>${n?`<em class="cnt">${ic('check',13,'',2.6)}${num(n)}</em>`:''}<b class="pkp">${C.money(p.pv)}</b></button>`}).join('')}${pie}`;
 }
 function regLineH(l,i){
   const p=C.prod(l.pid);if(!p)return '';
   const v=regLineView(l),venta=reg.tipo==='venta',ing=reg.tipo==='ingreso',dOn=venta&&(!!l.dtoOpen||regLDto(l)>0);
-  const campo=venta?inw('$','lpv',inpm(l.pv),regSuf(p),' data-i="'+i+'" aria-label="Precio por '+(p.u==='und'?'unidad':esc(C.uLabel(p.u)))+'"')
+  const campo=venta?inw('$','lpv',inpm(l.pv),regSuf(p),' data-i="'+i+'" aria-label="Precio por '+(p.u==='und'?'unidad':esc(C.uLabel(p.u)))+'"','rcxp')
     :ing?inw('$','lcosto',l.costo!=null?inpm(l.costo):(C.gv()&&p.costo?inpm(p.costo):''),'',' data-i="'+i+'" aria-label="Costo de compra" placeholder="'+esc(C.gv()?C.money(0):'Costo protegido')+'"').replace('<div class="inpw">','<div class="inpw rcxc"><small>Costo</small>'):'';
-  const campoW=campo.replace(/<div class="inpw( rcxc)?"/,(m)=>m+' style="--pw:'+regPw((campo.match(/value="([^"]*)"/)||[,''])[1].length,ing)+'"');
-  return `<div class="rl rcx"><div class="rcx1"><b>${esc(p.nom)}</b><span class="rcxchip ${v.cls}" data-r="lchip" data-i="${i}" title="${esc(v.tip)}">${regChipH(v)}</span>${venta?`<button type="button" class="dtn${dOn?' on':''}" data-a="ldto" data-i="${i}" aria-label="Descuento en este producto" aria-pressed="${dOn}">${ic('percent',15,'',2.3)}</button>`:''}<button type="button" class="ib sm" data-a="rdel" data-i="${i}" aria-label="Quitar ${esc(p.nom)}">${ic('x',17,'',2.2)}</button></div>
-    <div class="rcx2"><div class="stp"><button type="button" data-a="rstep" data-i="${i}" data-d="-1" aria-label="Menos">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="lq" data-i="${i}" aria-label="Cantidad (${UL(p.u)})" value="${inp(l.q)}"><button type="button" data-a="rstep" data-i="${i}" data-d="1" aria-label="Más">${ic('plus',18,'',2.4)}</button></div>${campoW}${venta?`<b class="rcxsub${l.q===1?' one':''}" data-r="lsub" data-i="${i}">${esc(v.sub)}</b>`:''}</div>
+  const campoW=campo.replace(/<div class="inpw( rcx[cp])?"/,(m)=>m+' style="--pw:'+regPw((campo.match(/value="([^"]*)"/)||[,''])[1].length,ing)+'"');
+  return `<div class="rl rcx"><div class="rcx1"><b>${esc(p.nom)}</b><span class="rcxchip ${v.cls}" data-r="lchip" data-i="${i}" title="${esc(v.tip)}">${regChipH(v)}</span>${venta?`<button type="button" class="dtn${dOn?' on':''}" data-a="ldto" data-i="${i}" aria-label="Descuento en este producto" aria-pressed="${dOn}">${ic('percent',15,'',2.3)}<i>Descuento</i></button>`:''}<button type="button" class="ib sm" data-a="rdel" data-i="${i}" aria-label="Quitar ${esc(p.nom)}">${ic('x',17,'',2.2)}</button></div>
+    <div class="rcx2${venta?' rcxv':''}"><div class="stp"><button type="button" data-a="rstep" data-i="${i}" data-d="-1" aria-label="Menos">${ic('minus',18,'',2.4)}</button><input type="text" inputmode="decimal" data-n="1" data-f="lq" data-i="${i}" aria-label="Cantidad (${UL(p.u)})" value="${inp(l.q)}"><button type="button" data-a="rstep" data-i="${i}" data-d="1" aria-label="Más">${ic('plus',18,'',2.4)}</button></div>${campoW}${venta?`<b class="rcxsub${l.q===1?' one':''}" data-r="lsub" data-i="${i}">${esc(v.sub)}</b>`:''}</div>
     ${dOn?`<div class="rcxd"><span>Descuento</span>${inw('','ldto',l.dto||'','%',' data-i="'+i+'" placeholder="0" aria-label="Descuento en porcentaje"')}<div class="chips" role="group" aria-label="Descuentos rápidos">${[5,10].map(d=>`<button type="button" class="chp ${regLDto(l)===d?'on':''}" data-a="ldtoq" data-i="${i}" data-v="${d}" aria-pressed="${regLDto(l)===d}">${d} %</button>`).join('')}</div><b data-r="ldtor" data-i="${i}">${esc(regDtoTxt(l))}</b></div>`:''}
     <p class="rln" data-r="lres" data-i="${i}">${v.note}</p></div>`;
 }
@@ -11465,12 +11561,24 @@ function colorTipoCardHTML(){
     ${C.colorTipoRepetido()?`<p class="fine tcw">${ic('alert',14,'',2.4)}Dos de los tres tienen el mismo color: así no se distinguen.</p>`:''}
     <button type="button" class="btn ghost sm tcrest ${cam?'':'on'}" data-a="ntrest"${cam?'':' disabled'}>${cam?'':ic('check',16,'',3)}Como vienen (azul, verde y naranja)</button></section>`;
 }
+/* colores del stock (3.4.4 · E18): «Unidades que hay» y «Por acabarse». Van JUNTO a los otros colores de «Mi negocio», con la misma paleta */
+function colorStkCardHTML(){
+  const cam=C.colorStkCambiado();
+  const grupos=C.STK_ROLES.map(([r,nom])=>{const cur=C.colorStk(r);
+    const sw=C.COLORES.map(([c,n])=>`<button type="button" class="csw sm ${cur===c?'on':''}" data-a="nscolor" data-t="${r}" data-v="${c}" style="--c:${c}" aria-label="${esc(nom+': '+n)}" aria-pressed="${cur===c}" title="${esc(n)}">${cur===c?ic('check',15,'',3):''}</button>`).join('');
+    return `<div class="tcg"><p class="tcn"><i class="tdot" style="--tc:${cur}" aria-hidden="true"></i>${esc(nom)}</p><div class="csws tcs" role="group" aria-label="Color de ${esc(nom)}">${sw}</div></div>`}).join('');
+  return `<section class="card tcc stkc"><div class="ch"><h3>Colores del stock</h3></div>
+    <p class="fine">Para ver de un vistazo cuántas unidades hay: el número de «<b>8 UND</b> en stock» y el de «Quedan 6». Elige el color de cada uno.</p>
+    ${grupos}
+    <button type="button" class="btn ghost sm tcrest ${cam?'':'on'}" data-a="nsrest"${cam?'':' disabled'}>${cam?'':ic('check',16,'',3)}Como vienen (verde y rojo)</button></section>`;
+}
 function negocioSheet(s,i){
   const st=C.state,I=st.info,L=st.logo;
   const body=`<label class="fl"><span>Nombre del negocio</span><input class="fld" type="text" maxlength="60" data-f="nnom" value="${esc(st.nombre)}"></label>
     ${logoCardHTML(L,'Sale arriba de la app y en tus cotizaciones. Con Pro, tus PDF llevan el logo, tus datos y una marca de agua.')}
     ${colorCardHTML()}
     ${colorTipoCardHTML()}
+    ${colorStkCardHTML()}
     ${firmaCardHTML()}
     <label class="fl"><span>Teléfono</span><input class="fld" type="tel" inputmode="tel" maxlength="30" data-f="ntel" value="${esc(I.telefono)}"></label>
     <label class="fl"><span>Correo</span><input class="fld" type="email" inputmode="email" autocapitalize="off" maxlength="60" data-f="nmail" value="${esc(I.email)}"></label>
@@ -11518,6 +11626,14 @@ function gvsetSheet(s,i){
     <p class="err" data-r="gvserr"${s.err?'':' hidden'}>${esc(s.err||'')}</p>
     <p class="fine l">${K.connected?'Si olvidas esta clave, la recuperas confirmando con tu cuenta de Google (por seguridad la clave nueva se puede crear '+(C.GV_OLVIDO_H===1?'1 hora':C.GV_OLVIDO_H+' horas')+' después de pedirla). ':'Conecta tu cuenta de Google (Más → Cuenta) para poder recuperarla si la olvidas. '}Quien conozca esta clave, o tenga su huella registrada en este equipo, podrá ver tus ganancias.</p>`;
   return frame(s,i,t,'',body,`<button type="button" class="btn big" data-a="gv-save">${mode==='set'?'Activar protección':'Guardar clave'}</button>`,'pros');
+}
+/* (3.4.4, E17) una sola vez, al crear el negocio: se ofrece proteger las ganancias. Es OPCIONAL: «Ahora no» sigue, y se puede hacer después en Más → Seguridad
+   (o con la sugerencia «Proteger mis ganancias» de Inicio). «Activar ahora» abre la misma hoja de siempre (gvset). */
+function gvofSheet(s,i){
+  const nom=C.bio.nom(),body=`<div class="infob">${ic('shield',26)}<h3>¿Alguien más vende por ti?</h3>
+    <p>Quien use la app puede ver cuánto ganas y cuánto te costó cada cosa. Protégelo ahora y <b>solo tú lo verás</b>, con ${esc(nom)} o tu clave del dueño.</p>
+    <p class="fine">Es opcional. Si prefieres, lo haces después en <b>Más → Seguridad</b>.</p></div>`;
+  return frame(s,i,'Protege tus ganancias','',body,`<button type="button" class="btn big" data-a="gvof-on">${ic(C.bio.ok?'finger':'lock',18)}Activar ahora</button><button type="button" class="btn txt" data-a="close">Ahora no</button>`,'pros');
 }
 /* Etiquetas con código: tamaño real en mm, tipo de código, cantidad y vista previa */
 function etqPrevHTML(p,E){
@@ -11696,7 +11812,7 @@ function buySheet(s,i){
   if(act)pt=licBlockHTML(pc?'pc':'pro',s);
   else if(play){
     mb=K.connected?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>${pc?'Correo de tu plan':'Tu cuenta de Google'}</b><i>${esc(K.email||'Conectada')}</i></div></div>`
-      :`<p class="bpn">Para guardar tu plan en tu cuenta de Google (y recuperarlo si cambias de teléfono o de computadora), entra primero con Google.</p><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>`;
+      :`<p class="bpn">Para guardar tu plan en tu cuenta de Google (y recuperarlo si cambias de teléfono o de computadora), entra primero con Google.</p><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>${gerrHTML()}`;
     pt=`<p class="lerr" data-r="licmsg" ${s.msg?'':'hidden'}>${esc(s.msg||'')}</p><p class="fine l">${pc?'El cobro lo hace Google Play, una sola vez.':'El cobro lo hace Google Play y se renueva solo. Cancelas cuando quieras desde Play Store → Pagos y suscripciones.'}</p>`
       +(K.connected&&C.revisor()?revisorHTML(pc?'pc':'pro',s):'');      // SOLO la cuenta de revisión de Google Play ve dónde pegar el código
     foot=K.connected?`<button type="button" class="btn big" data-a="buy-play" ${s.busy?'disabled':''}>${s.busy?'Abriendo Google Play…':ic('crown',18)+(pc?'Comprar · '+esc(pr)+' pago único':'Suscribirme · '+esc(pr)+' '+esc(P.planes[key].per))}</button><button type="button" class="btn txt" data-a="buy-restore" ${s.busy?'disabled':''}>Ya pagué: restaurar mi compra</button>`
@@ -11710,7 +11826,7 @@ function buySheet(s,i){
     const u=C.contactoURL(pedido+(K.connected&&K.email?'. Mi correo de Google (el del plan) es '+K.email:'')+'.');
     /* la versión para PC necesita el correo antes de comprar: se toma de la cuenta de Google (así no hay errores al escribirlo) */
     const needMail=pc&&!K.connected;
-    mb=needMail?`<p class="bpn">Primero entra con tu cuenta de Google: ese será el correo de tu plan y así no hay errores al escribirlo. ¿Ya lo tienes activado? Entra con ese correo y tu plan aparece solo.</p><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>`
+    mb=needMail?`<p class="bpn">Primero entra con tu cuenta de Google: ese será el correo de tu plan y así no hay errores al escribirlo. ¿Ya lo tienes activado? Entra con ese correo y tu plan aparece solo.</p><p class="gnote">${ic('lock',14)}${esc(C.googleNota)}</p>${gerrHTML()}`
       :K.connected&&pc?`<div class="lcok sm">${ic('check',18,'',2.6)}<div><b>Correo de tu plan</b><i>${esc(K.email||'Conectada')}</i></div></div>`:'';
     pt=`<p class="bpn">Pagas directo ${esc(aWho)}. Él te manda tu código de activación por WhatsApp o correo, y lo pegas aquí. ${pc?'Es un pago único: la versión para PC es tuya para siempre. El mes de Pro cuenta desde que se generó tu código, así que actívalo apenas lo recibas.':'Vale '+(pl==='mes'?'1 mes':'1 año')+' desde que se genera tu código: actívalo apenas lo recibas.'}</p>${contactoHTML()}${s.codeOpen?licStepsHTML(pc?'pc':'pro',s,false):''}`;
     foot=(needMail?`<button type="button" class="btn big gbtn" data-a="cloud-on"${C.online()&&K.configured?'':' disabled'}>${GLOGO}<span>Entrar con Google</span></button>`
@@ -11784,6 +11900,7 @@ function sheetOf(s,i){
     case 'gv':return gvSheet(s,i);
     case 'gvwait':return gvwaitSheet(s,i);
     case 'gvset':return gvsetSheet(s,i);
+    case 'gvof':return gvofSheet(s,i);
     case 'etiq':return etiqSheet(s,i);
     case 'fcrop':return fcropSheet(s,i);
     case 'pcplan':return pcplanSheet(s,i);
@@ -11938,7 +12055,7 @@ function entdetSheet(s,i){
 function pnCan(){const P=pn.pid?C.prod(pn.pid):null;const q=pnum(pn.qty);return !!(P&&pn.quien.trim()&&q>0&&q<=P.stock)}
 function prenewSheet(s,i){
   const P=pn.pid?C.prod(pn.pid):null;
-  const pick=P?`<section class="pst"><div><span class="lbl">Se presta o se alquila</span><b class="stn sm2">${esc(P.nom)}</b><span class="fine">Hay ${num(P.stock)} ${UL(P.u)} en stock</span></div><button type="button" class="btn ghost sm" data-a="pnchg">Cambiar</button></section>`
+  const pick=P?`<section class="pst"><div><span class="lbl">Se presta o se alquila</span><b class="stn sm2">${esc(P.nom)}</b><span class="fine">Hay <span class="stq${P.stock<=0?' z':C.bajo(P)?' lo':''}">${num(P.stock)} ${UL(P.u)}</span> en stock</span></div><button type="button" class="btn ghost sm" data-a="pnchg">Cambiar</button></section>`
     :`<div class="pk"><div class="sfd ${pn.s?'has':''}">${ic('search',19)}<input type="text" inputmode="search" autocomplete="off" placeholder="Busca lo que vas a prestar" aria-label="Buscar producto" data-f="pnq" value="${esc(pn.s)}"></div>
       <div class="pkl" data-r="pkl">${pickListHTML(pn.s,null,'pnpick',null,'')}</div></div>`;
   const form=P?`<label class="fl"><span>A quién se lo prestas</span><input class="fld" type="text" maxlength="60" autocomplete="off" placeholder="Nombre de la persona o la empresa" data-f="pnquien" value="${esc(pn.quien)}"></label>
@@ -12940,6 +13057,8 @@ function render(){
   const k=snapshot();
   const rub=st.rubro?C.rubro(st.rubro):null;
   setAccent(st.step==='app'&&rub?C.colorTienda():(st.step==='setup'&&su&&su.rubro?C.rubro(su.rubro).color:DEF_AC));
+  stkApply();
+  {const vk=st.step+'|'+tab+'|'+sheets.length+'|'+(page?page.k:'');if(vk!==gView){gView=vk;if(!gbusy)gMsg=''}}      // el mensaje de Google solo vive en la pantalla donde se intentó
   root.classList.toggle('hs',!!sheets.length||!!sc);root.classList.toggle('rd',curRd);
   root.style.setProperty('--toast-bottom',page&&page.k==='qed'?'96px':'88px');
   if(pendImp&&st.step==='app'&&C.ready()&&!sheets.length){pendImp=false;im={ph:'elegir'};sheets.push({k:'impo',fresh:true})}
@@ -13103,15 +13222,20 @@ function bubAct(b){
   if(a==='pc'){tab='mas';anim=true;render();pushSheet({k:'mas',id:innerWidth>=900?'inst':'pc'});return}
   if(a==='tip'){C.descartar(b.id)}
 }
+/* (3.4.4, E17) se ofrece una sola vez por equipo, solo con un negocio recién creado y la pantalla libre (si aún no está lista, se reintenta un par de veces) */
+function gvofOfrecer(n){
+  if(gvofGet()||C.state.protGan)return;
+  if(C.state.step!=='app'||C.locked||sheets.length||page){if(n<3)later(()=>gvofOfrecer(n+1),900);return}
+  gvofSet();pushSheet({k:'gvof'})}
 let verN=0,verT0=0;
 const A={
   /* bienvenida y configuración */
   signin(){pushSheet({k:'signin'})},
   /* entrar con Google desde la bienvenida */
   async gsign(){
-    if(gbusy)return;gbusy=true;render();
+    if(gbusy)return;gbusy=true;gMsg='';render();
     const r=await C.cloud.signIn();gbusy=false;
-    if(!r.ok){render();toast(r.msg||'No se pudo entrar con Google',false,true);return}
+    if(!r.ok){gMsg=r.msg||'No se pudo entrar con Google';render();gerrVer();toast(r.msg||'No se pudo entrar con Google',false,true);return}
     if(r.remote){toast('Trayendo tu negocio…');const t=await C.cloud.take();     // entras con tu cuenta y ya está tu bodega, sin preguntar
       if(t.ok){sheets=[];page=null;tab='inicio';anim=true;render();toast('Listo: recuperé '+t.prods+' productos y '+t.movs+' movimientos')}
       else{C.cloud.disconnect();render();toast(t.msg||'No pude traer tu negocio',false,true)}return}
@@ -13155,7 +13279,9 @@ const A={
   snext2(){if(!su.rubro)return;su.paso=3;anim=true;render()},
   crear(){
     if(!su.rubro)return;su.busy=true;render();
-    later(()=>{const v=su;C.setup({nombre:v.nombre.trim(),rubro:v.rubro,rubroTxt:v.txt.trim(),pais:v.pais,moneda:v.moneda,monedaSym:v.monedaSym,numStyle:v.numStyle,page:v.page,ivaPct:v.ivaPct,taxName:v.taxName.trim()||'Impuesto',logo:v.logo});su=null},900)},
+    later(()=>{const v=su;C.setup({nombre:v.nombre.trim(),rubro:v.rubro,rubroTxt:v.txt.trim(),pais:v.pais,moneda:v.moneda,monedaSym:v.monedaSym,numStyle:v.numStyle,page:v.page,ivaPct:v.ivaPct,taxName:v.taxName.trim()||'Impuesto',logo:v.logo});su=null;later(()=>gvofOfrecer(0),1000)},900)},
+  /* (3.4.4, E17) «Protege tus ganancias»: se ofrece una vez, recién creado el negocio. «Activar ahora» reemplaza esta hoja por la de siempre. */
+  'gvof-on'(){sheets.pop();pushSheet({k:'gvset',mode:'set'})},
   /* logo (en configuración inicial y en «Mi negocio») */
   async 'logo-up'(){const f=await pickFile('image/*');if(!f)return;const L=await C.readLogo(f);if(!L){toast('No pude leer esa imagen',false,true);return}
     if(C.state.step==='setup'&&su){su.logo=L;render();toast('Logo listo: así saldrá en tus cotizaciones')}else{C.setLogo(L);toast('Logo guardado')}},
@@ -13484,6 +13610,8 @@ const A={
   decs(b){C.setMonedaDe({dec:+b.dataset.v});toast('Precios con '+(+b.dataset.v?'2 decimales':'0 decimales'))},
   ntcolor(b){C.setColorTipo(b.dataset.t,b.dataset.v||'')},
   ntrest(){C.resetColoresTipo();toast('Colores como vienen: azul, verde y naranja')},
+  nscolor(b){C.setColorStk(b.dataset.t,b.dataset.v||'')},
+  nsrest(){C.resetColoresStk();toast('Colores del stock como vienen: verde y rojo')},
   ncolor(b){const v=b.dataset.v||'';C.setColor(v);toast(v?'Color de la tienda: '+(C.COLORES.find(x=>x[0]===v)||[,''])[1]:'Color automático, según tu rubro')},
   pagesz(b){C.setMonedaDe({page:b.dataset.v});toast('Hoja de PDF: '+(b.dataset.v==='a4'?'A4':'Carta'))},
   lockmin(b){C.setLockMin(+b.dataset.v)},
@@ -13587,9 +13715,9 @@ const A={
   async 'pc-entrar'(){
     if(gbusy)return;
     if(C.state.step==='app'&&(C.prods().length||C.movsCount()))return A['cloud-on']();   // ya hay datos aquí: se juntan o se pregunta, como siempre
-    gbusy=true;pcMsg='';render();
+    gbusy=true;pcMsg='';gMsg='';render();
     const r=await C.cloud.signIn();gbusy=false;
-    if(!r.ok){pcMsg=r.msg||'No se pudo entrar con Google';render();toast(pcMsg,false,true);return}      // el motivo queda a la vista en la ventana (el aviso de abajo desaparece solo)
+    if(!r.ok){pcMsg=r.msg||'No se pudo entrar con Google';gMsg=pcMsg;render();toast(pcMsg,false,true);return}      // el motivo queda a la vista en la ventana (el aviso de abajo desaparece solo)
     if(r.remote){const t=await C.cloud.take();render();
       if(codigoPend()){await activarPend();return}
       if(t.ok&&C.hasPC())toast('Listo: tu cuenta tiene la versión para PC');
@@ -13611,9 +13739,9 @@ const A={
     if(!r.ok&&r.reason!=='conflicto'&&C.pcEstado()!=='ok'){pcMsg=/No encontré ninguna copia/.test(r.msg||'')?'Esta cuenta ('+K.email+') todavía no tiene la versión para PC. Si ya la activaste en tu teléfono, revisa que sea la misma cuenta.':(r.msg||'No pude verificar con Google ahora. Vuelve a intentar en un momento.');render();toast(pcMsg,false,true);return}
     if(C.pcEstado()!=='ok')pcMsg='Esta cuenta aún no muestra la versión para PC. Si acabas de comprar, espera unos segundos y vuelve a tocar.';
     render();toast(C.pcEstado()==='ok'?'Listo: versión para PC verificada':pcMsg,false,C.pcEstado()!=='ok')},
-  async 'cloud-on'(){if(gbusy)return;gbusy=true;pcMsg='';toast('Conectando con Google…');render();
+  async 'cloud-on'(){if(gbusy)return;gbusy=true;pcMsg='';gMsg='';toast('Conectando con Google…');render();
     let r;try{r=await C.cloud.signIn()}finally{gbusy=false}
-    if(!r.ok)pcMsg=r.msg||'No se pudo entrar con Google';render();
+    if(!r.ok){pcMsg=r.msg||'No se pudo entrar con Google';gMsg=pcMsg}render();gerrVer();
     if(!r.ok){toast(r.msg||'No se pudo entrar con Google',false,true);return}
     if(codigoPend())later(()=>activarPend(),1200);      // código que llegó en el enlace del vendedor
     const tengo=C.prods().length||C.movsCount();
